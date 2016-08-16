@@ -1,0 +1,100 @@
+fileFormatVersion: 2
+guid: 5fc6527d0516724499843458107aae15
+timeCreated: 1468190995
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SimonSprites_1
+    21300002: SimonSprites_2
+    21300004: SimonSprites (2)_2
+    21300006: SimonSprites (2)_3
+    21300008: SimonSprites (2)_4
+    21300010: SimonSprites (2)_5
+    21300012: SimonSprites (2)_6
+    21300014: SimonSprites (2)_7
+    21300016: SimonSprites (2)_8
+    21300018: SimonSprites_3
+    21300020: SimonSprites (2)_10
+    21300022: SimonSprites (2)_11
+    21300024: SimonSprites (2)_12
+    21300026: SimonSprites (2)_13
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 44
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SimonSprites_1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 660
+        width: 600
+        height: 520
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SimonSprites_2
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 659
+        width: 600
+        height: 521
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SimonSprites_3
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 2
+        width: 600
+        height: 538
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
