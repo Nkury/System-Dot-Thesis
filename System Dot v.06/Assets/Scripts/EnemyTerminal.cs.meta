@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 5c7cc68fba15ba44c8a0424b7511fa23
-timeCreated: 1467003139
+timeCreated: 1472151697
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - terminalPointerDestination: {instanceID: 0}
+  - terminalWindow: {fileID: 198014, guid: b17fb7264e41ae046b0248c7bdbf0e4b, type: 2}
   - chestSpriteClosed: {fileID: 21300000, guid: 34165aceceba9e54eae097303eb234ec,
       type: 3}
   - chestSpriteOpen: {fileID: 21300000, guid: e1a0d48139c1d4b4aaf24076d8544015, type: 3}

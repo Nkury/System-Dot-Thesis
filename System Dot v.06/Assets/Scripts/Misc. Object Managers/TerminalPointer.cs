@@ -13,7 +13,7 @@ public class TerminalPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = new Vector3(Screen.width, Screen.height * 5/6, 10);
+        Vector3 pos = new Vector3(Screen.width, Screen.height, 10);
         this.transform.position = Camera.main.ScreenToWorldPoint(pos);
     }
 }

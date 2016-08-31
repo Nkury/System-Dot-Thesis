@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
 using ParserAlgo;
 
@@ -11,11 +12,14 @@ public class EnemyTerminal : MonoBehaviour
     public int localTerminalMode = 0;
     public static bool active = false;
 
-    public string writtenString;
-    public string terminalString;
+    public int numberOfLines = 1;
+
+    public string[] terminalString = new string[5];
+    public string classHeader;
 
     public GUIStyle terminalStyle;
     public GameObject terminalPointerDestination;
+    public GameObject terminalWindow;
 
     public Sprite chestSpriteClosed;
     public Sprite chestSpriteOpen;
@@ -33,6 +37,8 @@ public class EnemyTerminal : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        terminalWindow = GameObject.Find("Terminal Window");
+
         if (this.tag == "Enemy")
         {
             if (this.GetComponent<HurtPlayerOnContact>().enemyState == HurtEnemyOnContact.colorState.RED)
@@ -42,14 +48,14 @@ public class EnemyTerminal : MonoBehaviour
             else if (this.GetComponent<HurtPlayerOnContact>().enemyState == HurtEnemyOnContact.colorState.GREEN)
                 colorString = "GREEN";
 
-            terminalString = "public class VBot{\n     " + writtenString + " \n}";
+            //terminalString = "public class VBot{\n     " + writtenString + " \n}";
         }
         else if (this.tag == "Chest")
         {
-            terminalString = "public class Chest{\n     System.close(); \n}";
+            //terminalString = "public class Chest{\n     System.close(); \n}";
         } else if (this.tag == "movingPlatform")
         {
-            terminalString = "public class MovingPlatform{\n   " + writtenString + " \n}";
+            //terminalString = "public class MovingPlatform{\n   " + writtenString + " \n}";
         }
 
         checkTerminalString();
@@ -81,7 +87,85 @@ public class EnemyTerminal : MonoBehaviour
         {
             this.GetComponent<LineRenderer>().enabled = false;
         }     
-        
+
+
+        // terminal window pops up
+        if(localTerminalMode == 2)
+        {
+            terminalWindow.SetActive(true);
+
+
+            switch (numberOfLines)
+            {
+                case 1:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 2:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 3:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 4:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 5:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(true);
+                    break;
+            }
+
+            for (int i = 0; i < numberOfLines; i++)
+            {
+                terminalString[i] = terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text;
+            }
+
+            terminalWindow.transform.FindChild("class header").gameObject.GetComponent<InputField>().text = classHeader;
+        }
+        else if(globalTerminalMode != 2)
+        {
+
+            terminalWindow.SetActive(false);
+
+            // delete text from input fields  
+            terminalWindow.transform.FindChild("line 1").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "";
+        }
     }
 
     void OnMouseOver()
@@ -99,6 +183,14 @@ public class EnemyTerminal : MonoBehaviour
 
     void OnMouseDown()
     {
+        for (int i = 0; i < numberOfLines; i++)
+        {
+            if (terminalString[i] != "")
+            {
+                terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text = terminalString[i];
+            }
+        }
+
         if (globalTerminalMode <=1)
         {
             EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
@@ -114,6 +206,7 @@ public class EnemyTerminal : MonoBehaviour
         }
     }
 
+    /*
     void OnGUI()
     {
         if (localTerminalMode == 2)
@@ -122,62 +215,18 @@ public class EnemyTerminal : MonoBehaviour
             terminalString = GUI.TextArea(new Rect(.6f * Screen.width, 10, .4f * Screen.width, Screen.height / 2), terminalString, 200, terminalStyle);
         }
     }
+    */
 
     public void checkTerminalString()
     {
         actions.Clear();
-        if (this.tag == "Enemy")
+        string passedInString = "";
+        foreach(string s in terminalString)
         {
-            if (!terminalString.Contains("public class VBot{\n"))
-            {
-                terminalString = "public class VBot{\n" + terminalString.Substring(18);
-            }
-
-            if (!terminalString.Contains("}"))
-            {
-                terminalString = terminalString + "}";
-            }
-
-            string passedInString = terminalString;
-            passedInString = passedInString.Replace("public class VBot{\n", "");
-            passedInString = passedInString.Replace("}", "");
-            actions = parse.Parse(passedInString);
-
-        } else if(this.tag == "Chest")
-        {
-            if (!terminalString.Contains("public class Chest{\n"))
-            {
-                terminalString = "public class Chest{\n" + terminalString.Substring(19);
-            }
-
-            if (!terminalString.Contains("}"))
-            {
-                terminalString = terminalString + "}";
-            }
-
-            string passedInString = terminalString;
-            passedInString = passedInString.Replace("public class Chest{\n", "");
-            passedInString = passedInString.Replace("}", "");
-            actions = parse.Parse(passedInString);
-        } else if(this.tag == "movingPlatform")
-        {
-            if (!terminalString.Contains("public class MovingPlatform{\n"))
-            {
-                terminalString = "public class MovingPlatform{\n" + terminalString.Substring(27);
-            }
-
-
-            if (!terminalString.Contains("}"))
-            {
-                terminalString = terminalString + "}";
-            }
-
-            string passedInString = terminalString;
-            passedInString = passedInString.Replace("public class MovingPlatform{\n", "");
-            passedInString = passedInString.Replace("}", "");
-            actions = parse.Parse(passedInString);
-
+            passedInString += " " + s;
         }
+
+        actions = parse.Parse(passedInString);
     }
 
     public void evaluateActions()

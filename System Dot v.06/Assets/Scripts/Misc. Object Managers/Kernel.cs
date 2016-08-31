@@ -16,16 +16,20 @@ public class Kernel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.E) && canPressE && !inDebugMode)
+        if (EnemyTerminal.globalTerminalMode < 2)
         {
-            inDebugMode = true;
-            player.SetActive(false);
-            Camera.main.orthographicSize = 7.07f;
-        } else if(Input.GetKeyDown(KeyCode.E) && inDebugMode)
-        {
-            inDebugMode = false;
-            player.SetActive(true);
-            Camera.main.orthographicSize = 3.675071f;
+            if (Input.GetKeyDown(KeyCode.E) && canPressE && !inDebugMode)
+            {
+                inDebugMode = true;
+                player.SetActive(false);
+                Camera.main.orthographicSize = 7.07f;
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && inDebugMode)
+            {
+                inDebugMode = false;
+                player.SetActive(true);
+                Camera.main.orthographicSize = 3.675071f;
+            }
         }
     }
 
