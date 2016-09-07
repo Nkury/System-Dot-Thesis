@@ -14,6 +14,7 @@ public class EnemyTerminal : MonoBehaviour
 
     public int numberOfLines = 1;
 
+    public bool[] numOfLegacy = new bool[5];
     public string[] terminalString = new string[5];
     public string classHeader;
 
@@ -150,6 +151,20 @@ public class EnemyTerminal : MonoBehaviour
             for (int i = 0; i < numberOfLines; i++)
             {
                 terminalString[i] = terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text;
+            }
+
+            for (int i = 0; i < numOfLegacy.Length; i++)
+            {
+                string access = "line " + (i + 1);
+                terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().readOnly = numOfLegacy[i];
+                if (numOfLegacy[i])
+                {
+                    terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().textComponent.color = Color.red;
+                }
+                else
+                {
+                    terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().textComponent.color = Color.white;
+                }
             }
 
             terminalWindow.transform.FindChild("class header").gameObject.GetComponent<InputField>().text = classHeader;

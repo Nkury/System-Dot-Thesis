@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IntelliSense.talking && !IntelliSense.wait && EnemyTerminal.globalTerminalMode < 2) 
+        if (/*!IntelliSense.talking && !IntelliSense.wait && */ EnemyTerminal.globalTerminalMode < 2) 
         {
             if (grounded)
             {
