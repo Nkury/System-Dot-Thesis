@@ -37,6 +37,10 @@ public class TutorialZones : MonoBehaviour
             {
                 IntelliSense.SendMessage("StartFifthTutorial");
                 Destroy(this.gameObject);
+            } else if(this.gameObject.name == "FifthTutorialObjective")
+            {
+                IntelliSense.SendMessage("StartSixthTutorial");
+                Destroy(this.gameObject);
             }
         }
     }

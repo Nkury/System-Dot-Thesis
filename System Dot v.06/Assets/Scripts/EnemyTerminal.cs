@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using ParserAlgo;
 
@@ -32,8 +33,10 @@ public class EnemyTerminal : MonoBehaviour
     private bool showTerminal = false;
     public string colorString;
 
-    List<keyActions> actions = new List<keyActions>();
+    public List<keyActions> actions = new List<keyActions>();
     Parser parse = new Parser();
+
+    private int numOfSyntaxErrors;
 
     // Use this for initialization
     void Start()
@@ -60,14 +63,14 @@ public class EnemyTerminal : MonoBehaviour
         }
 
         checkTerminalString();
-        evaluateActions();
+        StartCoroutine(evaluateActions());
     }
 
     // Update is called once per frame
     void Update()
     {
         if(actions.Contains(keyActions.MOVELEFT) || actions.Contains(keyActions.MOVERIGHT))
-            evaluateActions();
+            StartCoroutine(evaluateActions());
 
         if (globalTerminalMode < 2)
         {
@@ -76,11 +79,12 @@ public class EnemyTerminal : MonoBehaviour
 
         if (localTerminalMode == 2)
         {
-            checkTerminalString();
-            evaluateActions();
+            //checkTerminalString();
+            // evaluateActions();
             this.GetComponent<LineRenderer>().enabled = true;
             this.GetComponent<LineRenderer>().SetPosition(0, new Vector3(0, 0.4f, 10));
-            this.GetComponent<LineRenderer>().SetPosition(1, new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
+            if(terminalPointerDestination != null)
+                this.GetComponent<LineRenderer>().SetPosition(1, new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
                                                         terminalPointerDestination.transform.position.y - this.transform.position.y,
                                                         10));
         }
@@ -221,17 +225,6 @@ public class EnemyTerminal : MonoBehaviour
         }
     }
 
-    /*
-    void OnGUI()
-    {
-        if (localTerminalMode == 2)
-        {            
-            //terminalString = GUI.TextArea(new Rect(.66f * Screen.width, 10, Screen.width / 3, Screen.height / 2), terminalString, 200);
-            terminalString = GUI.TextArea(new Rect(.6f * Screen.width, 10, .4f * Screen.width, Screen.height / 2), terminalString, 200, terminalStyle);
-        }
-    }
-    */
-
     public void checkTerminalString()
     {
         actions.Clear();
@@ -244,8 +237,19 @@ public class EnemyTerminal : MonoBehaviour
         actions = parse.Parse(passedInString);
     }
 
-    public void evaluateActions()
+    public IEnumerator evaluateActions()
     {
+        int waitCount = 0;
+
+        if(numOfSyntaxErrors > 2)
+        {
+            GameObject.Find("error message").GetComponent<Text>().text = parse.syntaxMessage;
+        }
+        else
+        {
+            GameObject.Find("error message").GetComponent<Text>().text = "";
+        }
+
         foreach (keyActions action in actions)
         {
             switch (action)
@@ -255,6 +259,7 @@ public class EnemyTerminal : MonoBehaviour
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
                         this.GetComponent<SpriteRenderer>().sprite = blueSlime;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.TURNRED:
@@ -262,6 +267,7 @@ public class EnemyTerminal : MonoBehaviour
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
                         this.GetComponent<SpriteRenderer>().sprite = redSlime;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.TURNGREEN:
@@ -269,6 +275,7 @@ public class EnemyTerminal : MonoBehaviour
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
                         this.GetComponent<SpriteRenderer>().sprite = greenSlime;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.TURNBLACK:
@@ -282,19 +289,31 @@ public class EnemyTerminal : MonoBehaviour
                     if(this.gameObject.tag == "Chest")
                     {
                         this.GetComponent<SpriteRenderer>().sprite = chestSpriteClosed;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.CLOSE:
                     if(this.gameObject.tag == "Chest")
                     {
                         this.GetComponent<SpriteRenderer>().sprite = chestSpriteOpen;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.MOVELEFT:
                     this.gameObject.transform.Translate(Vector3.left * Time.deltaTime);
+                    numOfSyntaxErrors = 0;
                     break;
                 case keyActions.MOVERIGHT:
                     this.gameObject.transform.Translate(Vector3.right * Time.deltaTime);
+                    numOfSyntaxErrors = 0;
+                    break;
+                case keyActions.WAIT:
+                    yield return new WaitForSeconds(parse.waitTimes[waitCount]);
+                    waitCount++;
+                    numOfSyntaxErrors = 0;
+                    break;
+                case keyActions.ERROR:
+                    numOfSyntaxErrors++;
                     break;
             }
         }

@@ -270,7 +270,7 @@ namespace ParserAlgo
                 }
             }
 
-            syntaxMessage = "Error in line " + (line_no - 1) +
+            syntaxMessage = "Error in line " + (line_no) +
                 ": There is an error when you try to change the color of an object";
             actions.Add(keyActions.ERROR);
             return;
@@ -318,7 +318,7 @@ namespace ParserAlgo
                 }
             }
 
-            syntaxMessage = "Error in line " + (line_no - 1) +
+            syntaxMessage = "Error in line " + (line_no) +
                 ": There is an error when you try to change the movement of an object";
             actions.Add(keyActions.ERROR);
             return;

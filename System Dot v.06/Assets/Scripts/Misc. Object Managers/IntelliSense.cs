@@ -32,6 +32,7 @@ public class IntelliSense : MonoBehaviour {
 
     private int checkForName;
     private int checkForHack;
+    private int checkForSecondHack;
     private int checkForDeath;
     private int firstTutorialIndex;
     private int secondTutorialIndex;
@@ -75,7 +76,14 @@ public class IntelliSense : MonoBehaviour {
         /*------------------------*/
         "FILLER 39", "Thanks for helping but you must be from another dimension!", "There's no other way someone can read another object's code! It's impossible!",
         "Look, even though I don't want to conform to that \"one guy\" who needs help,", "I'm going to fess up. I need help.", "But I tell you what. If you take me to the CPU, I won't report you.",
-        "Sound like a deal?", "...", "Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go!"
+        "Sound like a deal?", "...", "Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go!",
+
+        /*------------------------*/
+        "FILLER 47", "Whoa! That's a different colored VBot!", "Let's take a look under the hood...",
+
+        /*------------------------*/
+        "FILLER 50", "Something doesn't seem right",
+
     };
     private int dialogueIndex = 0;
     private int index = 0;
@@ -91,6 +99,7 @@ public class IntelliSense : MonoBehaviour {
         checkForHack = 31;
         checkForDeath = 39;
         finishTutorial = 48;
+        checkForSecondHack = 49;
         transform.position = intelliLocation.transform.position;
         y0 = this.transform.position.y;
         wait = false;
@@ -144,13 +153,14 @@ public class IntelliSense : MonoBehaviour {
                     wait = true;
                     namePrompt.SetActive(true);
                     namePrompt.GetComponent<InputField>().Select();
-                } else if(dialogueIndex == checkForHack)
+                }
+                else if (dialogueIndex == checkForHack)
                 {
                     wait = true;
                     mouseClickPrompt.SetActive(false);
                     hackPrompt.SetActive(true);
                     hackPrompt.GetComponent<InputField>().Select();
-                }
+                } 
 
                 if(!wait)
                     dialogueBox.transform.Find("spacebar image").gameObject.SetActive(true);
@@ -245,6 +255,9 @@ public class IntelliSense : MonoBehaviour {
             if (hit && hit.collider.name == "TutorialEnemy" && dialogueIndex < 32)
             {
                 botClicked();
+            } else if(hit && hit.collider.name == "TutorialEnemy2" && dialogueIndex < 51)
+            {
+                botClicked();
             }
         }
     }
@@ -307,6 +320,14 @@ public class IntelliSense : MonoBehaviour {
         dialogueIndex = 28;
     }
 
+    public void StartSixthTutorial()
+    {
+        talking = true;
+        canBeIdle = true;
+        index = 0;
+        dialogueIndex = 48;
+    }
+
     public void InputtedName()
     {
         wait = false;
@@ -347,7 +368,14 @@ public class IntelliSense : MonoBehaviour {
         talking = true;
         canBeIdle = true;
         wait = false;
-        dialogueIndex = 31;
+        if (dialogueIndex < 31)
+        {
+            dialogueIndex = 31;
+        }
+        else
+        {
+            dialogueIndex = 51;
+        }
         index = 0;
     }
 
