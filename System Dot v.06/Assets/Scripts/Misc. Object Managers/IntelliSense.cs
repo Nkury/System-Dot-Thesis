@@ -158,6 +158,7 @@ public class IntelliSense : MonoBehaviour {
                 {
                     wait = true;
                     mouseClickPrompt.SetActive(false);
+                    PlayerStats.deadObjects.Add(mouseClickPrompt.name);
                     hackPrompt.SetActive(true);
                     hackPrompt.GetComponent<InputField>().Select();
                 } 
@@ -386,6 +387,7 @@ public class IntelliSense : MonoBehaviour {
         wait = false;
         dialogueIndex = 40;
         index = 0;
+        PlayerStats.deadObjects.Add(fourthObjectiveBarrier.name);
         Destroy(fourthObjectiveBarrier);
     }
     //public IEnumerator counter() {

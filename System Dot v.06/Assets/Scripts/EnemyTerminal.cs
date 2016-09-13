@@ -300,11 +300,11 @@ public class EnemyTerminal : MonoBehaviour
                     }
                     break;
                 case keyActions.MOVELEFT:
-                    this.gameObject.transform.Translate(Vector3.left * Time.deltaTime);
+                    this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.MOVERIGHT:
-                    this.gameObject.transform.Translate(Vector3.right * Time.deltaTime);
+                    this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.WAIT:

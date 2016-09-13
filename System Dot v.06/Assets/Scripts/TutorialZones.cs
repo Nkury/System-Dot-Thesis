@@ -21,25 +21,30 @@ public class TutorialZones : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if(this.gameObject.name == "FirstTutorialObjective")
+            if (this.gameObject.name == "FirstTutorialObjective")
             {
                 IntelliSense.SendMessage("StartSecondTutorial");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
-            } else if(this.gameObject.name == "SecondTutorialObjective")
+            } else if (this.gameObject.name == "SecondTutorialObjective")
             {
                 IntelliSense.SendMessage("StartThirdTutorial");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "ThirdTutorialObjective")
             {
                 IntelliSense.SendMessage("StartFourthTutorial");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "FourthTutorialObjective")
             {
                 IntelliSense.SendMessage("StartFifthTutorial");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "FifthTutorialObjective")
             {
                 IntelliSense.SendMessage("StartSixthTutorial");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             }
         }

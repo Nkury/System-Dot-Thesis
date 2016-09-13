@@ -6,8 +6,10 @@ public class EnemyHealthManager : MonoBehaviour {
     public int enemyHealth;
 
     public GameObject deathEffect;
+    public GameObject bit;
 
-    public int pointsOnDeath;
+    public int bitsOnDeath;
+
 
     private SimonController simon;
     private ActionsPerfromedManager actions;
@@ -36,6 +38,11 @@ public class EnemyHealthManager : MonoBehaviour {
                 }
             }
             Instantiate(deathEffect, transform.position, transform.rotation);
+            for(int i = 0; i < bitsOnDeath; i++)
+            {
+                Instantiate(bit, transform.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f)), transform.rotation);
+            }
+            PlayerStats.deadObjects.Add(this.gameObject.name);
             Destroy(gameObject);
         }
 	}

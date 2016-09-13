@@ -20,13 +20,22 @@ public class LevelManager : MonoBehaviour {
 
 	public HealthManager healthManager;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject checkpoint1;
+    public GameObject checkpoint2;
+    public GameObject checkpoint3;
+    public GameObject checkpoint4;
+    public GameObject checkpoint5;
+    public GameObject intelliSense;
+
+    // Use this for initialization
+    void Start () {
 		player = FindObjectOfType<PlayerController> ();
 
 		camera = FindObjectOfType<CameraController> ();
 
 		healthManager = FindObjectOfType<HealthManager> ();
+        LoadLevel();
+        player.transform.position = currentCheckpoint.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -50,9 +59,10 @@ public class LevelManager : MonoBehaviour {
 		//player.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 		Debug.Log ("Player Respawn");
 		yield return new WaitForSeconds (respawnDelay);
-		//player.GetComponent<Rigidbody2D> ().gravityScale = gravityStore;
+        //player.GetComponent<Rigidbody2D> ().gravityScale = gravityStore;
 
         // COMMENT/UNCOMMENT THIS AFTER TESTING
+        LoadLevel();
 		player.transform.position = currentCheckpoint.transform.position;
 
 		player.knockbackCount = 0;
@@ -63,4 +73,35 @@ public class LevelManager : MonoBehaviour {
 		camera.isFollowing = true;
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
 	}
+
+    public void LoadLevel()
+    {
+       // set it to false so we don't have to go through the tutorial
+        IntelliSense.talking = false;
+        IntelliSense.wait = false;
+
+        if (PlayerStats.fifthCheckpoint)
+        {
+            currentCheckpoint = checkpoint5;
+        }
+        else if (PlayerStats.fourthCheckpoint)
+        {
+            currentCheckpoint = checkpoint4;
+        }
+        else if (PlayerStats.thirdCheckpoint)
+        {
+            currentCheckpoint = checkpoint3;
+        }
+        else if (PlayerStats.secondCheckpoint)
+        {
+            currentCheckpoint = checkpoint2;
+        }
+        else if (PlayerStats.firstCheckpoint)
+        {
+            currentCheckpoint = checkpoint1;
+            intelliSense.SetActive(true);
+            IntelliSense.talking = true;
+            IntelliSense.wait = true;
+        }
+    }
 }
