@@ -20,35 +20,14 @@ public class Checkpoint : MonoBehaviour {
 		if (other.name == "Player") 
 		{
             // checks what checkpoint has been collided and adjusts player stats accordingly
-            switch (this.gameObject.name)
-            {
-                case "Checkpoint1":
-                    PlayerStats.firstCheckpoint = true;
-                    break;
-                case "Checkpoint2":
-                    PlayerStats.secondCheckpoint = true;
-                    break;
-                case "Checkpoint3":
-                    PlayerStats.thirdCheckpoint = true;
-                    break;
-                case "Checkpoint4":
-                    PlayerStats.fourthCheckpoint = true;
-                    break;
-                case "Checkpoint5":
-                    PlayerStats.fifthCheckpoint = true;
-                    break;
-            }
+            PlayerStats.checkpoint = this.gameObject.name;
 
             // autosave feature
             if (Game.current != null)
             {
                 Game.current.playerName = PlayerStats.playerName;
                 Game.current.bitsCollected = PlayerStats.bitsCollected;
-                Game.current.firstCheckpoint = PlayerStats.firstCheckpoint;
-                Game.current.secondCheckpoint = PlayerStats.secondCheckpoint;
-                Game.current.thirdCheckpoint = PlayerStats.thirdCheckpoint;
-                Game.current.fourthCheckpoint = PlayerStats.fourthCheckpoint;
-                Game.current.fifthCheckpoint = PlayerStats.fifthCheckpoint;
+                Game.current.checkpoint = PlayerStats.checkpoint;
                 Game.current.deadObjects = PlayerStats.deadObjects;
                 SaveLoad.Save();
             }
