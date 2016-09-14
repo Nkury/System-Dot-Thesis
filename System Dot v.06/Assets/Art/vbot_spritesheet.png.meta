@@ -1,0 +1,513 @@
+fileFormatVersion: 2
+guid: dfb2ce3fbc95c5944823dc77281bd2f5
+timeCreated: 1473823809
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: vbot_red1
+    21300002: vbot_red2
+    21300004: vbot_red3
+    21300006: vbot_blue1
+    21300008: vbot_blue2
+    21300010: vbot_blue3
+    21300012: vbot_Green1
+    21300014: vbot_Green2
+    21300016: vbot_Green3
+    21300018: vbot_black1
+    21300020: vbot_black2
+    21300022: vbot_black3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 250
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: vbot_red1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1584
+        width: 240
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 120, y: -197}
+        - {x: 106, y: -173}
+        - {x: 109, y: -134}
+        - {x: 104, y: -134}
+        - {x: 120, y: -92}
+        - {x: 120, y: 59}
+        - {x: 107, y: 80}
+        - {x: 63, y: 130}
+        - {x: 28, y: 167}
+        - {x: 26, y: 216}
+        - {x: -26, y: 216}
+        - {x: -26, y: 168}
+        - {x: -24, y: 166}
+        - {x: -10, y: 138}
+        - {x: -40, y: 138}
+        - {x: -60, y: 127}
+        - {x: -120, y: 60}
+        - {x: -120, y: -90}
+        - {x: -104, y: -106}
+        - {x: -109, y: -135}
+        - {x: -106, y: -173}
+        - {x: -120, y: -197}
+        - {x: -120, y: -216}
+        - {x: -54, y: -216}
+        - {x: -54, y: -170}
+        - {x: 53, y: -216}
+        - {x: 120, y: -216}
+    - name: vbot_red2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1584
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 136, y: -92}
+        - {x: 136, y: 59}
+        - {x: 123, y: 80}
+        - {x: 79, y: 130}
+        - {x: 44, y: 167}
+        - {x: 42, y: 216}
+        - {x: -10, y: 216}
+        - {x: -10, y: 168}
+        - {x: -8, y: 166}
+        - {x: -24, y: 138}
+        - {x: -56, y: 106}
+        - {x: -75, y: 94}
+        - {x: -108, y: 57}
+        - {x: -110, y: -90}
+        - {x: -92, y: -135}
+        - {x: -118, y: -150}
+        - {x: -118, y: -104}
+        - {x: -120, y: -102}
+        - {x: -136, y: -102}
+        - {x: -136, y: -170}
+        - {x: 67, y: -216}
+        - {x: 136, y: -216}
+        - {x: 136, y: -189}
+        - {x: 121, y: -132}
+    - name: vbot_red3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1584
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -99}
+        - {x: 92, y: -135}
+        - {x: 76, y: -132}
+        - {x: 106, y: -88}
+        - {x: 107, y: 64}
+        - {x: 75, y: 96}
+        - {x: 2, y: 163}
+        - {x: 12, y: 167}
+        - {x: 10, y: 216}
+        - {x: -42, y: 216}
+        - {x: -42, y: 168}
+        - {x: -40, y: 166}
+        - {x: -26, y: 138}
+        - {x: -56, y: 138}
+        - {x: -76, y: 127}
+        - {x: -136, y: 60}
+        - {x: -136, y: -90}
+        - {x: -120, y: -106}
+        - {x: -125, y: -135}
+        - {x: -122, y: -173}
+        - {x: -90, y: -198}
+        - {x: -136, y: -198}
+        - {x: -136, y: -216}
+        - {x: -70, y: -216}
+        - {x: -70, y: -170}
+        - {x: 136, y: -170}
+        - {x: 136, y: -102}
+    - name: vbot_blue1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1072
+        width: 240
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 120, y: -197}
+        - {x: 106, y: -173}
+        - {x: 109, y: -134}
+        - {x: 104, y: -134}
+        - {x: 120, y: -92}
+        - {x: 120, y: 59}
+        - {x: 107, y: 80}
+        - {x: 63, y: 130}
+        - {x: 28, y: 167}
+        - {x: 26, y: 216}
+        - {x: -26, y: 216}
+        - {x: -26, y: 168}
+        - {x: -24, y: 166}
+        - {x: -10, y: 138}
+        - {x: -40, y: 138}
+        - {x: -60, y: 127}
+        - {x: -120, y: 60}
+        - {x: -120, y: -90}
+        - {x: -104, y: -106}
+        - {x: -109, y: -135}
+        - {x: -106, y: -173}
+        - {x: -120, y: -197}
+        - {x: -120, y: -216}
+        - {x: -54, y: -216}
+        - {x: -54, y: -170}
+        - {x: 53, y: -216}
+        - {x: 120, y: -216}
+    - name: vbot_blue2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1072
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 136, y: -92}
+        - {x: 136, y: 59}
+        - {x: 123, y: 80}
+        - {x: 79, y: 130}
+        - {x: 44, y: 167}
+        - {x: 42, y: 216}
+        - {x: -10, y: 216}
+        - {x: -10, y: 168}
+        - {x: -8, y: 166}
+        - {x: -24, y: 138}
+        - {x: -56, y: 106}
+        - {x: -75, y: 94}
+        - {x: -108, y: 57}
+        - {x: -110, y: -90}
+        - {x: -92, y: -135}
+        - {x: -118, y: -150}
+        - {x: -118, y: -104}
+        - {x: -120, y: -102}
+        - {x: -136, y: -102}
+        - {x: -136, y: -170}
+        - {x: 67, y: -216}
+        - {x: 136, y: -216}
+        - {x: 136, y: -189}
+        - {x: 121, y: -132}
+    - name: vbot_blue3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1072
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -99}
+        - {x: 92, y: -135}
+        - {x: 76, y: -132}
+        - {x: 106, y: -88}
+        - {x: 107, y: 64}
+        - {x: 75, y: 96}
+        - {x: 2, y: 163}
+        - {x: 12, y: 167}
+        - {x: 10, y: 216}
+        - {x: -42, y: 216}
+        - {x: -42, y: 168}
+        - {x: -40, y: 166}
+        - {x: -26, y: 138}
+        - {x: -56, y: 138}
+        - {x: -76, y: 127}
+        - {x: -136, y: 60}
+        - {x: -136, y: -90}
+        - {x: -120, y: -106}
+        - {x: -125, y: -135}
+        - {x: -122, y: -173}
+        - {x: -90, y: -198}
+        - {x: -136, y: -198}
+        - {x: -136, y: -216}
+        - {x: -70, y: -216}
+        - {x: -70, y: -170}
+        - {x: 136, y: -170}
+        - {x: 136, y: -102}
+    - name: vbot_Green1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 560
+        width: 240
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 120, y: -197}
+        - {x: 106, y: -173}
+        - {x: 109, y: -134}
+        - {x: 104, y: -134}
+        - {x: 120, y: -92}
+        - {x: 120, y: 59}
+        - {x: 107, y: 80}
+        - {x: 63, y: 130}
+        - {x: 28, y: 167}
+        - {x: 26, y: 216}
+        - {x: -26, y: 216}
+        - {x: -26, y: 168}
+        - {x: -24, y: 166}
+        - {x: -10, y: 138}
+        - {x: -40, y: 138}
+        - {x: -60, y: 127}
+        - {x: -120, y: 60}
+        - {x: -120, y: -90}
+        - {x: -104, y: -106}
+        - {x: -109, y: -135}
+        - {x: -106, y: -173}
+        - {x: -120, y: -197}
+        - {x: -120, y: -216}
+        - {x: -54, y: -216}
+        - {x: -54, y: -170}
+        - {x: 53, y: -216}
+        - {x: 120, y: -216}
+    - name: vbot_Green2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 560
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 136, y: -92}
+        - {x: 136, y: 59}
+        - {x: 123, y: 80}
+        - {x: 79, y: 130}
+        - {x: 44, y: 167}
+        - {x: 42, y: 216}
+        - {x: -10, y: 216}
+        - {x: -10, y: 168}
+        - {x: -8, y: 166}
+        - {x: -24, y: 138}
+        - {x: -56, y: 106}
+        - {x: -75, y: 94}
+        - {x: -108, y: 57}
+        - {x: -110, y: -90}
+        - {x: -92, y: -135}
+        - {x: -118, y: -150}
+        - {x: -118, y: -104}
+        - {x: -120, y: -102}
+        - {x: -136, y: -102}
+        - {x: -136, y: -170}
+        - {x: 67, y: -216}
+        - {x: 136, y: -216}
+        - {x: 136, y: -189}
+        - {x: 121, y: -132}
+    - name: vbot_Green3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 560
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -115}
+        - {x: 92, y: -135}
+        - {x: 76, y: -132}
+        - {x: 106, y: -88}
+        - {x: 107, y: 64}
+        - {x: 75, y: 96}
+        - {x: 2, y: 163}
+        - {x: 12, y: 167}
+        - {x: 10, y: 216}
+        - {x: -42, y: 216}
+        - {x: -42, y: 168}
+        - {x: -40, y: 166}
+        - {x: -26, y: 138}
+        - {x: -56, y: 138}
+        - {x: -76, y: 127}
+        - {x: -136, y: 60}
+        - {x: -136, y: -90}
+        - {x: -120, y: -106}
+        - {x: -125, y: -135}
+        - {x: -122, y: -173}
+        - {x: -90, y: -198}
+        - {x: -136, y: -198}
+        - {x: -136, y: -216}
+        - {x: -70, y: -216}
+        - {x: -70, y: -170}
+        - {x: 136, y: -170}
+        - {x: 136, y: -118}
+    - name: vbot_black1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 240
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 120, y: -197}
+        - {x: 106, y: -173}
+        - {x: 109, y: -134}
+        - {x: 104, y: -134}
+        - {x: 120, y: -92}
+        - {x: 120, y: 59}
+        - {x: 107, y: 80}
+        - {x: 63, y: 130}
+        - {x: 28, y: 167}
+        - {x: 26, y: 216}
+        - {x: -26, y: 216}
+        - {x: -26, y: 168}
+        - {x: -24, y: 166}
+        - {x: -10, y: 138}
+        - {x: -40, y: 138}
+        - {x: -60, y: 127}
+        - {x: -120, y: 60}
+        - {x: -120, y: -90}
+        - {x: -104, y: -106}
+        - {x: -109, y: -135}
+        - {x: -106, y: -173}
+        - {x: -120, y: -197}
+        - {x: -120, y: -216}
+        - {x: -54, y: -216}
+        - {x: -54, y: -170}
+        - {x: 53, y: -216}
+        - {x: 120, y: -216}
+    - name: vbot_black2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 48
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 136, y: -92}
+        - {x: 136, y: 59}
+        - {x: 123, y: 80}
+        - {x: 79, y: 130}
+        - {x: 44, y: 167}
+        - {x: 42, y: 216}
+        - {x: -10, y: 216}
+        - {x: -10, y: 168}
+        - {x: -8, y: 166}
+        - {x: -24, y: 138}
+        - {x: -56, y: 106}
+        - {x: -75, y: 94}
+        - {x: -108, y: 57}
+        - {x: -110, y: -90}
+        - {x: -92, y: -135}
+        - {x: -118, y: -150}
+        - {x: -118, y: -104}
+        - {x: -120, y: -102}
+        - {x: -136, y: -102}
+        - {x: -136, y: -170}
+        - {x: 67, y: -216}
+        - {x: 136, y: -216}
+        - {x: 136, y: -189}
+        - {x: 121, y: -132}
+    - name: vbot_black3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 48
+        width: 272
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -99}
+        - {x: 92, y: -135}
+        - {x: 76, y: -132}
+        - {x: 106, y: -88}
+        - {x: 107, y: 64}
+        - {x: 75, y: 96}
+        - {x: 2, y: 163}
+        - {x: 12, y: 167}
+        - {x: 10, y: 216}
+        - {x: -42, y: 216}
+        - {x: -42, y: 168}
+        - {x: -40, y: 166}
+        - {x: -26, y: 138}
+        - {x: -56, y: 138}
+        - {x: -76, y: 127}
+        - {x: -136, y: 60}
+        - {x: -136, y: -90}
+        - {x: -120, y: -106}
+        - {x: -125, y: -135}
+        - {x: -122, y: -173}
+        - {x: -90, y: -198}
+        - {x: -136, y: -198}
+        - {x: -136, y: -216}
+        - {x: -70, y: -216}
+        - {x: -70, y: -170}
+        - {x: 136, y: -170}
+        - {x: 136, y: -102}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
