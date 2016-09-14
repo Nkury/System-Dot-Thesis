@@ -26,13 +26,13 @@ GameObject:
   - 212: {fileID: 21236250}
   - 50: {fileID: 5011090}
   - 58: {fileID: 5815796}
-  - 61: {fileID: 6189172}
   - 114: {fileID: 11406454}
   - 114: {fileID: 11401764}
   - 120: {fileID: 12017670}
   - 95: {fileID: 9536264}
   - 114: {fileID: 11419840}
   - 82: {fileID: 8249952}
+  - 61: {fileID: 6178462}
   m_Layer: 13
   m_Name: Vbot
   m_TagString: Enemy
@@ -74,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.1, y: 1.029, z: 0}
+  m_LocalPosition: {x: -21.1, y: 1.04, z: 0}
   m_LocalScale: {x: 0.49056482, y: 0.50105333, z: 1}
   m_Children:
   - {fileID: 423014}
@@ -123,8 +123,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -0.025}
   serializedVersion: 2
-  m_Radius: 1.4737545
---- !u!61 &6189172
+  m_Radius: 0.84
+--- !u!61 &6178462
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,9 +135,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.11311164, y: 0.080224544}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.5813239, y: 2.6506646}
+  m_Size: {x: 0.96, y: 1.728}
 --- !u!82 &8249952
 AudioSource:
   m_ObjectHideFlags: 1
@@ -477,6 +477,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: dfb2ce3fbc95c5944823dc77281bd2f5,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 1.23
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113408}

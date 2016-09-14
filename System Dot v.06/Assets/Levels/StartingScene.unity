@@ -12686,7 +12686,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 435946, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.029
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 435946, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12717,36 +12717,12 @@ Prefab:
       value: 
       objectReference: {fileID: 855742331}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: chestSpriteOpen
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11406454, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: bits
-      value: 
-      objectReference: {fileID: 117856, guid: 3151455ba3d00c3459ed019a5f1a29b0, type: 2}
-    - target: {fileID: 113408, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: m_Name
-      value: TutorialEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
       objectReference: {fileID: 129958235}
-    - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: terminalString.Array.data[0]
-      value: System.body(Color.BLUE);
-      objectReference: {fileID: 0}
-    - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: classHeader
-      value: public class VBot() {
-      objectReference: {fileID: 0}
-    - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: numOfLegacy.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8249952, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 113408, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
+      propertyPath: m_Name
+      value: TutorialEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
