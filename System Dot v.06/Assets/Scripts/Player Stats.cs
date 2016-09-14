@@ -12,6 +12,10 @@ public class PlayerStats {
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
     /**** TUTORIAL LEVEL *********************************/
     public static List<string> deadObjects = new List<string>();
-    public static string checkpoint = "Checkpoint1";
+    public static bool firstCheckpoint = true;
+    public static bool secondCheckpoint;
+    public static bool thirdCheckpoint;
+    public static bool fourthCheckpoint;
+    public static bool fifthCheckpoint;
 
 }

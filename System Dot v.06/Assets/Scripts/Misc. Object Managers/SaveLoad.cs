@@ -17,7 +17,11 @@ public class Game
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
     /**** TUTORIAL LEVEL *********************************/
     public List<string> deadObjects = new List<string>();
-    public string checkpoint;
+    public bool firstCheckpoint = true;
+    public bool secondCheckpoint;
+    public bool thirdCheckpoint;
+    public bool fourthCheckpoint;
+    public bool fifthCheckpoint;
 }
 
 public static class SaveLoad
