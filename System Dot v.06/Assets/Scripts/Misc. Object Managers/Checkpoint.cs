@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Checkpoint : MonoBehaviour {
 
@@ -29,6 +31,7 @@ public class Checkpoint : MonoBehaviour {
                 Game.current.playerName = PlayerStats.playerName;
                 Game.current.bitsCollected = PlayerStats.bitsCollected;
                 Game.current.checkpoint = PlayerStats.checkpoint;
+                PlayerStats.deadObjects = PlayerStats.deadObjects.Distinct().ToList<string>();
                 Game.current.deadObjects = PlayerStats.deadObjects;
                 SaveLoad.Save();
             }
