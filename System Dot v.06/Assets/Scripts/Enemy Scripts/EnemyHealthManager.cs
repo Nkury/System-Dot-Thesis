@@ -42,6 +42,7 @@ public class EnemyHealthManager : MonoBehaviour {
             {
                 Instantiate(bit, transform.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f)), transform.rotation);
             }
+
             PlayerStats.deadObjects.Add(this.gameObject.name);
             Destroy(gameObject);
         }

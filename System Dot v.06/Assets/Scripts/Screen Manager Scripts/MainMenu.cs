@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
     public void Start()
     {
         // uncomment below to erase all saved files when running title screen
-        // SaveLoad.EraseAll();
+        //SaveLoad.EraseAll();
         SaveLoad.Load(); // load the game
         if(SaveLoad.savedGames.Count != 0)
         {
@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour {
 
 		PlayerPrefs.SetInt ("PlayerCurrentLives", playerLives);
 
-		PlayerPrefs.SetInt ("CurrentScore", 0);
+		PlayerPrefs.SetInt ("CurrentScore", 0);  
 
 		PlayerPrefs.SetInt ("PlayerCurrentHealth", playerHealth);
 		PlayerPrefs.SetInt ("PlayerMaxHealth", playerHealth);
@@ -43,13 +43,10 @@ public class MainMenu : MonoBehaviour {
 
     public void ContinueGame()
     {
+        Game.current = SaveLoad.savedGames[0];
         PlayerStats.bitsCollected = SaveLoad.savedGames[0].bitsCollected;
         PlayerStats.playerName = SaveLoad.savedGames[0].playerName;
-        PlayerStats.firstCheckpoint = SaveLoad.savedGames[0].firstCheckpoint;
-        PlayerStats.secondCheckpoint = SaveLoad.savedGames[0].secondCheckpoint;
-        PlayerStats.thirdCheckpoint = SaveLoad.savedGames[0].thirdCheckpoint;
-        PlayerStats.fourthCheckpoint = SaveLoad.savedGames[0].fourthCheckpoint;
-        PlayerStats.fifthCheckpoint = SaveLoad.savedGames[0].fifthCheckpoint;
+        PlayerStats.checkpoint = SaveLoad.savedGames[0].checkpoint;
         PlayerStats.deadObjects = SaveLoad.savedGames[0].deadObjects;
 
         Application.LoadLevel(startLevel);

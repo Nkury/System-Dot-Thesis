@@ -79,29 +79,27 @@ public class LevelManager : MonoBehaviour {
        // set it to false so we don't have to go through the tutorial
         IntelliSense.talking = false;
         IntelliSense.wait = false;
-
-        if (PlayerStats.fifthCheckpoint)
+        Debug.Log(PlayerStats.checkpoint);
+        switch (PlayerStats.checkpoint)
         {
-            currentCheckpoint = checkpoint5;
-        }
-        else if (PlayerStats.fourthCheckpoint)
-        {
-            currentCheckpoint = checkpoint4;
-        }
-        else if (PlayerStats.thirdCheckpoint)
-        {
-            currentCheckpoint = checkpoint3;
-        }
-        else if (PlayerStats.secondCheckpoint)
-        {
-            currentCheckpoint = checkpoint2;
-        }
-        else if (PlayerStats.firstCheckpoint)
-        {
-            currentCheckpoint = checkpoint1;
-            intelliSense.SetActive(true);
-            IntelliSense.talking = true;
-            IntelliSense.wait = true;
+            case "Checkpoint1":
+                currentCheckpoint = checkpoint1;
+                intelliSense.SetActive(true);
+                IntelliSense.talking = true;
+                IntelliSense.wait = true;
+                break;
+            case "Checkpoint2":
+                currentCheckpoint = checkpoint2;
+                break;
+            case "Checkpoint3":
+                currentCheckpoint = checkpoint3;
+                break;
+            case "Checkpoint4":
+                currentCheckpoint = checkpoint4;
+                break;
+            case "Checkpoint5":
+                currentCheckpoint = checkpoint5;
+                break;
         }
     }
 }
