@@ -60,8 +60,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IntelliSense.talking && !IntelliSense.wait && EnemyTerminal.globalTerminalMode < 2) 
-        {
+        //if (!IntelliSense.talking && !IntelliSense.wait && EnemyTerminal.globalTerminalMode < 2) 
+        //{
+        if(EnemyTerminal.globalTerminalMode < 2) {
             if (grounded)
             {
                 doubleJumped = false;
@@ -164,7 +165,7 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
         }
-    }
+   }
 
     void Jump()
     {
