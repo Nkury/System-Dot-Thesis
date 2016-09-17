@@ -242,13 +242,16 @@ public class EnemyTerminal : MonoBehaviour
     {
         int waitCount = 0;
 
-        if(numOfSyntaxErrors > 2)
+        if (GameObject.Find("error message"))
         {
-            GameObject.Find("error message").GetComponent<Text>().text = parse.syntaxMessage;
-        }
-        else
-        {
-            GameObject.Find("error message").GetComponent<Text>().text = "";
+            if (numOfSyntaxErrors > 2)
+            {
+                GameObject.Find("error message").GetComponent<Text>().text = parse.syntaxMessage;
+            }
+            else
+            {
+                GameObject.Find("error message").GetComponent<Text>().text = "";
+            }
         }
 
         foreach (keyActions action in actions)
