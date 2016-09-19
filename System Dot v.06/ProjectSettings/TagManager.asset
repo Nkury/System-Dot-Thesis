@@ -28,7 +28,7 @@ TagManager:
   - Collectibles
   - Enemy
   - TriggerZones
-  - 
+  - Background
   - 
   - 
   - 
@@ -48,4 +48,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1651908533
+    locked: 0
+  - name: Background
+    uniqueID: 2026975
     locked: 0
