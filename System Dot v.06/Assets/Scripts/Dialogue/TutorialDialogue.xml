@@ -1,0 +1,71 @@
+<dialogue>
+  
+  <message id="startGame">
+    <say>Oh, hi! I didn't mean to startle you. I don't recognize you. </say>
+    <say>Who do you identify as? </say>
+  </message>
+  
+  <message id="receiveName">
+    <say><!-- PlayerStats.playerName -->? That is an interesting variable name. </say>
+    <say>I am IntelliSense or IS for short. Nice to meet you! </say>
+    <say>... </say>
+    <say>Are you one of those silent video game protagonists who </say>
+    <say>can only pronounce their names and nothing else? </say>
+    <say>Wow, you are, aren't you? </say>
+    <say>Hmm... well, don't follow me by pressing either "A" or "D". </say>
+    <say>I'm not going to help you just because I'm the first talking object you've seen. </say>
+    <say>Adieu! </say>    
+  </message>
+
+  <message id="catchUp1">
+    <say>So you think you can catch up to me? </say>
+    <say>Are you some kind of rogue virus?! </say>
+    <say>I'm reporting you to the CPU! </say>
+    <say>Surely a rogue virus cannot jump over this platform by holding "W". </say>
+  </message>
+
+  <message id="catchUp2">
+    <say>You're relentless, aren't you? Just like a virus... </say>
+    <say>Please leave me alone. I've lived a good life and I don't want to get terminated. </say>
+    <say>It's as if you want to progress through some kind of story and win a game. </say>
+    <say>Luckily, you don't know how to double jump by pressing "W" twice. </say>
+    <say>See you never! </say>
+  </message>
+
+  <message id="catchUp3">
+    <say>Hahahaha! Silly virus! What kind of virus doesn't know that </say>
+    <say>its "termination boots" destroy things of equal color? </say>
+    <say>Obviously a dumb one who doesn't know pressing TAB changes its boots' color. </say>
+    <say>Now I'm embarrased you're following me... </say>
+  </message>
+
+  <message id="preHack">
+    <say>Oh no! Vbots... how am I going to get past them? </say>
+    <say>Hey, buddy ol' pal. Mind helping me out with these things? </say>
+  </message>
+
+  <message id="postHack">
+    <say>Hey! You can hack those things?! What does the red code say? </say>
+  </message>
+
+  <message id="wrongHack">
+    <say>That's not what it says verbatim... make sure you match the case.</say>
+  </message>
+
+  <message id="correctHack">
+    <say>Hmm... it sounds like that "code" turns that Vbot blue! </say>
+    <say>I wonder how we'd kill it, though... </say>
+    <say>Maybe you can do something with your "termination boots"? </say>
+  </message>
+
+  <message id="killedTutorialEnemy">
+    <say>Thanks for helping but you must be from another dimension! </say>
+    <say>There's no other way someone can read another object's code! It's impossible! </say>
+    <say>Look, even though I don't want to conform to that "one guy" who needs help, </say>
+    <say>I'm going to fess up. I need help. </say>
+    <say>But I tell you what. If you take me to the CPU, I won't report you. </say>
+    <say>Sound like a deal? </say>
+    <say>... </say>
+    <say>Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go! </say>
+  </message>
+</dialogue>

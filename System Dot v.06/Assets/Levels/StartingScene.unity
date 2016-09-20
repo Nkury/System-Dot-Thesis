@@ -9083,6 +9083,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dddc35abc4f6949a53121cb5bbcf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talking: 0
+  whatToSay: []
+  player: {fileID: 858435340}
+  intelliLocation: {fileID: 0}
+  dialogueBox: {fileID: 1675862906}
+  namePrompt: {fileID: 804778131}
+  hackPrompt: {fileID: 424230205}
+  mouseClickPrompt: {fileID: 434385545}
+  firstTutorialObjective: {fileID: 524307826}
+  secondTutorialObjective: {fileID: 1780538274}
+  thirdTutorialObjective: {fileID: 600290288}
+  fourthTutorialObjective: {fileID: 1839724213}
+  fourthObjectiveBarrier: {fileID: 243675115}
+  levelTitle: {fileID: 385399270}
 --- !u!114 &388545558 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e,
@@ -22998,6 +23012,10 @@ Prefab:
       objectReference: {fileID: 385399270}
     - target: {fileID: 109520, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -39238,11 +39256,11 @@ Prefab:
     - target: {fileID: 11489974, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 388545558}
+      objectReference: {fileID: 388545556}
     - target: {fileID: 11481092, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 388545558}
+      objectReference: {fileID: 388545556}
     - target: {fileID: 11427782, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -39314,6 +39332,14 @@ Prefab:
     - target: {fileID: 22476874, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_SizeDelta.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481092, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: nameEntered
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489974, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InputtedCode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 705e137fcb35b16488f51a418900a12c, type: 2}

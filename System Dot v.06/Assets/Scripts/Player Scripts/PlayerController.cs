@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     public PauseMenu pauseMenu;
 
+    private bool pauseMovement = false;
+
     // Use this for initialization
     void Start()
     {
@@ -60,9 +62,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!IntelliSense.talking && !IntelliSense.wait && EnemyTerminal.globalTerminalMode < 2) 
-        //{
-        if(EnemyTerminal.globalTerminalMode < 2) {
+        if(!pauseMovement && EnemyTerminal.globalTerminalMode < 2) {
             if (grounded)
             {
                 doubleJumped = false;
@@ -192,5 +192,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.parent.gameObject.transform.parent = null;
         }
+    }
+
+    public void IntelliSenseTalking(bool set)
+    {
+        pauseMovement = set;
     }
 }
