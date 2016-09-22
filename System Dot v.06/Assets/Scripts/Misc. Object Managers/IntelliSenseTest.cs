@@ -31,10 +31,18 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject fourthObjectiveBarrier;
     public GameObject levelTitle;
 
+    public GameObject apiButton;
+    public GameObject UIClickPrompt;
+    public GameObject debugButton;
+    public InputField tutorialLine;
+    public GameObject APIInfo;
+
     private int index = 0;
     private int interval = 0;
     private int dialogueIndex = 0;
     private string eventName = "";
+
+    private bool tutorialCheck = false;
 
 	// Use this for initialization
 	void Start () {
@@ -55,7 +63,15 @@ public class IntelliSenseTest : MonoBehaviour {
             dialogue.Add(keyName, addedDialogue);
         }
 
-        startTutorial();
+        if(PlayerStats.checkpoint == "Checkpoint1"){
+            startTutorial();
+        }
+        else
+        {
+            this.transform.parent = player.transform;
+            this.transform.localPosition = new Vector2(0, 0);
+            this.transform.localScale = new Vector2(0, 0);
+        }
     }
 
     // Update is called once per frame
@@ -64,6 +80,11 @@ public class IntelliSenseTest : MonoBehaviour {
         // THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
         if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].Length)
         {
+            if(PlayerStats.checkpoint != "Checkpoint1")
+            {
+                ZoomOutPlayer();
+            }
+
             dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -90,11 +111,15 @@ public class IntelliSenseTest : MonoBehaviour {
             // THIS SECTION IS TO SIGNAL THAT WE ARE DONE TALKING AND PLAYER IS FREE TO MOVE
         }
         else {
+            if(PlayerStats.checkpoint != "Checkpoint1")
+            {
+                ZoomIntoPlayer();
+            }
             talking = false;
         }
 
         // THIS SECTION IS TO MAKE INTELLISENSE MOVE UP AND DOWN PERIODICALLY
-        if (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo"))
+        if (PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
         {
             transform.position = new Vector2(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time));
         }
@@ -132,9 +157,16 @@ public class IntelliSenseTest : MonoBehaviour {
 
             if (hit && hit.collider.name == "TutorialEnemy")
             {
-                botClicked();
-            }
+                botClicked(1);
+            } else if(hit && hit.collider.name == "TutorialEnemy2")
+            {
+                hit.collider.name = "TutorialEnemy2NEW";
+                botClicked(2);
+            }            
         }
+
+        // FOR BLACK VBOT TUTORIAL
+        tutorialLine.readOnly = tutorialCheck;
     }
 
     public void startTutorial()
@@ -176,10 +208,44 @@ public class IntelliSenseTest : MonoBehaviour {
         eventName = "promptClick";
     }
 
-    public void botClicked()
+    public void StartSixthTutorial()
     {
-        SetDialogue("postHack");
-        eventName = "promptCode";
+        SetDialogue("meetBlackVBot");
+        eventName = "promptClick";
+    }
+
+    public void APIClicked()
+    {
+        SetDialogue("APIClicked");
+        eventName = "editCode";
+    }
+
+    public void codeFixed()
+    {
+        SetDialogue("codeFixed");
+        eventName = "clickDebug";
+    }
+
+    public void debugClicked()
+    {
+        SetDialogue("colorChanged");
+        eventName = "finishDialogue";
+    }
+
+    public void botClicked(int bot)
+    {
+        switch (bot)
+        {
+            case 1:
+                SetDialogue("postHack");
+                eventName = "promptCode";
+                break;
+            case 2:
+                SetDialogue("clickBlackVBot");
+                eventName = "clickAPI";
+                tutorialCheck = true;
+                break;
+        }
     }
 
     public void botKilled()
@@ -272,6 +338,10 @@ public class IntelliSenseTest : MonoBehaviour {
             case "promptClick":
                 mouseClickPrompt.SetActive(true);
                 break;
+            case "clickAPI":
+                UIClickPrompt.SetActive(true);
+                apiButton.SetActive(true);
+                break;
             case "promptCode":
                 mouseClickPrompt.SetActive(false);
                 PlayerStats.deadObjects.Add(mouseClickPrompt.name);
@@ -287,6 +357,20 @@ public class IntelliSenseTest : MonoBehaviour {
                     levelTitle.SetActive(true);
                 talking = false;
                 ZoomIntoPlayer();
+                break;
+            case "editCode":
+                tutorialCheck = false;
+                break;
+            case "clickDebug":
+                UIClickPrompt.SetActive(true);
+                mouseClickPrompt.SetActive(false);
+                debugButton.SetActive(true);
+                UIClickPrompt.GetComponent<RectTransform>().anchoredPosition = new Vector2(710, -30);
+                break;
+            case "finishDialogue":
+                APIInfo.SetActive(false);
+                eventName = "";
+                dialogueIndex++;
                 break;
         }
     }

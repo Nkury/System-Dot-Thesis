@@ -11,6 +11,7 @@ public class EnemyTerminal : MonoBehaviour
 {
 
     public static int globalTerminalMode = 0;
+    public static bool madeChanges = false;
     public int localTerminalMode = 0;
     public static bool active = false;
 
@@ -18,6 +19,7 @@ public class EnemyTerminal : MonoBehaviour
 
     public bool[] numOfLegacy = new bool[5];
     public string[] terminalString = new string[5];
+    public string[] originalString = new string[5];
     public string classHeader;
 
     public GUIStyle terminalStyle;
@@ -32,6 +34,7 @@ public class EnemyTerminal : MonoBehaviour
     public Sprite blackSlime;
 
     private bool showTerminal = false;
+    private bool tutorialCheck = false;
     public string colorString;
 
     public List<keyActions> actions = new List<keyActions>();
@@ -92,100 +95,10 @@ public class EnemyTerminal : MonoBehaviour
         else
         {
             this.GetComponent<LineRenderer>().enabled = false;
-        }     
-
-
-        // terminal window pops up
-        if(localTerminalMode == 2)
-        {
-            terminalWindow.SetActive(true);
-
-
-            switch (numberOfLines)
-            {
-                case 1:
-                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().text = "}";
-                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = true;
-                    break;
-                case 2:
-                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().text = "}";
-                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = true;
-                    break;
-                case 3:
-                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "}";
-                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = true;
-                    break;
-                case 4:
-                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
-                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "}";
-                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().readOnly = true;
-                    break;
-                case 5:
-                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(true);
-                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().readOnly = false;
-                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(true);
-                    break;
-            }
-
-            for (int i = 0; i < numberOfLines; i++)
-            {
-                terminalString[i] = terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text;
-            }
-
-            for (int i = 0; i < numOfLegacy.Length; i++)
-            {
-                string access = "line " + (i + 1);
-                terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().readOnly = numOfLegacy[i];
-                if (numOfLegacy[i])
-                {
-                    terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().textComponent.color = Color.red;
-                }
-                else
-                {
-                    terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().textComponent.color = Color.white;
-                }
-            }
-
-            terminalWindow.transform.FindChild("class header").gameObject.GetComponent<InputField>().text = classHeader;
         }
-        else if(globalTerminalMode != 2)
-        {
 
-            terminalWindow.SetActive(false);
-
-            // delete text from input fields  
-            terminalWindow.transform.FindChild("line 1").gameObject.GetComponent<InputField>().text = "";
-            terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().text = "";
-            terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().text = "";
-            terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "";
-            terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "";
-        }
+        ShowTerminalWindow();
+      
     }
 
     void OnMouseOver()
@@ -203,6 +116,10 @@ public class EnemyTerminal : MonoBehaviour
 
     void OnMouseDown()
     {
+
+        for (int i = 0; i < terminalString.Length; i++)
+            originalString[i] = terminalString[i];
+
         for (int i = 0; i < numberOfLines; i++)
         {
             if (terminalString[i] != "")
@@ -320,6 +237,120 @@ public class EnemyTerminal : MonoBehaviour
                     numOfSyntaxErrors++;
                     break;
             }
+        }
+    }
+
+    public void ShowTerminalWindow()
+    {
+        // terminal window pops up
+        if (localTerminalMode == 2)
+        {
+            terminalWindow.SetActive(true);
+
+
+            switch (numberOfLines)
+            {
+                case 1:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 2:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 3:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 4:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(false);
+                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "}";
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().readOnly = true;
+                    break;
+                case 5:
+                    terminalWindow.transform.FindChild("line 3").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 4").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 5").gameObject.SetActive(true);
+                    terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().readOnly = false;
+                    terminalWindow.transform.FindChild("closing bracket").gameObject.SetActive(true);
+                    break;
+            }
+
+            for (int i = 0; i < numberOfLines; i++)
+            {
+                terminalString[i] = terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text;
+            }
+
+            for (int i = 0; i < numOfLegacy.Length; i++)
+            {
+                string access = "line " + (i + 1);
+                terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().readOnly = numOfLegacy[i];
+                if (numOfLegacy[i])
+                {
+                    terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().textComponent.color = Color.red;
+                }
+                else
+                {
+                    terminalWindow.transform.FindChild(access).gameObject.GetComponent<InputField>().textComponent.color = Color.white;
+                }
+            }
+
+            terminalWindow.transform.FindChild("class header").gameObject.GetComponent<InputField>().text = classHeader;
+
+            // check for changes in terminal
+            for (int i = 0; i < terminalString.Length; i++)
+            {
+                if (terminalString[i] != originalString[i])
+                {
+                    madeChanges = true;
+                }
+            }
+
+            // for black Vbot tutorial
+            if(this.gameObject.name == "TutorialEnemy2NEW" && !tutorialCheck)
+            {
+                if(terminalString[0] == "System.body(Color.GREEN);")
+                {
+                    tutorialCheck = true;
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().codeFixed();
+                }
+            }
+        }
+        else if (globalTerminalMode != 2)
+        {
+
+            terminalWindow.SetActive(false);
+
+            // delete text from input fields  
+            terminalWindow.transform.FindChild("line 1").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 2").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 3").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "";
+            terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "";
         }
     }
 }

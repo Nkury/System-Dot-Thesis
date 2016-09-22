@@ -21,8 +21,12 @@ public class TerminalWindowUI : MonoBehaviour {
     public void exitClicked()
     {
         EnemyTerminal.globalTerminalMode--;
-        noChanges.SetActive(true);
-        StartCoroutine(setToFalse());
+        if (EnemyTerminal.madeChanges)
+        {
+            EnemyTerminal.madeChanges = false;
+            noChanges.SetActive(true);
+            StartCoroutine(setToFalse());
+        }
     }
 
     public IEnumerator setToFalse()
@@ -37,8 +41,7 @@ public class TerminalWindowUI : MonoBehaviour {
         foreach (EnemyTerminal e in enemies)
         {
             if (e.localTerminalMode >= 2)
-            {
-         
+            {         
                 e.GetComponent<EnemyTerminal>().checkTerminalString();
                 StartCoroutine(e.GetComponent<EnemyTerminal>().evaluateActions());
                 Object pe;
@@ -52,6 +55,11 @@ public class TerminalWindowUI : MonoBehaviour {
 
                 Destroy(pe, 1);
                 EnemyTerminal.globalTerminalMode--;
+                if(e.gameObject.name == "TutorialEnemy2NEW")
+                {
+                    GameObject.Find("clickAPI").SetActive(false);
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().debugClicked();
+                }
             }
         }
     }

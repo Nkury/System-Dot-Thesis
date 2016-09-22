@@ -3,12 +3,11 @@ using System.Collections;
 
 public class TutorialZones : MonoBehaviour
 {
-    public GameObject IntelliSense;
+    public GameObject intelliSense;
 
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -23,27 +22,28 @@ public class TutorialZones : MonoBehaviour
         {
             if (this.gameObject.name == "FirstTutorialObjective")
             {
-                IntelliSense.SendMessage("StartSecondTutorial");
+                intelliSense.SendMessage("StartSecondTutorial");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if (this.gameObject.name == "SecondTutorialObjective")
             {
-                IntelliSense.SendMessage("StartThirdTutorial");
+                intelliSense.SendMessage("StartThirdTutorial");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "ThirdTutorialObjective")
             {
-                IntelliSense.SendMessage("StartFourthTutorial");
+                intelliSense.SendMessage("StartFourthTutorial");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "FourthTutorialObjective")
             {
-                IntelliSense.SendMessage("StartFifthTutorial");
+                intelliSense.SendMessage("StartFifthTutorial");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "FifthTutorialObjective")
             {
-                IntelliSense.SendMessage("StartSixthTutorial");
+                intelliSense.SetActive(true);
+                intelliSense.SendMessage("StartSixthTutorial");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             }

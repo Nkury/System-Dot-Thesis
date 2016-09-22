@@ -77,18 +77,16 @@ public class LevelManager : MonoBehaviour {
     public void LoadLevel()
     {
        // set it to false so we don't have to go through the tutorial
-        IntelliSense.talking = false;
-        IntelliSense.wait = false;
+
         Debug.Log(PlayerStats.checkpoint);
         switch (PlayerStats.checkpoint)
         {
             case "Checkpoint1":
                 currentCheckpoint = checkpoint1;
                 intelliSense.SetActive(true);
-                IntelliSense.talking = true;
-                IntelliSense.wait = true;
+                intelliSense.SendMessage("startTutorialPart");
                 break;
-            case "Checkpoint2":
+            case "Checkpoint2": 
                 currentCheckpoint = checkpoint2;
                 break;
             case "Checkpoint3":

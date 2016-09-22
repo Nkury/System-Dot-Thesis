@@ -68,4 +68,39 @@
     <say>... </say>
     <say>Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go! </say>
   </message>
+
+  <message id="meetBlackVBot">
+    <say>Hey there! This VBot isn't like the rest!</say>
+    <say>Let's hack it and see what's going on.</say>
+  </message>
+
+  <message id="clickBlackVBot">
+    <say>That's weird. This VBot's code isn't red... which means YOU CAN CHANGE IT!</say>
+    <say>Listen, whatever-your-name-was. I know your puny mind can't handle this, but...</say>
+    <say>... you need to "fix" this VBot. Otherwise, we can't terminate it</say>
+    <say>because you don't have black boots. Try to change this VBot to</say>
+    <say>a color you do have. Lucky for you, I've saved all this information in an API!</say>
+    <say>Check it out!</say>
+  </message>
+
+  <message id="APIClicked">
+    <say>There we go! You better appreciate this. It takes a lot of processing power</say>
+    <say>to make this sort of thing.</say>
+    <say>Now let's see. Every character, letter, number, manifestation</say>
+    <say>in the code is SUPER important. Missing one little thing could be the</say>
+    <say>the difference between life and death here so be sharp!</say>
+    <say>Let's see what's missing from this VBot's code...</say>
+    <say>My API tells us how it should be. Type in what's missing for the VBot.</say>
+  </message>
+
+  <message id="codeFixed">
+    <say>That looks right!</say>
+    <say>Now, in order to lock in these changes, click the green PLAY button!</say>
+  </message>
+
+  <message id="colorChanged">
+    <say>See? I'm a genius. What would you do without me?</say>
+    <say>Terminate this VBot and let's continue to the CPU!</say>
+  </message>
+  
 </dialogue>

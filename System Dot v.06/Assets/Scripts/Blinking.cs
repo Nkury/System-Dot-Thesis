@@ -15,7 +15,7 @@ public class Blinking : MonoBehaviour {
         interval++;
         if (interval % 20 == 0)
         {
-            if (this.name != "mouse_pointer")
+            if (!this.name.Contains("mouse_pointer"))
                 this.GetComponent<Image>().enabled = !this.GetComponent<Image>().enabled;
             else
             {

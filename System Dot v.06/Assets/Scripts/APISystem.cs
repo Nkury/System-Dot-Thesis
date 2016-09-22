@@ -4,6 +4,8 @@ using System.Collections;
 
 public class APISystem : MonoBehaviour {
 
+    public GameObject clickAPI;
+
     public GameObject APImenu;
     public GameObject SystemHelp;
 
@@ -12,6 +14,7 @@ public class APISystem : MonoBehaviour {
     public GameObject directionInfo;
     public Image arrowIndicator;
 
+    public bool clicked = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -24,11 +27,18 @@ public class APISystem : MonoBehaviour {
 
     public void APIButtonClicked()
     {
+        clickAPI.GetComponent<RectTransform>().anchoredPosition = new Vector2(60, -30);
         APImenu.SetActive(!APImenu.activeSelf);
     }
 
     public void SystemButtonClicked()
     {
+        if (!clicked)
+        {
+            clicked = true;
+            clickAPI.SetActive(false);
+            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().APIClicked();
+        }
         SystemHelp.SetActive(!SystemHelp.activeSelf);
     }
 
