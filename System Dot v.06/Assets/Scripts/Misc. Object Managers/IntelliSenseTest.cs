@@ -43,6 +43,7 @@ public class IntelliSenseTest : MonoBehaviour {
     private string eventName = "";
 
     private bool tutorialCheck = false;
+    private bool clickOnce = true;
 
 	// Use this for initialization
 	void Start () {
@@ -158,9 +159,9 @@ public class IntelliSenseTest : MonoBehaviour {
             if (hit && hit.collider.name == "TutorialEnemy")
             {
                 botClicked(1);
-            } else if(hit && hit.collider.name == "TutorialEnemy2")
+            } else if(clickOnce && hit && hit.collider.name == "TutorialEnemy2")
             {
-                hit.collider.name = "TutorialEnemy2NEW";
+                clickOnce = false;
                 botClicked(2);
             }            
         }
@@ -216,12 +217,16 @@ public class IntelliSenseTest : MonoBehaviour {
 
     public void APIClicked()
     {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
         SetDialogue("APIClicked");
         eventName = "editCode";
     }
 
     public void codeFixed()
     {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
         SetDialogue("codeFixed");
         eventName = "clickDebug";
     }

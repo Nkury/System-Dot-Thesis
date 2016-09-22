@@ -6805,6 +6805,8 @@ MonoBehaviour:
   checkpoint4: {fileID: 1167840113}
   checkpoint5: {fileID: 643105380}
   intelliSense: {fileID: 388545555}
+  APIButton: {fileID: 341901565}
+  DebugButton: {fileID: 1902034506}
 --- !u!4 &277277874
 Transform:
   m_ObjectHideFlags: 0
@@ -39331,7 +39333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 116328, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11403474, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_Enabled
@@ -39351,7 +39353,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 116306, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11465568, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_CharacterLimit

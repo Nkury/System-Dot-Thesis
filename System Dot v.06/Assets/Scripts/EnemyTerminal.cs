@@ -331,7 +331,7 @@ public class EnemyTerminal : MonoBehaviour
             }
 
             // for black Vbot tutorial
-            if(this.gameObject.name == "TutorialEnemy2NEW" && !tutorialCheck)
+            if(this.gameObject.name == "TutorialEnemy2" && !tutorialCheck)
             {
                 if(terminalString[0] == "System.body(Color.GREEN);")
                 {

@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour {
     public GameObject checkpoint4;
     public GameObject checkpoint5;
     public GameObject intelliSense;
+    public GameObject APIButton;
+    public GameObject DebugButton;
 
     // Use this for initialization
     void Start () {
@@ -84,9 +86,15 @@ public class LevelManager : MonoBehaviour {
             case "Checkpoint1":
                 currentCheckpoint = checkpoint1;
                 intelliSense.SetActive(true);
+                APIButton.SetActive(false);
+                DebugButton.SetActive(false);
+                APISystem.clicked = false;
                 intelliSense.SendMessage("startTutorialPart");
                 break;
-            case "Checkpoint2": 
+            case "Checkpoint2":
+                APIButton.SetActive(false);
+                DebugButton.SetActive(false);
+                APISystem.clicked = false;
                 currentCheckpoint = checkpoint2;
                 break;
             case "Checkpoint3":

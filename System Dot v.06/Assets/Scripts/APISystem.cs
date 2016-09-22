@@ -14,7 +14,7 @@ public class APISystem : MonoBehaviour {
     public GameObject directionInfo;
     public Image arrowIndicator;
 
-    public bool clicked = false;
+    public static bool clicked = true;
 	// Use this for initialization
 	void Start () {
 	

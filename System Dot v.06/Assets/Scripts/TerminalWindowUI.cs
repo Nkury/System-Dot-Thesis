@@ -55,7 +55,7 @@ public class TerminalWindowUI : MonoBehaviour {
 
                 Destroy(pe, 1);
                 EnemyTerminal.globalTerminalMode--;
-                if(e.gameObject.name == "TutorialEnemy2NEW")
+                if(e.gameObject.name == "TutorialEnemy2")
                 {
                     GameObject.Find("clickAPI").SetActive(false);
                     GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().debugClicked();
