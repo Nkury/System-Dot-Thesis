@@ -21,16 +21,15 @@ public class Checkpoint : MonoBehaviour {
 	{
 		if (other.name == "Player") 
 		{
-            // checks what checkpoint has been collided and adjusts player stats accordingly
-            PlayerStats.checkpoint = this.gameObject.name;
 
             // autosave feature
-            if (Game.current != null)
+            if (Game.current != null && PlayerStats.checkpoint != this.gameObject.name)
             {
                 Debug.Log("Activated Checkpoint " + transform.position);
                 Game.current.playerName = PlayerStats.playerName;
                 Game.current.bitsCollected = PlayerStats.bitsCollected;
-                Game.current.checkpoint = PlayerStats.checkpoint;
+                PlayerStats.checkpoint = this.gameObject.name;
+                Game.current.checkpoint = this.gameObject.name;
                 PlayerStats.deadObjects = PlayerStats.deadObjects.Distinct().ToList<string>();
                 Game.current.deadObjects = PlayerStats.deadObjects;
                 SaveLoad.Save();

@@ -89,7 +89,6 @@ public class LevelManager : MonoBehaviour {
                 APIButton.SetActive(false);
                 DebugButton.SetActive(false);
                 APISystem.clicked = false;
-                intelliSense.SendMessage("startTutorialPart");
                 break;
             case "Checkpoint2":
                 APIButton.SetActive(false);

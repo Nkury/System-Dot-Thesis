@@ -2463,8 +2463,12 @@ namespace ParserAlgo
                 actions.Add(keyActions.TURNBLACK);
                 errorCount++;
             }
-            else
+            else if (!(actions.Contains(keyActions.TURNBLUE) || actions.Contains(keyActions.TURNGREEN) || actions.Contains(keyActions.TURNRED)))
             {
+                actions.Add(keyActions.TURNBLACK);
+                errorCount = 0;
+            }
+            else { 
                 errorCount = 0;
             }
 
