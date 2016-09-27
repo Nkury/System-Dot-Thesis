@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour {
     public GameObject APIButton;
     public GameObject DebugButton;
 
+    private bool loadedIn = false;
     // Use this for initialization
     void Start () {
 		player = FindObjectOfType<PlayerController> ();
@@ -64,8 +65,11 @@ public class LevelManager : MonoBehaviour {
         //player.GetComponent<Rigidbody2D> ().gravityScale = gravityStore;
 
         // COMMENT/UNCOMMENT THIS AFTER TESTING
-        LoadLevel();
-		player.transform.position = currentCheckpoint.transform.position;
+        if (!loadedIn) { 
+            LoadLevel();
+        }
+
+        player.transform.position = currentCheckpoint.transform.position;
 
 		player.knockbackCount = 0;
 		player.enabled = true;
@@ -78,8 +82,8 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadLevel()
     {
-       // set it to false so we don't have to go through the tutorial
-
+        // set it to false so we don't have to go through the tutorial
+        loadedIn = true;
         Debug.Log(PlayerStats.checkpoint);
         switch (PlayerStats.checkpoint)
         {

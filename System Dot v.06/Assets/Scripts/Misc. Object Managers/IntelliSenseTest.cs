@@ -45,8 +45,10 @@ public class IntelliSenseTest : MonoBehaviour {
     private bool tutorialCheck = false;
     private bool clickOnce = true;
 
-	// Use this for initialization
-	void Start () {
+    private float startTime = 0;
+
+    // Use this for initialization
+    void Start () {
 
         XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/TutorialDialogue.xml");
         List<string> addedDialogue = new List<string>();
@@ -156,14 +158,19 @@ public class IntelliSenseTest : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (hit && hit.collider.name == "TutorialEnemy")
+            if (!clickOnce && hit && hit.collider.name == "TutorialEnemy")
             {
+                clickOnce = true;
                 botClicked(1);
             } else if(clickOnce && hit && hit.collider.name == "TutorialEnemy2")
             {
                 clickOnce = false;
                 botClicked(2);
-            }            
+            } else if(!clickOnce && hit && hit.collider.name == "TutorialChest")
+            {
+                clickOnce = true;
+                botClicked(3);
+            }
         }
 
         // FOR BLACK VBOT TUTORIAL
@@ -215,6 +222,12 @@ public class IntelliSenseTest : MonoBehaviour {
         eventName = "promptClick";
     }
 
+    public void StartChestTutorial()
+    {
+        SetDialogue("startChest");
+        eventName = "promptClick";
+    }
+
     public void APIClicked()
     {
         GameObject myEventSystem = GameObject.Find("EventSystem");
@@ -229,6 +242,20 @@ public class IntelliSenseTest : MonoBehaviour {
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
         SetDialogue("codeFixed");
         eventName = "clickDebug";
+    }
+
+    public void chestFixed()
+    {
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+        SetDialogue("unlockChest");
+        eventName = "finishDialogue";
+        startTime = 0;
+    }
+
+    public void needHelp()
+    {
+        SetDialogue("helpWithChest");
     }
 
     public void debugClicked()
@@ -249,6 +276,10 @@ public class IntelliSenseTest : MonoBehaviour {
                 SetDialogue("clickBlackVBot");
                 eventName = "clickAPI";
                 tutorialCheck = true;
+                break;
+            case 3:
+                SetDialogue("clickChest");
+                eventName = "startTimer";
                 break;
         }
     }
@@ -294,7 +325,6 @@ public class IntelliSenseTest : MonoBehaviour {
             transform.localScale = new Vector3(.25f, .25f, 1);
         }
     }
-
 
     public void performEvent()
     {
@@ -371,6 +401,11 @@ public class IntelliSenseTest : MonoBehaviour {
                 mouseClickPrompt.SetActive(false);
                 debugButton.SetActive(true);
                 UIClickPrompt.GetComponent<RectTransform>().anchoredPosition = new Vector2(710, -30);
+                break;
+            case "startTimer":
+                startTime += Time.deltaTime;
+                if (startTime > 30)
+                    needHelp();
                 break;
             case "finishDialogue":
                 APIInfo.SetActive(false);

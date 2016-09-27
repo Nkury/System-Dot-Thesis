@@ -102,5 +102,27 @@
     <say>See? I'm a genius. What would you do without me?</say>
     <say>Terminate this VBot and let's continue to the CPU!</say>
   </message>
-  
+
+  <message id="startChest">
+    <say>What? It's like you've never seen a cache before...</say>
+    <say>Oh yeah, you probably haven't. Well check this out.</say>
+    <say>Caches give the CPU intel about processes on the outskirts of the system.</say>
+    <say>They contain bits you can bargain with at the RAM in the CPU.</say>
+    <say>Try opening this one by changing the code that is keeping the cache closed.</say>
+  </message>
+
+  <message id="clickChest">
+    <say>How can we change the code to "OPEN" the cache?</say>
+  </message>
+
+  <message id="helpWithChest">
+    <say>Hmm... maybe you should try replacing "close" with an opposite word...</say>
+    <say>...like "open"?</say>
+  </message>
+
+  <message id="unlockChest">
+    <say>No, those weren't oranges. Those were bits!</say>
+    <say>I'll add this new code to the API! Check it out!</say>
+    <say>You'll see how you can use bits when we get to the CPU. Let's go!</say>
+  </message>
 </dialogue>

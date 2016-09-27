@@ -77,6 +77,7 @@ public class HurtEnemyOnContact : MonoBehaviour
         }
         else if ((other.tag == "Ground") && other.GetComponent<HurtPlayerOnContact>() != null && other.GetComponent<HurtPlayerOnContact>().enemyState != state)
         {
+           // Destroy(other.gameObject);
             Physics2D.IgnoreCollision(this.transform.parent.GetComponent<Collider2D>(), other, false);
         }
     }

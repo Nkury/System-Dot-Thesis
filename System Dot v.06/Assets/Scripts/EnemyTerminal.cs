@@ -25,6 +25,7 @@ public class EnemyTerminal : MonoBehaviour
     public GUIStyle terminalStyle;
     public GameObject terminalPointerDestination;
     public GameObject terminalWindow;
+    public GameObject bit;
 
     public Sprite chestSpriteClosed;
     public Sprite chestSpriteOpen;
@@ -32,6 +33,7 @@ public class EnemyTerminal : MonoBehaviour
     public Sprite blueSlime;
     public Sprite greenSlime;
     public Sprite blackSlime;
+    
 
     private bool showTerminal = false;
     private bool tutorialCheck = false;
@@ -206,17 +208,25 @@ public class EnemyTerminal : MonoBehaviour
                         this.GetComponent<SpriteRenderer>().sprite = blackSlime;
                     }
                     break;
-                case keyActions.OPEN:
+                case keyActions.CLOSE:
                     if(this.gameObject.tag == "Chest")
                     {
                         this.GetComponent<SpriteRenderer>().sprite = chestSpriteClosed;
                         numOfSyntaxErrors = 0;
                     }
                     break;
-                case keyActions.CLOSE:
+                case keyActions.OPEN:
                     if(this.gameObject.tag == "Chest")
                     {
                         this.GetComponent<SpriteRenderer>().sprite = chestSpriteOpen;
+                        yield return new WaitForSeconds(1);
+                        this.GetComponent<ChestBits>().chestOpen();
+
+                        if(this.gameObject.name == "TutorialChest")
+                        {
+                            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().chestFixed();
+                        }
+ 
                         numOfSyntaxErrors = 0;
                     }
                     break;
