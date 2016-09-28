@@ -16,7 +16,6 @@ public class triggerZoneScript : MonoBehaviour {
 	void Update () {
 	    if(enemyCount >= enemyThreshold)
         {
-            enemyCount = 0;
             Destroy(door);
         }
 	}
@@ -28,5 +27,15 @@ public class triggerZoneScript : MonoBehaviour {
             Destroy(other.gameObject);
             enemyCount++;
         }
+    }
+
+    public bool getEnemyCount()
+    {
+        if(enemyCount >= enemyThreshold)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
