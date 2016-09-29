@@ -13,4 +13,12 @@ public class MovingPlatform : MonoBehaviour {
 	    
 	}
 
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Ground")
+        {
+            this.GetComponent<EnemyTerminal>().actions.Clear();
+        }
+    }
+
 }

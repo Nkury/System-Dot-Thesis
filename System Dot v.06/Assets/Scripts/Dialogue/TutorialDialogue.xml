@@ -106,7 +106,7 @@
   <message id="startChest">
     <say>What? It's like you've never seen a cache before...</say>
     <say>Oh yeah, you probably haven't. Well check this out.</say>
-    <say>Caches give the CPU intel about processes on the outskirts of the system.</say>
+    <say>Caches give the CPU intel about processes in the system.</say>
     <say>They contain bits you can bargain with at the RAM in the CPU.</say>
     <say>Try opening this one by changing the code that is keeping the cache closed.</say>
   </message>

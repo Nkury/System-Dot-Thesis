@@ -37,7 +37,6 @@ public class EnemyTerminal : MonoBehaviour
 
     private bool showTerminal = false;
     private bool tutorialCheck = false;
-    public string colorString;
 
     public List<keyActions> actions = new List<keyActions>();
     Parser parse = new Parser();
@@ -48,25 +47,6 @@ public class EnemyTerminal : MonoBehaviour
     void Start()
     {
         terminalWindow = GameObject.Find("Terminal Window");
-
-        if (this.tag == "Enemy")
-        {
-            if (this.GetComponent<HurtPlayerOnContact>().enemyState == HurtEnemyOnContact.colorState.RED)
-                colorString = "RED";
-            else if (this.GetComponent<HurtPlayerOnContact>().enemyState == HurtEnemyOnContact.colorState.BLUE)
-                colorString = "BLUE";
-            else if (this.GetComponent<HurtPlayerOnContact>().enemyState == HurtEnemyOnContact.colorState.GREEN)
-                colorString = "GREEN";
-
-            //terminalString = "public class VBot{\n     " + writtenString + " \n}";
-        }
-        else if (this.tag == "Chest")
-        {
-            //terminalString = "public class Chest{\n     System.close(); \n}";
-        } else if (this.tag == "movingPlatform")
-        {
-            //terminalString = "public class MovingPlatform{\n   " + writtenString + " \n}";
-        }
 
         checkTerminalString();
         StartCoroutine(evaluateActions());

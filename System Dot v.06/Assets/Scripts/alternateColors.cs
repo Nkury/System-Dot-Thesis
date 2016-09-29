@@ -5,8 +5,10 @@ using System.Collections;
 public class alternateColors : MonoBehaviour {
 
     public bool isBoot;
+    public bool isBit;
     public Sprite[] bootColors = new Sprite[3];
-    int bootInc = 0;
+    public Sprite[] bitColors = new Sprite[2];
+    int inc = 0;
 
     int interval = 0;
 	// Use this for initialization
@@ -22,13 +24,22 @@ public class alternateColors : MonoBehaviour {
             if (isBoot)
             {
 
-                if (bootInc <= 2)
+                if (inc <= 2)
                 {
-                    this.gameObject.GetComponent<Image>().sprite = bootColors[bootInc];
-                    bootInc++;
+                    this.gameObject.GetComponent<Image>().sprite = bootColors[inc];
+                    inc++;
                 }
                 else
-                    bootInc = 0;
+                    inc = 0;
+            } else if (isBit)
+            {
+                if (inc <= 1)
+                {
+                    this.gameObject.GetComponent<Image>().sprite = bitColors[inc];
+                    inc++;
+                }
+                else
+                    inc = 0;
             }
         }
         interval++;	

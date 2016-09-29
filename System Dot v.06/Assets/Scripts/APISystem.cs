@@ -12,6 +12,7 @@ public class APISystem : MonoBehaviour {
     // System code
     public GameObject colorInfo;
     public GameObject directionInfo;
+    public GameObject chestInfo;
     public Image arrowIndicator;
 
     public static bool clicked = true;
@@ -46,6 +47,7 @@ public class APISystem : MonoBehaviour {
     {
         colorInfo.SetActive(true);
         directionInfo.SetActive(false);
+        chestInfo.SetActive(false);
         arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 514.7f);
     }
 
@@ -53,6 +55,15 @@ public class APISystem : MonoBehaviour {
     {
         colorInfo.SetActive(false);
         directionInfo.SetActive(true);
+        chestInfo.SetActive(false);
         arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 463.67f);
+    }
+
+    public void ChestButtonClicked()
+    {
+        colorInfo.SetActive(false);
+        directionInfo.SetActive(false);
+        chestInfo.SetActive(true);
+        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
     }
 }

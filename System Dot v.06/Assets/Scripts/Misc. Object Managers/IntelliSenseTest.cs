@@ -37,13 +37,16 @@ public class IntelliSenseTest : MonoBehaviour {
     public InputField tutorialLine;
     public GameObject APIInfo;
 
+    public GameObject directionHelpButton;
+    public GameObject chestHelpButton;
+
     private int index = 0;
     private int interval = 0;
     private int dialogueIndex = 0;
     private string eventName = "";
 
     private bool tutorialCheck = false;
-    private bool clickOnce = true;
+    public static bool clickOnce = false;
 
     private float startTime = 0;
 
@@ -174,7 +177,11 @@ public class IntelliSenseTest : MonoBehaviour {
         }
 
         // FOR BLACK VBOT TUTORIAL
-        tutorialLine.readOnly = tutorialCheck;
+        // CHECKS TO MAKE SURE CODE IS NOT LEGACY BEFORE DOING THIS CHECK
+        if (tutorialLine.textComponent.color != Color.red)
+        {
+            tutorialLine.readOnly = tutorialCheck;
+        }
     }
 
     public void startTutorial()
@@ -249,6 +256,7 @@ public class IntelliSenseTest : MonoBehaviour {
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
         SetDialogue("unlockChest");
+        chestHelpButton.SetActive(true);
         eventName = "finishDialogue";
         startTime = 0;
     }

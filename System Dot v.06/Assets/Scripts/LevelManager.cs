@@ -27,7 +27,10 @@ public class LevelManager : MonoBehaviour {
     public GameObject checkpoint5;
     public GameObject intelliSense;
     public GameObject APIButton;
+    public GameObject directionHelpButton;
+    public GameObject chestHelpButton;
     public GameObject DebugButton;
+
 
     private bool loadedIn = false;
     // Use this for initialization
@@ -92,15 +95,22 @@ public class LevelManager : MonoBehaviour {
                 intelliSense.SetActive(true);
                 APIButton.SetActive(false);
                 DebugButton.SetActive(false);
+                directionHelpButton.SetActive(false);
+                chestHelpButton.SetActive(false);
+                IntelliSenseTest.clickOnce = false;
                 APISystem.clicked = false;
                 break;
             case "Checkpoint2":
                 APIButton.SetActive(false);
                 DebugButton.SetActive(false);
+                IntelliSenseTest.clickOnce = true;
+                directionHelpButton.SetActive(false);
+                chestHelpButton.SetActive(false);
                 APISystem.clicked = false;
                 currentCheckpoint = checkpoint2;
                 break;
             case "Checkpoint3":
+                directionHelpButton.SetActive(false);
                 currentCheckpoint = checkpoint3;
                 break;
             case "Checkpoint4":
