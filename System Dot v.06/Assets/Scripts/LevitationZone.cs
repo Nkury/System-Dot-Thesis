@@ -31,6 +31,6 @@ public class LevitationZone : MonoBehaviour {
 
     void onTriggerExit2d(Collider2D other)
     {
-        flying = false:
+        flying = false;
     }
 }
