@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
     public void Start()
     {
         // uncomment below to erase all saved files when running title screen
-        // SaveLoad.EraseAll();
+        //SaveLoad.EraseAll();
         SaveLoad.Load(); // load the game
         if(SaveLoad.savedGames.Count != 0)
         {
