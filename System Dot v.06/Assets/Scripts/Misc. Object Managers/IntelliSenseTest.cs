@@ -29,6 +29,7 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject thirdTutorialObjective;
     public GameObject fourthTutorialObjective;
     public GameObject fourthObjectiveBarrier;
+    public GameObject seventhTutorialBarrier;
     public GameObject levelTitle;
 
     public GameObject apiButton;
@@ -147,7 +148,8 @@ public class IntelliSenseTest : MonoBehaviour {
         }
 
         // THIS PART IMMOBOLIZES THE PLAYER
-        player.GetComponentInParent<PlayerController>().IntelliSenseTalking(talking);
+        if(player.GetComponentInParent<PlayerController>())
+            player.GetComponentInParent<PlayerController>().IntelliSenseTalking(talking);
 
         // THIS SECTION IS TO MEDIATE THE TIME THE TEXT APPEARS ON SCREEN
         if (interval % 3 == 0)
@@ -173,6 +175,10 @@ public class IntelliSenseTest : MonoBehaviour {
             {
                 clickOnce = true;
                 botClicked(3);
+            } else if(clickOnce && hit && hit.collider.name == "TutorialPlatform")
+            {
+                clickOnce = false;
+                botClicked(4);
             }
         }
 
@@ -235,6 +241,18 @@ public class IntelliSenseTest : MonoBehaviour {
         eventName = "promptClick";
     }
 
+    public void StartMovingPlatformTutorial()
+    {
+        SetDialogue("startDebugStation");
+        eventName = "stopTalking";
+    }
+
+    public void InDebugStation()
+    {
+        SetDialogue("startMovingPlatform");
+        eventName = "promptClick";
+    }
+
     public void APIClicked()
     {
         GameObject myEventSystem = GameObject.Find("EventSystem");
@@ -259,6 +277,26 @@ public class IntelliSenseTest : MonoBehaviour {
         chestHelpButton.SetActive(true);
         eventName = "finishDialogue";
         startTime = 0;
+    }
+
+    public void platformFixed(int action)
+    {
+        if (action == 1)
+        {
+            GameObject myEventSystem = GameObject.Find("EventSystem");
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            SetDialogue("movePlatform");
+        }
+        else if(action == 2)
+        {
+            GameObject myEventSystem = GameObject.Find("EventSystem");
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            SetDialogue("movePlatform2");
+            eventName = "finishDialogue";
+            seventhTutorialBarrier.SetActive(false);
+            directionHelpButton.SetActive(true);
+        }
+
     }
 
     public void needHelp()
@@ -289,6 +327,9 @@ public class IntelliSenseTest : MonoBehaviour {
                 SetDialogue("clickChest");
                 eventName = "startTimer";
                 break;
+            case 4:
+                SetDialogue("clickPlatform");
+                break; 
         }
     }
 
@@ -307,7 +348,7 @@ public class IntelliSenseTest : MonoBehaviour {
         {
             SetDialogue("correctHack");
             hackPrompt.SetActive(false);
-            eventName = "killEnemy1";
+            eventName = "stopTalking";
         }
         else {
             SetDialogue("wrongHack");
@@ -387,13 +428,13 @@ public class IntelliSenseTest : MonoBehaviour {
                 break;
             case "promptCode":
                 mouseClickPrompt.SetActive(false);
-                PlayerStats.deadObjects.Add(mouseClickPrompt.name);
                 hackPrompt.SetActive(true);
                 hackPrompt.GetComponent<InputField>().Select();
                 break;
-            case "killEnemy1":
+            case "stopTalking":
                 EnemyTerminal.globalTerminalMode = 0;
                 talking = false;
+                this.transform.parent = null;
                 break;
             case "titleSequence":
                 if (levelTitle != null)

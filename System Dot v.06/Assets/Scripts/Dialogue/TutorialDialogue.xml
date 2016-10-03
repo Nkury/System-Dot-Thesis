@@ -125,4 +125,31 @@
     <say>I'll add this new code to the API! Check it out!</say>
     <say>You'll see how you can use bits when we get to the CPU. Let's go!</say>
   </message>
+
+  <message id="startDebugStation">
+    <say>A computer inside a computer... interesting...</say>
+    <say>Why is there a DEBUG STATION way out here?</say>
+    <say>Either way, you won't be able to hack it...</say>
+    <say>I wonder how we'd access it.</say>
+    <say>That large white letter must have nothing to do with it...</say>
+  </message>
+
+  <message id="startMovingPlatform">
+    <say>This object looks different... let's do what we always do!</say>
+  </message>
+
+  <message id="clickPlatform">
+    <say>Oh look, our favorite error. The missing semicolon...</say>
+    <say>You know what to do.</say>
+  </message>
+
+  <message id="movePlatform">
+    <say>Oh, look. It's moving away from us.</say>
+    <say>We need to catch a ride on it! Bring it back.</say>
+  </message>
+
+  <message id="movePlatform2">
+    <say>Ok, you know what to do. No more pit stops.</say>
+    <say>I've added this new piece of code to the API. Check it!</say>
+  </message>
 </dialogue>

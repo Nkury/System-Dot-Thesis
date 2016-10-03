@@ -52,6 +52,12 @@ public class TutorialZones : MonoBehaviour
                 intelliSense.SendMessage("StartChestTutorial");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
+            } else if(this.gameObject.name == "SeventhTutorialObjective")
+            {
+                intelliSense.SetActive(true);
+                intelliSense.SendMessage("StartMovingPlatformTutorial");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
+                Destroy(this.gameObject);
             }
         }
     }

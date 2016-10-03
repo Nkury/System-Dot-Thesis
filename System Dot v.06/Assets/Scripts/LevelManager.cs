@@ -110,6 +110,7 @@ public class LevelManager : MonoBehaviour {
                 currentCheckpoint = checkpoint2;
                 break;
             case "Checkpoint3":
+                IntelliSenseTest.clickOnce = true;
                 directionHelpButton.SetActive(false);
                 currentCheckpoint = checkpoint3;
                 break;

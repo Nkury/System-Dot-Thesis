@@ -212,10 +212,24 @@ public class EnemyTerminal : MonoBehaviour
                     break;
                 case keyActions.MOVELEFT:
                     this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
+
+                    if (this.gameObject.name == "TutorialPlatform1")
+                    {
+                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().platformFixed(2);
+                        this.gameObject.name = "TutorialPlatform2";
+                    }
+
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.MOVERIGHT:
                     this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
+
+                    if (this.gameObject.name == "TutorialPlatform")
+                    {
+                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().platformFixed(1);
+                        this.gameObject.name = "TutorialPlatform1";
+                    }
+
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.WAIT:

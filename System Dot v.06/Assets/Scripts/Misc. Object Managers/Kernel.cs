@@ -23,6 +23,10 @@ public class Kernel : MonoBehaviour {
                 inDebugMode = true;
                 player.SetActive(false);
                 Camera.main.orthographicSize = 7.07f;
+                if(this.gameObject.name == "TutorialKernel")
+                {
+                    GameObject.Find("Intellisense").SendMessage("InDebugStation");
+                }
             }
             else if (Input.GetKeyDown(KeyCode.E) && inDebugMode)
             {
