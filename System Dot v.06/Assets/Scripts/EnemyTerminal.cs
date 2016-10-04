@@ -213,7 +213,7 @@ public class EnemyTerminal : MonoBehaviour
                 case keyActions.MOVELEFT:
                     this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
 
-                    if (this.gameObject.name == "TutorialPlatform1")
+                    if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
                     {
                         GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().platformFixed(2);
                         this.gameObject.name = "TutorialPlatform2";
@@ -224,7 +224,7 @@ public class EnemyTerminal : MonoBehaviour
                 case keyActions.MOVERIGHT:
                     this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
 
-                    if (this.gameObject.name == "TutorialPlatform")
+                    if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
                     {
                         GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().platformFixed(1);
                         this.gameObject.name = "TutorialPlatform1";

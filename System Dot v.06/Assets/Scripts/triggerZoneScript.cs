@@ -16,6 +16,8 @@ public class triggerZoneScript : MonoBehaviour {
 	void Update () {
 	    if(enemyCount >= enemyThreshold)
         {
+            if(door)
+                PlayerStats.deadObjects.Add(door.name);
             Destroy(door);
         }
 	}
@@ -24,6 +26,7 @@ public class triggerZoneScript : MonoBehaviour {
     {
         if(other.tag == "Enemy")
         {
+            PlayerStats.deadObjects.Add(other.gameObject.name);
             Destroy(other.gameObject);
             enemyCount++;
         }

@@ -172,16 +172,26 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
     }
 
-    // MAY CAUSE PROBLEMS IN THE FUTURE
+    
     void OnCollisionEnter2D(Collision2D coll)
     {
+        // if we collide with a moving platform, our transform position
+        // will be attached to that platform (so we can move when it moves)
         if(coll.gameObject.tag == "movingPlatform")
         {
             transform.root.gameObject.transform.parent = coll.transform;
-        } else if(coll.gameObject.tag == "bit")
+        }
+        // if we collide with a bit, we collect it. If it's an environment bit,
+        // then we add it to the list of items that need to be destroyed when we
+        // load the level
+        else if(coll.gameObject.tag == "bit")
         {
             collectBit.Play();
             PlayerStats.bitsCollected++;
+            if (coll.gameObject.name.Contains("enviroBit"))
+            {
+                PlayerStats.deadObjects.Add(coll.gameObject.name);
+            }
             Destroy(coll.gameObject);
         }
     }

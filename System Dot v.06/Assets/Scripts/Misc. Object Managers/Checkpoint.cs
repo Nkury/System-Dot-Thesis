@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,11 @@ public class Checkpoint : MonoBehaviour {
                 Game.current.checkpoint = this.gameObject.name;
                 PlayerStats.deadObjects = PlayerStats.deadObjects.Distinct().ToList<string>();
                 Game.current.deadObjects = PlayerStats.deadObjects;
+                if(PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Substring(this.gameObject.name.Length - 1, 1)))
+                {
+                    PlayerStats.highestCheckpoint = Int32.Parse(this.gameObject.name.Substring(this.gameObject.name.Length - 1, 1));
+                }
+                Game.current.highestCheckpoint = PlayerStats.highestCheckpoint;
                 SaveLoad.Save();
             }
 

@@ -13,5 +13,6 @@ public class PlayerStats {
     /**** TUTORIAL LEVEL *********************************/
     public static List<string> deadObjects = new List<string>();
     public static string checkpoint = "Checkpoint1";
+    public static int highestCheckpoint = 1;
 
 }

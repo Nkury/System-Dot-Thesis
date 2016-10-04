@@ -19,6 +19,7 @@ public class Game
     public List<string> deadObjects = new List<string>();
     public bool firstCheckpoint = true;
     public string checkpoint;
+    public int highestCheckpoint;
 }
 
 public static class SaveLoad

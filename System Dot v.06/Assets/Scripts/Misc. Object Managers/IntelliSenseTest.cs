@@ -293,7 +293,8 @@ public class IntelliSenseTest : MonoBehaviour {
             myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
             SetDialogue("movePlatform2");
             eventName = "finishDialogue";
-            seventhTutorialBarrier.SetActive(false);
+            PlayerStats.deadObjects.Add(seventhTutorialBarrier.name);
+            Destroy(seventhTutorialBarrier.gameObject);
             directionHelpButton.SetActive(true);
         }
 
