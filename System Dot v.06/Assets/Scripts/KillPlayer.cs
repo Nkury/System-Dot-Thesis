@@ -4,6 +4,7 @@ using System.Collections;
 public class KillPlayer : MonoBehaviour {
 
 	public LevelManager levelManager;
+    public int damageToGive;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,9 @@ public class KillPlayer : MonoBehaviour {
 		if (other.name == "Player") 
 		{
 			levelManager.RespawnPlayer();
-		}
+		} else if(other.tag == "Enemy")
+        {
+            other.GetComponent<EnemyHealthManager>().giveDamage(damageToGive);
+        }
 	}
 }

@@ -117,6 +117,11 @@ public class EnemyTerminal : MonoBehaviour
                 e.localTerminalMode = 0;
             globalTerminalMode = 2;
             localTerminalMode = 2;
+
+            // for comment tutorial in level 1
+            if (this.gameObject.name.Contains("Comment")){
+                GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().commentFound();
+            }
         }
         else
         {
@@ -131,7 +136,7 @@ public class EnemyTerminal : MonoBehaviour
         string passedInString = "";
         foreach(string s in terminalString)
         {
-            passedInString += " " + s;
+            passedInString += " \n" + s;
         }
 
         actions = parse.Parse(passedInString);

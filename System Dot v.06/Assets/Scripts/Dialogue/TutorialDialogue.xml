@@ -152,4 +152,15 @@
     <say>Ok, you know what to do. No more pit stops.</say>
     <say>I've added this new piece of code to the API. Check it!</say>
   </message>
+
+  <message id="discoverComments">
+    <say>What kind of sick joke is this?</say>
+    <say>Who else is messing with the source code?</say>
+    <say>Do you think someone's been sabotaging us this whole time?</say>
+    <say>Well, great. COMMENTS don't do anything except</say>
+    <say>tell us messages other programmers left behind.</say>
+    <say>Wait a second... does that mean there's someone like you</say>
+    <say>lurking around here? We need to keep our eyes open!</say>
+    <say>We also need to find a way to get rid of these VBots!</say>
+  </message>
 </dialogue>

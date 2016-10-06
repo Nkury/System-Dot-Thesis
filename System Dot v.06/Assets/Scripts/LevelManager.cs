@@ -115,6 +115,7 @@ public class LevelManager : MonoBehaviour {
                 currentCheckpoint = checkpoint3;
                 break;
             case "Checkpoint4":
+                IntelliSenseTest.clickOnce = false;
                 currentCheckpoint = checkpoint4;
                 break;
             case "Checkpoint5":

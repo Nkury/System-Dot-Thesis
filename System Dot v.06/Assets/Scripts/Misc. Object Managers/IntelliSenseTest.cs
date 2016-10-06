@@ -311,6 +311,15 @@ public class IntelliSenseTest : MonoBehaviour {
         eventName = "finishDialogue";
     }
 
+    public void commentFound()
+    {
+        if (!clickOnce)
+        {
+            SetDialogue("discoverComments");
+            eventName = "finishDialogue";
+        }
+    }
+
     public void botClicked(int bot)
     {
         switch (bot)
