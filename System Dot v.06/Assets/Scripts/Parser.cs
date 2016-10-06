@@ -2404,31 +2404,37 @@ namespace ParserAlgo
                         }                        
                     }
                     else
-                    {                  
+                    {
                         //if(ttype != TokenTypes.EOS)    
                         //    ungetToken();
 
-                        if (statementTag.Last() == StatementTypes.ISEXECUTING ||
-                            statementTag.Last() == StatementTypes.EXECUTEIF ||
-                            statementTag.Last() == StatementTypes.HASIF)
+                        if (statementTag.Count > 0)
                         {
-                            if (statementTag.Last() == StatementTypes.ISEXECUTING)
-                                statementTag.RemoveAt(statementTag.Count - 1);
+                            if (statementTag.Last() == StatementTypes.ISEXECUTING ||
+                                statementTag.Last() == StatementTypes.EXECUTEIF ||
+                                statementTag.Last() == StatementTypes.HASIF)
+                            {
+                                if (statementTag.Last() == StatementTypes.ISEXECUTING)
+                                    statementTag.RemoveAt(statementTag.Count - 1);
 
-                            if (statementTag.Last() == StatementTypes.EXECUTEIF)
-                                statementTag.RemoveAt(statementTag.Count - 1);
+                                if (statementTag.Last() == StatementTypes.EXECUTEIF)
+                                    statementTag.RemoveAt(statementTag.Count - 1);
 
-                            statementTag.RemoveAt(statementTag.Count - 1);                            
+                                statementTag.RemoveAt(statementTag.Count - 1);
+                            }
                         }
 
-                        if (statementTag.Last() == StatementTypes.ISWHILE)
+                        if (statementTag.Count > 0)
                         {
-                            ungetToken();
-                            line_no = loopLineNo;
-                            ttype = getToken();
-                            code = token + code;
-                            code = loopCode[loopCode.Count - 1] + code;
-                        } 
+                            if (statementTag.Last() == StatementTypes.ISWHILE)
+                            {
+                                ungetToken();
+                                line_no = loopLineNo;
+                                ttype = getToken();
+                                code = token + code;
+                                code = loopCode[loopCode.Count - 1] + code;
+                            }
+                        }
                         
                     } 
                 }
