@@ -32,7 +32,7 @@ public class OpenMarket : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape) && openMarket)
         {
             openMarket = false;
-            marketCanvas.SetActive(true);
+            marketCanvas.SetActive(false);
             Time.timeScale = 1f;
         }
 	
@@ -46,7 +46,7 @@ public class OpenMarket : MonoBehaviour {
         }
     }
 
-    void OnTriggerExit2d()
+    void OnTriggerExit2d(Collider2D other)
     {
         
             inMarket = false;
