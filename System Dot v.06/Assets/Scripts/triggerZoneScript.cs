@@ -6,6 +6,7 @@ public class triggerZoneScript : MonoBehaviour {
     public GameObject door;
     private int enemyCount;
     public int enemyThreshold;
+    public HurtEnemyOnContact.colorState expectedColor;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,7 @@ public class triggerZoneScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Enemy")
+        if(other.tag == "Enemy" && other.GetComponent<HurtPlayerOnContact>().enemyState == expectedColor)
         {
             PlayerStats.deadObjects.Add(other.gameObject.name);
             Destroy(other.gameObject);

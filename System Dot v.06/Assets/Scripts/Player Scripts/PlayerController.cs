@@ -186,6 +186,8 @@ public class PlayerController : MonoBehaviour
         // load the level
         else if(coll.gameObject.tag == "bit")
         {
+            // avoides knockback from getting bits
+            Physics2D.IgnoreCollision(this.transform.parent.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
             collectBit.Play();
             PlayerStats.bitsCollected++;
             if (coll.gameObject.name.Contains("enviroBit"))
