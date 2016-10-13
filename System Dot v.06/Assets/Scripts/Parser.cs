@@ -150,7 +150,7 @@ namespace ParserAlgo
             SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
             DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
-            COLON, COMMA, QUOTE, DOUBLEQUOTE, SEMICOLON,
+            COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
             LBRAC, RBRAC, LPAREN, RPAREN, LBRACE, RBRACE,
             GREATER, LESS, LTEQ, GTEQ, DOT,
             AND, OR, NOT, EQUALEQUAL, NOTEQUAL,
@@ -2681,6 +2681,10 @@ namespace ParserAlgo
                             code = code.Substring(1);
                             token = ".";
                             return TokenTypes.DOT;
+                        case '\'':
+                            code = code.Substring(1);
+                            token = "\'";
+                            return TokenTypes.APOSTROPHE;
                         case '"':
                             code = code.Substring(1);
                             token = "\"";
