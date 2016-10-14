@@ -12,6 +12,7 @@ TagManager:
   - bit
   - absorb bits
   - Debris
+  - Centipede Body
   layers:
   - Default
   - TransparentFX

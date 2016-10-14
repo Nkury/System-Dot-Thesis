@@ -10,13 +10,16 @@ public class IntelliSenseTest : MonoBehaviour {
 
     Dictionary<string, List<string>> dialogue = new Dictionary<string, List<string>>();
 
+    [Header("Talking")]
     public bool talking;
     public List<string> whatToSay;
+    public string dialogueFileName;
 
     float y0;
     float amplitude = .2f;
     float speed = 1.5f;
 
+    [Header("In-Game Objects")]
     public GameObject player;
     public GameObject intelliLocation;
     public GameObject dialogueBox;
@@ -24,6 +27,8 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject hackPrompt;
     public GameObject mouseClickPrompt;
 
+    [Header("Level 1 Tutorial Trigger Zones")]
+    [Tooltip("Only attach game objects if in level one")]
     public GameObject firstTutorialObjective;
     public GameObject secondTutorialObjective;
     public GameObject thirdTutorialObjective;
@@ -32,12 +37,12 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject seventhTutorialBarrier;
     public GameObject levelTitle;
 
+    [Header("UI Components")]
     public GameObject apiButton;
     public GameObject UIClickPrompt;
     public GameObject debugButton;
     public InputField tutorialLine;
     public GameObject APIInfo;
-
     public GameObject directionHelpButton;
     public GameObject chestHelpButton;
 
@@ -54,7 +59,7 @@ public class IntelliSenseTest : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/TutorialDialogue.xml");
+        XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/" + dialogueFileName + ".xml");
         List<string> addedDialogue = new List<string>();
         string keyName;
 
@@ -91,7 +96,7 @@ public class IntelliSenseTest : MonoBehaviour {
             {
                 ZoomOutPlayer();
             }
-
+            
             dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
             if (Input.GetKeyDown(KeyCode.Space))
             {

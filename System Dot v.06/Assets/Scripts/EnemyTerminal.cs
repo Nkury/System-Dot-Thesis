@@ -27,12 +27,21 @@ public class EnemyTerminal : MonoBehaviour
     public GameObject terminalWindow;
     public GameObject bit;
 
+    [Header("Chest Sprites")]
     public Sprite chestSpriteClosed;
     public Sprite chestSpriteOpen;
+
+    [Header("VBot Sprites")]
     public Sprite redSlime;
     public Sprite blueSlime;
     public Sprite greenSlime;
     public Sprite blackSlime;
+
+    [Header("Centipede Body Sprites")]
+    public Sprite redBody;
+    public Sprite blueBody;
+    public Sprite greenBody;
+    public Sprite blackBody;
     
 
     private bool showTerminal = false;
@@ -168,6 +177,11 @@ public class EnemyTerminal : MonoBehaviour
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
                         this.GetComponent<SpriteRenderer>().sprite = blueSlime;
                         numOfSyntaxErrors = 0;
+                    } else if(this.gameObject.tag == "Centipede Body")
+                    {
+                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
+                        this.GetComponent<SpriteRenderer>().sprite = blueBody;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.TURNRED:
@@ -175,6 +189,12 @@ public class EnemyTerminal : MonoBehaviour
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
                         this.GetComponent<SpriteRenderer>().sprite = redSlime;
+                        numOfSyntaxErrors = 0;
+                    }
+                    else if (this.gameObject.tag == "Centipede Body")
+                    {
+                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
+                        this.GetComponent<SpriteRenderer>().sprite = redBody;
                         numOfSyntaxErrors = 0;
                     }
                     break;
@@ -185,12 +205,24 @@ public class EnemyTerminal : MonoBehaviour
                         this.GetComponent<SpriteRenderer>().sprite = greenSlime;
                         numOfSyntaxErrors = 0;
                     }
+                    else if (this.gameObject.tag == "Centipede Body")
+                    {
+                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
+                        this.GetComponent<SpriteRenderer>().sprite = greenBody;
+                        numOfSyntaxErrors = 0;
+                    }
                     break;
                 case keyActions.TURNBLACK:
                     if (this.gameObject.tag == "Enemy")
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
                         this.GetComponent<SpriteRenderer>().sprite = blackSlime;
+                    }
+                    else if (this.gameObject.tag == "Centipede Body")
+                    {
+                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+                        this.GetComponent<SpriteRenderer>().sprite = blackBody;
+                        numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.CLOSE:

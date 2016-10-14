@@ -1,0 +1,7 @@
+<dialogue>
+  
+  <message id="startBoss">
+    <say>We just need to get out of Compiler Cave!</say>
+    <say>The CPU is right outside!</say>
+  </message>
+</dialogue>

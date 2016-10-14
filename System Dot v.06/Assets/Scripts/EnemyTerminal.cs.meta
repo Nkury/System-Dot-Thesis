@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 5c7cc68fba15ba44c8a0424b7511fa23
-timeCreated: 1472151697
+timeCreated: 1476432802
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - terminalPointerDestination: {instanceID: 0}
-  - terminalWindow: {fileID: 198014, guid: b17fb7264e41ae046b0248c7bdbf0e4b, type: 2}
+  - terminalWindow: {instanceID: 0}
+  - bit: {instanceID: 0}
   - chestSpriteClosed: {fileID: 21300000, guid: 34165aceceba9e54eae097303eb234ec,
       type: 3}
   - chestSpriteOpen: {fileID: 21300000, guid: e1a0d48139c1d4b4aaf24076d8544015, type: 3}
@@ -14,6 +15,10 @@ MonoImporter:
   - blueSlime: {fileID: 21300000, guid: 8326a7d428948e147a85b4c6a0ed6e8d, type: 3}
   - greenSlime: {fileID: 21300000, guid: 09b0f0e2e5832a7409f6e23fccd9427e, type: 3}
   - blackSlime: {fileID: 21300000, guid: d5f076303a577ab42a2e9877f7bf3306, type: 3}
+  - redBody: {fileID: 21300000, guid: 2322d414a3c617d40883cc93888212b9, type: 3}
+  - blueBody: {fileID: 21300000, guid: 8f8693a9159a4074a968732c16398e21, type: 3}
+  - greenBody: {fileID: 21300000, guid: fb1b4bf5312e0664fb68ef6e0e50ba61, type: 3}
+  - blackBody: {fileID: 21300000, guid: 4337e50ac7eeed048a11687182f586ce, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

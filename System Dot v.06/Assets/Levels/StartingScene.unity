@@ -273,11 +273,11 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: speechText
       value: 
-      objectReference: {fileID: 2044229042}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 1241661563}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: door
       value: 
@@ -285,7 +285,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: answer
       value: 
-      objectReference: {fileID: 1350893142}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
   m_IsPrefabParent: 0
@@ -1235,7 +1235,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.red);
@@ -2082,6 +2082,10 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 417878, guid: 446d9c3dd1b400f4e9bfd98853e90e94, type: 2}
   m_PrefabInternal: {fileID: 1727597036}
+--- !u!1 &42642219 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 128872, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &42939253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,7 +2594,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.BLUE)
@@ -3149,7 +3153,7 @@ Prefab:
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.move(Direction.RIGHT)
@@ -5167,7 +5171,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
 --- !u!1 &103951036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5801,10 +5805,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &112558532 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 185046, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &112959557
 GameObject:
   m_ObjectHideFlags: 0
@@ -6979,7 +6979,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -7092,10 +7092,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &129958235 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 176670, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &131030821
 GameObject:
   m_ObjectHideFlags: 0
@@ -8477,6 +8473,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &153669053 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 112586, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!4 &153685514 stripped
 Transform:
   m_PrefabParentObject: {fileID: 417878, guid: 446d9c3dd1b400f4e9bfd98853e90e94, type: 2}
@@ -8616,7 +8616,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.GREEN);
@@ -11586,7 +11586,7 @@ Transform:
   m_LocalScale: {x: 88.7, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!1 &220599916
 GameObject:
   m_ObjectHideFlags: 0
@@ -13226,7 +13226,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -13851,7 +13851,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -14803,7 +14803,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -15393,11 +15393,11 @@ MonoBehaviour:
   checkpoint3: {fileID: 2004601943}
   checkpoint4: {fileID: 1167840113}
   checkpoint5: {fileID: 686000906}
-  intelliSense: {fileID: 388545555}
-  APIButton: {fileID: 341901565}
-  directionHelpButton: {fileID: 112558532}
-  chestHelpButton: {fileID: 1903842741}
-  DebugButton: {fileID: 1902034506}
+  intelliSense: {fileID: 285674100}
+  APIButton: {fileID: 1916170195}
+  directionHelpButton: {fileID: 153669053}
+  chestHelpButton: {fileID: 1775317651}
+  DebugButton: {fileID: 42642219}
 --- !u!4 &277277874
 Transform:
   m_ObjectHideFlags: 0
@@ -15409,7 +15409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
 --- !u!114 &277277875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15487,7 +15487,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -15811,6 +15811,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &285674100 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 188074, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+  m_PrefabInternal: {fileID: 978845111}
 --- !u!1001 &285691421
 Prefab:
   m_ObjectHideFlags: 0
@@ -15877,7 +15881,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -16279,7 +16283,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -17482,7 +17486,7 @@ Transform:
   m_LocalScale: {x: 0.32231814, y: 0.32231808, z: 0.32231808}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
 --- !u!1 &319360544
 GameObject:
   m_ObjectHideFlags: 0
@@ -18640,10 +18644,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &341901565 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 116328, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &344014377
 GameObject:
   m_ObjectHideFlags: 0
@@ -19719,11 +19719,11 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 1241661563}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: speechText
       value: 
-      objectReference: {fileID: 2044229042}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: door
       value: 
@@ -19735,7 +19735,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: answer
       value: 
-      objectReference: {fileID: 1350893142}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
   m_IsPrefabParent: 0
@@ -20289,7 +20289,7 @@ Prefab:
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.move(Direction.LEFT)
@@ -21144,9 +21144,9 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &385399270 stripped
+--- !u!1 &382632325 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 131278, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabParentObject: {fileID: 188102, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
   m_PrefabInternal: {fileID: 1681209925}
 --- !u!1001 &387774831
 Prefab:
@@ -21220,49 +21220,6 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 416984, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_PrefabInternal: {fileID: 387774831}
---- !u!1 &388545555 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 109520, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
-  m_PrefabInternal: {fileID: 978845111}
---- !u!114 &388545556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 388545555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7dddc35abc4f6949a53121cb5bbcf7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  talking: 0
-  whatToSay: []
-  player: {fileID: 858435340}
-  intelliLocation: {fileID: 723763008}
-  dialogueBox: {fileID: 1675862906}
-  namePrompt: {fileID: 804778131}
-  hackPrompt: {fileID: 424230205}
-  mouseClickPrompt: {fileID: 1432269922}
-  firstTutorialObjective: {fileID: 524307826}
-  secondTutorialObjective: {fileID: 1780538274}
-  thirdTutorialObjective: {fileID: 600290288}
-  fourthTutorialObjective: {fileID: 1839724213}
-  fourthObjectiveBarrier: {fileID: 243675115}
-  seventhTutorialBarrier: {fileID: 1224347034}
-  levelTitle: {fileID: 385399270}
-  apiButton: {fileID: 341901565}
-  UIClickPrompt: {fileID: 1316774061}
-  debugButton: {fileID: 1902034506}
-  tutorialLine: {fileID: 1918626453}
-  APIInfo: {fileID: 879540179}
-  directionHelpButton: {fileID: 112558532}
-  chestHelpButton: {fileID: 1903842741}
---- !u!114 &388545558 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e,
-    type: 2}
-  m_PrefabInternal: {fileID: 978845111}
-  m_Script: {fileID: 11500000, guid: e3b0f40ce550ac648bb23aef5a966473, type: 3}
 --- !u!4 &388626461 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400674, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
@@ -21950,7 +21907,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -23487,10 +23444,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &424230205 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 154122, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &424767171
 GameObject:
   m_ObjectHideFlags: 0
@@ -23662,7 +23615,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -23833,7 +23786,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -25447,7 +25400,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -27284,11 +27237,11 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 1241661563}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: speechText
       value: 
-      objectReference: {fileID: 2044229042}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: door
       value: 
@@ -27300,7 +27253,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: answer
       value: 
-      objectReference: {fileID: 1350893142}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
   m_IsPrefabParent: 0
@@ -27439,7 +27392,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -29157,7 +29110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!1 &526994216
 GameObject:
   m_ObjectHideFlags: 0
@@ -29523,6 +29476,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &532503326 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 189568, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &532676814
 GameObject:
   m_ObjectHideFlags: 0
@@ -30200,7 +30157,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -30824,7 +30781,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 113408, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: m_Name
       value: TutorialEnemy
@@ -31904,7 +31861,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -32100,7 +32057,7 @@ Transform:
   - {fileID: 230853406}
   - {fileID: 208375666}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 28
 --- !u!1 &591806899
 GameObject:
   m_ObjectHideFlags: 0
@@ -32497,11 +32454,11 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 1241661563}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: speechText
       value: 
-      objectReference: {fileID: 2044229042}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: door
       value: 
@@ -32521,7 +32478,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: answer
       value: 
-      objectReference: {fileID: 1350893142}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
   m_IsPrefabParent: 0
@@ -32830,7 +32787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!61 &600290290
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33377,7 +33334,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.green);
@@ -36367,7 +36324,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.RED)
@@ -39478,7 +39435,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: dialogue
       value: 
-      objectReference: {fileID: 1241661563}
+      objectReference: {fileID: 0}
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: door
       value: 
@@ -39486,7 +39443,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: speechText
       value: 
-      objectReference: {fileID: 2044229042}
+      objectReference: {fileID: 0}
     - target: {fileID: 196950, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: m_IsActive
       value: 1
@@ -39494,7 +39451,7 @@ Prefab:
     - target: {fileID: 11431352, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
       propertyPath: answer
       value: 
-      objectReference: {fileID: 1350893142}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da027cdaab4d13b4f95ca90fb0aa7ee1, type: 2}
   m_IsPrefabParent: 0
@@ -43035,7 +42992,7 @@ Transform:
   - {fileID: 1515146655}
   - {fileID: 99895994}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1 &768964132 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -43997,7 +43954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!61 &787180221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44398,6 +44355,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &793075557 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 188658, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &793431798
 GameObject:
   m_ObjectHideFlags: 0
@@ -44584,7 +44545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!61 &794609016
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -45112,11 +45073,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 478586, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 50.3
+      value: -66.5
       objectReference: {fileID: 0}
     - target: {fileID: 478586, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.84
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 478586, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -45149,10 +45110,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &804778131 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 180514, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &809154833
 GameObject:
   m_ObjectHideFlags: 0
@@ -47765,7 +47722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!1 &856132704
 GameObject:
   m_ObjectHideFlags: 0
@@ -49086,10 +49043,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &879540179 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 148088, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &879996652
 GameObject:
   m_ObjectHideFlags: 0
@@ -53836,7 +53789,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.blue);
@@ -54064,15 +54017,15 @@ Prefab:
     - target: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: dialogueBox
       value: 
-      objectReference: {fileID: 1675862906}
+      objectReference: {fileID: 0}
     - target: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: namePrompt
       value: 
-      objectReference: {fileID: 804778131}
+      objectReference: {fileID: 0}
     - target: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: hackPrompt
       value: 
-      objectReference: {fileID: 424230205}
+      objectReference: {fileID: 0}
     - target: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: mouseClickPrompt
       value: 
@@ -54100,7 +54053,7 @@ Prefab:
     - target: {fileID: 11406774, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: levelTitle
       value: 
-      objectReference: {fileID: 385399270}
+      objectReference: {fileID: 0}
     - target: {fileID: 109520, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: m_IsActive
       value: 1
@@ -54109,6 +54062,90 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: dialogueFileName
+      value: TutorialDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 781251161}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: intelliLocation
+      value: 
+      objectReference: {fileID: 723763008}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: mouseClickPrompt
+      value: 
+      objectReference: {fileID: 1432269922}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: apiButton
+      value: 
+      objectReference: {fileID: 1916170195}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: APIInfo
+      value: 
+      objectReference: {fileID: 1650308720}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: directionHelpButton
+      value: 
+      objectReference: {fileID: 153669053}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: chestHelpButton
+      value: 
+      objectReference: {fileID: 1775317651}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: tutorialLine
+      value: 
+      objectReference: {fileID: 2032344357}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: debugButton
+      value: 
+      objectReference: {fileID: 42642219}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: UIClickPrompt
+      value: 
+      objectReference: {fileID: 1472496495}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 2101773890}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: hackPrompt
+      value: 
+      objectReference: {fileID: 532503326}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: namePrompt
+      value: 
+      objectReference: {fileID: 793075557}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: firstTutorialObjective
+      value: 
+      objectReference: {fileID: 524307826}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: secondTutorialObjective
+      value: 
+      objectReference: {fileID: 1780538274}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: thirdTutorialObjective
+      value: 
+      objectReference: {fileID: 600290288}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: fourthTutorialObjective
+      value: 
+      objectReference: {fileID: 1839724213}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: fourthObjectiveBarrier
+      value: 
+      objectReference: {fileID: 243675115}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: seventhTutorialBarrier
+      value: 
+      objectReference: {fileID: 794609013}
+    - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: levelTitle
+      value: 
+      objectReference: {fileID: 382632325}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
   m_IsPrefabParent: 0
@@ -54251,7 +54288,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.BODY(Color.BLUE);
@@ -54572,7 +54609,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: numberOfLines
       value: 1
@@ -54658,7 +54695,7 @@ Prefab:
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.move(Direction.LEFT)
@@ -56870,7 +56907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
 --- !u!114 &1039968725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57711,7 +57748,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -58144,7 +58181,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -58528,7 +58565,7 @@ Transform:
   - {fileID: 794609014}
   - {fileID: 1224347035}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 35
 --- !u!1001 &1076960903
 Prefab:
   m_ObjectHideFlags: 0
@@ -58649,7 +58686,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -61463,7 +61500,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -64749,7 +64786,7 @@ Prefab:
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.move(Direction.LEFT)
@@ -67252,10 +67289,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1241661563 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 191568, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1242531761
 GameObject:
   m_ObjectHideFlags: 0
@@ -67871,7 +67904,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -68574,7 +68607,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -69350,7 +69383,7 @@ Transform:
   m_LocalScale: {x: 0.32231814, y: 0.32231808, z: 0.32231808}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
 --- !u!1 &1282155971
 GameObject:
   m_ObjectHideFlags: 0
@@ -70974,10 +71007,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1316774061 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 198552, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1320824169
 GameObject:
   m_ObjectHideFlags: 0
@@ -72013,12 +72042,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!114 &1350893142 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11405518, guid: 705e137fcb35b16488f51a418900a12c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
-  m_Script: {fileID: 575553740, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1351796234
 GameObject:
   m_ObjectHideFlags: 0
@@ -75735,7 +75758,7 @@ Transform:
   - {fileID: 571640542}
   - {fileID: 1534039775}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!1 &1434468270
 GameObject:
   m_ObjectHideFlags: 0
@@ -77832,6 +77855,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1472496495 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130634, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1473034462
 GameObject:
   m_ObjectHideFlags: 0
@@ -78240,7 +78267,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -79824,7 +79851,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
 --- !u!1 &1485064536
 GameObject:
   m_ObjectHideFlags: 0
@@ -80522,7 +80549,7 @@ Prefab:
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
   m_IsPrefabParent: 0
@@ -81058,7 +81085,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.RED);
@@ -84274,7 +84301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!61 &1565570764
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -85096,7 +85123,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -86328,7 +86355,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -89237,6 +89264,10 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 416150, guid: 3feacf65dab8a594b80efb953880c053, type: 2}
   m_PrefabInternal: {fileID: 650600494}
+--- !u!1 &1650308720 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 154528, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1655769371
 GameObject:
   m_ObjectHideFlags: 0
@@ -89965,10 +89996,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 417878, guid: 446d9c3dd1b400f4e9bfd98853e90e94, type: 2}
   m_PrefabInternal: {fileID: 1675145892}
---- !u!1 &1675862906 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 155340, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1675892568
 GameObject:
   m_ObjectHideFlags: 0
@@ -90332,19 +90359,19 @@ Prefab:
     - target: {fileID: 11481092, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 388545556}
+      objectReference: {fileID: 0}
     - target: {fileID: 11489974, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 388545556}
+      objectReference: {fileID: 0}
     - target: {fileID: 11427782, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 388545558}
+      objectReference: {fileID: 0}
     - target: {fileID: 11463192, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 388545558}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
   m_IsPrefabParent: 0
@@ -95287,6 +95314,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1775317651 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 177650, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1775394262
 GameObject:
   m_ObjectHideFlags: 0
@@ -95362,7 +95393,7 @@ Transform:
   m_LocalScale: {x: 0.32231814, y: 0.32231808, z: 0.32231808}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!1 &1776630137
 GameObject:
   m_ObjectHideFlags: 0
@@ -95587,7 +95618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!61 &1780538276
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96311,7 +96342,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.body(Color.GREEN)
@@ -96770,7 +96801,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -97456,7 +97487,7 @@ Transform:
   - {fileID: 585479537}
   - {fileID: 285691422}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1 &1818592711
 GameObject:
   m_ObjectHideFlags: 0
@@ -98677,7 +98708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 388545555}
+  intelliSense: {fileID: 0}
 --- !u!61 &1839724215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -99373,7 +99404,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -102000,10 +102031,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1902034506 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 116306, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1001 &1902996841
 Prefab:
   m_ObjectHideFlags: 0
@@ -102208,10 +102235,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1903842741 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 112114, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1001 &1904393098
 Prefab:
   m_ObjectHideFlags: 0
@@ -102635,6 +102658,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1916170195 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 164850, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!4 &1916214908 stripped
 Transform:
   m_PrefabParentObject: {fileID: 435946, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
@@ -102843,12 +102870,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 446d9c3dd1b400f4e9bfd98853e90e94, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1918626453 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11465568, guid: 705e137fcb35b16488f51a418900a12c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
-  m_Script: {fileID: 575553740, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1919310041
 GameObject:
   m_ObjectHideFlags: 0
@@ -103863,7 +103884,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!1 &1944956255
 GameObject:
   m_ObjectHideFlags: 0
@@ -106150,7 +106171,7 @@ Prefab:
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11420618, guid: 00bc919aa1f704d4686e72082427e3e7, type: 2}
       propertyPath: terminalString.Array.data[0]
       value: System.move(Direction.LEFT)
@@ -106483,7 +106504,7 @@ Prefab:
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalWindow
       value: 
-      objectReference: {fileID: 129958235}
+      objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
       value: public class VBot() {
@@ -106754,7 +106775,7 @@ Transform:
   - {fileID: 1167840116}
   - {fileID: 686000905}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 36
 --- !u!4 &2004150570 stripped
 Transform:
   m_PrefabParentObject: {fileID: 435946, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
@@ -108393,6 +108414,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &2032344357 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11420382, guid: 705e137fcb35b16488f51a418900a12c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
+  m_Script: {fileID: 575553740, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &2032679290
 GameObject:
   m_ObjectHideFlags: 0
@@ -108816,12 +108843,6 @@ SpriteRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 104334, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
   m_PrefabInternal: {fileID: 804035360}
---- !u!114 &2044229042 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11404668, guid: 705e137fcb35b16488f51a418900a12c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &2044802976
 GameObject:
   m_ObjectHideFlags: 0
@@ -112081,6 +112102,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &2101773890 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 103128, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &2102051127
 GameObject:
   m_ObjectHideFlags: 0
@@ -113055,7 +113080,7 @@ Transform:
   - {fileID: 1512971645}
   - {fileID: 1696642286}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 31
 --- !u!1001 &2127647874
 Prefab:
   m_ObjectHideFlags: 0
