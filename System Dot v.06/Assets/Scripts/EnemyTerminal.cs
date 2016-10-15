@@ -52,6 +52,8 @@ public class EnemyTerminal : MonoBehaviour
 
     private int numOfSyntaxErrors;
 
+    public AudioSource openTerminal;
+
     // Use this for initialization
     void Start()
     {
@@ -82,6 +84,7 @@ public class EnemyTerminal : MonoBehaviour
                 this.GetComponent<LineRenderer>().SetPosition(1, new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
                                                         terminalPointerDestination.transform.position.y - this.transform.position.y,
                                                         10));
+            openTerminal.Play();
         }
         else
         {

@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MovingPlatform : MonoBehaviour {
 
+    public AudioSource moving;
 	// Use this for initialization
 	void Start () {
       
@@ -18,6 +19,11 @@ public class MovingPlatform : MonoBehaviour {
         if(other.gameObject.tag == "Ground")
         {
             this.GetComponent<EnemyTerminal>().actions.Clear();
+        }
+
+        if(other.gameObject.tag == "Player")
+        {
+            moving.Play();
         }
     }
 

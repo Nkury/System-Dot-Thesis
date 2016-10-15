@@ -7,6 +7,7 @@ public class triggerZoneScript : MonoBehaviour {
     private int enemyCount;
     public int enemyThreshold;
     public HurtEnemyOnContact.colorState expectedColor;
+    public AudioSource enemyEntered;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,7 @@ public class triggerZoneScript : MonoBehaviour {
         if(other.tag == "Enemy" && other.GetComponent<HurtPlayerOnContact>().enemyState == expectedColor)
         {
             PlayerStats.deadObjects.Add(other.gameObject.name);
+            enemyEntered.Play();
             Destroy(other.gameObject);
             enemyCount++;
         }
