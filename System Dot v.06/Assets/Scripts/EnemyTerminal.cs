@@ -42,6 +42,7 @@ public class EnemyTerminal : MonoBehaviour
     public Sprite blueBody;
     public Sprite greenBody;
     public Sprite blackBody;
+    public Sprite head;
     
 
     private bool showTerminal = false;
@@ -84,7 +85,7 @@ public class EnemyTerminal : MonoBehaviour
                 this.GetComponent<LineRenderer>().SetPosition(1, new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
                                                         terminalPointerDestination.transform.position.y - this.transform.position.y,
                                                         10));
-            openTerminal.Play();
+           // openTerminal.Play();
         }
         else
         {
@@ -221,11 +222,14 @@ public class EnemyTerminal : MonoBehaviour
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
                         this.GetComponent<SpriteRenderer>().sprite = blackSlime;
                     }
-                    else if (this.gameObject.tag == "Centipede Body")
+                    else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name != "Centipede Head")
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
                         this.GetComponent<SpriteRenderer>().sprite = blackBody;
-                        numOfSyntaxErrors = 0;
+                    } else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name == "Centipede Head")
+                    {
+                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+                        this.GetComponent<SpriteRenderer>().sprite = head;
                     }
                     break;
                 case keyActions.CLOSE:

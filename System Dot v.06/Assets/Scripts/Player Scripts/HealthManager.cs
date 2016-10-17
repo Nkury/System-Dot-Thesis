@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour {
@@ -31,13 +32,17 @@ public class HealthManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(playerHealth <= 0 && !isDead)
+	    if(playerHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "StartingScene")
         {
             playerHealth = 0;
             levelManager.RespawnPlayer();
             lifeSystem.TakeLife();
             isDead = true;
             //timeManager.resetTime();
+        } else if(playerHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
+        {
+            FullHealth();
+            SceneManager.LoadScene("Level1 BOSS");
         }
 
 		text.text = "" + playerHealth;

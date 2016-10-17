@@ -225,6 +225,7 @@ public class IntelliSenseTest : MonoBehaviour {
     public void StartFourthTutorial()
     {
         SetDialogue("catchUp3");
+        LevelManager.canPressTab = true;
         eventName = "moveToFourthTutorial";
     }
 
@@ -313,6 +314,12 @@ public class IntelliSenseTest : MonoBehaviour {
     public void debugClicked()
     {
         SetDialogue("colorChanged");
+        if (GameObject.Find("FifthTutorialObjective"))
+        {
+            GameObject destroy = GameObject.Find("FifthTutorialObjective");
+            Destroy(destroy);
+            PlayerStats.deadObjects.Add(destroy.name);
+        }
         eventName = "finishDialogue";
     }
 
@@ -395,8 +402,11 @@ public class IntelliSenseTest : MonoBehaviour {
         switch (eventName)
         {
             case "promptForName":
-                namePrompt.SetActive(true);
-                namePrompt.GetComponent<InputField>().Select();
+                if (namePrompt)
+                {
+                    namePrompt.SetActive(true);
+                    namePrompt.GetComponent<InputField>().Select();
+                }
                 break;
             case "moveToFirstTutorial":
                 if (firstTutorialObjective != null)

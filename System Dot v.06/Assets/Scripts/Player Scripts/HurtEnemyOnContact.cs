@@ -29,7 +29,7 @@ public class HurtEnemyOnContact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (LevelManager.canPressTab && Input.GetKeyDown(KeyCode.Tab))
         {
             if ((int)state >= 2)
                 state = colorState.BLUE;
@@ -55,7 +55,7 @@ public class HurtEnemyOnContact : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.tag == "Enemy" || other.tag == "Enemy1") && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
+        if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body") && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
             other.GetComponent<EnemyHealthManager>().giveDamage(damageToGive);
             myrigidbody2D.velocity = new Vector2(myrigidbody2D.velocity.x, bounceOnEnemy);

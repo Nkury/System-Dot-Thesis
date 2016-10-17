@@ -13,6 +13,8 @@ TagManager:
   - absorb bits
   - Debris
   - Centipede Body
+  - Falling Spike
+  - Centipede Trigger
   layers:
   - Default
   - TransparentFX

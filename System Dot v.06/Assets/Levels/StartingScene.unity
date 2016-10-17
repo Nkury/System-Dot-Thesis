@@ -15904,6 +15904,12 @@ SpriteRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 188074, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
   m_PrefabInternal: {fileID: 978845111}
+--- !u!114 &285674101 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 978845111}
+  m_Script: {fileID: 11500000, guid: c7dddc35abc4f6949a53121cb5bbcf7d, type: 3}
 --- !u!1001 &285691421
 Prefab:
   m_ObjectHideFlags: 0
@@ -29102,7 +29108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}
@@ -32782,7 +32788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}
@@ -43952,7 +43958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}
@@ -44547,7 +44553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}
@@ -54214,7 +54220,7 @@ Prefab:
     - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: UIClickPrompt
       value: 
-      objectReference: {fileID: 1472496495}
+      objectReference: {fileID: 1204680364}
     - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: dialogueBox
       value: 
@@ -65169,6 +65175,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1204680364 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 183834, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1207006565
 GameObject:
   m_ObjectHideFlags: 0
@@ -78070,10 +78080,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!1 &1472496495 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 130634, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
-  m_PrefabInternal: {fileID: 1681209925}
 --- !u!1 &1473034462
 GameObject:
   m_ObjectHideFlags: 0
@@ -84517,7 +84523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}
@@ -90596,6 +90602,38 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11403122, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 285674101}
+    - target: {fileID: 11403122, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: nameEntered
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489726, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 285674101}
+    - target: {fileID: 11489726, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InputtedCode
+      objectReference: {fileID: 0}
+    - target: {fileID: 11496516, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 285674101}
+    - target: {fileID: 11496516, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: nameEntered
+      objectReference: {fileID: 0}
+    - target: {fileID: 11453214, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 285674101}
+    - target: {fileID: 11453214, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InputtedCode
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
   m_IsPrefabParent: 0
@@ -90732,7 +90770,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -90754,7 +90792,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1 &1683644706
 GameObject:
   m_ObjectHideFlags: 0
@@ -96076,7 +96114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}
@@ -99169,7 +99207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4388cb397534aa408448328be75190d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intelliSense: {fileID: 0}
+  intelliSense: {fileID: 285674100}
   ground1: {fileID: 0}
   ground2: {fileID: 0}
   hallway: {fileID: 0}

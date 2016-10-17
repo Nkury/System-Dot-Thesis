@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour {
     public GameObject chestHelpButton;
     public GameObject DebugButton;
 
+    public static bool canPressTab = true;
+
 
     private bool loadedIn = false;
     // Use this for initialization
@@ -99,6 +101,7 @@ public class LevelManager : MonoBehaviour {
                 chestHelpButton.SetActive(false);
                 IntelliSenseTest.clickOnce = false;
                 APISystem.clicked = false;
+                canPressTab = false; // cannot press tab to switch boots to serve the tutorial
                 break;
             case "Checkpoint2":
                 APIButton.SetActive(false);
