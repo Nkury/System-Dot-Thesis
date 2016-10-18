@@ -20,11 +20,17 @@ public class LevelManager : MonoBehaviour {
 
 	public HealthManager healthManager;
 
+    [Header("Level 1 Checkpoints")]
     public GameObject checkpoint1;
     public GameObject checkpoint2;
     public GameObject checkpoint3;
     public GameObject checkpoint4;
     public GameObject checkpoint5;
+
+    [Header("Level 1 Boss Checkpoint")]
+    public GameObject checkpoint6;
+
+    [Header("Miscellaneous")]
     public GameObject intelliSense;
     public GameObject APIButton;
     public GameObject directionHelpButton;
@@ -89,7 +95,6 @@ public class LevelManager : MonoBehaviour {
     {
         // set it to false so we don't have to go through the tutorial
         loadedIn = true;
-        Debug.Log(PlayerStats.checkpoint);
         switch (PlayerStats.checkpoint)
         {
             case "Checkpoint1":
@@ -123,6 +128,9 @@ public class LevelManager : MonoBehaviour {
                 break;
             case "Checkpoint5":
                 currentCheckpoint = checkpoint5;
+                break;
+            case "Checkpoint6":
+                currentCheckpoint = checkpoint6;
                 break;
         }
     }

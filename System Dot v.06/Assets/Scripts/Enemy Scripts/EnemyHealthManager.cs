@@ -37,6 +37,12 @@ public class EnemyHealthManager : MonoBehaviour {
                     spawner.spawnRandomEnemy();
                 }
             }
+
+            if(this.gameObject.tag == "Centipede Body")
+            {
+                CentipedeHead.lives--;
+            }
+
             Instantiate(deathEffect, transform.position, transform.rotation);
             for(int i = 0; i < bitsOnDeath; i++)
             {

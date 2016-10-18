@@ -42,14 +42,26 @@ public class HurtEnemyOnContact : MonoBehaviour
         {
             leftFoot.GetComponent<SpriteRenderer>().sprite = redBoot;
             rightFoot.GetComponent<SpriteRenderer>().sprite = redBoot;
+            if(GameObject.Find("display shoe right"))
+            {
+                GameObject.Find("display shoe right").GetComponent<SpriteRenderer>().sprite = redBoot;
+            }
         } else if(state == colorState.BLUE)
         {
             leftFoot.GetComponent<SpriteRenderer>().sprite = blueBoot;
             rightFoot.GetComponent<SpriteRenderer>().sprite = blueBoot;
+            if (GameObject.Find("display shoe right"))
+            {
+                GameObject.Find("display shoe right").GetComponent<SpriteRenderer>().sprite = blueBoot;
+            }
         } else if(state == colorState.GREEN)
         {
             leftFoot.GetComponent<SpriteRenderer>().sprite = greenBoot;
             rightFoot.GetComponent<SpriteRenderer>().sprite = greenBoot;
+            if (GameObject.Find("display shoe right"))
+            {
+                GameObject.Find("display shoe right").GetComponent<SpriteRenderer>().sprite = greenBoot;
+            }
         }
     }
 

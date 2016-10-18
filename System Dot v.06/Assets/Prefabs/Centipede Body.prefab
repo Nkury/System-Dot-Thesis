@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11419840}
   - 82: {fileID: 8249952}
   - 61: {fileID: 6178462}
+  - 114: {fileID: 11442924}
   m_Layer: 13
   m_Name: Centipede Body
   m_TagString: Centipede Body
@@ -73,8 +74,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113408}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 0.76553726, y: 9.162837, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.28, y: 5.16, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 423014}
@@ -101,7 +102,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113408}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -255,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 3
   deathEffect: {fileID: 160488, guid: 82d85631516b35c418bfc5d62e446b43, type: 2}
-  bit: {fileID: 0}
+  bit: {fileID: 117856, guid: 3151455ba3d00c3459ed019a5f1a29b0, type: 2}
   bitsOnDeath: 0
 --- !u!114 &11419840
 MonoBehaviour:
@@ -272,7 +273,7 @@ MonoBehaviour:
   numberOfLines: 1
   numOfLegacy: 0100000000
   terminalString:
-  - System.body(Color.BLUE);
+  - 
   - 
   - 
   - 
@@ -356,7 +357,23 @@ MonoBehaviour:
   blueBody: {fileID: 21300000, guid: 8f8693a9159a4074a968732c16398e21, type: 3}
   greenBody: {fileID: 21300000, guid: fb1b4bf5312e0664fb68ef6e0e50ba61, type: 3}
   blackBody: {fileID: 21300000, guid: 4337e50ac7eeed048a11687182f586ce, type: 3}
+  head: {fileID: 0}
   actions: 
+  openTerminal: {fileID: 0}
+--- !u!114 &11442924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1661d4ffa11841142846a23d77dd5508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  numTurns: 1
+  coll: 1
 --- !u!120 &12017670
 LineRenderer:
   m_ObjectHideFlags: 1

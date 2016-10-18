@@ -58,7 +58,14 @@ public class EnemyTerminal : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        terminalWindow = GameObject.Find("Terminal Window");
+        Transform[] trs = GameObject.Find("Main HUD").GetComponentsInChildren<Transform>(true);
+        foreach(Transform t in trs)
+        {
+            if(t.name == "Terminal Window")
+            {
+                terminalWindow = t.gameObject;
+            }
+        } 
 
         checkTerminalString();
         StartCoroutine(evaluateActions());

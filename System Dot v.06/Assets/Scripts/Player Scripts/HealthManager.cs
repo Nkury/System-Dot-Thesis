@@ -22,10 +22,9 @@ public class HealthManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		text = GetComponent<Text> ();	
-		//playerHealth = maxPlayerHealth;
-		playerHealth = PlayerPrefs.GetInt ("PlayerCurrentHealth");
+		playerHealth = maxPlayerHealth;
 		levelManager = FindObjectOfType<LevelManager> ();
-    timeManager = FindObjectOfType<TimeManager>();
+        timeManager = FindObjectOfType<TimeManager>();
 		lifeSystem = FindObjectOfType<LifeManager> ();
 		isDead = false;
 	}
@@ -42,7 +41,9 @@ public class HealthManager : MonoBehaviour {
         } else if(playerHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
         {
             FullHealth();
-            SceneManager.LoadScene("Level1 BOSS");
+            CentipedeHead.lives = 18;
+            CentipedeHead.life = 1;
+            Application.LoadLevel(Application.loadedLevel);
         }
 
 		text.text = "" + playerHealth;
@@ -55,13 +56,11 @@ public class HealthManager : MonoBehaviour {
         {
             playerHealth = 0;
         }
-		PlayerPrefs.SetInt ("PlayerCurrentHealth", playerHealth);
 	}
 
 	public void FullHealth()
 	{
-		playerHealth = PlayerPrefs.GetInt ("PlayerMaxHealth");
-		PlayerPrefs.SetInt ("PlayerCurrentHealth", playerHealth);
+        playerHealth = maxPlayerHealth;
 	}
 
   public void KillPlayer()

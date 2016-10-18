@@ -4,12 +4,25 @@ using System.Collections;
 public class CentipedeBody : MonoBehaviour {
 
 
-    public int speed = 1;
+    public int speed = 3;
     public int numTurns = 1;
+    public bool coll = true;
+    public int id; // what # life is this
 
 	// Use this for initialization
-	void Start () {
-        int random = Random.Range(0, 4);
+	void Awake () {
+        id = CentipedeHead.life;
+        id = CentipedeHead.life++;
+        int random;
+        if(id < 10)
+        {
+            random = Random.Range(0, 3);
+        }
+        else
+        {
+            random = Random.Range(0, 4);
+        }
+
         switch (random)
         {
             case 0:
@@ -28,31 +41,87 @@ public class CentipedeBody : MonoBehaviour {
                 this.GetComponent<EnemyTerminal>().numOfLegacy[0] = false;
                 break;
         }
-	}
+
+        this.GetComponent<EnemyTerminal>().checkTerminalString();
+        this.GetComponent<EnemyTerminal>().evaluateActions();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-            this.transform.Translate(new Vector3(-.01f * speed, 0, 0));
+        
+        this.transform.Translate(new Vector3(-.01f * speed, 0, 0));
+        
+        if (CentipedeHead.lives < 9)
+        {
+            speed = 8;
+        }
+        if (CentipedeHead.lives < 15)
+        {
+            speed = 5;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(this.gameObject.name + " I got here");
-        if(other.gameObject.tag == "Centipede Trigger" && (numTurns % 4 == 1 || numTurns % 4 == 2)) {
-            this.transform.Rotate(0, 0, 90);
-            numTurns++;
-        } else if(other.gameObject.tag == "Centipede Trigger" && (numTurns % 4 == 3 || numTurns % 4 == 0))
+        if(other.gameObject.tag == "Centipede Trigger" && other.gameObject.name.Substring(0, 1) == "C")
         {
-            this.transform.Rotate(0, 0, -90);
-            numTurns++;
+            this.transform.position = new Vector2(39.87f, .88f);
         }
-
-        
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.gameObject.tag == "Centipede Trigger") { }
-           // numTurns++;
+        //if(other.gameObject.tag == "Centipede Trigger" && other.gameObject.name.Substring(0, 1) == "C")
+        //{
+        //    if (!coll)
+        //    {
+        //        this.transform.Rotate(0, 0, -90);
+        //        coll = true;
+        //        numTurns++;
+        //    }
+        //    else
+        //    {
+        //        if(numTurns % 4 == 1 || numTurns % 4 == 3)
+        //        {
+        //            this.transform.Rotate(0, 0, -180);
+        //            numTurns++;
+        //        } else if (numTurns % 4 == 2 || numTurns % 4 == 0)
+        //        {
+        //            this.transform.Rotate(0, 0, 180);
+        //            numTurns++;
+        //        }
+        //    }
+        //}
+        if (coll)
+        {
+            if(other.gameObject.tag == "Centipede Trigger" && other.gameObject.name.Substring(0, 1) == "A")
+            {
+                if(numTurns % 4 == 1 || numTurns % 4 == 2)
+                {
+                    this.transform.Rotate(0, 0, 90);
+                    numTurns++;
+                    coll = false;
+                } else if(numTurns % 4 == 3 || numTurns % 4 == 0)
+                {
+                    this.transform.Rotate(0, 0, -90);
+                    numTurns++;
+                    coll = false;
+                }
+            }
+        }
+        else
+        {
+            if (other.gameObject.tag == "Centipede Trigger" && other.gameObject.name.Substring(0, 1) == "B")
+            {
+                if (numTurns % 4 == 1 || numTurns % 4 == 2)
+                {
+                    this.transform.Rotate(0, 0, 90);
+                    numTurns++;
+                    coll = true;
+                }
+                else if (numTurns % 4 == 3 || numTurns % 4 == 0)
+                {
+                    this.transform.Rotate(0, 0, -90);
+                    numTurns++;
+                    coll = true;
+                }
+            }
+        }
     }
 }
