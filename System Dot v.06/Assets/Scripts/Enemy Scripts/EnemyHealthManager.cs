@@ -42,7 +42,15 @@ public class EnemyHealthManager : MonoBehaviour {
             if(this.gameObject.tag == "Centipede Body")
             {
                 CentipedeHead.lives--;
-                GameObject.Find("Boss Health").GetComponentInChildren<Slider>().value -=1;
+
+                if (GameObject.Find("Boss Health"))
+                {
+                    GameObject.Find("Boss Health").GetComponentInChildren<Slider>().value -= 1;
+                    if (GameObject.Find("Boss Health").GetComponentInChildren<Slider>().value == 0)
+                    {
+                        GameObject.Find("Boss Health").SetActive(false);
+                    }
+                }
             }
 
             Instantiate(deathEffect, transform.position, transform.rotation);

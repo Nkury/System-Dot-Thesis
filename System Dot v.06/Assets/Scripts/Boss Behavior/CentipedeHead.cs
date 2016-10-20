@@ -53,13 +53,14 @@ public class CentipedeHead : MonoBehaviour {
                 ground2.SetActive(false);
                 exitHallway.SetActive(true);
 
-                // return camera to normal
-                Camera.main.orthographicSize = 3.675071f;
-                Camera.main.GetComponent<CameraController>().yOffset = 0;
-                Camera.main.GetComponent<CameraController>().xOffset = 0;
-                Camera.main.GetComponent<CameraController>().isFollowing = true;
+                Camera.main.GetComponents<AudioSource>()[0].mute = true;
+                Camera.main.GetComponents<AudioSource>()[2].Play(); // play victory theme
 
-                GameObject.Find("Boss Health").SetActive(false);
+                //// return camera to normal
+                //Camera.main.orthographicSize = 3.675071f;
+                //Camera.main.GetComponent<CameraController>().yOffset = 0;
+                //Camera.main.GetComponent<CameraController>().xOffset = 0;
+                //Camera.main.GetComponent<CameraController>().isFollowing = true;
 
                 this.GetComponent<EnemyHealthManager>().giveDamage(7);
             }
