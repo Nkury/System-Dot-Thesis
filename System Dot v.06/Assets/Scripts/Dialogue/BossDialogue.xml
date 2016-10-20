@@ -1,7 +1,12 @@
 <dialogue>
   
   <message id="startBoss">
-    <say>We just need to get out of Compiler Cave!</say>
-    <say>The CPU is right outside!</say>
+    <say>Let me guess.</say>
+    <say>By the ominous atmosphere and big open space, I'd say it's not over yet.</say>
+    <say>It sounds like you're going to be fighting something huge right about now.</say>
+    <say>Since I know you probably aren't prepared, I'll give you armor.</say>
+    <say>Ew, is that saliva?</say>
+    <say>Oh, come on! The CPU is right outside!</say>
+    <say>Well, you're on your own! Sayonara, stranger!</say>
   </message>
 </dialogue>

@@ -48,16 +48,19 @@ public class CentipedeBody : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        this.transform.Translate(new Vector3(-.01f * speed, 0, 0));
-        
-        if (CentipedeHead.lives < 9)
+
+        if (BossIntellisense.startBoss)
         {
-            speed = 8;
-        }
-        if (CentipedeHead.lives < 15)
-        {
-            speed = 5;
+            this.transform.Translate(new Vector3(-.01f * speed, 0, 0));
+
+            if (CentipedeHead.lives < 9)
+            {
+                speed = 8;
+            }
+            if (CentipedeHead.lives < 15)
+            {
+                speed = 5;
+            }
         }
     }
 

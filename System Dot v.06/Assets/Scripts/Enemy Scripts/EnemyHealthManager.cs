@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EnemyHealthManager : MonoBehaviour {
@@ -41,6 +42,7 @@ public class EnemyHealthManager : MonoBehaviour {
             if(this.gameObject.tag == "Centipede Body")
             {
                 CentipedeHead.lives--;
+                GameObject.Find("Boss Health").GetComponentInChildren<Slider>().value -=1;
             }
 
             Instantiate(deathEffect, transform.position, transform.rotation);

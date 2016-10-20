@@ -89,7 +89,7 @@ public class IntelliSenseTest : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
+        // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
         if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].Length)
         {
             if(PlayerStats.checkpoint != "Checkpoint1")
@@ -103,7 +103,7 @@ public class IntelliSenseTest : MonoBehaviour {
                 index = whatToSay[dialogueIndex].Length;
             }
         }
-        // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
+        // THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
         else if (dialogueIndex < whatToSay.Count)
         {
             // go to the next string

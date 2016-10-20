@@ -1982,12 +1982,13 @@ namespace ParserAlgo
 
         private void ReadBody(string concat)
         {
-            int numOfLBrace = 0;
+            int numOfLBrace = 0; // increment for amount of LBRACE, decrement for RBRACE
             int prevLineNo = line_no;
             int numQuotes = 0;
 
             ttype = getToken();
             loopCode[loopCode.Count - 1] += token + " ";
+            // expecting a left brace; otherwise, there is no body
             if (ttype != TokenTypes.LBRACE)
             {
                 syntaxMessage = "Error in line " + (line_no - 1) +
@@ -2001,12 +2002,16 @@ namespace ParserAlgo
                 while (ttype != TokenTypes.EOS && numOfLBrace != 0 && ttype != TokenTypes.ERROR)
                 {
                     ttype = getToken();
+
+                    // this means we entered a new line number and therefore need to add a new line to the loop code
                     if(prevLineNo != line_no)
                     {
                         prevLineNo = line_no;
                         loopCode[loopCode.Count - 1] += "\n";
                     }
                     
+                    // since reading in a quote leads to a "quote switching" protocol in getToken(),
+                    // we take care of it in this section of the code
                     if(ttype == TokenTypes.QUOTE && numQuotes < 1)
                     {
                         quoteSwitch = true;
