@@ -29,7 +29,7 @@ public class triggerZoneScript : MonoBehaviour {
         if(other.tag == "Enemy" && other.GetComponent<HurtPlayerOnContact>().enemyState == expectedColor)
         {
             PlayerStats.deadObjects.Add(other.gameObject.name);
-            enemyEntered.Play();
+            //enemyEntered.Play();
             Destroy(other.gameObject);
             enemyCount++;
         }

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float sprintSpeed;
     public float walkSpeed;
+    public float maxVerticalVelocity;
 
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -102,9 +103,10 @@ public class PlayerController : MonoBehaviour
 
             if (knockbackCount <= 0)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.y, -maxVerticalVelocity, Mathf.Infinity));
             }
             else {
+
                 if (knockFromRight)
                 {
                     GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, knockback);
@@ -122,6 +124,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Grounded", grounded);
             anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
+            // responsible for flipping the character left and right
             if (GetComponent<Rigidbody2D>().velocity.x > 0)
             {
                 transform.localScale = new Vector3(1f, 1f, 1f);
@@ -131,32 +134,6 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector3(-1f, 1f, 1f);
             }
 
-
-            //if (Input.GetButtonDown("Fire1") && EnemyTerminal.terminalCount < 2)
-            //{
-            //    Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
-            //    shotDelayCounter = shotDelay;
-            //}
-
-            //if (Input.GetButton("Fire1") && EnemyTerminal.terminalCount < 2)
-            //{
-            //    shotDelayCounter -= Time.deltaTime;
-
-            //    if (shotDelayCounter <= 0)
-            //    {
-            //        shotDelayCounter = shotDelay;
-            //        Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
-            //    }
-            //}
-            //if (anim.GetBool("Sword"))
-            //{
-            //    anim.SetBool("Sword", false);
-            //}
-
-            //if (Input.GetButtonDown("Fire2"))
-            //{
-            //    anim.SetBool("Sword", true);
-            //}
         }
         else
         {
@@ -188,6 +165,7 @@ public class PlayerController : MonoBehaviour
         {
             // avoides knockback from getting bits
             Physics2D.IgnoreCollision(this.transform.parent.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
             collectBit.Play();
             PlayerStats.bitsCollected++;
             if (coll.gameObject.name.Contains("enviroBit"))

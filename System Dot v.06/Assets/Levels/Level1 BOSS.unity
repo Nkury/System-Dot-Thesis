@@ -979,11 +979,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 425890, guid: c97ae9bf6e0e7ce44983198fbde00ad8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.83
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 425890, guid: c97ae9bf6e0e7ce44983198fbde00ad8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.32
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 425890, guid: c97ae9bf6e0e7ce44983198fbde00ad8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5021,11 +5021,11 @@ Transform:
   - {fileID: 2002345661}
   - {fileID: 1436597686}
   - {fileID: 391892505}
-  - {fileID: 1746736842}
-  - {fileID: 123697253}
   - {fileID: 758014965}
-  - {fileID: 1079229907}
+  - {fileID: 123697253}
+  - {fileID: 1746736842}
   - {fileID: 2123430983}
+  - {fileID: 1079229907}
   m_Father: {fileID: 633529383}
   m_RootOrder: 0
 --- !u!4 &863784358 stripped

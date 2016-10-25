@@ -65,7 +65,14 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.deadObjects = SaveLoad.savedGames[0].deadObjects;
         PlayerStats.highestCheckpoint = SaveLoad.savedGames[0].highestCheckpoint;
 
-        Application.LoadLevel(startLevel);
+        if (PlayerStats.checkpoint == "Checkpoint6")
+        {
+            Application.LoadLevel("Level1 BOSS");
+        }
+        else
+        {
+            Application.LoadLevel(startLevel);
+        }
     }
 
 	public void LevelSelect()

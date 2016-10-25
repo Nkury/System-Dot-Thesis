@@ -37,12 +37,14 @@ public class HealthManager : MonoBehaviour {
             levelManager.RespawnPlayer();
             lifeSystem.TakeLife();
             isDead = true;
+            EnemyTerminal.globalTerminalMode = 0;
             //timeManager.resetTime();
         } else if(playerHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
         {
             FullHealth();
             CentipedeHead.lives = 18;
             CentipedeHead.life = 1;
+            EnemyTerminal.globalTerminalMode = 0;
             Application.LoadLevel(Application.loadedLevel);
         }
 

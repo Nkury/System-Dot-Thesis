@@ -41,7 +41,8 @@ public class Checkpoint : MonoBehaviour {
                 SaveLoad.Save();
             }
 
-            levelManager.currentCheckpoint = gameObject;
+            if(levelManager)
+                levelManager.currentCheckpoint = gameObject;
 	
 		}
 	}

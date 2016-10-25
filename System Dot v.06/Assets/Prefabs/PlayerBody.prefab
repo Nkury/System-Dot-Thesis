@@ -550,7 +550,8 @@ MonoBehaviour:
   moveSpeed: 5
   jumpHeight: 15
   sprintSpeed: 6
-  walkSpeed: 3
+  walkSpeed: 4
+  maxVerticalVelocity: 30
   groundCheck: {fileID: 453362}
   groundCheckRadius: 0.1
   whatIsGround:
@@ -723,7 +724,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: walkSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxVerticalVelocity
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104334}
