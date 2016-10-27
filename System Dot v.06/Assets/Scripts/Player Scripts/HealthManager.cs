@@ -16,10 +16,16 @@ public class HealthManager : MonoBehaviour {
 
    private TimeManager timeManager;
 
-	// Use this for initialization
-	void Start () {
-		text = GetComponent<Text> ();	
-        this.GetComponent<Slider>().maxValue = PlayerStats.maxHealth;
+    // Use this for initialization
+    void Start() {
+        text = GetComponent<Text>();
+        if (this.gameObject.name == "Health Bar")
+        {
+            this.GetComponent<Slider>().maxValue = PlayerStats.maxHealth;
+        } else if (this.gameObject.name == "Armor Bar")
+        {
+            this.GetComponent<Slider>().maxValue = PlayerStats.armorHealth;
+        }
         levelManager = FindObjectOfType<LevelManager> ();
         timeManager = FindObjectOfType<TimeManager>();
 		lifeSystem = FindObjectOfType<LifeManager> ();
@@ -46,15 +52,34 @@ public class HealthManager : MonoBehaviour {
             Application.LoadLevel(Application.loadedLevel);
         }
 
-        this.GetComponent<Slider>().value = PlayerStats.currentHealth;
+        if (this.gameObject.name == "Health Bar")
+        {
+            this.GetComponent<Slider>().value = PlayerStats.currentHealth;
+        } else if(this.gameObject.name == "Armor Bar")
+        {
+            this.GetComponent<Slider>().value = PlayerStats.armorHealth;
+        }
 	}
 
 	public static void HurtPlayer(int damageToGive)
 	{
-		PlayerStats.currentHealth -= damageToGive;
+        if (PlayerStats.armorHealth <= 0)
+        {
+            PlayerStats.currentHealth -= damageToGive;
+        }
+        else
+        {
+            PlayerStats.armorHealth -= damageToGive;
+        }
+
       if (PlayerStats.currentHealth < 0)
         {
             PlayerStats.currentHealth = 0;
+        }
+
+      if(PlayerStats.armorHealth < 0)
+        {
+            PlayerStats.armorHealth = 0;
         }
 	}
 
@@ -66,5 +91,13 @@ public class HealthManager : MonoBehaviour {
   public void KillPlayer()
     {
         PlayerStats.currentHealth = 0;
+    }
+
+    public void SetMaxArmor()
+    {
+        if(this.gameObject.name == "Armor Bar")
+        {
+            this.GetComponent<Slider>().maxValue = 10;
+        }
     }
 }

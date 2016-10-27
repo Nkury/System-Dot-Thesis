@@ -161,19 +161,19 @@ public class PlayerController : MonoBehaviour
         // if we collide with a bit, we collect it. If it's an environment bit,
         // then we add it to the list of items that need to be destroyed when we
         // load the level
-        else if(coll.gameObject.tag == "bit")
-        {
-            // avoides knockback from getting bits
-            Physics2D.IgnoreCollision(this.transform.parent.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
-            collectBit.Play();
-            PlayerStats.bitsCollected++;
-            if (coll.gameObject.name.Contains("enviroBit"))
-            {
-                PlayerStats.deadObjects.Add(coll.gameObject.name);
-            }
-            Destroy(coll.gameObject);
-        }
+        //else if(coll.gameObject.tag == "bit")
+        //{
+        //    // avoides knockback from getting bits
+        //    Physics2D.IgnoreCollision(this.transform.parent.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
+        //    Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), coll.gameObject.GetComponent<Collider2D>(), false);
+        //    collectBit.Play();
+        //    PlayerStats.bitsCollected++;
+        //    if (coll.gameObject.name.Contains("enviroBit"))
+        //    {
+        //        PlayerStats.deadObjects.Add(coll.gameObject.name);
+        //    }
+        //    Destroy(coll.gameObject);
+        //}
     }
 
     void OnCollisionExit2D(Collision2D coll)
@@ -183,6 +183,8 @@ public class PlayerController : MonoBehaviour
             transform.parent.gameObject.transform.parent = null;
         }
     }
+
+
 
     public void IntelliSenseTalking(bool set)
     {

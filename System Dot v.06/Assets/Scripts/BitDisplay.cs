@@ -15,18 +15,17 @@ public class BitDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!mouseOver)
-        {          
+        if (!mouseOver) {          
             txt.text = System.Convert.ToString(PlayerStats.bitsCollected, 2);
-            Debug.Log(txt.text);
+        }
+        else {
+            txt.text = PlayerStats.bitsCollected.ToString();
         }
 	}
 
     public void OnMouseEnter()
     {
         mouseOver = true;
-        txt.text = Convert.ToInt64(txt.text, 2).ToString();
-        Debug.Log(txt.text);
     }
 
     public void OnMouseExit()

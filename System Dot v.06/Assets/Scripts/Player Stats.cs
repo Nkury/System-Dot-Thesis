@@ -7,6 +7,7 @@ public class PlayerStats {
     /**** PLAYER ATTRIBUTES ************************************************************************/
     public static int maxHealth;
     public static int currentHealth;
+    public static int armorHealth;
     public static string playerName;
     public static int bitsCollected;
     public static int numberOfDeaths;

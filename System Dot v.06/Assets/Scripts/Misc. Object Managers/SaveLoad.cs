@@ -12,6 +12,7 @@ public class Game
     /**** PLAYER ATTRIBUTES ************************************************************************/
     public int maxHealth;
     public int currentHealth;
+    public int armorHealth;
     public string playerName;
     public int bitsCollected;
     public int numberOfDeaths;

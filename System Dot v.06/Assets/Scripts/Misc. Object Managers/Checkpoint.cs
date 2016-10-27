@@ -30,6 +30,7 @@ public class Checkpoint : MonoBehaviour {
                 Game.current.playerName = PlayerStats.playerName;
                 Game.current.maxHealth = PlayerStats.maxHealth;
                 Game.current.currentHealth = PlayerStats.currentHealth;
+                Game.current.armorHealth = PlayerStats.armorHealth;
                 Game.current.bitsCollected = PlayerStats.bitsCollected;
                 Game.current.numberOfDeaths = PlayerStats.numberOfDeaths;
                 Debug.Log("Deaths: " + PlayerStats.numberOfDeaths);

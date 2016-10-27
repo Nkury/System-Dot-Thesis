@@ -64,6 +64,7 @@ public class MainMenu : MonoBehaviour {
         Game.current = SaveLoad.savedGames[0];
         PlayerStats.maxHealth = SaveLoad.savedGames[0].maxHealth;
         PlayerStats.currentHealth = SaveLoad.savedGames[0].currentHealth;
+        PlayerStats.armorHealth = SaveLoad.savedGames[0].armorHealth;
         PlayerStats.bitsCollected = SaveLoad.savedGames[0].bitsCollected;
         PlayerStats.numberOfDeaths = SaveLoad.savedGames[0].numberOfDeaths;
         PlayerStats.totalSecondsOfPlaytime = SaveLoad.savedGames[0].totalSecondsOfPlaytime;
