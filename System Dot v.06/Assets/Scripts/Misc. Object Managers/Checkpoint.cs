@@ -28,7 +28,13 @@ public class Checkpoint : MonoBehaviour {
             {
                 Debug.Log("Activated Checkpoint " + transform.position);
                 Game.current.playerName = PlayerStats.playerName;
+                Game.current.maxHealth = PlayerStats.maxHealth;
+                Game.current.currentHealth = PlayerStats.currentHealth;
                 Game.current.bitsCollected = PlayerStats.bitsCollected;
+                Game.current.numberOfDeaths = PlayerStats.numberOfDeaths;
+                Debug.Log("Deaths: " + PlayerStats.numberOfDeaths);
+                Game.current.totalSecondsOfPlaytime = PlayerStats.totalSecondsOfPlaytime;
+                Debug.Log("Time played: " + PlayerStats.totalSecondsOfPlaytime);
                 PlayerStats.checkpoint = this.gameObject.name;
                 Game.current.checkpoint = this.gameObject.name;
                 PlayerStats.deadObjects = PlayerStats.deadObjects.Distinct().ToList<string>();

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour {
 
-	public int maxPlayerHealth;
-
-	public static int playerHealth;
 	
 	Text text;
 
@@ -15,15 +12,15 @@ public class HealthManager : MonoBehaviour {
 
 	public bool isDead;
 
-  private LifeManager lifeSystem;
+   private LifeManager lifeSystem;
 
-  private TimeManager timeManager;
+   private TimeManager timeManager;
 
 	// Use this for initialization
 	void Start () {
 		text = GetComponent<Text> ();	
-		playerHealth = maxPlayerHealth;
-		levelManager = FindObjectOfType<LevelManager> ();
+        this.GetComponent<Slider>().maxValue = PlayerStats.maxHealth;
+        levelManager = FindObjectOfType<LevelManager> ();
         timeManager = FindObjectOfType<TimeManager>();
 		lifeSystem = FindObjectOfType<LifeManager> ();
 		isDead = false;
@@ -31,42 +28,43 @@ public class HealthManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(playerHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "StartingScene")
+	    if(PlayerStats.currentHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "StartingScene")
         {
-            playerHealth = 0;
+            PlayerStats.currentHealth = 0;
             levelManager.RespawnPlayer();
-            lifeSystem.TakeLife();
+            PlayerStats.numberOfDeaths++;
             isDead = true;
             EnemyTerminal.globalTerminalMode = 0;
             //timeManager.resetTime();
-        } else if(playerHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
+        } else if(PlayerStats.currentHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
         {
             FullHealth();
+            PlayerStats.numberOfDeaths++;
             CentipedeHead.lives = 18;
             CentipedeHead.life = 1;
             EnemyTerminal.globalTerminalMode = 0;
             Application.LoadLevel(Application.loadedLevel);
         }
 
-		text.text = "" + playerHealth;
+        this.GetComponent<Slider>().value = PlayerStats.currentHealth;
 	}
 
 	public static void HurtPlayer(int damageToGive)
 	{
-		playerHealth -= damageToGive;
-      if (playerHealth < 0)
+		PlayerStats.currentHealth -= damageToGive;
+      if (PlayerStats.currentHealth < 0)
         {
-            playerHealth = 0;
+            PlayerStats.currentHealth = 0;
         }
 	}
 
 	public void FullHealth()
 	{
-        playerHealth = maxPlayerHealth;
+        PlayerStats.currentHealth = PlayerStats.maxHealth;
 	}
 
   public void KillPlayer()
     {
-        playerHealth = 0;
+        PlayerStats.currentHealth = 0;
     }
 }

@@ -10,8 +10,12 @@ public class Game
     public static Game current;
 
     /**** PLAYER ATTRIBUTES ************************************************************************/
+    public int maxHealth;
+    public int currentHealth;
     public string playerName;
     public int bitsCollected;
+    public int numberOfDeaths;
+    public float totalSecondsOfPlaytime;
 
     /**** PLAYER PROGRESS *************************************************************************/
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  

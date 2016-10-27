@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerStats {
 
     /**** PLAYER ATTRIBUTES ************************************************************************/
+    public static int maxHealth;
+    public static int currentHealth;
     public static string playerName;
     public static int bitsCollected;
+    public static int numberOfDeaths;
+    public static float totalSecondsOfPlaytime;
 
     /**** PLAYER PROGRESS *************************************************************************/
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  

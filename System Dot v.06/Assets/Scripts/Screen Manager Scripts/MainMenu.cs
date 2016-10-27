@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour {
 	public string levelSelect;
 
 	public int playerLives;
-
 	public int playerHealth;
 
     public Button newGame;
@@ -45,6 +44,10 @@ public class MainMenu : MonoBehaviour {
 	public void NewGame()
 	{
         Game.current = new Game();
+        PlayerStats.maxHealth = playerHealth;
+        PlayerStats.currentHealth = playerHealth;
+        PlayerStats.numberOfDeaths = 0;
+        PlayerStats.totalSecondsOfPlaytime = 0;
 
 		Application.LoadLevel (startLevel);
 
@@ -59,7 +62,11 @@ public class MainMenu : MonoBehaviour {
     public void ContinueGame()
     {
         Game.current = SaveLoad.savedGames[0];
+        PlayerStats.maxHealth = SaveLoad.savedGames[0].maxHealth;
+        PlayerStats.currentHealth = SaveLoad.savedGames[0].currentHealth;
         PlayerStats.bitsCollected = SaveLoad.savedGames[0].bitsCollected;
+        PlayerStats.numberOfDeaths = SaveLoad.savedGames[0].numberOfDeaths;
+        PlayerStats.totalSecondsOfPlaytime = SaveLoad.savedGames[0].totalSecondsOfPlaytime;
         PlayerStats.playerName = SaveLoad.savedGames[0].playerName;
         PlayerStats.checkpoint = SaveLoad.savedGames[0].checkpoint;
         PlayerStats.deadObjects = SaveLoad.savedGames[0].deadObjects;

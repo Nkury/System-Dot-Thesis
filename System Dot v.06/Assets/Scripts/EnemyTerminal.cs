@@ -16,7 +16,6 @@ public class EnemyTerminal : MonoBehaviour
     public static bool active = false;
 
     public int numberOfLines = 1;
-
     public bool[] numOfLegacy = new bool[5];
     public string[] terminalString = new string[5];
     public string[] originalString = new string[5];
@@ -84,14 +83,13 @@ public class EnemyTerminal : MonoBehaviour
 
         if (localTerminalMode == 2)
         {
-            //checkTerminalString();
-            // evaluateActions();
             this.GetComponent<LineRenderer>().enabled = true;
             this.GetComponent<LineRenderer>().SetPosition(0, new Vector3(0, 0.4f, 10));
             if(terminalPointerDestination != null)
-                this.GetComponent<LineRenderer>().SetPosition(1, new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
-                                                        terminalPointerDestination.transform.position.y - this.transform.position.y,
-                                                        10));
+                this.GetComponent<LineRenderer>().SetPosition(1,
+                    new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
+                    terminalPointerDestination.transform.position.y - this.transform.position.y,
+                    10));
            // openTerminal.Play();
         }
         else
@@ -118,35 +116,39 @@ public class EnemyTerminal : MonoBehaviour
 
     void OnMouseDown()
     {
-
-        for (int i = 0; i < terminalString.Length; i++)
-            originalString[i] = terminalString[i];
-
-        for (int i = 0; i < numberOfLines; i++)
+        // will not click game object if mouse is clicking UI
+        if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
-            if (terminalString[i] != "")
+            for (int i = 0; i < terminalString.Length; i++)
+                originalString[i] = terminalString[i];
+
+            for (int i = 0; i < numberOfLines; i++)
             {
-                terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text = terminalString[i];
+                if (terminalString[i] != "")
+                {
+                    terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text = terminalString[i];
+                }
             }
-        }
 
-        if (globalTerminalMode <=1)
-        {
-            EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
-            foreach (EnemyTerminal e in enemies)
-                e.localTerminalMode = 0;
-            globalTerminalMode = 2;
-            localTerminalMode = 2;
+            if (globalTerminalMode <= 1)
+            {
+                EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
+                foreach (EnemyTerminal e in enemies)
+                    e.localTerminalMode = 0;
+                globalTerminalMode = 2;
+                localTerminalMode = 2;
 
-            // for comment tutorial in level 1
-            if (this.gameObject.name.Contains("Comment")){
-                GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().commentFound();
+                // for comment tutorial in level 1
+                if (this.gameObject.name.Contains("Comment"))
+                {
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().commentFound();
+                }
             }
-        }
-        else
-        {
-            globalTerminalMode = 0;
-            localTerminalMode = 0;
+            else
+            {
+                globalTerminalMode = 0;
+                localTerminalMode = 0;
+            }
         }
     }
 
