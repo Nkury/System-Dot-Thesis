@@ -17,6 +17,7 @@ public class Game
     public int bitsCollected;
     public int numberOfDeaths;
     public float totalSecondsOfPlaytime;
+    public int numHealthPotions;
 
     /**** PLAYER PROGRESS *************************************************************************/
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  

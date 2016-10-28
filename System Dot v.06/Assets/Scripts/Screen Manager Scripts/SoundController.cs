@@ -7,6 +7,9 @@ public class SoundController : MonoBehaviour {
     public AudioSource startup_noise;
     public AudioSource battle_music;
 
+    public AudioSource cowboyHat;
+
+
     public float noise_delay;
     private float countdown;
 
@@ -25,6 +28,8 @@ public class SoundController : MonoBehaviour {
         battle_music.loop = true;
 
         rng = new System.Random();
+        
+
 	}
 	
 	// Update is called once per frame
@@ -40,11 +45,23 @@ public class SoundController : MonoBehaviour {
             }
             countdown = noise_delay;
         }
+
+      
 	}
 
     public void playRandomSound()
     {
         AudioSource randomSound = sounds[rng.Next(0, sounds.Length)];
         randomSound.Play();
+    }
+
+    public void play(string sound)
+    {
+        
+        if(sound.Equals("cowboy"))
+        {
+            cowboyHat.Play();
+        }
+
     }
 }

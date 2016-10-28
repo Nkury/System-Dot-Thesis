@@ -72,6 +72,7 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.checkpoint = SaveLoad.savedGames[0].checkpoint;
         PlayerStats.deadObjects = SaveLoad.savedGames[0].deadObjects;
         PlayerStats.highestCheckpoint = SaveLoad.savedGames[0].highestCheckpoint;
+        PlayerStats.numHealthPotions = SaveLoad.savedGames[0].numHealthPotions;
 
         if (PlayerStats.checkpoint == "Checkpoint6")
         {
