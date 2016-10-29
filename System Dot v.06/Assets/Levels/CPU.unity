@@ -174,6 +174,7 @@ MonoBehaviour:
   armorCost: 0
   cowboyCost: 0
   txt: {fileID: 0}
+  sound: {fileID: 0}
 --- !u!1001 &37088948
 Prefab:
   m_ObjectHideFlags: 0
@@ -1407,8 +1408,8 @@ RectTransform:
   m_RootOrder: 12
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.9, y: 148.9}
-  m_SizeDelta: {x: 84.1, y: 14.8}
+  m_AnchoredPosition: {x: -63, y: 148.9}
+  m_SizeDelta: {x: 93, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438259271
 MonoBehaviour:
@@ -1955,7 +1956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.014705896, b: 0.11663251, a: 1}
+  m_Color: {r: 0.014705896, g: 1, b: 0.14381352, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2503,7 +2504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.014705896, b: 0.11663251, a: 1}
+  m_Color: {r: 0.014705896, g: 1, b: 0.18458422, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2854,7 +2855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.014705896, b: 0.11663251, a: 1}
+  m_Color: {r: 0.014705896, g: 1, b: 0.30689654, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2953,8 +2954,8 @@ Transform:
   m_LocalPosition: {x: 304, y: 1, z: 0}
   m_LocalScale: {x: 0.6650042, y: 0.6650042, z: 0.6650042}
   m_Children:
-  - {fileID: 1567627890}
   - {fileID: 1369311303}
+  - {fileID: 1567627890}
   - {fileID: 1009661006}
   - {fileID: 1681843162}
   - {fileID: 446802426}
@@ -3905,7 +3906,7 @@ RectTransform:
   m_LocalScale: {x: 1.50375, y: 1.50375, z: 1.50375}
   m_Children: []
   m_Father: {fileID: 1024067117}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -114.71219, y: 129.73985}
@@ -3923,7 +3924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6798159, g: 0.3671064, b: 0.71323526, a: 0.331}
+  m_Color: {r: 0.6798159, g: 0.3671064, b: 0.71323526, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4223,7 +4224,7 @@ RectTransform:
   m_LocalScale: {x: 1.50375, y: 1.50375, z: 1.50375}
   m_Children: []
   m_Father: {fileID: 1024067117}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -230, y: 184}
@@ -4241,7 +4242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.040224895, g: 0.9117647, b: 0.44293645, a: 1}
+  m_Color: {r: 0.103, g: 0.9191176, b: 0.06758219, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4616,6 +4617,7 @@ MonoBehaviour:
   armorCost: 0
   cowboyCost: 0
   txt: {fileID: 220976138}
+  sound: {fileID: 0}
 --- !u!1001 &1699917490
 Prefab:
   m_ObjectHideFlags: 0
@@ -5078,8 +5080,8 @@ RectTransform:
   m_RootOrder: 11
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70.8, y: 98.2}
-  m_SizeDelta: {x: 82.8, y: 18.9}
+  m_AnchoredPosition: {x: -65, y: 98.2}
+  m_SizeDelta: {x: 91, y: 19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913515986
 MonoBehaviour:

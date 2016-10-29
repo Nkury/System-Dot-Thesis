@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour {
 		player.knockbackCount = 0;
 		player.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;
-		healthManager.FullHealth ();
+		HealthManager.FullHealth ();
 		healthManager.isDead = false;
 		camera.isFollowing = true;
 		Instantiate (respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);

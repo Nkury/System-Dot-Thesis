@@ -60,14 +60,7 @@ public class HealthManager : MonoBehaviour {
             this.GetComponent<Slider>().value = PlayerStats.armorHealth;
         }
 
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            if(PlayerStats.numHealthPotions > 0)
-            {
-                PlayerStats.numHealthPotions--;
-                FullHealth();
-            }
-        }
+        
 	}
 
 	public static void HurtPlayer(int damageToGive)
@@ -92,7 +85,7 @@ public class HealthManager : MonoBehaviour {
         }
 	}
 
-	public void FullHealth()
+	public static void FullHealth()
 	{
         PlayerStats.currentHealth = PlayerStats.maxHealth;
 	}
