@@ -70,18 +70,23 @@ public class TerminalWindowUI : MonoBehaviour {
                 StartCoroutine(e.GetComponent<EnemyTerminal>().evaluateActions());
                 UnityEngine.Object pe;
                 if (e.GetComponent<EnemyTerminal>().actions.Contains(ParserAlgo.keyActions.ERROR)){
-                     pe = Instantiate(wrongParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
+                    GameObject.Find("Sound Controller").GetComponent<SoundController>().play("wrong");
+                    pe = Instantiate(wrongParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
                 }
                 else
                 {
-                     pe = Instantiate(rightParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
+                    GameObject.Find("Sound Controller").GetComponent<SoundController>().play("right");
+                    pe = Instantiate(rightParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
                 }
 
                 Destroy(pe, 1);
                 EnemyTerminal.globalTerminalMode--;
                 if(e.gameObject.name == "TutorialEnemy2")
                 {
-                    GameObject.Find("clickAPI").SetActive(false);
+                    if (GameObject.Find("clickAPI"))
+                    {
+                        GameObject.Find("clickAPI").SetActive(false);
+                    }
                     GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().debugClicked();
                 }
             }

@@ -23,6 +23,7 @@ public class HurtPlayerOnContact : MonoBehaviour
     {
         if (other.name == "Player" && this.gameObject.tag != "Ground")
         {
+            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("player");
             HealthManager.HurtPlayer(damageToGive);
 
             var player = other.GetComponent<PlayerController>();
@@ -36,6 +37,6 @@ public class HurtPlayerOnContact : MonoBehaviour
             {
                 player.knockFromRight = false;
             }
-        }
+        } 
     }
 }

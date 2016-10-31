@@ -36,6 +36,7 @@ public class HealthManager : MonoBehaviour {
 	void Update () {
 	    if(PlayerStats.currentHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "StartingScene")
         {
+            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
             PlayerStats.currentHealth = 0;
             levelManager.RespawnPlayer();
             PlayerStats.numberOfDeaths++;
@@ -44,7 +45,9 @@ public class HealthManager : MonoBehaviour {
             //timeManager.resetTime();
         } else if(PlayerStats.currentHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
         {
+            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
             FullHealth();
+            BossIntellisense.startBoss = false;
             PlayerStats.numberOfDeaths++;
             CentipedeHead.lives = 18;
             CentipedeHead.life = 1;
@@ -87,6 +90,7 @@ public class HealthManager : MonoBehaviour {
 
 	public static void FullHealth()
 	{
+        GameObject.Find("Sound Controller").GetComponent<SoundController>().play("health");
         PlayerStats.currentHealth = PlayerStats.maxHealth;
 	}
 

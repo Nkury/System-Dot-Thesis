@@ -23,11 +23,6 @@ public class MovingPlatform : MonoBehaviour
         {
             this.GetComponent<EnemyTerminal>().actions.Clear();
         }
-
-        if (other.gameObject.tag == "Player")
-        {
-            moving.Play();
-        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)

@@ -18,6 +18,7 @@ public class IntelliSenseTest : MonoBehaviour {
     float y0;
     float amplitude = .2f;
     float speed = 1.5f;
+    float moveSpeed = 7;
 
     [Header("In-Game Objects")]
     public GameObject player;
@@ -178,10 +179,17 @@ public class IntelliSenseTest : MonoBehaviour {
                 botClicked(2);
             } else if(!clickOnce && hit && hit.collider.name == "TutorialChest")
             {
+                mouseClickPrompt.SetActive(false);
+                if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective"))
+                {
+                    PlayerStats.deadObjects.Add("SixthTutorialObjective");
+                    Destroy(GameObject.Find("SixthTutorialObjective"));
+                }
                 clickOnce = true;
                 botClicked(3);
             } else if(clickOnce && hit && hit.collider.name == "TutorialPlatform")
             {
+                mouseClickPrompt.SetActive(false);
                 clickOnce = false;
                 botClicked(4);
             }
@@ -202,11 +210,20 @@ public class IntelliSenseTest : MonoBehaviour {
     }
 
     public void nameEntered()
-    {
+    {        
         PlayerStats.playerName = namePrompt.transform.Find("name").GetComponent<Text>().text;
         namePrompt.SetActive(false);
         SetDialogue("receiveName");
-        whatToSay[0] = PlayerStats.playerName.ToUpper() + whatToSay[0];
+        // if nothing is entered by the player, then give the player the default name "BOB"
+        if (PlayerStats.playerName == "")
+        {
+            PlayerStats.playerName = "Bob";
+            whatToSay[0] = "Nothing? Will \"BOB\" suffice then" + whatToSay[0];
+
+        }else
+        {
+            whatToSay[0] = PlayerStats.playerName.ToUpper() + whatToSay[0];
+        }   
         eventName = "moveToFirstTutorial";
     }
 
@@ -280,6 +297,10 @@ public class IntelliSenseTest : MonoBehaviour {
         GameObject myEventSystem = GameObject.Find("EventSystem");
         myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
         SetDialogue("unlockChest");
+        if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective")) {
+            PlayerStats.deadObjects.Add("SixthTutorialObjective");
+            Destroy(GameObject.Find("SixthTutorialObjective"));
+        }
         chestHelpButton.SetActive(true);
         eventName = "finishDialogue";
         startTime = 0;
@@ -351,6 +372,8 @@ public class IntelliSenseTest : MonoBehaviour {
                 break;
             case 4:
                 SetDialogue("clickPlatform");
+                eventName = "";
+                mouseClickPrompt.SetActive(false);
                 break; 
         }
     }
@@ -411,7 +434,7 @@ public class IntelliSenseTest : MonoBehaviour {
             case "moveToFirstTutorial":
                 if (firstTutorialObjective != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, firstTutorialObjective.transform.position, 4 * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, firstTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
                     if (transform.position.x >= firstTutorialObjective.transform.position.x)
                         y0 = firstTutorialObjective.transform.position.y;
                 }
@@ -420,7 +443,7 @@ public class IntelliSenseTest : MonoBehaviour {
             case "moveToSecondTutorial":
                 if (secondTutorialObjective != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, secondTutorialObjective.transform.position, 6 * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, secondTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
                     if (transform.position.x >= secondTutorialObjective.transform.position.x)
                         y0 = secondTutorialObjective.transform.position.y;
                 }
@@ -429,7 +452,7 @@ public class IntelliSenseTest : MonoBehaviour {
             case "moveToThirdTutorial":
                 if (thirdTutorialObjective != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, thirdTutorialObjective.transform.position, 4 * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, thirdTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
                     if (transform.position.x >= thirdTutorialObjective.transform.position.x)
                         y0 = thirdTutorialObjective.transform.position.y;
                 }
@@ -438,7 +461,7 @@ public class IntelliSenseTest : MonoBehaviour {
             case "moveToFourthTutorial":
                 if (fourthTutorialObjective != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, fourthTutorialObjective.transform.position, 4 * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, fourthTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
                     if (transform.position.x >= fourthTutorialObjective.transform.position.x)
                         y0 = fourthTutorialObjective.transform.position.y;
                 }

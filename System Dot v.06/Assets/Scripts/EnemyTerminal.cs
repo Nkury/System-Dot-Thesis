@@ -132,6 +132,7 @@ public class EnemyTerminal : MonoBehaviour
 
             if (globalTerminalMode <= 1)
             {
+                GameObject.Find("Sound Controller").GetComponent<SoundController>().play("terminal");
                 EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
                 foreach (EnemyTerminal e in enemies)
                     e.localTerminalMode = 0;

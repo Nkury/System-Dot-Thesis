@@ -69,6 +69,7 @@ public class HurtEnemyOnContact : MonoBehaviour
     {
         if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body") && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
+            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("enemy");
             other.GetComponent<EnemyHealthManager>().giveDamage(damageToGive);
             myrigidbody2D.velocity = new Vector2(myrigidbody2D.velocity.x, bounceOnEnemy);
             if(other.name == "TutorialEnemy")
@@ -77,6 +78,7 @@ public class HurtEnemyOnContact : MonoBehaviour
             }
         } else if ((other.tag == "Ground") && other.GetComponent<HurtPlayerOnContact>() != null && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
+            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("destroy block");
             Destroy(other.gameObject);
         }
     }
