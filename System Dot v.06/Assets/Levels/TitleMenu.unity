@@ -829,6 +829,17 @@ MonoBehaviour:
   sounds: []
   startup_noise: {fileID: 0}
   battle_music: {fileID: 2084301044}
+  music: {fileID: 0}
+  chestOpen: {fileID: 0}
+  death: {fileID: 0}
+  destroyBlock: {fileID: 0}
+  openTerminal: {fileID: 0}
+  hurtEnemy: {fileID: 0}
+  hitPlayer: {fileID: 0}
+  health: {fileID: 0}
+  rightSound: {fileID: 0}
+  wrongSound: {fileID: 0}
+  cowboyHat: {fileID: 0}
   noise_delay: 0
   battleMusicDelay: 0
 --- !u!1 &1534364124

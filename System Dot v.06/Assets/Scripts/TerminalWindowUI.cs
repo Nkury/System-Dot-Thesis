@@ -29,15 +29,17 @@ public class TerminalWindowUI : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.F5))
             {
                 debugClicked();
+            } else if (PlayerStats.highestCheckpoint >= 2) { 
+
+                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    pressArrowKeys(true);
+                }
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    pressArrowKeys(false);
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                pressArrowKeys(true);
-            }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                pressArrowKeys(false);
-            } 
         }
         
 	}

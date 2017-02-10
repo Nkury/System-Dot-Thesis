@@ -8,16 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Levels/title_menu.unity
   - enabled: 1
+    path: Assets/Levels/TitleMenu.unity
+  - enabled: 0
     path: Assets/Levels/Level Select.unity
   - enabled: 1
     path: Assets/Levels/StartingScene.unity
   - enabled: 0
     path: Assets/Levels/Level 2.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Levels/Minigames/PipePuzzle.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Levels/Minigames/SimonSays.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Levels/Minigame Select.unity
   - enabled: 1
     path: Assets/Levels/Level1 BOSS.unity

@@ -50,6 +50,7 @@
  *   [29]    wait_stmt          ->        WAIT  LPAREN  (NUM  |  REALNUM)  RPAREN
  *   [30]    comment_stmt       ->        DOUBLESLASH   <characters>    NEWLINE (\n)
  *                                       <characters represent anything> 
+ *   [31]    smash_stmt         ->        SMASH LPAREN RPAREN                                     
  *   (-=-=-=-=-=-=- The following grammar are for methods and can be substituted into the above grammar
  *                  based on their return type -=-=-=-=-=-)
  *   [31]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
@@ -106,6 +107,9 @@ namespace ParserAlgo
         // System.wait(num/realnum)
         WAIT,
 
+        // System.smash()
+        SMASH,
+
         // if there is an infinite loop or syntax error with message
         INFINITELOOP, ERRORMSG, ERROR
 
@@ -117,7 +121,7 @@ namespace ParserAlgo
                             "while", "for", "if", "else",
                             "int", "double", "string", "boolean", "true", "false",
                             "substring", "length", "indexOf",
-                            "System", "output", "check", "move", "body", "jump", "open", "close", "wait",
+                            "System", "output", "check", "move", "body", "jump", "open", "close", "wait", "smash",
                             "Direction", "LEFT", "RIGHT", "Color", "BLACK", "RED", "BLUE", "GREEN",
                             "+", "-", "/", "//", "*","%", "=",
                             ":", ",", ";",
@@ -147,7 +151,7 @@ namespace ParserAlgo
             WHILE = 1, FOR, IF, ELSE,
             INT, REAL, STRING, BOOLEAN, TRUE, FALSE,
             SUBSTRING, LENGTH, INDEXOF,
-            SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
+            SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT, SMASH,
             DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
             COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
@@ -636,6 +640,34 @@ namespace ParserAlgo
             return;
         }
 
+        // parses for System.smash();
+        private void ParseSmash()
+        {
+            ttype = getToken();
+            if (ttype == TokenTypes.SMASH)
+            {
+                ttype = getToken();
+                if (ttype == TokenTypes.LPAREN)
+                {
+                    ttype = getToken();
+                    if (ttype == TokenTypes.RPAREN)
+                    {
+                        ttype = getToken();
+                        if (ttype == TokenTypes.SEMICOLON)
+                        {
+                            actions.Add(keyActions.SMASH);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            syntaxMessage = "Error in line " + (line_no - 1) +
+                ": There is an error when you try to smash an object";
+            actions.Add(keyActions.ERROR);
+            return;
+        }
+
         // parses for System. and then evaluates which of the above System commands it should parse for
         private numberOrString ParseSystem()
         {
@@ -650,31 +682,26 @@ namespace ParserAlgo
                     {
                         ungetToken();
                         ParseBody();
-                        return default(numberOrString);
                     }
                     else if (ttype == TokenTypes.MOVE)
                     {
                         ungetToken();
                         ParseMove();
-                        return default(numberOrString);
                     }
                     else if (ttype == TokenTypes.JUMP)
                     {
                         ungetToken();
                         ParseJump();
-                        return default (numberOrString);
                     }
                     else if (ttype == TokenTypes.OPEN)
                     {
                         ungetToken();
                         ParseOpen();
-                        return default(numberOrString);
                     }
                     else if (ttype == TokenTypes.CLOSE)
                     {
                         ungetToken();
                         ParseClose();
-                        return default(numberOrString);
                     } else if(ttype == TokenTypes.CHECK)
                     {
                         ungetToken();
@@ -683,13 +710,16 @@ namespace ParserAlgo
                     {
                         ungetToken();
                         ParseOutput();
-                        return default(numberOrString);
                     } else if(ttype == TokenTypes.WAIT)
                     {
                         ungetToken();
-                        ParseWait();
-                        return default(numberOrString);
+                        ParseWait();                      
+                    } else if (ttype == TokenTypes.SMASH)
+                    {
+                        ungetToken();
+                        ParseSmash();                        
                     }
+                    return default(numberOrString);
                 }
             }
 
@@ -2301,7 +2331,7 @@ namespace ParserAlgo
                     isInfinite.Add(0);
                     line_no = loopLineNo;                
                 }
-                else if(ttype == TokenTypes.LPAREN && statementTag.Last() == StatementTypes.ISWHILE)
+                else if(ttype == TokenTypes.LPAREN && statementTag.LastOrDefault() == StatementTypes.ISWHILE)
                 {
                     ungetToken();
                     keepParsing = ParseCondition();
