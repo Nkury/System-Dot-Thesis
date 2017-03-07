@@ -130,6 +130,7 @@ public class EnemyTerminal : MonoBehaviour
                 }
             }
 
+            // open terminal
             if (globalTerminalMode <= 1)
             {
                 GameObject.Find("Sound Controller").GetComponent<SoundController>().play("terminal");
@@ -138,6 +139,7 @@ public class EnemyTerminal : MonoBehaviour
                     e.localTerminalMode = 0;
                 globalTerminalMode = 2;
                 localTerminalMode = 2;
+                PlayerStats.numOfEdits++;
 
                 // for comment tutorial in level 1
                 if (this.gameObject.name.Contains("Comment"))

@@ -73,6 +73,23 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.deadObjects = SaveLoad.savedGames[0].deadObjects;
         PlayerStats.highestCheckpoint = SaveLoad.savedGames[0].highestCheckpoint;
         PlayerStats.numHealthPotions = SaveLoad.savedGames[0].numHealthPotions;
+        PlayerStats.typingSpeed = SaveLoad.savedGames[0].typingSpeed;
+        PlayerStats.averageTimeOnEditing = SaveLoad.savedGames[0].averageTimeOnEditing;
+        PlayerStats.longestTimeOnEditing = SaveLoad.savedGames[0].longestTimeOnEditing;
+        PlayerStats.averageNumberofMouseClicks = SaveLoad.savedGames[0].averageNumberofMouseClicks;
+        PlayerStats.mostNumberofMouseClicks = SaveLoad.savedGames[0].mostNumberofMouseClicks;
+        PlayerStats.mostNumberofAttempts = SaveLoad.savedGames[0].mostNumberofAttempts;
+        PlayerStats.numberOfPerfectEdits = SaveLoad.savedGames[0].numberOfPerfectEdits;
+        PlayerStats.mostNumberOfBackspaces = SaveLoad.savedGames[0].mostNumberOfBackspaces;
+        PlayerStats.averageNumberOfBackspaces = SaveLoad.savedGames[0].averageNumberOfBackspaces;
+        PlayerStats.mostNumberOfDeletes = SaveLoad.savedGames[0].mostNumberOfDeletes;
+        PlayerStats.averageNumberOfDeletes = SaveLoad.savedGames[0].averageNumberOfDeletes;
+        PlayerStats.averageTimeOfMouseInactivity = SaveLoad.savedGames[0].averageTimeOfMouseInactivity;
+        PlayerStats.mostTimeofMouseInactivity = SaveLoad.savedGames[0].mostTimeofMouseInactivity;
+        PlayerStats.numOfAPIUses = SaveLoad.savedGames[0].numOfAPIUses;
+        PlayerStats.numOfF5 = SaveLoad.savedGames[0].numOfF5;
+        PlayerStats.numOfEdits = SaveLoad.savedGames[0].numOfEdits;				
+
 
         if (PlayerStats.checkpoint == "Checkpoint6")
         {

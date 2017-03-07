@@ -9,6 +9,24 @@ public class Game
 {
     public static Game current;
 
+    /**** USER PROFILE APTITUDE STATS **************************************************************/
+    public float typingSpeed;
+    public float averageTimeOnEditing;
+    public float longestTimeOnEditing;
+    public float averageNumberofMouseClicks;
+    public float mostNumberofMouseClicks;
+    public int mostNumberofAttempts;
+    public int numberOfPerfectEdits;
+    public int mostNumberOfBackspaces;
+    public int averageNumberOfBackspaces;
+    public int mostNumberOfDeletes;
+    public int averageNumberOfDeletes;
+    public int averageTimeOfMouseInactivity;
+    public int mostTimeofMouseInactivity;
+    public int numOfAPIUses;
+    public int numOfF5;
+    public int numOfEdits;
+
     /**** PLAYER ATTRIBUTES ************************************************************************/
     public int maxHealth;
     public int currentHealth;
@@ -34,6 +52,22 @@ public static class SaveLoad
 
     public static void Save()
     {
+        Game.current.typingSpeed = PlayerStats.typingSpeed;
+        Game.current.averageTimeOnEditing = PlayerStats.averageTimeOnEditing;
+        Game.current.longestTimeOnEditing = PlayerStats.longestTimeOnEditing;
+        Game.current.averageNumberofMouseClicks = PlayerStats.averageNumberofMouseClicks;
+        Game.current.mostNumberofMouseClicks = PlayerStats.mostNumberofMouseClicks;
+        Game.current.mostNumberofAttempts = PlayerStats.mostNumberofAttempts;
+        Game.current.numberOfPerfectEdits = PlayerStats.numberOfPerfectEdits;
+        Game.current.mostNumberOfBackspaces = PlayerStats.mostNumberOfBackspaces;
+        Game.current.averageNumberOfBackspaces = PlayerStats.averageNumberOfBackspaces;
+        Game.current.mostNumberOfDeletes = PlayerStats.mostNumberOfDeletes;
+        Game.current.averageNumberOfDeletes = PlayerStats.averageNumberOfDeletes;
+        Game.current.averageTimeOfMouseInactivity = PlayerStats.averageTimeOfMouseInactivity;
+        Game.current.mostTimeofMouseInactivity = PlayerStats.mostTimeofMouseInactivity;
+        Game.current.numOfAPIUses = PlayerStats.numOfAPIUses;
+        Game.current.numOfF5 = PlayerStats.numOfF5;
+        Game.current.numOfEdits = PlayerStats.numOfEdits;
         savedGames.Insert(0, Game.current);
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");

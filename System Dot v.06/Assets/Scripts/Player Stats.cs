@@ -3,6 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats {
+    /**** USER PROFILE APTITUDE STATS **************************************************************/
+    public static float typingSpeed;
+    public static float averageTimeOnEditing;
+    public static float longestTimeOnEditing;
+    public static float averageNumberofMouseClicks;
+    public static float mostNumberofMouseClicks;
+    public static int mostNumberofAttempts;
+    public static int numberOfPerfectEdits;
+    public static int mostNumberOfBackspaces;
+    public static int averageNumberOfBackspaces;
+    public static int mostNumberOfDeletes;
+    public static int averageNumberOfDeletes;
+    public static int averageTimeOfMouseInactivity;
+    public static int mostTimeofMouseInactivity;
+    public static int numOfAPIUses;
+    public static int numOfF5;
+    public static int numOfEdits;
 
     /**** PLAYER ATTRIBUTES ************************************************************************/
     public static int maxHealth;
