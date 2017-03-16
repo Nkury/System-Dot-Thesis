@@ -139,7 +139,8 @@ public class EnemyTerminal : MonoBehaviour
                     e.localTerminalMode = 0;
                 globalTerminalMode = 2;
                 localTerminalMode = 2;
-                PlayerStats.numOfEdits++;
+                Debug.Log("Num edits " + PlayerStats.numOfEdits);
+                PlayerStats.numOfEdits++;                
 
                 // for comment tutorial in level 1
                 if (this.gameObject.name.Contains("Comment"))

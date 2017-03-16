@@ -4,8 +4,6 @@ using System.Collections;
 
 public class Logger : MonoBehaviour {
 
-    public GameObject terminalWindow;
-
     public float editTime = 0;
     public bool closed = true;
     public int numOfBackSpaces = 0;
@@ -18,7 +16,9 @@ public class Logger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (terminalWindow.activeSelf) {
+
+        // if terminal window is open
+        if (EnemyTerminal.globalTerminalMode > 1) {
             closed = false;
             editTime += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Backspace))
