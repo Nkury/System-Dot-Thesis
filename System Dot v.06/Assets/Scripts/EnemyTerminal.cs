@@ -54,6 +54,9 @@ public class EnemyTerminal : MonoBehaviour
 
     public AudioSource openTerminal;
 
+    /*LOGGER INFORMATION */
+    public bool isPerfect = true;
+
     // Use this for initialization
     void Start()
     {
@@ -139,7 +142,8 @@ public class EnemyTerminal : MonoBehaviour
                     e.localTerminalMode = 0;
                 globalTerminalMode = 2;
                 localTerminalMode = 2;
-                Debug.Log("Num edits " + PlayerStats.numOfEdits);
+
+                /* LOGGER INFORMATION */
                 PlayerStats.numOfEdits++;                
 
                 // for comment tutorial in level 1

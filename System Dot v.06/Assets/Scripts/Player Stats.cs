@@ -15,8 +15,8 @@ public class PlayerStats {
     public static int averageNumberOfBackspaces;
     public static int mostNumberOfDeletes;
     public static int averageNumberOfDeletes;
-    public static int averageTimeOfMouseInactivity;
-    public static int mostTimeofMouseInactivity;
+    public static float averageTimeOfMouseInactivity;
+    public static float mostTimeofMouseInactivity;
     public static int numOfAPIUses;
     public static int numOfF5;
     public static int numOfEdits;

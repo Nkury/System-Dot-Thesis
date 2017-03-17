@@ -74,11 +74,21 @@ public class TerminalWindowUI : MonoBehaviour {
                 if (e.GetComponent<EnemyTerminal>().actions.Contains(ParserAlgo.keyActions.ERROR)){
                     GameObject.Find("Sound Controller").GetComponent<SoundController>().play("wrong");
                     pe = Instantiate(wrongParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
+
+                    /* LOGGER INFORMATION */
+                    e.isPerfect = false;
+                    PlayerStats.mostNumberofAttempts++;
                 }
                 else
                 {
                     GameObject.Find("Sound Controller").GetComponent<SoundController>().play("right");
                     pe = Instantiate(rightParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
+
+                    /* LOGGER INFORMATION */
+                    if (e.isPerfect)
+                    {
+                        PlayerStats.numberOfPerfectEdits++;
+                    }
                 }
 
                 Destroy(pe, 1);

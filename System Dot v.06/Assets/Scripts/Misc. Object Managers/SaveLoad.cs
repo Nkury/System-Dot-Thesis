@@ -21,8 +21,8 @@ public class Game
     public int averageNumberOfBackspaces;
     public int mostNumberOfDeletes;
     public int averageNumberOfDeletes;
-    public int averageTimeOfMouseInactivity;
-    public int mostTimeofMouseInactivity;
+    public float averageTimeOfMouseInactivity;
+    public float mostTimeofMouseInactivity;
     public int numOfAPIUses;
     public int numOfF5;
     public int numOfEdits;

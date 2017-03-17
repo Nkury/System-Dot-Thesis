@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class APISystem : MonoBehaviour {
 
@@ -28,6 +29,10 @@ public class APISystem : MonoBehaviour {
 
     public void APIButtonClicked()
     {
+        /* LOGGER INFORMATION */
+        if(!APImenu.activeSelf)
+            PlayerStats.numOfAPIUses++;
+ 
         clickAPI.GetComponent<RectTransform>().anchoredPosition = new Vector2(60, -30);
         APImenu.SetActive(!APImenu.activeSelf);
     }

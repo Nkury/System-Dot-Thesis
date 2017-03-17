@@ -8,6 +8,16 @@ public class Logger : MonoBehaviour {
     public bool closed = true;
     public int numOfBackSpaces = 0;
     public int numOfDeletes = 0;
+    public int numOfMouseClicks = 0;
+
+    public float inactiveTime;
+    public float MouseX
+    {
+        set
+        {
+            inactiveTime = 0;           
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -19,14 +29,30 @@ public class Logger : MonoBehaviour {
 
         // if terminal window is open
         if (EnemyTerminal.globalTerminalMode > 1) {
+
+            MouseX = Input.GetAxis("Mouse X");
+            inactiveTime = Time.deltaTime; 
+
             closed = false;
             editTime += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Backspace))
             {
                 numOfBackSpaces++;
-            } else if (Input.GetKeyDown(KeyCode.Delete))
+            }
+
+            if (Input.GetKeyDown(KeyCode.Delete))
             {
                 numOfDeletes++;
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                numOfMouseClicks++;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                PlayerStats.numOfF5++;
             }
 
         }
@@ -61,13 +87,31 @@ public class Logger : MonoBehaviour {
             // updates average number of deletes
             PlayerStats.averageNumberOfDeletes += ((numOfDeletes - PlayerStats.averageNumberOfDeletes) / PlayerStats.numOfEdits);
 
+            // updates most number of mouse clicks
+            if (numOfMouseClicks > PlayerStats.mostNumberofMouseClicks)
+            {
+                PlayerStats.mostNumberofMouseClicks = numOfMouseClicks;
+            }
 
+            // updates average number of mouse clicks
+            PlayerStats.averageNumberofMouseClicks += ((numOfMouseClicks - PlayerStats.mostNumberofMouseClicks) / PlayerStats.numOfEdits);
+
+            // updates most time of mouse inactivity
+            if (inactiveTime > PlayerStats.mostTimeofMouseInactivity)
+            {
+                PlayerStats.mostTimeofMouseInactivity = inactiveTime;
+            }
+
+            // updates average mouse inactivity
+            PlayerStats.averageTimeOfMouseInactivity += ((inactiveTime - PlayerStats.mostTimeofMouseInactivity) / PlayerStats.numOfEdits);
 
 
             editTime = 0;
             numOfBackSpaces = 0;
             numOfDeletes = 0;
+            numOfMouseClicks = 0;
             SaveLoad.Save();
         }
 	}
+
 }
