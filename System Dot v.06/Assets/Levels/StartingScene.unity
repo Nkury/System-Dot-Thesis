@@ -32393,14 +32393,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 285674101}
-        m_MethodName: InputtedCode
-        m_Mode: 1
+        m_MethodName: SetDialogue
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: inputHack
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -49063,14 +49063,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 285674101}
-        m_MethodName: nameEntered
-        m_Mode: 1
+        m_MethodName: SetDialogue
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: receiveName
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -56084,6 +56084,8 @@ MonoBehaviour:
   wrongParticleSystem: {fileID: 121376, guid: 27f9ce8dc4766ea4a92481f0a887e30e, type: 2}
   noChanges: {fileID: 492894330}
   F5Ref: {fileID: 952718590}
+  variabullRef: {fileID: 0}
+  variaCode: {fileID: 0}
 --- !u!224 &914035817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60233,6 +60235,8 @@ MonoBehaviour:
   closed: 1
   numOfBackSpaces: 0
   numOfDeletes: 0
+  numOfMouseClicks: 0
+  inactiveTime: 0
 --- !u!4 &979811205
 Transform:
   m_ObjectHideFlags: 0

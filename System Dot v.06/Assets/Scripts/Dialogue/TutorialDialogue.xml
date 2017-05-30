@@ -1,11 +1,11 @@
 <dialogue>
   
-  <message id="startGame">
+  <message id="startGame" event="promptForName">
     <say>Oh, hi! I didn't mean to startle you. I don't recognize you. </say>
     <say>Who do you identify as? </say>
   </message>
   
-  <message id="receiveName">
+  <message id="receiveName" event="moveToFirstTutorial">
     <say><!-- PlayerStats.playerName -->? That is an interesting variable name. </say>
     <say>I am IntelliSense or IS for short. Nice to meet you! </say>
     <say>... </say>
@@ -17,14 +17,14 @@
     <say>Adieu! </say>    
   </message>
 
-  <message id="catchUp1">
+  <message id="catchUp1" event="moveToSecondTutorial">
     <say>So you think you can catch up to me? </say>
     <say>Are you some kind of rogue virus?! </say>
     <say>I'm reporting you to the CPU! </say>
     <say>Surely a rogue virus cannot jump over this platform by holding "W". </say>
   </message>
 
-  <message id="catchUp2">
+  <message id="catchUp2" event="moveToThirdTutorial">
     <say>You're relentless, aren't you? Just like a virus... </say>
     <say>Please leave me alone. I've lived a good life and I don't want to get terminated. </say>
     <say>It's as if you want to progress through some kind of story and win a game. </say>
@@ -32,19 +32,19 @@
     <say>See you never! </say>
   </message>
 
-  <message id="catchUp3">
+  <message id="catchUp3" event="moveToFourthTutorial">
     <say>Hahahaha! Silly virus! What kind of virus doesn't know that </say>
     <say>its "termination boots" destroy things of equal color? </say>
     <say>Obviously a dumb one who doesn't know pressing TAB changes its boots' color. </say>
     <say>Now I'm embarrased you're following me... </say>
   </message>
 
-  <message id="preHack">
+  <message id="preHack" event="promptClick">
     <say>Oh no! Vbots... how am I going to get past them? </say>
     <say>Hey, buddy ol' pal. Mind helping me out with these things? </say>
   </message>
 
-  <message id="postHack">
+  <message id="postHack" event="promptCode">
     <say>Hey! You can hack those things?! What does the red code say? </say>
   </message>
 
@@ -52,13 +52,13 @@
     <say>That's not what it says verbatim... make sure you match the case.</say>
   </message>
 
-  <message id="correctHack">
+  <message id="correctHack" event="stopTalking">
     <say>Hmm... it sounds like that "code" turns that Vbot blue! </say>
     <say>I wonder how we'd kill it, though... </say>
     <say>Maybe you can do something with your "termination boots"? </say>
   </message>
 
-  <message id="killedTutorialEnemy">
+  <message id="killedTutorialEnemy" event="titleSequence">
     <say>Thanks for helping but you must be from another dimension! </say>
     <say>There's no other way someone can read another object's code! It's impossible! </say>
     <say>Look, even though I don't want to conform to that "one guy" who needs help, </say>
@@ -69,12 +69,12 @@
     <say>Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go! </say>
   </message>
 
-  <message id="meetBlackVBot">
+  <message id="meetBlackVBot" event="promptClick">
     <say>Hey there! This VBot isn't like the rest!</say>
     <say>Let's hack it and see what's going on.</say>
   </message>
 
-  <message id="clickBlackVBot">
+  <message id="clickBlackVBot" event="clickAPI">
     <say>That's weird. This VBot's code isn't red... which means YOU CAN CHANGE IT!</say>
     <say>Listen, whatever-your-name-was. I know your puny mind can't handle this, but...</say>
     <say>... you need to "fix" this VBot. Otherwise, we can't terminate it</say>
@@ -83,7 +83,7 @@
     <say>Check it out!</say>
   </message>
 
-  <message id="APIClicked">
+  <message id="APIClicked" event="editCode">
     <say>There we go! You better appreciate this. It takes a lot of processing power</say>
     <say>to make this sort of thing.</say>
     <say>Now let's see. Every character, letter, number, manifestation</say>
@@ -93,17 +93,17 @@
     <say>My API tells us how it should be. Type in what's missing for the VBot.</say>
   </message>
 
-  <message id="codeFixed">
+  <message id="codeFixed" event="clickDebug">
     <say>That looks right!</say>
     <say>Now, in order to lock in these changes, click the green PLAY button!</say>
   </message>
 
-  <message id="colorChanged">
+  <message id="colorChanged" event="finishDialogue">
     <say>See? I'm a genius. What would you do without me?</say>
     <say>Terminate this VBot and let's continue to the CPU!</say>
   </message>
 
-  <message id="startChest">
+  <message id="startChest" event="promptClick">
     <say>What? It's like you've never seen a cache before...</say>
     <say>Oh yeah, you probably haven't. Well check this out.</say>
     <say>Caches give the CPU intel about processes in the system.</say>
@@ -111,7 +111,7 @@
     <say>Try opening this one by changing the code that is keeping the cache closed.</say>
   </message>
 
-  <message id="clickChest">
+  <message id="clickChest" event="startTimer">
     <say>How can we change the code to "OPEN" the cache?</say>
   </message>
 
@@ -120,13 +120,13 @@
     <say>...like "open"?</say>
   </message>
 
-  <message id="unlockChest">
+  <message id="unlockChest" event="finishDialogue">
     <say>No, those weren't oranges. Those were bits!</say>
     <say>I'll add this new code to the API! Check it out!</say>
     <say>You'll see how you can use bits when we get to the CPU. Let's go!</say>
   </message>
 
-  <message id="startDebugStation">
+  <message id="startDebugStation" event="stopTalking">
     <say>A computer inside a computer... interesting...</say>
     <say>Why is there a DEBUG STATION way out here?</say>
     <say>Either way, you won't be able to hack it...</say>
@@ -134,7 +134,7 @@
     <say>That large white letter must have nothing to do with it...</say>
   </message>
 
-  <message id="startMovingPlatform">
+  <message id="startMovingPlatform" event="promptClick">
     <say>This object looks different... let's do what we always do!</say>
   </message>
 
@@ -148,12 +148,12 @@
     <say>We need to catch a ride on it! Bring it back.</say>
   </message>
 
-  <message id="movePlatform2">
+  <message id="movePlatform2" event="finishDialogue">
     <say>Ok, you know what to do. No more pit stops.</say>
     <say>I've added this new piece of code to the API. Check it!</say>
   </message>
 
-  <message id="discoverComments">
+  <message id="discoverComments" event="finishDialogue">
     <say>What kind of sick joke is this?</say>
     <say>Who else is messing with the source code?</say>
     <say>Do you think someone's been sabotaging us this whole time?</say>

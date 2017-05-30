@@ -74,7 +74,7 @@ public class HurtEnemyOnContact : MonoBehaviour
             myrigidbody2D.velocity = new Vector2(myrigidbody2D.velocity.x, bounceOnEnemy);
             if(other.name == "TutorialEnemy")
             {
-                GameObject.Find("Intellisense").SendMessage("botKilled");
+                GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("killedTutorialEnemy");
             }
         } else if ((other.tag == "Ground") && other.GetComponent<HurtPlayerOnContact>() != null && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {

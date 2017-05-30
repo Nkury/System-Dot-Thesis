@@ -25,7 +25,7 @@ public class Kernel : MonoBehaviour {
                 Camera.main.orthographicSize = 7.07f;
                 if(PlayerStats.highestCheckpoint == 3 && this.gameObject.name == "TutorialKernel")
                 {
-                    GameObject.Find("Intellisense").SendMessage("InDebugStation");
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("startMovingPlatform");
                     this.gameObject.name = "TutorialKernel1";
                 }
             }

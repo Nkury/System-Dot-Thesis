@@ -22,40 +22,40 @@ public class TutorialZones : MonoBehaviour
         {
             if (this.gameObject.name == "FirstTutorialObjective")
             {
-                intelliSense.SendMessage("StartSecondTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("catchUp1");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if (this.gameObject.name == "SecondTutorialObjective")
             {
-                intelliSense.SendMessage("StartThirdTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("catchUp2");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "ThirdTutorialObjective")
             {
-                intelliSense.SendMessage("StartFourthTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("catchUp3");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "FourthTutorialObjective")
             {
-                intelliSense.SendMessage("StartFifthTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("preHack");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "FifthTutorialObjective")
             {
                 intelliSense.SetActive(true);
-                intelliSense.SendMessage("StartSixthTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("meetBlackVBot");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "SixthTutorialObjective")
             {
                 intelliSense.SetActive(true);
-                intelliSense.SendMessage("StartChestTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("startChest");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "SeventhTutorialObjective")
             {
                 intelliSense.SetActive(true);
-                intelliSense.SendMessage("StartMovingPlatformTutorial");
+                intelliSense.GetComponent<IntelliSenseTest>().SetDialogue("startDebugStation");
                 PlayerStats.deadObjects.Add(this.gameObject.name);
                 Destroy(this.gameObject);
             } else if(this.gameObject.name == "BossTrigger")

@@ -149,7 +149,7 @@ public class EnemyTerminal : MonoBehaviour
                 // for comment tutorial in level 1
                 if (this.gameObject.name.Contains("Comment"))
                 {
-                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().commentFound();
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("discoverComments");
                 }
             }
             else
@@ -265,7 +265,7 @@ public class EnemyTerminal : MonoBehaviour
 
                         if(this.gameObject.name == "TutorialChest")
                         {
-                            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().chestFixed();
+                            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("unlockChest");
                         }
  
                         numOfSyntaxErrors = 0;
@@ -276,7 +276,7 @@ public class EnemyTerminal : MonoBehaviour
 
                     if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
                     {
-                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().platformFixed(2);
+                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("movePlatform2");
                         this.gameObject.name = "TutorialPlatform2";
                     }
 
@@ -287,7 +287,7 @@ public class EnemyTerminal : MonoBehaviour
 
                     if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
                     {
-                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().platformFixed(1);
+                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("movePlatform");
                         this.gameObject.name = "TutorialPlatform1";
                     }
 
@@ -401,7 +401,7 @@ public class EnemyTerminal : MonoBehaviour
                 if(terminalString[0] == "System.body(Color.GREEN);")
                 {
                     tutorialCheck = true;
-                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().codeFixed();
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("codeFixed");
                 }
             }
         }

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class IntelliSenseTest : MonoBehaviour {
 
     Dictionary<string, List<string>> dialogue = new Dictionary<string, List<string>>();
+    Dictionary<string, string> events = new Dictionary<string, string>();
 
     [Header("Talking")]
     public bool talking;
@@ -24,11 +25,9 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject player;
     public GameObject intelliLocation;
     public GameObject dialogueBox;
-    public GameObject namePrompt;
-    public GameObject hackPrompt;
     public GameObject mouseClickPrompt;
 
-    [Header("Level 1 Tutorial Trigger Zones")]
+    [Header("Level 1 Objects")]
     [Tooltip("Only attach game objects if in level one")]
     public GameObject firstTutorialObjective;
     public GameObject secondTutorialObjective;
@@ -36,6 +35,8 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject fourthTutorialObjective;
     public GameObject fourthObjectiveBarrier;
     public GameObject seventhTutorialBarrier;
+    public GameObject namePrompt;
+    public GameObject hackPrompt;
     public GameObject levelTitle;
 
     [Header("UI Components")]
@@ -63,10 +64,17 @@ public class IntelliSenseTest : MonoBehaviour {
         XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/" + dialogueFileName + ".xml");
         List<string> addedDialogue = new List<string>();
         string keyName;
+        string eventName;
 
         foreach(XElement messElement in loadedData.Descendants("message"))
         {
             keyName = messElement.Attribute("id").Value;
+            eventName = "";
+            if(messElement.Attribute("event") != null)
+            {
+                eventName = messElement.Attribute("event").Value;
+            }       
+
             addedDialogue = new List<string>();
             foreach (XElement element in messElement.Elements("say"))
             {
@@ -74,10 +82,11 @@ public class IntelliSenseTest : MonoBehaviour {
             }
 
             dialogue.Add(keyName, addedDialogue);
+            events.Add(keyName, eventName);
         }
 
         if(PlayerStats.checkpoint == "Checkpoint1"){
-            startTutorial();
+            SetDialogue("startGame");
         }
         else
         {
@@ -172,11 +181,11 @@ public class IntelliSenseTest : MonoBehaviour {
             if (!clickOnce && hit && hit.collider.name == "TutorialEnemy")
             {
                 clickOnce = true;
-                botClicked(1);
+                SetDialogue("postHack"); // clicked the first VBot encountered
             } else if(clickOnce && hit && hit.collider.name == "TutorialEnemy2")
             {
                 clickOnce = false;
-                botClicked(2);
+                SetDialogue("clickBlackVBot"); // clicked the first black VBot
             } else if(!clickOnce && hit && hit.collider.name == "TutorialChest")
             {
                 mouseClickPrompt.SetActive(false);
@@ -186,12 +195,13 @@ public class IntelliSenseTest : MonoBehaviour {
                     Destroy(GameObject.Find("SixthTutorialObjective"));
                 }
                 clickOnce = true;
-                botClicked(3);
+                SetDialogue("clickChest"); // click the first chest encountered
             } else if(clickOnce && hit && hit.collider.name == "TutorialPlatform")
             {
                 mouseClickPrompt.SetActive(false);
                 clickOnce = false;
-                botClicked(4);
+                SetDialogue("clickPlatform"); // click first platform encountered
+                mouseClickPrompt.SetActive(false);
             }
         }
 
@@ -201,205 +211,16 @@ public class IntelliSenseTest : MonoBehaviour {
         {
             tutorialLine.readOnly = tutorialCheck;
         }
-    }
+    }  
 
-    public void startTutorial()
-    {
-        SetDialogue("startGame");
-        eventName = "promptForName";
-    }
-
-    public void nameEntered()
-    {        
-        PlayerStats.playerName = namePrompt.transform.Find("name").GetComponent<Text>().text;
-        namePrompt.SetActive(false);
-        SetDialogue("receiveName");
-        // if nothing is entered by the player, then give the player the default name "BOB"
-        if (PlayerStats.playerName == "")
-        {
-            PlayerStats.playerName = "Bob";
-            whatToSay[0] = "Nothing? Will \"BOB\" suffice then" + whatToSay[0];
-
-        }else
-        {
-            whatToSay[0] = PlayerStats.playerName.ToUpper() + whatToSay[0];
-        }   
-        eventName = "moveToFirstTutorial";
-    }
-
-    public void StartSecondTutorial()
-    {
-        SetDialogue("catchUp1");
-        eventName = "moveToSecondTutorial";
-    }
-
-    public void StartThirdTutorial()
-    {
-        SetDialogue("catchUp2");
-        eventName = "moveToThirdTutorial";
-    }
-
-    public void StartFourthTutorial()
-    {
-        SetDialogue("catchUp3");
-        LevelManager.canPressTab = true;
-        eventName = "moveToFourthTutorial";
-    }
-
-    public void StartFifthTutorial()
-    {
-        SetDialogue("preHack");
-        eventName = "promptClick";
-    }
-
-    public void StartSixthTutorial()
-    {
-        SetDialogue("meetBlackVBot");
-        eventName = "promptClick";
-    }
-
-    public void StartChestTutorial()
-    {
-        SetDialogue("startChest");
-        eventName = "promptClick";
-    }
-
-    public void StartMovingPlatformTutorial()
-    {
-        SetDialogue("startDebugStation");
-        eventName = "stopTalking";
-    }
-
-    public void InDebugStation()
-    {
-        SetDialogue("startMovingPlatform");
-        eventName = "promptClick";
-    }
-
-    public void APIClicked()
-    {
-        GameObject myEventSystem = GameObject.Find("EventSystem");
-        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-        SetDialogue("APIClicked");
-        eventName = "editCode";
-    }
-
-    public void codeFixed()
-    {
-        GameObject myEventSystem = GameObject.Find("EventSystem");
-        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-        SetDialogue("codeFixed");
-        eventName = "clickDebug";
-    }
-
-    public void chestFixed()
-    {
-        GameObject myEventSystem = GameObject.Find("EventSystem");
-        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-        SetDialogue("unlockChest");
-        if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective")) {
-            PlayerStats.deadObjects.Add("SixthTutorialObjective");
-            Destroy(GameObject.Find("SixthTutorialObjective"));
-        }
-        chestHelpButton.SetActive(true);
-        eventName = "finishDialogue";
-        startTime = 0;
-    }
-
-    public void platformFixed(int action)
-    {
-        if (action == 1)
-        {
-            GameObject myEventSystem = GameObject.Find("EventSystem");
-            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-            SetDialogue("movePlatform");
-        }
-        else if(action == 2)
-        {
-            GameObject myEventSystem = GameObject.Find("EventSystem");
-            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-            SetDialogue("movePlatform2");
-            eventName = "finishDialogue";
-            PlayerStats.deadObjects.Add(seventhTutorialBarrier.name);
-            Destroy(seventhTutorialBarrier.gameObject);
-            directionHelpButton.SetActive(true);
-        }
-
-    }
-
-    public void needHelp()
-    {
-        SetDialogue("helpWithChest");
-    }
-
-    public void debugClicked()
-    {
-        SetDialogue("colorChanged");
-        if (GameObject.Find("FifthTutorialObjective"))
-        {
-            GameObject destroy = GameObject.Find("FifthTutorialObjective");
-            Destroy(destroy);
-            PlayerStats.deadObjects.Add(destroy.name);
-        }
-        eventName = "finishDialogue";
-    }
-
-    public void commentFound()
-    {
-        if (!clickOnce)
-        {
-            SetDialogue("discoverComments");
-            eventName = "finishDialogue";
-        }
-    }
-
-    public void botClicked(int bot)
-    {
-        switch (bot)
-        {
-            case 1:
-                SetDialogue("postHack");
-                eventName = "promptCode";
-                break;
-            case 2:
-                SetDialogue("clickBlackVBot");
-                eventName = "clickAPI";
-                tutorialCheck = true;
-                break;
-            case 3:
-                SetDialogue("clickChest");
-                eventName = "startTimer";
-                break;
-            case 4:
-                SetDialogue("clickPlatform");
-                eventName = "";
-                mouseClickPrompt.SetActive(false);
-                break; 
-        }
-    }
-
-    public void botKilled()
-    {
-        SetDialogue("killedTutorialEnemy");
-        PlayerStats.deadObjects.Add(fourthObjectiveBarrier.name);
-        Destroy(fourthObjectiveBarrier);
-        eventName = "titleSequence";
-    }
-
-    public void InputtedCode()
-    {
-        string inputtedCode = hackPrompt.transform.Find("code").GetComponent<Text>().text;
-        if (inputtedCode == "System.body(Color.BLUE);")
-        {
-            SetDialogue("correctHack");
-            hackPrompt.SetActive(false);
-            eventName = "stopTalking";
-        }
-        else {
-            SetDialogue("wrongHack");
-            hackPrompt.transform.Find("code").GetComponent<Text>().text = "";
-        }
-    }
+    //public void commentFound()
+    //{
+    //    if (!clickOnce)
+    //    {
+    //        SetDialogue("discoverComments");
+    //        eventName = "finishDialogue";
+    //    }
+    //}
 
     public void ZoomIntoPlayer()
     {
@@ -418,8 +239,110 @@ public class IntelliSenseTest : MonoBehaviour {
             y0 = this.transform.position.y;
             transform.localScale = new Vector3(.25f, .25f, 1);
         }
+    }    
+
+    // looks in dictionary and sets the dialogue to certain keyword passed in
+    public void SetDialogue(string keyWord)
+    {
+        // resets dialogue
+        dialogueIndex = 0;
+        index = 0;
+
+        List<string> sayThis;
+        if (dialogue.TryGetValue(keyWord, out sayThis))
+        {
+            whatToSay = sayThis;
+        }
+
+        string eName;
+        if(events.TryGetValue(keyWord, out eName))
+        {
+            eventName = eName;
+        }
+
+        initialEvent(keyWord);
+
+        talking = true;
     }
 
+    #region EventSystem
+    /// <summary>
+    /// Only executes once when the dialogue needs to be initiated in the game
+    /// </summary> 
+    public void initialEvent(string eName)
+    {
+        switch (eName)
+        {
+            case "receiveName":
+                PlayerStats.playerName = namePrompt.transform.Find("name").GetComponent<Text>().text;
+                namePrompt.SetActive(false);
+
+                // if nothing is entered by the player, then give the player the default name "BOB"
+                if (PlayerStats.playerName == "")
+                {
+                    PlayerStats.playerName = "Bob";
+                    whatToSay[0] = "Nothing? Will \"BOB\" suffice then" + whatToSay[0];
+
+                }
+                else
+                {
+                    whatToSay[0] = PlayerStats.playerName.ToUpper() + whatToSay[0];
+                }
+                break;
+            case "unlockChest":
+                initialEvent("APIClicked"); // call the event system
+                if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective"))
+                {
+                    PlayerStats.deadObjects.Add("SixthTutorialObjective");
+                    Destroy(GameObject.Find("SixthTutorialObjective"));
+                }
+                chestHelpButton.SetActive(true);
+                startTime = 0;
+                break;
+            case "colorChanged":
+                if (GameObject.Find("FifthTutorialObjective"))
+                {
+                    GameObject destroy = GameObject.Find("FifthTutorialObjective");
+                    Destroy(destroy);
+                    PlayerStats.deadObjects.Add(destroy.name);
+                }
+                break;
+            case "killedTutorialEnemy":
+                PlayerStats.deadObjects.Add(fourthObjectiveBarrier.name);
+                Destroy(fourthObjectiveBarrier);
+                break;
+            case "inputHack":
+                string inputtedCode = hackPrompt.transform.Find("code").GetComponent<Text>().text;
+                if (inputtedCode == "System.body(Color.BLUE);")
+                {
+                    SetDialogue("correctHack");
+                    hackPrompt.SetActive(false);
+                }
+                else
+                {
+                    SetDialogue("wrongHack");
+                    hackPrompt.transform.Find("code").GetComponent<Text>().text = "";
+                }
+                break;
+            case "movePlatform2":
+                initialEvent("APIClicked");
+                PlayerStats.deadObjects.Add(seventhTutorialBarrier.name);
+                Destroy(seventhTutorialBarrier.gameObject);
+                directionHelpButton.SetActive(true);
+                break;
+            case "movePlatform": // OR
+            case "codeFixed": // OR 
+            case "APIClicked":
+                GameObject myEventSystem = GameObject.Find("EventSystem");
+                myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+                break;
+        }     
+    }
+
+    /// <summary>
+    /// The event system looks at the event name key and executes certain
+    /// actions depending on that event name key.
+    /// </summary> 
     public void performEvent()
     {
         switch (eventName)
@@ -459,6 +382,7 @@ public class IntelliSenseTest : MonoBehaviour {
                 talking = false;
                 break;
             case "moveToFourthTutorial":
+                LevelManager.canPressTab = true;
                 if (fourthTutorialObjective != null)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, fourthTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
@@ -502,7 +426,7 @@ public class IntelliSenseTest : MonoBehaviour {
             case "startTimer":
                 startTime += Time.deltaTime;
                 if (startTime > 30)
-                    needHelp();
+                    SetDialogue("helpWithChest");
                 break;
             case "finishDialogue":
                 APIInfo.SetActive(false);
@@ -511,20 +435,5 @@ public class IntelliSenseTest : MonoBehaviour {
                 break;
         }
     }
-
-    // looks in dictionary and sets the dialogue to certain keyword passed in
-    public void SetDialogue(string keyWord)
-    {
-        // resets dialogue
-        dialogueIndex = 0;
-        index = 0;
-
-
-        List<string> sayThis;
-        if (dialogue.TryGetValue(keyWord, out sayThis))
-        {
-            whatToSay = sayThis;
-            talking = true;
-        }
-    }
+    #endregion
 }
