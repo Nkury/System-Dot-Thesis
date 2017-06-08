@@ -3,12 +3,11 @@ using System.Collections;
 
 public class Variabull : MonoBehaviour {
 
-    public static string statement;
-    public static bool taken = false;
+    public string statement;
 
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
 	
 	// Update is called once per frame
@@ -20,8 +19,8 @@ public class Variabull : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            taken = true;
-            Destroy(this);
+            GameObject.Find("Main HUD").GetComponent<TerminalWindowUI>().setVariabullCode(statement);
+            Destroy(this.gameObject);
         }
     }
 }

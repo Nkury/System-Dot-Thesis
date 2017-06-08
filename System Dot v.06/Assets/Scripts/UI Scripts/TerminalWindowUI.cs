@@ -24,14 +24,7 @@ public class TerminalWindowUI : MonoBehaviour {
         if(F5Ref.activeSelf && EnemyTerminal.globalTerminalMode < 2)
         {
             F5Ref.SetActive(false);
-        }
-
-        if (Variabull.taken)
-        {
-            variabullRef.SetActive(Variabull.taken);
-            variaCode.GetComponent<Text>().text = Variabull.statement;
-        }
-    
+        }    
 
         if(EnemyTerminal.globalTerminalMode >= 2)
         {
@@ -188,5 +181,11 @@ public class TerminalWindowUI : MonoBehaviour {
     public void F5(bool appear)
     {
         F5Ref.SetActive(appear);
+    }
+
+    public void setVariabullCode(string statement)
+    {
+            variabullRef.SetActive(true);
+        variaCode.GetComponent<Text>().text = statement;     
     }
 }
