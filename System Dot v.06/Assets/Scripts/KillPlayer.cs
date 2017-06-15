@@ -4,12 +4,12 @@ using System.Collections;
 
 public class KillPlayer : MonoBehaviour {
 
-	public LevelManager levelManager;
+	public LevelHandler levelManager;
     public int damageToGive;
 
 	// Use this for initialization
 	void Start () {
-		levelManager = FindObjectOfType<LevelManager> ();
+		levelManager = FindObjectOfType<LevelHandler> ();
 	}
 	
 	// Update is called once per frame

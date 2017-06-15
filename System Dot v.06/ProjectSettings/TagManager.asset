@@ -15,6 +15,7 @@ TagManager:
   - Centipede Body
   - Falling Spike
   - Centipede Trigger
+  - LevelManager
   layers:
   - Default
   - TransparentFX

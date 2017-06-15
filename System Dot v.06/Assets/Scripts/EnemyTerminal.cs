@@ -113,8 +113,7 @@ public class EnemyTerminal : MonoBehaviour
     void OnMouseExit()
     {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().material.color.r, gameObject.GetComponent<SpriteRenderer>().material.color.g,
-                                                                    gameObject.GetComponent<SpriteRenderer>().material.color.b, 1);
-      
+                                                                    gameObject.GetComponent<SpriteRenderer>().material.color.b, 1);      
     }
 
     void OnMouseDown()
@@ -296,6 +295,10 @@ public class EnemyTerminal : MonoBehaviour
                 case keyActions.WAIT:
                     yield return new WaitForSeconds(parse.waitTimes[waitCount]);
                     waitCount++;
+                    numOfSyntaxErrors = 0;
+                    break;
+                case keyActions.SMASH:
+                    this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.ERROR:
