@@ -50,16 +50,18 @@
  *   [29]    wait_stmt          ->        WAIT  LPAREN  (NUM  |  REALNUM)  RPAREN
  *   [30]    comment_stmt       ->        DOUBLESLASH   <characters>    NEWLINE (\n)
  *                                       <characters represent anything> 
- *   [31]    smash_stmt         ->        SMASH LPAREN RPAREN                                     
+ *   [31]    smash_stmt         ->        SMASH LPAREN RPAREN           
+ *   [32]    gravity_stmt       ->        GRAVITY LPAREN (TRUE | FALSE | ID) RPAREN 
+ *   [33]    activate_stmt      ->        ACTIVATE LPAREN (NUM | REALNUM | ID) RPAREN                         
  *   (-=-=-=-=-=-=- The following grammar are for methods and can be substituted into the above grammar
  *                  based on their return type -=-=-=-=-=-)
- *   [31]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
+ *   [34]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
  *             <STRING>               <first ID needs to be an existing string variable>
  *                                    <NUMs needs to be in range of the string>
  *                                    <for NUM comma NUM, the first NUM < second NUM>
- *   [32]    indexOf_method     ->        ID  DOT  INDEXOF  LPAREN  ID  RPAREN  SEMICOLON
+ *   [35]    indexOf_method     ->        ID  DOT  INDEXOF  LPAREN  ID  RPAREN  SEMICOLON
  *             <NUM>                  <first ID needs to be an existing string variable>
- *   [33]    length_method      ->        ID  DOT  LENGTH  LPAREN  RPAREN  SEMICOLON                                                    
+ *   [36]    length_method      ->        ID  DOT  LENGTH  LPAREN  RPAREN  SEMICOLON                                                    
  *             <NUM>                  <first ID needs to be an existing string variable>
  *             
  *             Whenever the code does not conform to the above grammar, an ERROR action will be returned.
@@ -110,6 +112,13 @@ namespace ParserAlgo
         // System.smash()
         SMASH,
 
+        // System.gravity(true/false)
+        GRAVITYON, GRAVITYOFF,
+
+        // System.activate(num/realnum/id)
+        // activation power outputted in outputValue in the format: ["Activate: #"]
+        ACTIVATE,
+
         // if there is an infinite loop or syntax error with message
         INFINITELOOP, ERRORMSG, ERROR
 
@@ -121,7 +130,8 @@ namespace ParserAlgo
                             "while", "for", "if", "else",
                             "int", "double", "string", "boolean", "true", "false",
                             "substring", "length", "indexOf",
-                            "System", "output", "check", "move", "body", "jump", "open", "close", "wait", "smash",
+                            "System", "output", "check", "move", "body", "jump", "open", "close", "wait",
+                            "smash", "gravity", "activate",
                             "Direction", "LEFT", "RIGHT", "Color", "BLACK", "RED", "BLUE", "GREEN",
                             "+", "-", "/", "//", "*","%", "=",
                             ":", ",", ";",
@@ -151,7 +161,8 @@ namespace ParserAlgo
             WHILE = 1, FOR, IF, ELSE,
             INT, REAL, STRING, BOOLEAN, TRUE, FALSE,
             SUBSTRING, LENGTH, INDEXOF,
-            SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT, SMASH,
+            SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
+            SMASH, GRAVITY, ACTIVATE,
             DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
             COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
@@ -668,6 +679,119 @@ namespace ParserAlgo
             return;
         }
 
+        private void ParseGravity()
+        {
+            ttype = getToken();
+            if (ttype == TokenTypes.GRAVITY)
+            {
+                ttype = getToken();
+                if (ttype == TokenTypes.LPAREN)
+                {
+                    ttype = getToken();
+                    if (ttype == TokenTypes.TRUE || ttype == TokenTypes.FALSE ||
+                        ttype == TokenTypes.ID)
+                    {
+                        if(ttype == TokenTypes.TRUE)
+                        {
+                            actions.Add(keyActions.GRAVITYON);
+                        } else if(ttype == TokenTypes.FALSE)
+                        {
+                            actions.Add(keyActions.GRAVITYOFF);
+                        } else if(ttype == TokenTypes.ID)
+                        {
+                            variable var;
+                            if (symbolTable.TryGetValue(token, out var))
+                            {
+                                if (var.type == TokenTypes.BOOLEAN && var.value == "true")
+                                {
+                                    actions.Add(keyActions.GRAVITYON);
+                                }
+                                else if (var.type == TokenTypes.BOOLEAN && var.value == "false")
+                                {
+                                    actions.Add(keyActions.GRAVITYOFF);
+                                }
+                                else
+                                {
+                                    syntaxMessage = "Error in line " + (line_no - 1) +
+                                    ": There is an error when you try to alter gravity for an object";
+                                    actions.Add(keyActions.ERROR);
+                                    return;
+                                }
+                            }
+                        }
+
+                        ttype = getToken();
+                        if (ttype == TokenTypes.RPAREN)
+                        {
+                            ttype = getToken();
+                            if (ttype == TokenTypes.SEMICOLON)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            syntaxMessage = "Error in line " + (line_no - 1) +
+                ": There is an error when you try to alter gravity for an object";
+            actions.Add(keyActions.ERROR);
+            return;
+        }
+
+        private void ParseActivate()
+        {
+            int outputValLength = outputValue.Count;
+
+            ttype = getToken();
+            if (ttype == TokenTypes.GRAVITY)
+            {
+                ttype = getToken();
+                if (ttype == TokenTypes.LPAREN)
+                {
+                    ttype = getToken();
+                    if (ttype == TokenTypes.NUM || ttype == TokenTypes.REALNUM ||
+                         (ttype == TokenTypes.ID))
+                    {
+                        if (ttype == TokenTypes.NUM || ttype == TokenTypes.REALNUM)
+                        {
+                            outputValue.Add("Activate: " + token);
+                        }
+                        else if (ttype == TokenTypes.ID)
+                        {
+                            variable var;
+                            if (symbolTable.TryGetValue(token, out var))
+                            {
+                                if (var.type == TokenTypes.INT || var.type == TokenTypes.NUM || var.type == TokenTypes.REAL || var.type == TokenTypes.REALNUM)
+                                {
+                                    outputValue.Add("Activate: " + token);
+                                }                          
+                            }
+                        }
+
+                        ttype = getToken();
+                        if (ttype == TokenTypes.RPAREN)
+                        {
+                            ttype = getToken();
+                            if (ttype == TokenTypes.SEMICOLON)
+                            {
+                                if (outputValue.Count > outputValLength)
+                                {
+                                    actions.Add(keyActions.ACTIVATE);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            syntaxMessage = "Error in line " + (line_no - 1) +
+                ": There is an error when you try to activate an object";
+            actions.Add(keyActions.ERROR);
+            return;
+        }
+
         // parses for System. and then evaluates which of the above System commands it should parse for
         private numberOrString ParseSystem()
         {
@@ -718,6 +842,14 @@ namespace ParserAlgo
                     {
                         ungetToken();
                         ParseSmash();                        
+                    } else if(ttype == TokenTypes.GRAVITY)
+                    {
+                        ungetToken();
+                        ParseGravity();
+                    } else if(ttype == TokenTypes.ACTIVATE)
+                    {
+                        ungetToken();
+                        ParseActivate();
                     }
                     return default(numberOrString);
                 }
