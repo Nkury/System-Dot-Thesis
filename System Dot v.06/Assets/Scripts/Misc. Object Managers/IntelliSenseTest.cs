@@ -6,25 +6,15 @@ using System.Linq;
 using System.Xml.Linq;
 using UnityEngine.UI;
 
-public class IntelliSenseTest : MonoBehaviour {
-
-    Dictionary<string, List<string>> dialogue = new Dictionary<string, List<string>>();
-    Dictionary<string, string> events = new Dictionary<string, string>();
-
-    [Header("Talking")]
-    public bool talking;
-    public List<string> whatToSay;
-    public string dialogueFileName;
-
+public class IntelliSenseTest : Dialogue {
+    
     float y0;
     float amplitude = .2f;
     float speed = 1.5f;
     float moveSpeed = 7;
 
     [Header("In-Game Objects")]
-    public GameObject player;
     public GameObject intelliLocation;
-    public GameObject dialogueBox;
     public GameObject mouseClickPrompt;
 
     [Header("Level 1 Objects")]
@@ -48,43 +38,14 @@ public class IntelliSenseTest : MonoBehaviour {
     public GameObject directionHelpButton;
     public GameObject chestHelpButton;
 
-    private int index = 0;
-    private int interval = 0;
-    private int dialogueIndex = 0;
-    private string eventName = "";
-
     private bool tutorialCheck = false;
     public static bool clickOnce = false;
 
     private float startTime = 0;
 
     // Use this for initialization
-    void Start () {
-
-        XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/" + dialogueFileName + ".xml");
-        List<string> addedDialogue = new List<string>();
-        string keyName;
-        string eventName;
-
-        foreach(XElement messElement in loadedData.Descendants("message"))
-        {
-            keyName = messElement.Attribute("id").Value;
-            eventName = "";
-            if(messElement.Attribute("event") != null)
-            {
-                eventName = messElement.Attribute("event").Value;
-            }       
-
-            addedDialogue = new List<string>();
-            foreach (XElement element in messElement.Elements("say"))
-            {
-                addedDialogue.Add(element.Value);
-            }
-
-            dialogue.Add(keyName, addedDialogue);
-            events.Add(keyName, eventName);
-        }
-
+    public void Start () {
+        base.Start();
         if(PlayerStats.checkpoint == "Checkpoint1"){
             SetDialogue("startGame");
         }
@@ -97,80 +58,28 @@ public class IntelliSenseTest : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
+        base.Update();
+        // THIS SECTION IS TO HAVE INTELLISENSE ZOOM OUT WHEN STARTING LEVEL 1
         if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].Length)
         {
             if(PlayerStats.checkpoint != "Checkpoint1")
             {
                 ZoomOutPlayer();
-            }
-            
-            dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                index = whatToSay[dialogueIndex].Length;
-            }
-        }
-        // THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
-        else if (dialogueIndex < whatToSay.Count)
-        {
-            // go to the next string
-            dialogueBox.transform.Find("spacebar image").gameObject.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                dialogueIndex++;
-                index = 0;
-            }
-            // THIS SECTION IS TO KEEP THE TEXT PRESENT WHILE ASSESSING AN EVENT
-        }
-        else if (eventName != "")
-        {
-            dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
-            // check for special events mid-dialogue
-            performEvent();
-            // THIS SECTION IS TO SIGNAL THAT WE ARE DONE TALKING AND PLAYER IS FREE TO MOVE
-        }
-        else {
+            }        
+        } else {
             if(PlayerStats.checkpoint != "Checkpoint1")
             {
                 ZoomIntoPlayer();
             }
-            talking = false;
         }
 
         // THIS SECTION IS TO MAKE INTELLISENSE MOVE UP AND DOWN PERIODICALLY
         if (PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
         {
             transform.position = new Vector2(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time));
-        }
-
-        // THIS SECTION IS TO PRINT OUT WHAT THE CHARACTER SAYS ON THE SCREEN
-        if (dialogueIndex < whatToSay.Count && index <= whatToSay[dialogueIndex].Length)
-        {
-            dialogueBox.GetComponentInChildren<Text>().text = whatToSay[dialogueIndex].Substring(0, index);
-        }
-
-        // THIS SECTION IS TO DISPLAY THE DIALOGUE BOX IF THE PLAYER IS TALKING
-        if (talking)
-        {
-            dialogueBox.SetActive(true);
-        }
-        else
-        {
-            dialogueBox.SetActive(false);
-        }
-
-        // THIS PART IMMOBOLIZES THE PLAYER
-        if(player.GetComponentInParent<PlayerController>())
-            player.GetComponentInParent<PlayerController>().IntelliSenseTalking(talking);
-
-        // THIS SECTION IS TO MEDIATE THE TIME THE TEXT APPEARS ON SCREEN
-        if (interval % 3 == 0)
-            index++;
-
-        interval++;
+        }     
 
         // THIS SECTION CHECKS IF ENEMY HAS BEEN CLICKED FOR TUTORIAL PURPOSES
         if (Input.GetMouseButtonDown(0))
@@ -242,34 +151,13 @@ public class IntelliSenseTest : MonoBehaviour {
     }    
 
     // looks in dictionary and sets the dialogue to certain keyword passed in
-    public void SetDialogue(string keyWord)
-    {
-        // resets dialogue
-        dialogueIndex = 0;
-        index = 0;
 
-        List<string> sayThis;
-        if (dialogue.TryGetValue(keyWord, out sayThis))
-        {
-            whatToSay = sayThis;
-        }
-
-        string eName;
-        if(events.TryGetValue(keyWord, out eName))
-        {
-            eventName = eName;
-        }
-
-        initialEvent(keyWord);
-
-        talking = true;
-    }
 
     #region EventSystem
     /// <summary>
     /// Only executes once when the dialogue needs to be initiated in the game
     /// </summary> 
-    public void initialEvent(string eName)
+    public override void initialEvent(string eName)
     {
         switch (eName)
         {
@@ -343,7 +231,7 @@ public class IntelliSenseTest : MonoBehaviour {
     /// The event system looks at the event name key and executes certain
     /// actions depending on that event name key.
     /// </summary> 
-    public void performEvent()
+    public override void performEvent()
     {
         switch (eventName)
         {

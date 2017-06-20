@@ -197,7 +197,7 @@ public class EnemyTerminal : MonoBehaviour
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
                         this.GetComponent<SpriteRenderer>().sprite = blueSlime;
                         numOfSyntaxErrors = 0;
-                    } else if(this.gameObject.tag == "Centipede Body")
+                    } else if (this.gameObject.tag == "Centipede Body")
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
                         this.GetComponent<SpriteRenderer>().sprite = blueBody;
@@ -249,28 +249,40 @@ public class EnemyTerminal : MonoBehaviour
                     }
                     break;
                 case keyActions.CLOSE:
-                    if(this.gameObject.tag == "Chest")
+                    if (this.gameObject.tag == "Chest")
                     {
                         this.GetComponent<SpriteRenderer>().sprite = chestSpriteClosed;
                         numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.OPEN:
-                    if(this.gameObject.tag == "Chest")
+                    if (this.gameObject.tag == "Chest")
                     {
                         this.GetComponent<SpriteRenderer>().sprite = chestSpriteOpen;
                         yield return new WaitForSeconds(1);
                         this.GetComponent<ChestBits>().chestOpen();
 
-                        if(this.gameObject.name == "TutorialChest")
+                        if (this.gameObject.name == "TutorialChest")
                         {
                             GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("unlockChest");
                         }
- 
+
                         numOfSyntaxErrors = 0;
                     }
                     break;
                 case keyActions.MOVELEFT:
+                    for(int i = 0; i < actions.Count; i++)
+                    {
+                        if(actions[i] == keyActions.MOVERIGHT)
+                        {
+                            actions.RemoveAt(i);
+                            i--;
+                        } else if(actions[i] == keyActions.MOVELEFT)
+                        {
+                            break;
+                        }
+                    }
+
                     this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
 
                     if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
@@ -282,6 +294,18 @@ public class EnemyTerminal : MonoBehaviour
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.MOVERIGHT:
+                    for (int i = 0; i < actions.Count; i++)
+                    {
+                        if (actions[i] == keyActions.MOVELEFT)
+                        {
+                            actions.RemoveAt(i);
+                            i--;
+                        }
+                        else if (actions[i] == keyActions.MOVERIGHT)
+                        {
+                            break;
+                        }
+                    }
                     this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
 
                     if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
@@ -298,8 +322,26 @@ public class EnemyTerminal : MonoBehaviour
                     numOfSyntaxErrors = 0;
                     break;
                 case keyActions.SMASH:
-                    this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    if (this.GetComponent<Smash>() == null)
+                    {
+                        this.gameObject.AddComponent<Smash>();
+                    }
+                    if (this.GetComponent<Rigidbody2D>() != null)
+                    {
+                        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    }
                     numOfSyntaxErrors = 0;
+                    break;
+                case keyActions.GRAVITYON:
+                    if (this.GetComponent<Rigidbody2D>() != null) {
+                        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    }
+                    break;
+                case keyActions.GRAVITYOFF:
+                    if (this.GetComponent<Rigidbody2D>() != null)
+                    {
+                        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                    }
                     break;
                 case keyActions.ERROR:
                     numOfSyntaxErrors++;
