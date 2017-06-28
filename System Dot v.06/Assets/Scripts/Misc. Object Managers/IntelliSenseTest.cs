@@ -68,7 +68,7 @@ public class IntelliSenseTest : Dialogue {
             {
                 ZoomOutPlayer();
             }        
-        } else {
+        } else if(!talking) {
             if(PlayerStats.checkpoint != "Checkpoint1")
             {
                 ZoomIntoPlayer();
