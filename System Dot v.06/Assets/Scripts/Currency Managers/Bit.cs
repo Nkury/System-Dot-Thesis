@@ -6,6 +6,7 @@ public class Bit : MonoBehaviour {
     public Sprite zero;
     public Sprite one;
 
+    public float speed = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,7 @@ public class Bit : MonoBehaviour {
     {
         if (other.gameObject.tag == "absorb bits")
         {
-            transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 5* Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, other.transform.position, speed * Time.deltaTime);
         }
     }
 

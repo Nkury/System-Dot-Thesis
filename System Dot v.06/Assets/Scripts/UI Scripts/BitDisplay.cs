@@ -15,7 +15,7 @@ public class BitDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!mouseOver) {          
+        if (mouseOver) {          
             txt.text = System.Convert.ToString(PlayerStats.bitsCollected, 2);
         }
         else {
