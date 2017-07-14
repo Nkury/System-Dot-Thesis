@@ -744,7 +744,7 @@ namespace ParserAlgo
             int outputValLength = outputValue.Count;
 
             ttype = getToken();
-            if (ttype == TokenTypes.GRAVITY)
+            if (ttype == TokenTypes.ACTIVATE)
             {
                 ttype = getToken();
                 if (ttype == TokenTypes.LPAREN)

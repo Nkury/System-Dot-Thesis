@@ -5,7 +5,6 @@ public class ChestBits : MonoBehaviour {
 
     public int numOfBits;
     public GameObject bit;
-    public AudioSource open;
 
     public void chestOpen()
     {

@@ -48,6 +48,7 @@ public class EnemyTerminal : MonoBehaviour
     private bool tutorialCheck = false;
 
     public List<keyActions> actions = new List<keyActions>();
+    public List<string> outputVal = new List<string>();
     Parser parse = new Parser();
 
     private int numOfSyntaxErrors;
@@ -169,6 +170,7 @@ public class EnemyTerminal : MonoBehaviour
         }
 
         actions = parse.Parse(passedInString);
+        outputVal = parse.outputValue;
     }
 
     public IEnumerator evaluateActions()
@@ -341,6 +343,18 @@ public class EnemyTerminal : MonoBehaviour
                     if (this.GetComponent<Rigidbody2D>() != null)
                     {
                         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                    }
+                    break;
+                case keyActions.ACTIVATE:
+                    foreach(string output in outputVal)
+                    {
+                        if (output.Contains("Activate: "))
+                        {
+                            if(this.GetComponent<Activator>() != null)
+                            {
+                                this.GetComponent<Activator>().power = float.Parse(output.Substring(10, output.Length - 10));
+                            }
+                        }
                     }
                     break;
                 case keyActions.ERROR:
