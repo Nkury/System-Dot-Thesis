@@ -105,19 +105,19 @@ public class EnemyTerminal : MonoBehaviour
       
     }
 
-    void OnMouseOver()
+    public void OnMouseOver()
     {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().material.color.r, gameObject.GetComponent<SpriteRenderer>().material.color.g,
                                                                     gameObject.GetComponent<SpriteRenderer>().material.color.b, .5f);
     }
 
-    void OnMouseExit()
+    public void OnMouseExit()
     {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().material.color.r, gameObject.GetComponent<SpriteRenderer>().material.color.g,
                                                                     gameObject.GetComponent<SpriteRenderer>().material.color.b, 1);      
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         // will not click game object if mouse is clicking UI
         if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())

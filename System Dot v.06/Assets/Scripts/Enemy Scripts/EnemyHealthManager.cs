@@ -60,6 +60,7 @@ public class EnemyHealthManager : MonoBehaviour {
             }
 
             PlayerStats.deadObjects.Add(this.gameObject.name);
+            TabBetweenEnemies.removeEnemy(this.gameObject.GetComponent<EnemyTerminal>());
             Destroy(gameObject);
         }
 	}

@@ -29,7 +29,7 @@ public class HurtEnemyOnContact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LevelManager.canPressTab && Input.GetKeyDown(KeyCode.Tab))
+        if (LevelManager.canPressTab && Input.GetKeyDown(KeyCode.Q))
         {
             if ((int)state >= 2)
                 state = colorState.BLUE;
