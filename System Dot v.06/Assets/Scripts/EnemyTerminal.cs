@@ -141,7 +141,7 @@ public class EnemyTerminal : MonoBehaviour
                 foreach (EnemyTerminal e in enemies)
                     e.localTerminalMode = 0;
                 globalTerminalMode = 2;
-                localTerminalMode = 2;
+                localTerminalMode = 2;                
 
                 /* LOGGER INFORMATION */
                 PlayerStats.numOfEdits++;                
@@ -371,6 +371,9 @@ public class EnemyTerminal : MonoBehaviour
         {
             terminalWindow.SetActive(true);
 
+            // when opening terminal window, start the cursor at the end of the first line
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(terminalWindow.transform.FindChild("line 1").gameObject, null);
+            StartCoroutine(MoveTextEnd_NextFrame(terminalWindow.transform.FindChild("line 1").GetComponent<InputField>()));
 
             switch (numberOfLines)
             {
@@ -476,5 +479,11 @@ public class EnemyTerminal : MonoBehaviour
             terminalWindow.transform.FindChild("line 4").gameObject.GetComponent<InputField>().text = "";
             terminalWindow.transform.FindChild("line 5").gameObject.GetComponent<InputField>().text = "";
         }
+    }
+
+    IEnumerator MoveTextEnd_NextFrame(InputField lineNO)
+    {
+        yield return 0; // Skip the first frame in which this is called.
+        lineNO.MoveTextEnd(false); // Do this during the next frame.
     }
 }
