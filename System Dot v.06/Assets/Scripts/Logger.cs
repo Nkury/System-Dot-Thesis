@@ -59,58 +59,60 @@ public class Logger : MonoBehaviour {
         else if(!closed)
         {
             closed = true;
-
-            // updates longest time on editing
-            if(editTime > PlayerStats.longestTimeOnEditing)
+            if (PlayerStats.numberOfPerfectEdits > 0)
             {
-                PlayerStats.longestTimeOnEditing = editTime;
+                // updates longest time on editing
+                if (editTime > PlayerStats.longestTimeOnEditing)
+                {
+                    PlayerStats.longestTimeOnEditing = editTime;
+                }
+
+                // updates average time on editing
+                PlayerStats.averageTimeOnEditing += ((editTime - PlayerStats.averageTimeOnEditing) / PlayerStats.numOfEdits);
+
+                // updates most number of backspaces
+                if (numOfBackSpaces > PlayerStats.mostNumberOfBackspaces)
+                {
+                    PlayerStats.mostNumberOfBackspaces = numOfBackSpaces;
+                }
+
+                // updates average number of backspaces
+                PlayerStats.averageNumberOfBackspaces += ((numOfBackSpaces - PlayerStats.averageNumberOfBackspaces) / PlayerStats.numOfEdits);
+
+                // updates most number of deletes
+                if (numOfDeletes > PlayerStats.mostNumberOfDeletes)
+                {
+                    PlayerStats.mostNumberOfDeletes = numOfDeletes;
+                }
+
+                // updates average number of deletes
+                PlayerStats.averageNumberOfDeletes += ((numOfDeletes - PlayerStats.averageNumberOfDeletes) / PlayerStats.numOfEdits);
+
+                // updates most number of mouse clicks
+                if (numOfMouseClicks > PlayerStats.mostNumberofMouseClicks)
+                {
+                    PlayerStats.mostNumberofMouseClicks = numOfMouseClicks;
+                }
+
+                // updates average number of mouse clicks
+                PlayerStats.averageNumberofMouseClicks += ((numOfMouseClicks - PlayerStats.mostNumberofMouseClicks) / PlayerStats.numOfEdits);
+
+                // updates most time of mouse inactivity
+                if (inactiveTime > PlayerStats.mostTimeofMouseInactivity)
+                {
+                    PlayerStats.mostTimeofMouseInactivity = inactiveTime;
+                }
+
+                // updates average mouse inactivity
+                PlayerStats.averageTimeOfMouseInactivity += ((inactiveTime - PlayerStats.mostTimeofMouseInactivity) / PlayerStats.numOfEdits);
+
+
+                editTime = 0;
+                numOfBackSpaces = 0;
+                numOfDeletes = 0;
+                numOfMouseClicks = 0;
+                SaveLoad.Save();
             }
-
-            // updates average time on editing
-            PlayerStats.averageTimeOnEditing += ((editTime - PlayerStats.averageTimeOnEditing) / PlayerStats.numOfEdits);
-
-            // updates most number of backspaces
-            if(numOfBackSpaces > PlayerStats.mostNumberOfBackspaces)
-            {
-                PlayerStats.mostNumberOfBackspaces = numOfBackSpaces;
-            }
-
-            // updates average number of backspaces
-            PlayerStats.averageNumberOfBackspaces += ((numOfBackSpaces - PlayerStats.averageNumberOfBackspaces) / PlayerStats.numOfEdits);
-
-            // updates most number of deletes
-            if(numOfDeletes > PlayerStats.mostNumberOfDeletes)
-            {
-                PlayerStats.mostNumberOfDeletes = numOfDeletes;
-            }
-
-            // updates average number of deletes
-            PlayerStats.averageNumberOfDeletes += ((numOfDeletes - PlayerStats.averageNumberOfDeletes) / PlayerStats.numOfEdits);
-
-            // updates most number of mouse clicks
-            if (numOfMouseClicks > PlayerStats.mostNumberofMouseClicks)
-            {
-                PlayerStats.mostNumberofMouseClicks = numOfMouseClicks;
-            }
-
-            // updates average number of mouse clicks
-            PlayerStats.averageNumberofMouseClicks += ((numOfMouseClicks - PlayerStats.mostNumberofMouseClicks) / PlayerStats.numOfEdits);
-
-            // updates most time of mouse inactivity
-            if (inactiveTime > PlayerStats.mostTimeofMouseInactivity)
-            {
-                PlayerStats.mostTimeofMouseInactivity = inactiveTime;
-            }
-
-            // updates average mouse inactivity
-            PlayerStats.averageTimeOfMouseInactivity += ((inactiveTime - PlayerStats.mostTimeofMouseInactivity) / PlayerStats.numOfEdits);
-
-
-            editTime = 0;
-            numOfBackSpaces = 0;
-            numOfDeletes = 0;
-            numOfMouseClicks = 0;
-            SaveLoad.Save();
         }
 	}
 

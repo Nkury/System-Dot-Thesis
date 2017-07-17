@@ -68,23 +68,30 @@ public class HealthManager : MonoBehaviour {
 
 	public static void HurtPlayer(int damageToGive)
 	{
-        if (PlayerStats.armorHealth <= 0)
+        if (!Invincibility.invincibility)
         {
-            PlayerStats.currentHealth -= damageToGive;
-        }
-        else
-        {
-            PlayerStats.armorHealth -= damageToGive;
-        }
+            if (PlayerStats.armorHealth <= 0)
+            {
+                PlayerStats.currentHealth -= damageToGive;
+                Invincibility.invincibility = true;
+                Invincibility.invincibilityOnce = true;
+            }
+            else
+            {
+                PlayerStats.armorHealth -= damageToGive;
+                Invincibility.invincibility = true;
+                Invincibility.invincibilityOnce = true;
+            }
 
-      if (PlayerStats.currentHealth < 0)
-        {
-            PlayerStats.currentHealth = 0;
-        }
+            if (PlayerStats.currentHealth < 0)
+            {
+                PlayerStats.currentHealth = 0;
+            }
 
-      if(PlayerStats.armorHealth < 0)
-        {
-            PlayerStats.armorHealth = 0;
+            if (PlayerStats.armorHealth < 0)
+            {
+                PlayerStats.armorHealth = 0;
+            }
         }
 	}
 

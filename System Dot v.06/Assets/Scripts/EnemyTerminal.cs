@@ -5,8 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using ParserAlgo;
 
-
-
 public class EnemyTerminal : MonoBehaviour
 {
 
@@ -141,7 +139,13 @@ public class EnemyTerminal : MonoBehaviour
                 foreach (EnemyTerminal e in enemies)
                     e.localTerminalMode = 0;
                 globalTerminalMode = 2;
-                localTerminalMode = 2;                
+                localTerminalMode = 2;
+
+                // when opening terminal window, start the cursor at the end of the first line
+                InputField line1 = terminalWindow.transform.FindChild("line 1").GetComponent<InputField>();
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(line1.gameObject, null);
+                StartCoroutine(MoveTextEnd_NextFrame(line1));
 
                 /* LOGGER INFORMATION */
                 PlayerStats.numOfEdits++;                
@@ -370,10 +374,6 @@ public class EnemyTerminal : MonoBehaviour
         if (localTerminalMode == 2)
         {
             terminalWindow.SetActive(true);
-
-            // when opening terminal window, start the cursor at the end of the first line
-            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(terminalWindow.transform.FindChild("line 1").gameObject, null);
-            StartCoroutine(MoveTextEnd_NextFrame(terminalWindow.transform.FindChild("line 1").GetComponent<InputField>()));
 
             switch (numberOfLines)
             {

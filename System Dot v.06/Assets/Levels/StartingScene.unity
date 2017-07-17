@@ -4847,7 +4847,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 15
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1001 &77503443
 Prefab:
   m_ObjectHideFlags: 0
@@ -8847,7 +8846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 25
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &132960057
 GameObject:
   m_ObjectHideFlags: 0
@@ -10442,7 +10440,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 5
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &162648931
 GameObject:
   m_ObjectHideFlags: 0
@@ -24269,7 +24266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 10
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &374280428
 GameObject:
   m_ObjectHideFlags: 0
@@ -26959,7 +26955,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 50
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &415902534
 GameObject:
   m_ObjectHideFlags: 0
@@ -53080,6 +53075,21 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114263188674637056, guid: d0fa0882dc00c17419614755d2d327d7,
+        type: 2}
+      propertyPath: blinks
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114263188674637056, guid: d0fa0882dc00c17419614755d2d327d7,
+        type: 2}
+      propertyPath: tOn
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114263188674637056, guid: d0fa0882dc00c17419614755d2d327d7,
+        type: 2}
+      propertyPath: tOff
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
   m_IsPrefabParent: 0
@@ -61312,7 +61322,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 35
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &944057991
 GameObject:
   m_ObjectHideFlags: 0
@@ -72733,7 +72742,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 25
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!4 &1146448907 stripped
 Transform:
   m_PrefabParentObject: {fileID: 417878, guid: 446d9c3dd1b400f4e9bfd98853e90e94, type: 2}
@@ -78253,7 +78261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 25
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &1229405335
 GameObject:
   m_ObjectHideFlags: 0
@@ -99151,7 +99158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 25
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &1554303976
 GameObject:
   m_ObjectHideFlags: 0
@@ -117342,7 +117348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 25
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &1842342650
 GameObject:
   m_ObjectHideFlags: 0
@@ -127743,7 +127748,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBits: 25
   bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
-  open: {fileID: 0}
 --- !u!1 &2023157023
 GameObject:
   m_ObjectHideFlags: 0

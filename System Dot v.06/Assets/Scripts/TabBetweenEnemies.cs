@@ -29,7 +29,7 @@ public class TabBetweenEnemies : MonoBehaviour {
             }      
 
             if (objectCount < onScreenObjects.Count)
-            {
+            {              
                 // if this is the first object being tabbed to
                 if (lastIndex == -1)
                 {
@@ -41,16 +41,22 @@ public class TabBetweenEnemies : MonoBehaviour {
 
                 lastIndex = index;
 
-                Debug.Log("object being tabbed to: " + onScreenObjects[lastIndex].gameObject.name);
+                Debug.Log("object being tabbed to: " + onScreenObjects[index].gameObject.name);
                  onScreenObjects[index].OnMouseOver();
 
                 index = (index + 1) % onScreenObjects.Count;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            onScreenObjects[index].OnMouseDown();
+            if (lastIndex >= 0)
+            {
+                onScreenObjects[lastIndex].OnMouseDown();
+                onScreenObjects[lastIndex].OnMouseExit();
+                index = lastIndex;
+                lastIndex = -1;
+            }
         }
 	}
 
