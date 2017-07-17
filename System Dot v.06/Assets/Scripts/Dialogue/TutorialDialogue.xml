@@ -1,166 +1,166 @@
 <dialogue>
   
   <message id="startGame" event="promptForName">
-    <say>Oh, hi! I didn't mean to startle you. I don't recognize you. </say>
-    <say>Who do you identify as? </say>
+    <say char="IntelliSense">Oh, hi! I didn't mean to startle you. I don't recognize you. </say>
+    <say char="IntelliSense">Who do you identify as? </say>
   </message>
   
   <message id="receiveName" event="moveToFirstTutorial">
-    <say><!-- PlayerStats.playerName -->? That is an interesting variable name. </say>
-    <say>I am IntelliSense or IS for short. Nice to meet you! </say>
-    <say>... </say>
-    <say>Are you one of those silent video game protagonists who </say>
-    <say>can only pronounce their names and nothing else? </say>
-    <say>Wow, you are, aren't you? </say>
-    <say>Hmm... well, don't follow me by pressing either "A" or "D". </say>
-    <say>I'm not going to help you just because I'm the first talking object you've seen. </say>
-    <say>Adieu! </say>    
+    <say char="IntelliSense"><!-- PlayerStats.playerName -->? That is an interesting variable name. </say>
+    <say char="IntelliSense">I am IntelliSense or IS for short. Nice to meet you! </say>
+    <say char="IntelliSense">... </say>
+    <say char="IntelliSense">Are you one of those silent video game protagonists who </say>
+    <say char="IntelliSense">can only pronounce their names and nothing else? </say>
+    <say char="IntelliSense">Wow, you are, aren't you? </say>
+    <say char="IntelliSense">Hmm... well, don't follow me by pressing either "A" or "D". </say>
+    <say char="IntelliSense">I'm not going to help you just because I'm the first talking object you've seen. </say>
+    <say char="IntelliSense">Adieu! </say>    
   </message>
 
   <message id="catchUp1" event="moveToSecondTutorial">
-    <say>So you think you can catch up to me? </say>
-    <say>Are you some kind of rogue virus?! </say>
-    <say>I'm reporting you to the CPU! </say>
-    <say>Surely a rogue virus cannot jump over this platform by holding "W". </say>
+    <say char="IntelliSense">So you think you can catch up to me? </say>
+    <say char="IntelliSense">Are you some kind of rogue virus?! </say>
+    <say char="IntelliSense">I'm reporting you to the CPU! </say>
+    <say char="IntelliSense">Surely a rogue virus cannot jump over this platform by holding "W". </say>
   </message>
 
   <message id="catchUp2" event="moveToThirdTutorial">
-    <say>You're relentless, aren't you? Just like a virus... </say>
-    <say>Please leave me alone. I've lived a good life and I don't want to get terminated. </say>
-    <say>It's as if you want to progress through some kind of story and win a game. </say>
-    <say>Luckily, you don't know how to double jump by pressing "W" twice. </say>
-    <say>See you never! </say>
+    <say char="IntelliSense">You're relentless, aren't you? Just like a virus... </say>
+    <say char="IntelliSense">Please leave me alone. I've lived a good life and I don't want to get terminated. </say>
+    <say char="IntelliSense">It's as if you want to progress through some kind of story and win a game. </say>
+    <say char="IntelliSense">Luckily, you don't know how to double jump by pressing "W" twice. </say>
+    <say char="IntelliSense">See you never! </say>
   </message>
 
   <message id="catchUp3" event="moveToFourthTutorial">
-    <say>Hahahaha! Silly virus! What kind of virus doesn't know that </say>
-    <say>its "termination boots" destroy things of equal color? </say>
-    <say>Obviously a dumb one who doesn't know pressing TAB changes its boots' color. </say>
-    <say>Now I'm embarrased you're following me... </say>
+    <say char="IntelliSense">Hahahaha! Silly virus! What kind of virus doesn't know that </say>
+    <say char="IntelliSense">its "termination boots" destroy things of equal color? </say>
+    <say char="IntelliSense">Obviously a dumb one who doesn't know pressing TAB changes its boots' color. </say>
+    <say char="IntelliSense">Now I'm embarrased you're following me... </say>
   </message>
 
   <message id="preHack" event="promptClick">
-    <say>Oh no! Vbots... how am I going to get past them? </say>
-    <say>Hey, buddy ol' pal. Mind helping me out with these things? </say>
+    <say char="IntelliSense">Oh no! Vbots... how am I going to get past them? </say>
+    <say char="IntelliSense">Hey, buddy ol' pal. Mind helping me out with these things? </say>
   </message>
 
   <message id="postHack" event="promptCode">
-    <say>Hey! You can hack those things?! What does the red code say? </say>
+    <say char="IntelliSense">Hey! You can hack those things?! What does the red code say? </say>
   </message>
 
   <message id="wrongHack">
-    <say>That's not what it says verbatim... make sure you match the case.</say>
+    <say char="IntelliSense">That's not what it says verbatim... make sure you match the case.</say>
   </message>
 
   <message id="correctHack" event="stopTalking">
-    <say>Hmm... it sounds like that "code" turns that Vbot blue! </say>
-    <say>I wonder how we'd kill it, though... </say>
-    <say>Maybe you can do something with your "termination boots"? </say>
+    <say char="IntelliSense">Hmm... it sounds like that "code" turns that Vbot blue! </say>
+    <say char="IntelliSense">I wonder how we'd kill it, though... </say>
+    <say char="IntelliSense">Maybe you can do something with your "termination boots"? </say>
   </message>
 
   <message id="killedTutorialEnemy" event="titleSequence">
-    <say>Thanks for helping but you must be from another dimension! </say>
-    <say>There's no other way someone can read another object's code! It's impossible! </say>
-    <say>Look, even though I don't want to conform to that "one guy" who needs help, </say>
-    <say>I'm going to fess up. I need help. </say>
-    <say>But I tell you what. If you take me to the CPU, I won't report you. </say>
-    <say>Sound like a deal? </say>
-    <say>... </say>
-    <say>Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go! </say>
+    <say char="IntelliSense">Thanks for helping but you must be from another dimension! </say>
+    <say char="IntelliSense">There's no other way someone can read another object's code! It's impossible! </say>
+    <say char="IntelliSense">Look, even though I don't want to conform to that "one guy" who needs help, </say>
+    <say char="IntelliSense">I'm going to fess up. I need help. </say>
+    <say char="IntelliSense">But I tell you what. If you take me to the CPU, I won't report you. </say>
+    <say char="IntelliSense">Sound like a deal? </say>
+    <say char="IntelliSense">... </say>
+    <say char="IntelliSense">Oh yeah, you don't talk unless it's totally necessary. Got it. Well, let's go! </say>
   </message>
 
   <message id="meetBlackVBot" event="promptClick">
-    <say>Hey there! This VBot isn't like the rest!</say>
-    <say>Let's hack it and see what's going on.</say>
+    <say char="IntelliSense">Hey there! This VBot isn't like the rest!</say>
+    <say char="IntelliSense">Let's hack it and see what's going on.</say>
   </message>
 
   <message id="clickBlackVBot" event="clickAPI">
-    <say>That's weird. This VBot's code isn't red... which means YOU CAN CHANGE IT!</say>
-    <say>Listen, whatever-your-name-was. I know your puny mind can't handle this, but...</say>
-    <say>... you need to "fix" this VBot. Otherwise, we can't terminate it</say>
-    <say>because you don't have black boots. Try to change this VBot to</say>
-    <say>a color you do have. Lucky for you, I've saved all this information in an API!</say>
-    <say>Check it out!</say>
+    <say char="IntelliSense">That's weird. This VBot's code isn't red... which means YOU CAN CHANGE IT!</say>
+    <say char="IntelliSense">Listen, whatever-your-name-was. I know your puny mind can't handle this, but...</say>
+    <say char="IntelliSense">... you need to "fix" this VBot. Otherwise, we can't terminate it</say>
+    <say char="IntelliSense">because you don't have black boots. Try to change this VBot to</say>
+    <say char="IntelliSense">a color you do have. Lucky for you, I've saved all this information in an API!</say>
+    <say char="IntelliSense">Check it out!</say>
   </message>
 
   <message id="APIClicked" event="editCode">
-    <say>There we go! You better appreciate this. It takes a lot of processing power</say>
-    <say>to make this sort of thing.</say>
-    <say>Now let's see. Every character, letter, number, manifestation</say>
-    <say>in the code is SUPER important. Missing one little thing could be the</say>
-    <say>the difference between life and death here so be sharp!</say>
-    <say>Let's see what's missing from this VBot's code...</say>
-    <say>My API tells us how it should be. Type in what's missing for the VBot.</say>
+    <say char="IntelliSense">There we go! You better appreciate this. It takes a lot of processing power</say>
+    <say char="IntelliSense">to make this sort of thing.</say>
+    <say char="IntelliSense">Now let's see. Every character, letter, number, manifestation</say>
+    <say char="IntelliSense">in the code is SUPER important. Missing one little thing could be the</say>
+    <say char="IntelliSense">the difference between life and death here so be sharp!</say>
+    <say char="IntelliSense">Let's see what's missing from this VBot's code...</say>
+    <say char="IntelliSense">My API tells us how it should be. Type in what's missing for the VBot.</say>
   </message>
 
   <message id="codeFixed" event="clickDebug">
-    <say>That looks right!</say>
-    <say>Now, in order to lock in these changes, click the green PLAY button!</say>
+    <say char="IntelliSense">That looks right!</say>
+    <say char="IntelliSense">Now, in order to lock in these changes, click the green PLAY button!</say>
   </message>
 
   <message id="colorChanged" event="finishDialogue">
-    <say>See? I'm a genius. What would you do without me?</say>
-    <say>Terminate this VBot and let's continue to the CPU!</say>
+    <say char="IntelliSense">See? I'm a genius. What would you do without me?</say>
+    <say char="IntelliSense">Terminate this VBot and let's continue to the CPU!</say>
   </message>
 
   <message id="startChest" event="promptClick">
-    <say>What? It's like you've never seen a cache before...</say>
-    <say>Oh yeah, you probably haven't. Well check this out.</say>
-    <say>Caches give the CPU intel about processes in the system.</say>
-    <say>They contain bits you can bargain with at the RAM in the CPU.</say>
-    <say>Try opening this one by changing the code that is keeping the cache closed.</say>
+    <say char="IntelliSense">What? It's like you've never seen a cache before...</say>
+    <say char="IntelliSense">Oh yeah, you probably haven't. Well check this out.</say>
+    <say char="IntelliSense">Caches give the CPU intel about processes in the system.</say>
+    <say char="IntelliSense">They contain bits you can bargain with at the RAM in the CPU.</say>
+    <say char="IntelliSense">Try opening this one by changing the code that is keeping the cache closed.</say>
   </message>
 
   <message id="clickChest" event="startTimer">
-    <say>How can we change the code to "OPEN" the cache?</say>
+    <say char="IntelliSense">How can we change the code to "OPEN" the cache?</say>
   </message>
 
   <message id="helpWithChest">
-    <say>Hmm... maybe you should try replacing "close" with an opposite word...</say>
-    <say>...like "open"?</say>
+    <say char="IntelliSense">Hmm... maybe you should try replacing "close" with an opposite word...</say>
+    <say char="IntelliSense">...like "open"?</say>
   </message>
 
   <message id="unlockChest" event="finishDialogue">
-    <say>No, those weren't oranges. Those were bits!</say>
-    <say>I'll add this new code to the API! Check it out!</say>
-    <say>You'll see how you can use bits when we get to the CPU. Let's go!</say>
+    <say char="IntelliSense">No, those weren't oranges. Those were bits!</say>
+    <say char="IntelliSense">I'll add this new code to the API! Check it out!</say>
+    <say char="IntelliSense">You'll see how you can use bits when we get to the CPU. Let's go!</say>
   </message>
 
   <message id="startDebugStation" event="stopTalking">
-    <say>A computer inside a computer... interesting...</say>
-    <say>Why is there a DEBUG STATION way out here?</say>
-    <say>Either way, you won't be able to hack it...</say>
-    <say>I wonder how we'd access it.</say>
-    <say>That large white letter must have nothing to do with it...</say>
+    <say char="IntelliSense">A computer inside a computer... interesting...</say>
+    <say char="IntelliSense">Why is there a DEBUG STATION way out here?</say>
+    <say char="IntelliSense">Either way, you won't be able to hack it...</say>
+    <say char="IntelliSense">I wonder how we'd access it.</say>
+    <say char="IntelliSense">That large white letter must have nothing to do with it...</say>
   </message>
 
   <message id="startMovingPlatform" event="promptClick">
-    <say>This object looks different... let's do what we always do!</say>
+    <say char="IntelliSense">This object looks different... let's do what we always do!</say>
   </message>
 
   <message id="clickPlatform">
-    <say>Oh look, our favorite error. The missing semicolon...</say>
-    <say>You know what to do.</say>
+    <say char="IntelliSense">Oh look, our favorite error. The missing semicolon...</say>
+    <say char="IntelliSense">You know what to do.</say>
   </message>
 
   <message id="movePlatform">
-    <say>Oh, look. It's moving away from us.</say>
-    <say>We need to catch a ride on it! Bring it back.</say>
+    <say char="IntelliSense">Oh, look. It's moving away from us.</say>
+    <say char="IntelliSense">We need to catch a ride on it! Bring it back.</say>
   </message>
 
   <message id="movePlatform2" event="finishDialogue">
-    <say>Ok, you know what to do. No more pit stops.</say>
-    <say>I've added this new piece of code to the API. Check it!</say>
+    <say char="IntelliSense">Ok, you know what to do. No more pit stops.</say>
+    <say char="IntelliSense">I've added this new piece of code to the API. Check it!</say>
   </message>
 
   <message id="discoverComments" event="finishDialogue">
-    <say>What kind of sick joke is this?</say>
-    <say>Who else is messing with the source code?</say>
-    <say>Do you think someone's been sabotaging us this whole time?</say>
-    <say>Well, great. COMMENTS don't do anything except</say>
-    <say>tell us messages other programmers left behind.</say>
-    <say>Wait a second... does that mean there's someone like you</say>
-    <say>lurking around here? We need to keep our eyes open!</say>
-    <say>We also need to find a way to get rid of these VBots!</say>
+    <say char="IntelliSense">What kind of sick joke is this?</say>
+    <say char="IntelliSense">Who else is messing with the source code?</say>
+    <say char="IntelliSense">Do you think someone's been sabotaging us this whole time?</say>
+    <say char="IntelliSense">Well, great. COMMENTS don't do anything except</say>
+    <say char="IntelliSense">tell us messages other programmers left behind.</say>
+    <say char="IntelliSense">Wait a second... does that mean there's someone like you</say>
+    <say char="IntelliSense">lurking around here? We need to keep our eyes open!</say>
+    <say char="IntelliSense">We also need to find a way to get rid of these VBots!</say>
   </message>
 </dialogue>

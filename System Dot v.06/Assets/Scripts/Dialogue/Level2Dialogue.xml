@@ -1,0 +1,6 @@
+<dialogue>
+  <message id="startGame" event="promptForName">
+    <say>Oh, hi! I didn't mean to startle you. I don't recognize you. </say>
+    <say>Who do you identify as? </say>
+  </message>
+</dialogue>

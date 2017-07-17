@@ -6,21 +6,35 @@ using System.Linq;
 using System.Xml.Linq;
 using UnityEngine.UI;
 
+public class sayList
+{
+    public string who;
+    public string say;
+    
+    public sayList(string whoo, string sayy)
+    {
+        who = whoo;
+        say = sayy;
+    }
+}
+
 public class Dialogue : MonoBehaviour {
 
-    Dictionary<string, List<string>> dialogue = new Dictionary<string, List<string>>();
+    Dictionary<string, List<sayList>> dialogue = new Dictionary<string, List<sayList>>();
     Dictionary<string, string> events = new Dictionary<string, string>();
+
 
     public int index = 0;
     private int interval = 0;
     public int dialogueIndex = 0;
 
     public GameObject dialogueBox;
+    public GameObject characterIcon;
     public GameObject player;
 
     [Header("Talking")]
     public bool talking;
-    public List<string> whatToSay;
+    public List<sayList> whatToSay;
     public string dialogueFileName;
 
     public string eventName = "";
@@ -28,7 +42,7 @@ public class Dialogue : MonoBehaviour {
     // Use this for initialization
     public void Start () {
         XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/" + dialogueFileName + ".xml");
-        List<string> addedDialogue = new List<string>();
+        List<sayList> addedDialogue;
         string keyName;
 
         string eventName;
@@ -42,10 +56,12 @@ public class Dialogue : MonoBehaviour {
                 eventName = messElement.Attribute("event").Value;
             }
 
-            addedDialogue = new List<string>();
+            addedDialogue = new List<sayList>();
+            
             foreach (XElement element in messElement.Elements("say"))
             {
-                addedDialogue.Add(element.Value);
+                sayList sayGroup = new sayList(element.Attribute("char").Value, element.Value);
+                addedDialogue.Add(sayGroup);
             }
 
             dialogue.Add(keyName, addedDialogue);
@@ -56,12 +72,12 @@ public class Dialogue : MonoBehaviour {
 	// Update is called once per frame
 	public void Update () {
         // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
-        if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].Length)
+        if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
         {  
             dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                index = whatToSay[dialogueIndex].Length;
+                index = whatToSay[dialogueIndex].say.Length;
             }
         }// THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
         else if (dialogueIndex < whatToSay.Count)
@@ -88,9 +104,9 @@ public class Dialogue : MonoBehaviour {
         }
 
         // THIS SECTION IS TO PRINT OUT WHAT THE CHARACTER SAYS ON THE SCREEN
-        if (dialogueIndex < whatToSay.Count && index <= whatToSay[dialogueIndex].Length)
+        if (dialogueIndex < whatToSay.Count && index <= whatToSay[dialogueIndex].say.Length)
         {
-            dialogueBox.GetComponentInChildren<Text>().text = whatToSay[dialogueIndex].Substring(0, index);
+            dialogueBox.GetComponentInChildren<Text>().text = whatToSay[dialogueIndex].say.Substring(0, index);
         }
 
 
@@ -115,13 +131,13 @@ public class Dialogue : MonoBehaviour {
         interval++;
     }
 
-    public void SetDialogue(string keyWord)
+    public virtual void SetDialogue(string keyWord)
     {
         // resets dialogue
         dialogueIndex = 0;
         index = 0;
 
-        List<string> sayThis;
+        List<sayList> sayThis;
         if (dialogue.TryGetValue(keyWord, out sayThis))
         {
             whatToSay = sayThis;
@@ -136,6 +152,11 @@ public class Dialogue : MonoBehaviour {
         initialEvent(keyWord);
 
         talking = true;
+    }
+
+    public void SetCharacterIcon(Sprite character)
+    {
+        characterIcon.GetComponent<Image>().sprite = character;
     }
 
     public virtual void initialEvent(string eName)

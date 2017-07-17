@@ -62,7 +62,7 @@ public class IntelliSenseTest : Dialogue {
     {
         base.Update();
         // THIS SECTION IS TO HAVE INTELLISENSE ZOOM OUT WHEN STARTING LEVEL 1
-        if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].Length)
+        if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
         {
             if(PlayerStats.checkpoint != "Checkpoint1")
             {
@@ -148,10 +148,14 @@ public class IntelliSenseTest : Dialogue {
             y0 = this.transform.position.y;
             transform.localScale = new Vector3(.25f, .25f, 1);
         }
-    }    
+    }
 
     // looks in dictionary and sets the dialogue to certain keyword passed in
-
+    public override void SetDialogue(string message)
+    {
+        base.SetCharacterIcon(this.GetComponent<SpriteRenderer>().sprite);
+        base.SetDialogue(message);
+    }
 
     #region EventSystem
     /// <summary>
@@ -169,12 +173,11 @@ public class IntelliSenseTest : Dialogue {
                 if (PlayerStats.playerName == "")
                 {
                     PlayerStats.playerName = "Bob";
-                    whatToSay[0] = "Nothing? Will \"BOB\" suffice then" + whatToSay[0];
-
+                    whatToSay[0].say = "Nothing? Will \"BOB\" suffice then" + whatToSay[0].say;
                 }
                 else
                 {
-                    whatToSay[0] = PlayerStats.playerName.ToUpper() + whatToSay[0];
+                    whatToSay[0].say = PlayerStats.playerName.ToUpper() + whatToSay[0].say;
                 }
                 break;
             case "unlockChest":
