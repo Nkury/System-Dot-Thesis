@@ -141,12 +141,7 @@ public class EnemyTerminal : MonoBehaviour
                 globalTerminalMode = 2;
                 localTerminalMode = 2;
 
-                // when opening terminal window, start the cursor at the end of the first line
-                InputField line1 = terminalWindow.transform.FindChild("line 1").GetComponent<InputField>();
-                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(line1.gameObject, null);
-                StartCoroutine(MoveTextEnd_NextFrame(line1));
-
+                showTerminal = true;
                 /* LOGGER INFORMATION */
                 PlayerStats.numOfEdits++;                
 
@@ -374,6 +369,16 @@ public class EnemyTerminal : MonoBehaviour
         if (localTerminalMode == 2)
         {
             terminalWindow.SetActive(true);
+
+            if (showTerminal)
+            {
+                // when opening terminal window, start the cursor at the end of the first line
+                InputField line1 = terminalWindow.transform.FindChild("line 1").GetComponent<InputField>();                
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(line1.gameObject, null);
+                StartCoroutine(MoveTextEnd_NextFrame(line1));
+                showTerminal = false;
+            }
 
             switch (numberOfLines)
             {
