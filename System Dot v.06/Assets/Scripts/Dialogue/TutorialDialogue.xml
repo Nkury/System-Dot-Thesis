@@ -35,7 +35,7 @@
   <message id="catchUp3" event="moveToFourthTutorial">
     <say char="IntelliSense">Hahahaha! Silly virus! What kind of virus doesn't know that </say>
     <say char="IntelliSense">its "termination boots" destroy things of equal color? </say>
-    <say char="IntelliSense">Obviously a dumb one who doesn't know pressing TAB changes its boots' color. </say>
+    <say char="IntelliSense">Obviously a dumb one who doesn't know pressing Q changes its boots' color. </say>
     <say char="IntelliSense">Now I'm embarrased you're following me... </say>
   </message>
 

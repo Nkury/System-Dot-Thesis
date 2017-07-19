@@ -6,15 +6,11 @@ using System.Linq;
 using System.Xml.Linq;
 using UnityEngine.UI;
 
-public class IntelliSenseTest : Dialogue {
+public class IntelliSenseTest : IntelliSense {
     
-    float y0;
-    float amplitude = .2f;
-    float speed = 1.5f;
     float moveSpeed = 7;
 
-    [Header("In-Game Objects")]
-    public GameObject intelliLocation;
+    [Header("In-Game Objects")]    
     public GameObject mouseClickPrompt;
 
     [Header("Level 1 Objects")]
@@ -48,12 +44,11 @@ public class IntelliSenseTest : Dialogue {
         base.Start();
         if(PlayerStats.checkpoint == "Checkpoint1"){
             SetDialogue("startGame");
+            startDifferent = true;
         }
         else
         {
-            this.transform.parent = player.transform;
-            this.transform.localPosition = new Vector2(0, 0);
-            this.transform.localScale = new Vector2(0, 0);
+            startDifferent = false;
         }
     }
 
@@ -61,20 +56,10 @@ public class IntelliSenseTest : Dialogue {
     public void Update()
     {
         base.Update();
-        // THIS SECTION IS TO HAVE INTELLISENSE ZOOM OUT WHEN STARTING LEVEL 1
-        if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
-        {
-            if(PlayerStats.checkpoint != "Checkpoint1")
-            {
-                ZoomOutPlayer();
-            }        
-        } else if(!talking) {
-            if(PlayerStats.checkpoint != "Checkpoint1")
-            {
-                ZoomIntoPlayer();
-            }
-        }
 
+        // THIS SECTION IS TO HAVE INTELLISENSE ZOOM OUT WHEN STARTING LEVEL 1
+        allowZooming = PlayerStats.checkpoint != "Checkpoint1";
+   
         // THIS SECTION IS TO MAKE INTELLISENSE MOVE UP AND DOWN PERIODICALLY
         if (PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
         {
@@ -131,24 +116,7 @@ public class IntelliSenseTest : Dialogue {
     //    }
     //}
 
-    public void ZoomIntoPlayer()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 10 * Time.deltaTime);
-        if (transform.localScale.x > 0)
-            transform.localScale += Vector3.one * -.01f;
-    }
 
-    public void ZoomOutPlayer()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, intelliLocation.transform.position, 3 * Time.deltaTime);
-        if (transform.localScale.x < .25f)
-            transform.localScale += Vector3.one * .01f;
-        else
-        {
-            y0 = this.transform.position.y;
-            transform.localScale = new Vector3(.25f, .25f, 1);
-        }
-    }
 
     // looks in dictionary and sets the dialogue to certain keyword passed in
     public override void SetDialogue(string message)

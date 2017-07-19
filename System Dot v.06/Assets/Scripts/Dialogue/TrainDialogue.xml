@@ -1,0 +1,24 @@
+<dialogue>  
+  <message id="startTrain">
+    <say char="IntelliSense">Wow!</say>
+    <say char="IntelliSense">This is so relaxing!</say>
+    <say char="IntelliSense">The wind in our bits...</say>
+    <say char="IntelliSense">The smell of the sweet virtual, not real air...</say>
+    <say char="IntelliSense">The hulking city... </say>
+    <say char="IntelliSense">signaling  our impending doom...</say>    
+    <say char="IntelliSense">Who am I kidding?</say>
+    <say char="IntelliSense">We are going to the kernel!</say>
+    <say char="IntelliSense">I'm overheating with anxiety!</say>
+    <say char="IntelliSense">My programmer didn't task me with this.</say>
+    <say char="IntelliSense">It's okay, IntelliSense...</say>
+    <say char="IntelliSense">I'll just take you to the front...</say>
+    <say char="IntelliSense">ER</say>
+    <say char="IntelliSense">What is happening?!</say>
+    <say char="IntelliSense">Somebody! Please help us!</say>
+    <say char="IntelliSense">The ESB is glitching out!</say>
+    <say char="IntelliSense">Don't move!</say>
+    <say char="IntelliSense">Everything is exploding!!</say>
+    <say char="IntelliSense">I think it's over...</say>
+    <say char="IntelliSense">Uh oh...</say>
+  </message>
+</dialogue>

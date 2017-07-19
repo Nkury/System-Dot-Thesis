@@ -27,7 +27,7 @@ public class MainMenu : MonoBehaviour {
         if (SaveLoad.savedGames.Count != 0)
         {
             continueGame.gameObject.SetActive(true);
-            newGame.GetComponent<RectTransform>().anchoredPosition = new Vector2(3, 7);
+            newGame.GetComponent<RectTransform>().anchoredPosition = new Vector2(3, 65);
         }
         else
         {

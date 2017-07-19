@@ -1,12 +1,12 @@
 <dialogue>
   
   <message id="startBoss">
-    <say>Let me guess.</say>
-    <say>By the ominous atmosphere and big open space, I'd say it's not over yet.</say>
-    <say>It sounds like you're going to be fighting something huge right about now.</say>
-    <say>Since I know you probably aren't prepared, I'll give you armor.</say>
-    <say>Ew, is that saliva?</say>
-    <say>Oh, come on! The CPU is right outside!</say>
-    <say>Well, you're on your own! Sayonara, stranger!</say>
+    <say char="IntelliSense">Let me guess.</say>
+    <say char="IntelliSense">By the ominous atmosphere and big open space, I'd say it's not over yet.</say>
+    <say char="IntelliSense">It sounds like you're going to be fighting something huge right about now.</say>
+    <say char="IntelliSense">Since I know you probably aren't prepared, I'll give you armor.</say>
+    <say char="IntelliSense">Ew, is that saliva?</say>
+    <say char="IntelliSense">Oh, come on! The CPU is right outside!</say>
+    <say char="IntelliSense">Well, you're on your own! Sayonara, stranger!</say>
   </message>
 </dialogue>
