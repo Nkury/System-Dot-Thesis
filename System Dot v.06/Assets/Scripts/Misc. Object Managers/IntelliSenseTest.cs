@@ -41,15 +41,19 @@ public class IntelliSenseTest : IntelliSense {
 
     // Use this for initialization
     public void Start () {
-        base.Start();
+        
         if(PlayerStats.checkpoint == "Checkpoint1"){
+            startDifferent = true;                 
+            base.Start();
             SetDialogue("startGame");
-            startDifferent = true;
         }
         else
         {
             startDifferent = false;
+            base.Start();
         }
+
+       
     }
 
     // Update is called once per frame
@@ -61,7 +65,7 @@ public class IntelliSenseTest : IntelliSense {
         allowZooming = PlayerStats.checkpoint != "Checkpoint1";
    
         // THIS SECTION IS TO MAKE INTELLISENSE MOVE UP AND DOWN PERIODICALLY
-        if (PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
+        if (whatToSay != null && PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
         {
             transform.position = new Vector2(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time));
         }     

@@ -32,6 +32,8 @@ public class Dialogue : MonoBehaviour {
     public GameObject characterIcon;
     public GameObject player;
 
+    public AudioSource talkingSoundEffect;
+
     [Header("Talking")]
     public bool talking;
     public List<sayList> whatToSay;
@@ -140,11 +142,17 @@ public class Dialogue : MonoBehaviour {
         }
 
         // THIS SECTION IS TO DISPLAY THE DIALOGUE BOX IF THE PLAYER IS TALKING  
-        dialogueBox.SetActive(talking);       
+        dialogueBox.SetActive(talking);
 
         // THIS SECTION IS TO MEDIATE THE TIME THE TEXT APPEARS ON SCREEN
         if (interval % 3 == 0)
+        {
             index++;
+            if (whatToSay != null && talking && dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
+            {
+                talkingSoundEffect.Play();
+            }
+        }
 
         interval++;
     }

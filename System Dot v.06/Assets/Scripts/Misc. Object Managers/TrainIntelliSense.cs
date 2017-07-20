@@ -24,15 +24,18 @@ public class TrainIntelliSense : IntelliSense {
     private bool initiateDoom = false;
     private bool end = false;
     private AudioSource song;
+    private AudioSource trainSound;
 
     public void Start()
     {
         startDifferent = true;
         isAutoScroll = true;
         nextDialogue = true;
-
-        base.Start();
         song = soundController.GetComponents<AudioSource>()[0];
+        talkingSoundEffect = soundController.GetComponents<AudioSource>()[1];
+        trainSound = soundController.GetComponents<AudioSource>()[2];
+
+        base.Start();      
         
         SetDialogue("startTrain");   
     }
@@ -110,6 +113,7 @@ public class TrainIntelliSense : IntelliSense {
 
     void setDoomText()
     {
+        trainSound.Stop();
         dialogueBox.GetComponentInChildren<Text>().color = Color.red;
         dialogueBox.transform.Find("dialogue box").GetComponent<Image>().enabled = false;
         characterIcon.transform.parent.gameObject.SetActive(false);
@@ -122,6 +126,7 @@ public class TrainIntelliSense : IntelliSense {
         if (!trueEnd)
         {
             loopExplosions.SetActive(true);
+            StartCoroutine(Blink(50, .2f, .2f));
             flyAround.GetComponent<PerlinShake>().PlayShake();
         }
         else
@@ -206,6 +211,20 @@ public class TrainIntelliSense : IntelliSense {
         index = 0;
         nextDialogue = true;
 
+    }
+
+    IEnumerator Blink(int nTimes, float timeOn, float timeOff)
+    {
+        while (nTimes > 0)
+        {
+            background.GetComponent<Renderer>().enabled = true;
+            yield return new WaitForSeconds(timeOn);
+            background.GetComponent<Renderer>().enabled = false;
+            yield return new WaitForSeconds(timeOff);
+            nTimes--;
+        }
+
+        background.GetComponent<Renderer>().enabled = true;
     }
 }
 
