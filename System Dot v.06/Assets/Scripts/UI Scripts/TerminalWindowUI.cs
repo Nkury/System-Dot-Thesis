@@ -185,7 +185,7 @@ public class TerminalWindowUI : MonoBehaviour {
 
     public void setVariabullCode(string statement)
     {
-            variabullRef.SetActive(true);
+        variabullRef.SetActive(true);
         variaCode.GetComponent<Text>().text = statement;     
     }
 }

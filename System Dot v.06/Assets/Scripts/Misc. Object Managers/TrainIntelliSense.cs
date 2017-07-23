@@ -126,6 +126,8 @@ public class TrainIntelliSense : IntelliSense {
         if (!trueEnd)
         {
             loopExplosions.SetActive(true);
+            Camera.main.GetComponent<PerlinShake>().magnitude = 5;
+            this.GetComponent<Renderer>().enabled = false;
             StartCoroutine(Blink(50, .2f, .2f));
             flyAround.GetComponent<PerlinShake>().PlayShake();
         }

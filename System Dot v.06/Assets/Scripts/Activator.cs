@@ -7,7 +7,9 @@ public class Activator : MonoBehaviour {
     public int powerNeeded; // number of power needed
 
     public float power; // number of power currently charged
-    private float standardPower; // keep track if power is changing
+    public bool activate = false;
+
+    private float standardPower; // keep track if power is changing    
     public GameObject[] pellets;
     public GameObject connectedTo;
 
@@ -19,15 +21,18 @@ public class Activator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (standardPower != power)
+        if (activate)
         {
-            bool incVal = (standardPower < power) || (standardPower > powerNeeded);
-            standardPower = power;
-            if (power != powerNeeded)
+            if (standardPower != power)
             {
-                connectedTo.GetComponent<Activation>().deactivate();
+                bool incVal = (standardPower < power) || (standardPower > powerNeeded);
+                standardPower = power;
+                if (power != powerNeeded)
+                {
+                    connectedTo.GetComponent<Activation>().deactivate();
+                }
+                StartCoroutine(colorPellets(incVal));
             }
-            StartCoroutine(colorPellets(incVal));
         }
 	}
 
@@ -77,4 +82,36 @@ public class Activator : MonoBehaviour {
             }
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "ActivationZone")
+        {
+            activate = true;
+            standardPower = -1;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "ActivationZone")
+        {
+            activate = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "ActivationZone")
+        {
+            activate = false;
+            connectedTo.GetComponent<Activation>().deactivate();
+            for (int i = pellets.Length - 1; i >= 0; i--)
+            {
+                pellets[i].GetComponent<SpriteRenderer>().color = Color.magenta;
+            }
+        }
+    }
+
+
 }

@@ -16,6 +16,7 @@ TagManager:
   - Falling Spike
   - Centipede Trigger
   - LevelManager
+  - ActivationZone
   layers:
   - Default
   - TransparentFX

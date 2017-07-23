@@ -163,6 +163,12 @@ public class EnemyTerminal : MonoBehaviour
     {
         actions.Clear();
         string passedInString = "";
+
+        // check if a variabull is with us
+        if (terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf) {
+            passedInString += terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text;
+        }
+
         foreach(string s in terminalString)
         {
             passedInString += " \n" + s;

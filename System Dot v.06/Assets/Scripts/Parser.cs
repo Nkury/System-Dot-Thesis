@@ -764,7 +764,7 @@ namespace ParserAlgo
                             {
                                 if (var.type == TokenTypes.INT || var.type == TokenTypes.NUM || var.type == TokenTypes.REAL || var.type == TokenTypes.REALNUM)
                                 {
-                                    outputValue.Add("Activate: " + token);
+                                    outputValue.Add("Activate: " + var.value);
                                 }                          
                             }
                         }

@@ -25,7 +25,23 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    public void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            this.GetComponent<EnemyTerminal>().actions.Clear();
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            this.GetComponent<EnemyTerminal>().actions.Clear();
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Ground")
         {
