@@ -6,6 +6,8 @@ public class Kernel : MonoBehaviour {
     public AudioSource beep;
 
     public GameObject player;
+
+    public float zoomOutSize = 7.07f; // default is 7.07
     private bool canPressE = false;
     private bool inDebugMode = false;
 
@@ -22,7 +24,7 @@ public class Kernel : MonoBehaviour {
             {
                 inDebugMode = true;
                 player.SetActive(false);
-                Camera.main.orthographicSize = 7.07f;
+                Camera.main.orthographicSize = zoomOutSize;
                 if(PlayerStats.highestCheckpoint == 3 && this.gameObject.name == "TutorialKernel")
                 {
                     GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("startMovingPlatform");
