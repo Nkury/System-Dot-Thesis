@@ -52,16 +52,17 @@
  *                                       <characters represent anything> 
  *   [31]    smash_stmt         ->        SMASH LPAREN RPAREN           
  *   [32]    gravity_stmt       ->        GRAVITY LPAREN (TRUE | FALSE | ID) RPAREN 
- *   [33]    activate_stmt      ->        ACTIVATE LPAREN (NUM | REALNUM | ID) RPAREN                         
+ *   [33]    activate_stmt      ->        ACTIVATE LPAREN (NUM | REALNUM | ID) RPAREN       
+ *   [34]    rotate_stmt        ->        ROTATE LPAREN ( NUM | REALNUM | ID) RPAREN               
  *   (-=-=-=-=-=-=- The following grammar are for methods and can be substituted into the above grammar
  *                  based on their return type -=-=-=-=-=-)
- *   [34]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
+ *   [35]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
  *             <STRING>               <first ID needs to be an existing string variable>
  *                                    <NUMs needs to be in range of the string>
  *                                    <for NUM comma NUM, the first NUM < second NUM>
- *   [35]    indexOf_method     ->        ID  DOT  INDEXOF  LPAREN  ID  RPAREN  SEMICOLON
+ *   [36]    indexOf_method     ->        ID  DOT  INDEXOF  LPAREN  ID  RPAREN  SEMICOLON
  *             <NUM>                  <first ID needs to be an existing string variable>
- *   [36]    length_method      ->        ID  DOT  LENGTH  LPAREN  RPAREN  SEMICOLON                                                    
+ *   [37]    length_method      ->        ID  DOT  LENGTH  LPAREN  RPAREN  SEMICOLON                                                    
  *             <NUM>                  <first ID needs to be an existing string variable>
  *             
  *             Whenever the code does not conform to the above grammar, an ERROR action will be returned.
@@ -119,6 +120,10 @@ namespace ParserAlgo
         // activation power outputted in outputValue in the format: ["Activate: #"]
         ACTIVATE,
 
+        // System.rotate(num/realnum/id)
+        // amount to rotate outputted in outputValue in format ["Rotate: #"]
+        ROTATE,
+
         // if there is an infinite loop or syntax error with message
         INFINITELOOP, ERRORMSG, ERROR
 
@@ -131,7 +136,7 @@ namespace ParserAlgo
                             "int", "double", "string", "boolean", "true", "false",
                             "substring", "length", "indexOf",
                             "System", "output", "check", "move", "body", "jump", "open", "close", "wait",
-                            "smash", "gravity", "activate",
+                            "smash", "gravity", "activate", "rotate",
                             "Direction", "LEFT", "RIGHT", "Color", "BLACK", "RED", "BLUE", "GREEN",
                             "+", "-", "/", "//", "*","%", "=",
                             ":", ",", ";",
@@ -162,7 +167,7 @@ namespace ParserAlgo
             INT, REAL, STRING, BOOLEAN, TRUE, FALSE,
             SUBSTRING, LENGTH, INDEXOF,
             SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
-            SMASH, GRAVITY, ACTIVATE,
+            SMASH, GRAVITY, ACTIVATE, ROTATE,
             DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
             COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
@@ -792,6 +797,58 @@ namespace ParserAlgo
             return;
         }
 
+        private void ParseRotate()
+        {
+            int outputValLength = outputValue.Count;
+
+            ttype = getToken();
+            if (ttype == TokenTypes.ROTATE)
+            {
+                ttype = getToken();
+                if (ttype == TokenTypes.LPAREN)
+                {
+                    ttype = getToken();
+                    if (ttype == TokenTypes.NUM || ttype == TokenTypes.REALNUM ||
+                         (ttype == TokenTypes.ID))
+                    {
+                        if (ttype == TokenTypes.NUM || ttype == TokenTypes.REALNUM)
+                        {
+                            outputValue.Add("Rotate: " + token);
+                        }
+                        else if (ttype == TokenTypes.ID)
+                        {
+                            variable var;
+                            if (symbolTable.TryGetValue(token, out var))
+                            {
+                                if (var.type == TokenTypes.INT || var.type == TokenTypes.NUM || var.type == TokenTypes.REAL || var.type == TokenTypes.REALNUM)
+                                {
+                                    outputValue.Add("Rotate: " + var.value);
+                                }
+                            }
+                        }
+
+                        ttype = getToken();
+                        if (ttype == TokenTypes.RPAREN)
+                        {
+                            ttype = getToken();
+                            if (ttype == TokenTypes.SEMICOLON)
+                            {
+                                if (outputValue.Count > outputValLength)
+                                {
+                                    actions.Add(keyActions.ROTATE);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            syntaxMessage = "Error in line " + (line_no - 1) +
+                ": There is an error when you try to activate an object";
+            actions.Add(keyActions.ERROR);
+            return;
+        }
         // parses for System. and then evaluates which of the above System commands it should parse for
         private numberOrString ParseSystem()
         {
@@ -850,6 +907,10 @@ namespace ParserAlgo
                     {
                         ungetToken();
                         ParseActivate();
+                    } else if(ttype == TokenTypes.ROTATE)
+                    {
+                        ungetToken();
+                        ParseRotate();
                     }
                     return default(numberOrString);
                 }
@@ -2845,9 +2906,16 @@ namespace ParserAlgo
                     switch (c)
                     {
                         case '.':
-                            code = code.Substring(1);
-                            token = ".";
-                            return TokenTypes.DOT;
+                            if (char.IsDigit(code[1]))
+                            {
+                                code = code.PadLeft(code.Length + 1, '0');
+                                return scan_number();
+                            }
+                            else {
+                                code = code.Substring(1);
+                                token = ".";
+                                return TokenTypes.DOT;
+                            }
                         case '\'':
                             code = code.Substring(1);
                             token = "\'";

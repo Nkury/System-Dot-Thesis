@@ -353,6 +353,7 @@ MonoBehaviour:
   blackBody: {fileID: 21300000, guid: 4337e50ac7eeed048a11687182f586ce, type: 3}
   head: {fileID: 0}
   actions: 
+  outputVal: []
   openTerminal: {fileID: 0}
   isPerfect: 1
 --- !u!114 &114381858121998548

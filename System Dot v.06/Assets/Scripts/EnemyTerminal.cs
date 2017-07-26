@@ -199,59 +199,62 @@ public class EnemyTerminal : MonoBehaviour
             switch (action)
             {
                 case keyActions.TURNBLUE:
-                    if (this.gameObject.tag == "Enemy")
+                    if (this.GetComponent<HurtPlayerOnContact>())
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
-                        this.GetComponent<SpriteRenderer>().sprite = blueSlime;
-                        numOfSyntaxErrors = 0;
+                    }
+                    if (this.gameObject.tag == "Enemy")
+                    {                        
+                        this.GetComponent<SpriteRenderer>().sprite = blueSlime;               
                     } else if (this.gameObject.tag == "Centipede Body")
                     {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
-                        this.GetComponent<SpriteRenderer>().sprite = blueBody;
-                        numOfSyntaxErrors = 0;
+                        this.GetComponent<SpriteRenderer>().sprite = blueBody;                       
                     }
+                    numOfSyntaxErrors = 0;
                     break;
                 case keyActions.TURNRED:
-                    if (this.gameObject.tag == "Enemy")
+                    if (this.GetComponent<HurtPlayerOnContact>())
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
-                        this.GetComponent<SpriteRenderer>().sprite = redSlime;
-                        numOfSyntaxErrors = 0;
+                    }
+                    if (this.gameObject.tag == "Enemy")
+                    {                        
+                        this.GetComponent<SpriteRenderer>().sprite = redSlime;                     
                     }
                     else if (this.gameObject.tag == "Centipede Body")
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
-                        this.GetComponent<SpriteRenderer>().sprite = redBody;
-                        numOfSyntaxErrors = 0;
+                    {                   
+                        this.GetComponent<SpriteRenderer>().sprite = redBody;                        
                     }
+                    numOfSyntaxErrors = 0;
                     break;
                 case keyActions.TURNGREEN:
+                    if (this.GetComponent<HurtPlayerOnContact>())
+                    {
+                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
+                    }
                     if (this.gameObject.tag == "Enemy")
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
-                        this.GetComponent<SpriteRenderer>().sprite = greenSlime;
-                        numOfSyntaxErrors = 0;
+                    {                       
+                        this.GetComponent<SpriteRenderer>().sprite = greenSlime;              
+                    } else if (this.gameObject.tag == "Centipede Body")
+                    {                      
+                        this.GetComponent<SpriteRenderer>().sprite = greenBody;                       
                     }
-                    else if (this.gameObject.tag == "Centipede Body")
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
-                        this.GetComponent<SpriteRenderer>().sprite = greenBody;
-                        numOfSyntaxErrors = 0;
-                    }
+                    numOfSyntaxErrors = 0;
                     break;
                 case keyActions.TURNBLACK:
-                    if (this.gameObject.tag == "Enemy")
+                    if (this.GetComponent<HurtPlayerOnContact>())
                     {
                         this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+                    }
+                    if (this.gameObject.tag == "Enemy")
+                    {      
                         this.GetComponent<SpriteRenderer>().sprite = blackSlime;
                     }
                     else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name != "Centipede Head")
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+                    {                    
                         this.GetComponent<SpriteRenderer>().sprite = blackBody;
                     } else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name == "Centipede Head")
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+                    {            
                         this.GetComponent<SpriteRenderer>().sprite = head;
                     }
                     break;
@@ -358,6 +361,19 @@ public class EnemyTerminal : MonoBehaviour
                             if(this.GetComponent<Activator>() != null)
                             {
                                 this.GetComponent<Activator>().power = float.Parse(output.Substring(10, output.Length - 10));
+                            }
+                        }
+                    }
+                    break;
+                case keyActions.ROTATE:
+                    foreach(string output in outputVal)
+                    {
+                        if(output.Contains("Rotate: "))
+                        {
+                            if(this.GetComponent<VSpinner>() != null)
+                            {
+                                this.GetComponent<VSpinner>().pause = false;
+                                this.GetComponent<VSpinner>().maxRotation += float.Parse(output.Substring(8, output.Length - 8)) * 360;
                             }
                         }
                     }
