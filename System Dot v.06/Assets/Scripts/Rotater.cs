@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class VSpinner : MonoBehaviour {
+public class Rotater : MonoBehaviour {
 
     public float rotationSpeed;
     public float maxRotation;
     public bool pause;
+    public bool goLeft = true; 
 
     private float maxRotated = 0f;
    
@@ -23,9 +24,22 @@ public class VSpinner : MonoBehaviour {
         {
             float rotated = rotationSpeed * Time.deltaTime;
             this.transform.Rotate(new Vector3(this.transform.rotation.x, this.transform.rotation.y, rotated));
-            maxRotated += Math.Abs(rotated);
 
-            if(maxRotated >= maxRotation)
+            if (goLeft)
+            {
+                rotationSpeed = Math.Abs(rotationSpeed);
+                maxRotated += Math.Abs(rotated);
+            }
+            else
+            {
+                rotationSpeed = -Math.Abs(rotationSpeed);
+                maxRotated -= Math.Abs(rotated);
+            }
+            
+            if(goLeft && maxRotated >= maxRotation)
+            {
+                pause = true;
+            } else if(!goLeft && maxRotated <= maxRotation)
             {
                 pause = true;
             }

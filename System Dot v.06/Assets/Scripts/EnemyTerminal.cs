@@ -370,10 +370,12 @@ public class EnemyTerminal : MonoBehaviour
                     {
                         if(output.Contains("Rotate: "))
                         {
-                            if(this.GetComponent<VSpinner>() != null)
+                            if(this.GetComponent<Rotater>() != null)
                             {
-                                this.GetComponent<VSpinner>().pause = false;
-                                this.GetComponent<VSpinner>().maxRotation += float.Parse(output.Substring(8, output.Length - 8)) * 360;
+                                float repitition = float.Parse(output.Substring(8, output.Length - 8));
+                                this.GetComponent<Rotater>().pause = false;
+                                this.GetComponent<Rotater>().goLeft = repitition >= 0;
+                                this.GetComponent<Rotater>().maxRotation += repitition * 360;                                                 
                             }
                         }
                     }

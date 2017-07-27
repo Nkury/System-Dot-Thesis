@@ -2941,9 +2941,13 @@ namespace ParserAlgo
                             c = code[0];
                             // checks to see if next token is a digit and
                             // previous type is not a number (which means we need minus)
-                            if (char.IsDigit(c) && (ttype != TokenTypes.NUM 
+                            if ((char.IsDigit(c) || c == '.') && (ttype != TokenTypes.NUM 
                                 && ttype != TokenTypes.REALNUM && ttype != TokenTypes.RPAREN))
                             {
+                                if(c == '.')
+                                {
+                                    code = code.PadLeft(code.Length + 1, '0');
+                                }
                                 return scan_number();
                             }
                             else
