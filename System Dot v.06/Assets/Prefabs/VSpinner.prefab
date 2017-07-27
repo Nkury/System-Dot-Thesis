@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 1076365940780262}
   m_LocalRotation: {x: -0, y: -0, z: -0.94046223, w: 0.33989832}
   m_LocalPosition: {x: 2.5299988, y: -2.58, z: 0}
-  m_LocalScale: {x: 2.4000018, y: 2.4000018, z: 1}
+  m_LocalScale: {x: 3.3603, y: 2.4000018, z: 1}
   m_Children: []
   m_Father: {fileID: 4903752747038866}
   m_RootOrder: 1
@@ -146,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 1926498451168538}
   m_LocalRotation: {x: -0, y: -0, z: 0.7230169, w: 0.6908304}
   m_LocalPosition: {x: -3.5, y: -0.23, z: 0}
-  m_LocalScale: {x: 2.3999991, y: 2.3999991, z: 1}
+  m_LocalScale: {x: 3.8398743, y: 2.3999991, z: 1}
   m_Children: []
   m_Father: {fileID: 4903752747038866}
   m_RootOrder: 4
@@ -159,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 1467361908642608}
   m_LocalRotation: {x: -0, y: -0, z: -0.76057446, w: 0.6492507}
   m_LocalPosition: {x: 3.67, y: -0.32, z: 0}
-  m_LocalScale: {x: 2.3999991, y: 2.3999991, z: 1}
+  m_LocalScale: {x: 3.5278282, y: 2.3999991, z: 1}
   m_Children: []
   m_Father: {fileID: 4903752747038866}
   m_RootOrder: 3
@@ -172,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 1654611907922992}
   m_LocalRotation: {x: -0, y: -0, z: 0.92694867, w: 0.3751881}
   m_LocalPosition: {x: -2.26, y: -2.46, z: 0}
-  m_LocalScale: {x: 2.4000015, y: 2.4000015, z: 1}
+  m_LocalScale: {x: 3.1560192, y: 2.4000015, z: 1}
   m_Children: []
   m_Father: {fileID: 4903752747038866}
   m_RootOrder: 0
@@ -185,7 +185,7 @@ Transform:
   m_GameObject: {fileID: 1474658936659544}
   m_LocalRotation: {x: -0, y: -0, z: -0.99967355, w: -0.025549226}
   m_LocalPosition: {x: 0.21, y: -3.28, z: 0}
-  m_LocalScale: {x: 2.4000003, y: 2.4000003, z: 1}
+  m_LocalScale: {x: 4.1499968, y: 2.4000003, z: 1}
   m_Children: []
   m_Father: {fileID: 4903752747038866}
   m_RootOrder: 2
@@ -197,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1524935672152598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.49, y: -4.11, z: 0}
+  m_LocalPosition: {x: -46.29, y: -6.44, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 4464758485903442}
@@ -253,9 +253,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.041207068, y: -0.07273071}
+  m_Offset: {x: 0.17576504, y: -0.072759785}
   serializedVersion: 2
-  m_Size: {x: 0.51515067, y: 1.0355132}
+  m_Size: {x: 0.7842873, y: 1.0355132}
 --- !u!61 &61525468391211554
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -267,9 +267,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.041207068, y: -0.07273071}
+  m_Offset: {x: 0.037292115, y: -0.07277794}
   serializedVersion: 2
-  m_Size: {x: 0.51515067, y: 1.0355132}
+  m_Size: {x: 0.8677379, y: 1.0355132}
 --- !u!61 &61725325350405682
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -281,9 +281,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.041207068, y: -0.07273071}
+  m_Offset: {x: -0.07543061, y: -0.072663784}
   serializedVersion: 2
-  m_Size: {x: 0.51515067, y: 1.0355132}
+  m_Size: {x: 0.7484268, y: 1.0355132}
 --- !u!61 &61925122806068258
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -295,9 +295,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.041207068, y: -0.07273071}
+  m_Offset: {x: 0.03663905, y: -0.072672196}
   serializedVersion: 2
-  m_Size: {x: 0.51515067, y: 1.0355132}
+  m_Size: {x: 0.8894619, y: 1.0355132}
 --- !u!61 &61966357604139548
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -309,9 +309,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.041207068, y: -0.07273071}
+  m_Offset: {x: 0.04332426, y: -0.072704025}
   serializedVersion: 2
-  m_Size: {x: 0.51515067, y: 1.0355132}
+  m_Size: {x: 0.9024889, y: 1.0355132}
 --- !u!82 &82770312074270504
 AudioSource:
   m_ObjectHideFlags: 1
@@ -456,6 +456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
+  maxRotation: 0
+  pause: 0
+  goLeft: 1
 --- !u!114 &114378267252230884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,11 +512,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localTerminalMode: 0
-  numberOfLines: 1
-  numOfLegacy: 0000000000
+  numberOfLines: 2
+  numOfLegacy: 0101000000
   terminalString:
-  - 
-  - 
+  - System.rotate(100000);
+  - System.body(Color.BLUE);
   - 
   - 
   - 
