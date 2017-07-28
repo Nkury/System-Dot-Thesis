@@ -63,7 +63,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!pauseMovement && EnemyTerminal.globalTerminalMode < 2) {
+        if (!pauseMovement && EnemyTerminal.globalTerminalMode < 2) {
+
+            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
             if (grounded)
             {
                 doubleJumped = false;
@@ -127,8 +130,11 @@ public class PlayerController : MonoBehaviour
 
                 knockbackCount -= Time.deltaTime;
             }
-
-
+            
+            if (pauseMovement || EnemyTerminal.globalTerminalMode >= 2)
+            {
+                
+            }
 
             anim.SetBool("Grounded", grounded);
             anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
@@ -146,10 +152,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (GetComponent<Rigidbody2D>().velocity.x > 0)
-            {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            }
+            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;     
         }
    }
 
