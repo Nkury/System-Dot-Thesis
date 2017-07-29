@@ -7,6 +7,7 @@ using ParserAlgo;
 
 public class EnemyTerminal : MonoBehaviour
 {
+    public GameObject restrictor; // game object that the player must inhabit in order for object to be hacked (i.e. kernels)
 
     public static int globalTerminalMode = 0;
     public static bool madeChanges = false;
@@ -117,44 +118,48 @@ public class EnemyTerminal : MonoBehaviour
 
     public void OnMouseDown()
     {
-        // will not click game object if mouse is clicking UI
-        if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        // will not click game object if player has not cleared up the restrictor
+        if (restrictor == null || (restrictor != null && Kernel.kernelNameCurrentlyIn == restrictor.name))
         {
-            for (int i = 0; i < terminalString.Length; i++)
-                originalString[i] = terminalString[i];
-
-            for (int i = 0; i < numberOfLines; i++)
+            // will not click game object if mouse is clicking UI
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
-                if (terminalString[i] != "")
+                for (int i = 0; i < terminalString.Length; i++)
+                    originalString[i] = terminalString[i];
+
+                for (int i = 0; i < numberOfLines; i++)
                 {
-                    terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text = terminalString[i];
+                    if (terminalString[i] != "")
+                    {
+                        terminalWindow.transform.GetChild(i + 2).gameObject.GetComponent<InputField>().text = terminalString[i];
+                    }
                 }
-            }
 
-            // open terminal
-            if (globalTerminalMode <= 1)
-            {
-                GameObject.Find("Sound Controller").GetComponent<SoundController>().play("terminal");
-                EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
-                foreach (EnemyTerminal e in enemies)
-                    e.localTerminalMode = 0;
-                globalTerminalMode = 2;
-                localTerminalMode = 2;
-
-                showTerminal = true;
-                /* LOGGER INFORMATION */
-                PlayerStats.numOfEdits++;                
-
-                // for comment tutorial in level 1
-                if (this.gameObject.name.Contains("Comment"))
+                // open terminal
+                if (globalTerminalMode <= 1)
                 {
-                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("discoverComments");
+                    GameObject.Find("Sound Controller").GetComponent<SoundController>().play("terminal");
+                    EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
+                    foreach (EnemyTerminal e in enemies)
+                        e.localTerminalMode = 0;
+                    globalTerminalMode = 2;
+                    localTerminalMode = 2;
+
+                    showTerminal = true;
+                    /* LOGGER INFORMATION */
+                    PlayerStats.numOfEdits++;
+
+                    // for comment tutorial in level 1
+                    if (this.gameObject.name.Contains("Comment"))
+                    {
+                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("discoverComments");
+                    }
                 }
-            }
-            else
-            {
-                globalTerminalMode = 0;
-                localTerminalMode = 0;
+                else
+                {
+                    globalTerminalMode = 0;
+                    localTerminalMode = 0;
+                }
             }
         }
     }

@@ -103,6 +103,7 @@ public class Activator : MonoBehaviour {
             powerNeeded = other.gameObject.GetComponent<ActivationZone>().powerNeeded;
             connectedTo = other.gameObject.GetComponent<ActivationZone>().connectedTo;
             pellets = other.gameObject.GetComponent<ActivationZone>().pellets;
+            standardPower = -1;
         }
     }
 

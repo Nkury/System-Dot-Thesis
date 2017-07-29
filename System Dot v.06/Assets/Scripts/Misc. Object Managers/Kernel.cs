@@ -7,6 +7,8 @@ public class Kernel : MonoBehaviour {
 
     public GameObject player;
 
+    public static string kernelNameCurrentlyIn;
+
     public float zoomOutSize = 7.07f; // default is 7.07
     private bool canPressE = false;
     private bool inDebugMode = false;
@@ -23,6 +25,7 @@ public class Kernel : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E) && canPressE && !inDebugMode)
             {
                 inDebugMode = true;
+                kernelNameCurrentlyIn = this.gameObject.name;
                 player.SetActive(false);
                 Camera.main.orthographicSize = zoomOutSize;
                 if(PlayerStats.highestCheckpoint == 3 && this.gameObject.name == "TutorialKernel")
@@ -34,6 +37,7 @@ public class Kernel : MonoBehaviour {
             else if (Input.GetKeyDown(KeyCode.E) && inDebugMode)
             {
                 inDebugMode = false;
+                kernelNameCurrentlyIn = string.Empty;
                 player.SetActive(true);
                 Camera.main.orthographicSize = 3.675071f;
             }
