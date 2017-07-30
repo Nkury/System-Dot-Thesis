@@ -366,6 +366,9 @@ public class EnemyTerminal : MonoBehaviour
                             if(this.GetComponent<Activator>() != null)
                             {
                                 this.GetComponent<Activator>().power = float.Parse(output.Substring(10, output.Length - 10));
+                            } else if(this.GetComponent<WordManipulator>() != null)
+                            {
+                                this.GetComponent<WordManipulator>().activatedIndex = float.Parse(output.Substring(10, output.Length - 10));
                             }
                         }
                     }
@@ -381,6 +384,19 @@ public class EnemyTerminal : MonoBehaviour
                                 this.GetComponent<Rotater>().pause = false;
                                 this.GetComponent<Rotater>().goLeft = repitition >= 0;
                                 this.GetComponent<Rotater>().maxRotation += repitition * 360;                                                 
+                            }
+                        }
+                    }
+                    break;
+                case keyActions.DELETE:
+                    foreach (string output in outputVal)
+                    {
+                        if (output.Contains("Delete: "))
+                        {
+                            if (this.GetComponent<WordManipulator>() != null)
+                            {
+                                string wordToDelete = output.Substring(8, output.Length - 8);
+                                this.GetComponent<WordManipulator>().whatToDelete = wordToDelete;
                             }
                         }
                     }

@@ -53,7 +53,8 @@
  *   [31]    smash_stmt         ->        SMASH LPAREN RPAREN           
  *   [32]    gravity_stmt       ->        GRAVITY LPAREN (TRUE | FALSE | ID) RPAREN 
  *   [33]    activate_stmt      ->        ACTIVATE LPAREN (NUM | REALNUM | ID) RPAREN       
- *   [34]    rotate_stmt        ->        ROTATE LPAREN ( NUM | REALNUM | ID) RPAREN               
+ *   [34]    rotate_stmt        ->        ROTATE LPAREN ( NUM | REALNUM | ID) RPAREN
+ *   [35]    delete_stmt        ->        DELETE LPAREN ( ID | strExpr) RPAREN               
  *   (-=-=-=-=-=-=- The following grammar are for methods and can be substituted into the above grammar
  *                  based on their return type -=-=-=-=-=-)
  *   [35]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
@@ -124,6 +125,10 @@ namespace ParserAlgo
         // amount to rotate outputted in outputValue in format ["Rotate: #"]
         ROTATE,
 
+        // System.delete(id/strExpr)
+        // delete certain strings from a word
+        DELETE,
+
         // if there is an infinite loop or syntax error with message
         INFINITELOOP, ERRORMSG, ERROR
 
@@ -136,7 +141,7 @@ namespace ParserAlgo
                             "int", "double", "string", "boolean", "true", "false",
                             "substring", "length", "indexOf",
                             "System", "output", "check", "move", "body", "jump", "open", "close", "wait",
-                            "smash", "gravity", "activate", "rotate",
+                            "smash", "gravity", "activate", "rotate", "delete",
                             "Direction", "LEFT", "RIGHT", "Color", "BLACK", "RED", "BLUE", "GREEN",
                             "+", "-", "/", "//", "*","%", "=",
                             ":", ",", ";",
@@ -167,7 +172,7 @@ namespace ParserAlgo
             INT, REAL, STRING, BOOLEAN, TRUE, FALSE,
             SUBSTRING, LENGTH, INDEXOF,
             SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
-            SMASH, GRAVITY, ACTIVATE, ROTATE,
+            SMASH, GRAVITY, ACTIVATE, ROTATE, DELETE,
             DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
             COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
@@ -684,6 +689,7 @@ namespace ParserAlgo
             return;
         }
 
+        // parses for System.gravity(true/false);
         private void ParseGravity()
         {
             ttype = getToken();
@@ -744,6 +750,7 @@ namespace ParserAlgo
             return;
         }
 
+        // parses for System.activate(num/realnum/id);
         private void ParseActivate()
         {
             int outputValLength = outputValue.Count;
@@ -797,6 +804,7 @@ namespace ParserAlgo
             return;
         }
 
+        // parses for System.activate(num/realnum/id);
         private void ParseRotate()
         {
             int outputValLength = outputValue.Count;
@@ -845,10 +853,62 @@ namespace ParserAlgo
             }
 
             syntaxMessage = "Error in line " + (line_no - 1) +
-                ": There is an error when you try to activate an object";
+                ": There is an error when you try to rotate an object";
             actions.Add(keyActions.ERROR);
             return;
         }
+
+        // parses for System.delete(id/strExpr);
+        private void ParseDelete()
+        {
+            int outputValLength = outputValue.Count;
+
+            ttype = getToken();
+            if (ttype == TokenTypes.DELETE)
+            {
+                ttype = getToken();
+                if (ttype == TokenTypes.LPAREN)
+                {
+                    ttype = getToken();
+                    if (ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE)
+                    {
+                        ungetToken();
+                        outputValue.Add("Delete: " + ParseStringExpression());
+                    }
+                    else if (ttype == TokenTypes.ID)
+                    {
+                        variable var;
+                        if (symbolTable.TryGetValue(token, out var))
+                        {
+                            if (var.type == TokenTypes.STRING)
+                            {
+                                outputValue.Add("Delete: " + var.value);
+                            }
+                        }
+                    }
+
+                    ttype = getToken();
+                    if (ttype == TokenTypes.RPAREN)
+                    {
+                        ttype = getToken();
+                        if (ttype == TokenTypes.SEMICOLON)
+                        {
+                            if (outputValue.Count > outputValLength)
+                            {
+                                actions.Add(keyActions.DELETE);
+                                return;
+                            }
+                        }
+                    }                    
+                }
+            }
+
+            syntaxMessage = "Error in line " + (line_no - 1) +
+                ": There is an error when you try to delete an object";
+            actions.Add(keyActions.ERROR);
+            return;
+        }
+
         // parses for System. and then evaluates which of the above System commands it should parse for
         private numberOrString ParseSystem()
         {
@@ -911,6 +971,10 @@ namespace ParserAlgo
                     {
                         ungetToken();
                         ParseRotate();
+                    } else if(ttype == TokenTypes.DELETE)
+                    {
+                        ungetToken();
+                        ParseDelete();
                     }
                     return default(numberOrString);
                 }
