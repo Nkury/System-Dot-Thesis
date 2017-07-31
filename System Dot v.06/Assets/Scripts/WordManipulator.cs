@@ -7,12 +7,20 @@ using ParserAlgo;
 public class WordManipulator : MonoBehaviour {
 
     public List<string> word = new List<string>();
+
+    // for System.delete();
     public string whatToDelete;
 
+    // for System.activate();
     public float activatedIndex;
+
+    // for System.body();
+    public string wordToSet;
+    public bool constructWord = false;
 
     private int index = 0;
     private string prevWhatToDelete;
+
 	// Use this for initialization
 	void Start () {
         word.Clear();
@@ -24,7 +32,10 @@ public class WordManipulator : MonoBehaviour {
             {
                 foreach(Transform secondChild in child.transform)
                 {
-                    wordToAdd += secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text;                                    
+                    if (secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text != "")
+                    {
+                        wordToAdd += secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text;
+                    }                                    
                 }
 
                 word.Add(wordToAdd);
@@ -35,6 +46,22 @@ public class WordManipulator : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        // always construct the word
+        if (constructWord)
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                // enable all blocks
+                foreach (Transform secondChild in child.transform)
+                {
+                    DeleteBlock(secondChild.gameObject, true);
+                }
+            }
+
+            ConstructWord(this.GetComponent<EnemyTerminal>().actions.Contains(keyActions.TURNLETTER));
+            constructWord = false;
+        } 
+
         if (whatToDelete != "" && whatToDelete != prevWhatToDelete)
         {
             index = 0;
@@ -45,15 +72,19 @@ public class WordManipulator : MonoBehaviour {
                 if (child.gameObject.name.Contains("WordBlock"))
                 {
                     index++;
+
+                    string stringToCompare = "";
+
                     // enable all blocks
                     foreach (Transform secondChild in child.transform)
                     {
                         DeleteBlock(secondChild.gameObject, true);
+                        stringToCompare += secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text;
                     }
 
-                    if (word[index-1].Contains(whatToDelete))
+                    if (stringToCompare.Contains(whatToDelete))
                     {
-                        int indexOf = word[index - 1].IndexOf(whatToDelete[0]);
+                        int indexOf = stringToCompare.IndexOf(whatToDelete[0]);
                         while (indexOf != -1)
                         {
                             for (int i = 0; i < whatToDelete.Length; i++)
@@ -61,7 +92,7 @@ public class WordManipulator : MonoBehaviour {
                                 DeleteBlock(child.transform.GetChild(indexOf + i).gameObject, false);
                             }
 
-                            indexOf = word[index - 1].IndexOf(whatToDelete[0], indexOf + 1);
+                            indexOf = stringToCompare.IndexOf(whatToDelete[0], indexOf + 1);
                         }
                     }
                 }
@@ -77,7 +108,7 @@ public class WordManipulator : MonoBehaviour {
                     int i = 0;       
                     foreach (Transform secondChild in child.transform)
                     {
-                        if(i == activatedIndex)
+                        if(i == activatedIndex && secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text != "")
                         {
                             secondChild.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                         }
@@ -103,7 +134,7 @@ public class WordManipulator : MonoBehaviour {
                 }
             }
             activatedIndex = -1;
-        }
+        }         
     }
 
     public void DeleteBlock(GameObject block, bool visible)
@@ -111,5 +142,54 @@ public class WordManipulator : MonoBehaviour {
         block.transform.FindChild("Letter").GetComponent<Renderer>().enabled = visible;
         block.gameObject.GetComponent<SpriteRenderer>().enabled = visible;
         block.gameObject.GetComponent<BoxCollider2D>().enabled = visible;
+    }
+
+    public void ConstructWord(bool newWord)
+    {
+        if (newWord)
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.gameObject.name.Contains("WordBlock"))
+                {
+                    // clear all the letters before writing new ones
+                    for (int i = 0; i < child.transform.childCount; i++)
+                    {
+                        child.transform.GetChild(i).transform.FindChild("Letter").GetComponent<TextMesh>().text = "";
+                    }
+
+                    if (wordToSet.Length <= child.transform.childCount)
+                    {
+                        for (int i = 0; i < wordToSet.Length; i++)
+                        {
+                            child.transform.GetChild(i).transform.FindChild("Letter").GetComponent<TextMesh>().text = wordToSet[i].ToString();
+                        }
+                    }
+                }
+            }
+        }
+        else if(!newWord && word.Count > 0)
+        {
+            int wordBlockIndex = 0;
+            foreach (Transform child in gameObject.transform)
+            {
+                if (child.gameObject.name.Contains("WordBlock"))
+                {
+                    for (int i = 0; i < child.transform.childCount; i++)
+                    {
+                        if(i < word[wordBlockIndex].Length)
+                        {
+                            child.transform.GetChild(i).transform.FindChild("Letter").GetComponent<TextMesh>().text = word[wordBlockIndex][i].ToString();
+                        }
+                        else
+                        {
+                            child.transform.GetChild(i).transform.FindChild("Letter").GetComponent<TextMesh>().text = "";
+                        }                        
+                    }
+
+                    wordBlockIndex++;
+                }
+            }
+        }
     }
 }

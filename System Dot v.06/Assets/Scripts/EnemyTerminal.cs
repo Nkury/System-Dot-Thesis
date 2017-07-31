@@ -19,6 +19,7 @@ public class EnemyTerminal : MonoBehaviour
     public string[] terminalString = new string[5];
     public string[] originalString = new string[5];
     public string classHeader;
+    public string parameters;
 
     public GUIStyle terminalStyle;
     public GameObject terminalPointerDestination;
@@ -169,6 +170,9 @@ public class EnemyTerminal : MonoBehaviour
         actions.Clear();
         string passedInString = "";
 
+        // add parameter code to passed-in string
+        passedInString += parameters;
+
         // check if a variabull is with us
         if (terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf) {
             passedInString += terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text;
@@ -261,6 +265,22 @@ public class EnemyTerminal : MonoBehaviour
                     } else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name == "Centipede Head")
                     {            
                         this.GetComponent<SpriteRenderer>().sprite = head;
+                    }
+                    break;
+                case keyActions.TURNLETTER:
+                    if (this.GetComponent<WordManipulator>())
+                    {
+                        foreach (string output in outputVal)
+                        {
+                            if (output.Contains("Body: "))
+                            {
+                                if (this.GetComponent<WordManipulator>() != null)
+                                {
+                                    this.GetComponent<WordManipulator>().constructWord = true;
+                                    this.GetComponent<WordManipulator>().wordToSet = output.Substring(6, output.Length - 6);
+                                }
+                            }
+                        }
                     }
                     break;
                 case keyActions.CLOSE:
@@ -397,6 +417,23 @@ public class EnemyTerminal : MonoBehaviour
                             {
                                 string wordToDelete = output.Substring(8, output.Length - 8);
                                 this.GetComponent<WordManipulator>().whatToDelete = wordToDelete;
+                            }
+                        }
+                    }
+                    break;
+                case keyActions.OUTPUT:
+                    foreach(string output in outputVal)
+                    {
+                        if(output.Contains("Output: "))
+                        {
+                            if (this.GetComponent<Gate>())
+                            {
+                                string variableInfo = output.Substring(8, output.Length - 8);
+                                // variable info comes in [0] name [1] type [2] value
+                                if (variableInfo.Split(Environment.NewLine.ToCharArray())[1] == "BOOLEAN")
+                                {
+                                    this.GetComponent<Gate>().ActivateDestination(Convert.ToBoolean(variableInfo.Split(Environment.NewLine.ToCharArray())[2].ToLower()));
+                                }
                             }
                         }
                     }

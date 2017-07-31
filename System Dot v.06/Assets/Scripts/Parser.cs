@@ -96,6 +96,9 @@ namespace ParserAlgo
         // color turns black if there is no System.body function
         TURNBLUE = 1, TURNRED, TURNGREEN, TURNBLACK,
 
+        // letter state changing through System.body(ID / strExpr);
+        TURNLETTER,
+
         // System.move(Direction.LEFT/RIGHT)
         MOVELEFT, MOVERIGHT, NOMOVE,
 
@@ -291,7 +294,42 @@ namespace ParserAlgo
                                 }
                             }
                         }
-                    }
+                    } // check for letters
+                    else if (ttype == TokenTypes.ID || ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE)
+                    {
+                        int outputValLength = outputValue.Count;
+
+                        if (ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE)
+                        {
+                            ungetToken();
+                            outputValue.Add("Body: " + ParseStringExpression());
+                        }
+                        else if (ttype == TokenTypes.ID)
+                        {
+                            variable var;
+                            if (symbolTable.TryGetValue(token, out var))
+                            {
+                                if (var.type == TokenTypes.STRING)
+                                {
+                                    outputValue.Add("Body: " + var.value);
+                                }
+                            }
+                        }
+
+                        ttype = getToken();
+                        if (ttype == TokenTypes.RPAREN)
+                        {
+                            ttype = getToken();
+                            if (ttype == TokenTypes.SEMICOLON)
+                            {
+                                if (outputValue.Count > outputValLength)
+                                {
+                                    actions.Add(keyActions.TURNLETTER);
+                                    return;
+                                }
+                            }
+                        }
+                    }                   
                 }
             }
 
@@ -572,7 +610,7 @@ namespace ParserAlgo
                         variable var;
                         if(symbolTable.TryGetValue(token, out var))
                         {
-                            outputValue.Add(var.name + "|||" + var.type + "|||" + var.value);
+                            outputValue.Add("Output: " + var.name + "\n" + var.type + "\n" + var.value);
                             ttype = getToken();
                             if(ttype == TokenTypes.RPAREN)
                             {

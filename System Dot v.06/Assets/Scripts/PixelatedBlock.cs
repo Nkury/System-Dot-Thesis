@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PixelatedBlock : MonoBehaviour {
 
-    public int timeToPixelate;
-    public int timeToRecover;
+    public float timeToPixelate;
+    public float timeToRecover;
 
     bool recover = false;
     float time = 0;
