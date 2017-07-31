@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using ParserAlgo;
 
 public class EnemyTerminal : MonoBehaviour
@@ -203,246 +204,261 @@ public class EnemyTerminal : MonoBehaviour
             }
         }
 
-        foreach (keyActions action in actions)
-        {
-            switch (action)
+        if (!actions.Contains(keyActions.ERROR)) {
+            foreach (keyActions action in actions)
             {
-                case keyActions.TURNBLUE:
-                    if (this.GetComponent<HurtPlayerOnContact>())
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
-                    }
-                    if (this.gameObject.tag == "Enemy")
-                    {                        
-                        this.GetComponent<SpriteRenderer>().sprite = blueSlime;               
-                    } else if (this.gameObject.tag == "Centipede Body")
-                    {
-                        this.GetComponent<SpriteRenderer>().sprite = blueBody;                       
-                    }
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.TURNRED:
-                    if (this.GetComponent<HurtPlayerOnContact>())
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
-                    }
-                    if (this.gameObject.tag == "Enemy")
-                    {                        
-                        this.GetComponent<SpriteRenderer>().sprite = redSlime;                     
-                    }
-                    else if (this.gameObject.tag == "Centipede Body")
-                    {                   
-                        this.GetComponent<SpriteRenderer>().sprite = redBody;                        
-                    }
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.TURNGREEN:
-                    if (this.GetComponent<HurtPlayerOnContact>())
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
-                    }
-                    if (this.gameObject.tag == "Enemy")
-                    {                       
-                        this.GetComponent<SpriteRenderer>().sprite = greenSlime;              
-                    } else if (this.gameObject.tag == "Centipede Body")
-                    {                      
-                        this.GetComponent<SpriteRenderer>().sprite = greenBody;                       
-                    }
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.TURNBLACK:
-                    if (this.GetComponent<HurtPlayerOnContact>())
-                    {
-                        this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
-                    }
-                    if (this.gameObject.tag == "Enemy")
-                    {      
-                        this.GetComponent<SpriteRenderer>().sprite = blackSlime;
-                    }
-                    else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name != "Centipede Head")
-                    {                    
-                        this.GetComponent<SpriteRenderer>().sprite = blackBody;
-                    } else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name == "Centipede Head")
-                    {            
-                        this.GetComponent<SpriteRenderer>().sprite = head;
-                    }
-                    break;
-                case keyActions.TURNLETTER:
-                    if (this.GetComponent<WordManipulator>())
-                    {
+                switch (action)
+                {
+                    case keyActions.TURNBLUE:
+                        if (this.GetComponent<HurtPlayerOnContact>())
+                        {
+                            this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
+                        }
+                        if (this.gameObject.tag == "Enemy")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = blueSlime;
+                        }
+                        else if (this.gameObject.tag == "Centipede Body")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = blueBody;
+                        }
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.TURNRED:
+                        if (this.GetComponent<HurtPlayerOnContact>())
+                        {
+                            this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
+                        }
+                        if (this.gameObject.tag == "Enemy")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = redSlime;
+                        }
+                        else if (this.gameObject.tag == "Centipede Body")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = redBody;
+                        }
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.TURNGREEN:
+                        if (this.GetComponent<HurtPlayerOnContact>())
+                        {
+                            this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
+                        }
+                        if (this.gameObject.tag == "Enemy")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = greenSlime;
+                        }
+                        else if (this.gameObject.tag == "Centipede Body")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = greenBody;
+                        }
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.TURNBLACK:
+                        if (this.GetComponent<HurtPlayerOnContact>())
+                        {
+                            this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+                        }
+                        if (this.gameObject.tag == "Enemy")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = blackSlime;
+                        }
+                        else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name != "Centipede Head")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = blackBody;
+                        }
+                        else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name == "Centipede Head")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = head;
+                        }
+                        break;
+                    case keyActions.TURNLETTER:
+                        if (this.GetComponent<WordManipulator>())
+                        {
+                            foreach (string output in outputVal)
+                            {
+                                if (output.Contains("Body: "))
+                                {
+                                    if (this.GetComponent<WordManipulator>() != null)
+                                    {
+                                        this.GetComponent<WordManipulator>().constructWord = true;
+                                        this.GetComponent<WordManipulator>().wordToSet = output.Substring(6, output.Length - 6);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case keyActions.CLOSE:
+                        if (this.gameObject.tag == "Chest")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = chestSpriteClosed;
+                            numOfSyntaxErrors = 0;
+                        }
+                        break;
+                    case keyActions.OPEN:
+                        if (this.gameObject.tag == "Chest")
+                        {
+                            this.GetComponent<SpriteRenderer>().sprite = chestSpriteOpen;
+                            yield return new WaitForSeconds(1);
+                            this.GetComponent<ChestBits>().chestOpen();
+
+                            if (this.gameObject.name == "TutorialChest")
+                            {
+                                GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("unlockChest");
+                            }
+
+                            numOfSyntaxErrors = 0;
+                        }
+                        break;
+                    case keyActions.MOVELEFT:
+                        for (int i = 0; i < actions.Count; i++)
+                        {
+                            if (actions[i] == keyActions.MOVERIGHT)
+                            {
+                                actions.RemoveAt(i);
+                                i--;
+                            }
+                            else if (actions[i] == keyActions.MOVELEFT)
+                            {
+                                break;
+                            }
+                        }
+
+                        this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
+
+                        if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
+                        {
+                            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("movePlatform2");
+                            this.gameObject.name = "TutorialPlatform2";
+                        }
+
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.MOVERIGHT:
+                        for (int i = 0; i < actions.Count; i++)
+                        {
+                            if (actions[i] == keyActions.MOVELEFT)
+                            {
+                                actions.RemoveAt(i);
+                                i--;
+                            }
+                            else if (actions[i] == keyActions.MOVERIGHT)
+                            {
+                                break;
+                            }
+                        }
+                        this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
+
+                        if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
+                        {
+                            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("movePlatform");
+                            this.gameObject.name = "TutorialPlatform1";
+                        }
+
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.WAIT:
+                        yield return new WaitForSeconds(parse.waitTimes[waitCount]);
+                        waitCount++;
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.SMASH:
+                        if (this.GetComponent<Smash>() == null)
+                        {
+                            this.gameObject.AddComponent<Smash>();
+                        }
+                        if (this.GetComponent<Rigidbody2D>() != null)
+                        {
+                            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                        }
+                        numOfSyntaxErrors = 0;
+                        break;
+                    case keyActions.GRAVITYON:
+                        if (this.GetComponent<Rigidbody2D>() != null)
+                        {
+                            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                        }
+                        break;
+                    case keyActions.GRAVITYOFF:
+                        if (this.GetComponent<Rigidbody2D>() != null)
+                        {
+                            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                        }
+                        break;
+                    case keyActions.ACTIVATE:
                         foreach (string output in outputVal)
                         {
-                            if (output.Contains("Body: "))
+                            if (output.Contains("Activate: "))
+                            {
+                                if (this.GetComponent<Activator>() != null)
+                                {
+                                    this.GetComponent<Activator>().power = float.Parse(output.Substring(10, output.Length - 10));
+                                }
+                                else if (this.GetComponent<WordManipulator>() != null)
+                                {
+                                    this.GetComponent<WordManipulator>().activatedIndex = float.Parse(output.Substring(10, output.Length - 10));
+                                }
+                            }
+                        }
+                        break;
+                    case keyActions.ROTATE:
+                        foreach (string output in outputVal)
+                        {
+                            if (output.Contains("Rotate: "))
+                            {
+                                if (this.GetComponent<Rotater>() != null)
+                                {
+                                    float repitition = float.Parse(output.Substring(8, output.Length - 8));
+                                    this.GetComponent<Rotater>().pause = false;
+                                    this.GetComponent<Rotater>().goLeft = repitition >= 0;
+                                    this.GetComponent<Rotater>().maxRotation += repitition * 360;
+                                }
+                            }
+                        }
+                        break;
+                    case keyActions.DELETE:
+                        foreach (string output in outputVal)
+                        {
+                            if (output.Contains("Delete: "))
                             {
                                 if (this.GetComponent<WordManipulator>() != null)
                                 {
-                                    this.GetComponent<WordManipulator>().constructWord = true;
-                                    this.GetComponent<WordManipulator>().wordToSet = output.Substring(6, output.Length - 6);
+                                    string wordToDelete = output.Substring(8, output.Length - 8);
+                                    this.GetComponent<WordManipulator>().whatToDelete = wordToDelete;
                                 }
                             }
                         }
-                    }
-                    break;
-                case keyActions.CLOSE:
-                    if (this.gameObject.tag == "Chest")
-                    {
-                        this.GetComponent<SpriteRenderer>().sprite = chestSpriteClosed;
-                        numOfSyntaxErrors = 0;
-                    }
-                    break;
-                case keyActions.OPEN:
-                    if (this.gameObject.tag == "Chest")
-                    {
-                        this.GetComponent<SpriteRenderer>().sprite = chestSpriteOpen;
-                        yield return new WaitForSeconds(1);
-                        this.GetComponent<ChestBits>().chestOpen();
-
-                        if (this.gameObject.name == "TutorialChest")
+                        break;
+                    case keyActions.OUTPUT:
+                        foreach (string output in outputVal)
                         {
-                            GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("unlockChest");
-                        }
-
-                        numOfSyntaxErrors = 0;
-                    }
-                    break;
-                case keyActions.MOVELEFT:
-                    for(int i = 0; i < actions.Count; i++)
-                    {
-                        if(actions[i] == keyActions.MOVERIGHT)
-                        {
-                            actions.RemoveAt(i);
-                            i--;
-                        } else if(actions[i] == keyActions.MOVELEFT)
-                        {
-                            break;
-                        }
-                    }
-
-                    this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
-
-                    if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
-                    {
-                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("movePlatform2");
-                        this.gameObject.name = "TutorialPlatform2";
-                    }
-
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.MOVERIGHT:
-                    for (int i = 0; i < actions.Count; i++)
-                    {
-                        if (actions[i] == keyActions.MOVELEFT)
-                        {
-                            actions.RemoveAt(i);
-                            i--;
-                        }
-                        else if (actions[i] == keyActions.MOVERIGHT)
-                        {
-                            break;
-                        }
-                    }
-                    this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
-
-                    if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
-                    {
-                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("movePlatform");
-                        this.gameObject.name = "TutorialPlatform1";
-                    }
-
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.WAIT:
-                    yield return new WaitForSeconds(parse.waitTimes[waitCount]);
-                    waitCount++;
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.SMASH:
-                    if (this.GetComponent<Smash>() == null)
-                    {
-                        this.gameObject.AddComponent<Smash>();
-                    }
-                    if (this.GetComponent<Rigidbody2D>() != null)
-                    {
-                        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    }
-                    numOfSyntaxErrors = 0;
-                    break;
-                case keyActions.GRAVITYON:
-                    if (this.GetComponent<Rigidbody2D>() != null) {
-                        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                    }
-                    break;
-                case keyActions.GRAVITYOFF:
-                    if (this.GetComponent<Rigidbody2D>() != null)
-                    {
-                        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-                    }
-                    break;
-                case keyActions.ACTIVATE:
-                    foreach(string output in outputVal)
-                    {
-                        if (output.Contains("Activate: "))
-                        {
-                            if(this.GetComponent<Activator>() != null)
+                            if (output.Contains("Output: "))
                             {
-                                this.GetComponent<Activator>().power = float.Parse(output.Substring(10, output.Length - 10));
-                            } else if(this.GetComponent<WordManipulator>() != null)
-                            {
-                                this.GetComponent<WordManipulator>().activatedIndex = float.Parse(output.Substring(10, output.Length - 10));
-                            }
-                        }
-                    }
-                    break;
-                case keyActions.ROTATE:
-                    foreach(string output in outputVal)
-                    {
-                        if(output.Contains("Rotate: "))
-                        {
-                            if(this.GetComponent<Rotater>() != null)
-                            {
-                                float repitition = float.Parse(output.Substring(8, output.Length - 8));
-                                this.GetComponent<Rotater>().pause = false;
-                                this.GetComponent<Rotater>().goLeft = repitition >= 0;
-                                this.GetComponent<Rotater>().maxRotation += repitition * 360;                                                 
-                            }
-                        }
-                    }
-                    break;
-                case keyActions.DELETE:
-                    foreach (string output in outputVal)
-                    {
-                        if (output.Contains("Delete: "))
-                        {
-                            if (this.GetComponent<WordManipulator>() != null)
-                            {
-                                string wordToDelete = output.Substring(8, output.Length - 8);
-                                this.GetComponent<WordManipulator>().whatToDelete = wordToDelete;
-                            }
-                        }
-                    }
-                    break;
-                case keyActions.OUTPUT:
-                    foreach(string output in outputVal)
-                    {
-                        if(output.Contains("Output: "))
-                        {
-                            if (this.GetComponent<Gate>())
-                            {
-                                string variableInfo = output.Substring(8, output.Length - 8);
-                                // variable info comes in [0] name [1] type [2] value
-                                if (variableInfo.Split(Environment.NewLine.ToCharArray())[1] == "BOOLEAN")
+                                if (this.GetComponent<Gate>())
                                 {
-                                    this.GetComponent<Gate>().ActivateDestination(Convert.ToBoolean(variableInfo.Split(Environment.NewLine.ToCharArray())[2].ToLower()));
+                                    // for gates, there can only be one System.output
+                                    if (actions.Count(x => x == keyActions.OUTPUT) == 1)
+                                    {
+                                        string variableInfo = output.Substring(8, output.Length - 8);
+                                        // variable info comes in [0] name [1] type [2] value
+                                        if (variableInfo.Split(Environment.NewLine.ToCharArray())[1] == "BOOLEAN")
+                                        {
+                                            this.GetComponent<Gate>().ActivateDestination(Convert.ToBoolean(variableInfo.Split(Environment.NewLine.ToCharArray())[2].ToLower()));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        actions.Add(keyActions.ERROR);
+                                    }
                                 }
                             }
                         }
+                        break;
                     }
-                    break;
-                case keyActions.ERROR:
-                    numOfSyntaxErrors++;
-                    break;
-            }
-        }
+                }
+            } else{
+                numOfSyntaxErrors++;
+            }        
     }
 
     public void ShowTerminalWindow()

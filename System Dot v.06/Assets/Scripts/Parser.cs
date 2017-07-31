@@ -334,7 +334,7 @@ namespace ParserAlgo
             }
 
             syntaxMessage = "Error in line " + (line_no) +
-                ": There is an error when you try to change the color of an object";
+                ": There is an error when you try to change the body of an object";
             actions.Add(keyActions.ERROR);
             return;
         }

@@ -22,11 +22,11 @@ public class Gate : MonoBehaviour {
         {
             if (powerSources[i].transform.FindChild("StartSource").GetComponent<SpriteRenderer>().color == new Color(1, 1, 0))
             {
-                parameters = parameterNames + " = true; ";
+                parameters += "boolean " + parameterNames[i] + " = true; ";
             }
             else
             {
-                parameters = parameterNames + " = false; ";
+                parameters += "boolean " + parameterNames[i] + " = false; ";
             }
         } 
 
