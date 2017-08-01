@@ -9,7 +9,7 @@ public class WordManipulator : MonoBehaviour {
     public List<string> word = new List<string>();
 
     // for System.delete();
-    public string whatToDelete;
+    public List<string> whatToDelete = new List<string>();
 
     // for System.activate();
     public float activatedIndex;
@@ -19,7 +19,7 @@ public class WordManipulator : MonoBehaviour {
     public bool constructWord = false;
 
     private int index = 0;
-    private string prevWhatToDelete;
+    private List<string> prevWhatToDelete = new List<string>();
 
 	// Use this for initialization
 	void Start () {
@@ -51,21 +51,32 @@ public class WordManipulator : MonoBehaviour {
         {
             foreach (Transform child in gameObject.transform)
             {
-                // enable all blocks
-                foreach (Transform secondChild in child.transform)
+                if (child.gameObject.name.Contains("WordBlock"))
                 {
-                    DeleteBlock(secondChild.gameObject, true);
+                    // enable all blocks
+                    foreach (Transform secondChild in child.transform)
+                    {
+                        DeleteBlock(secondChild.gameObject, true);
+                    }
                 }
             }
 
             ConstructWord(this.GetComponent<EnemyTerminal>().actions.Contains(keyActions.TURNLETTER));
-            constructWord = false;
+            if (whatToDelete.Count != 0)
+            {
+                constructWord = true;
+            }
+            else
+            {
+                constructWord = false;
+            }
         } 
 
-        if (whatToDelete != "" && whatToDelete != prevWhatToDelete)
+        if (whatToDelete.Count != 0 && (whatToDelete != prevWhatToDelete || constructWord))
         {
             index = 0;
             prevWhatToDelete = whatToDelete;
+            constructWord = false;
 
             foreach (Transform child in gameObject.transform)
             {              
@@ -81,18 +92,20 @@ public class WordManipulator : MonoBehaviour {
                         DeleteBlock(secondChild.gameObject, true);
                         stringToCompare += secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text;
                     }
-
-                    if (stringToCompare.Contains(whatToDelete))
+                    foreach (string toDelete in whatToDelete)
                     {
-                        int indexOf = stringToCompare.IndexOf(whatToDelete[0]);
-                        while (indexOf != -1)
+                        if (stringToCompare.Contains(toDelete))
                         {
-                            for (int i = 0; i < whatToDelete.Length; i++)
+                            int indexOf = stringToCompare.IndexOf(toDelete);
+                            while (indexOf != -1)
                             {
-                                DeleteBlock(child.transform.GetChild(indexOf + i).gameObject, false);
-                            }
+                                for (int i = 0; i < toDelete.Length; i++)
+                                {
+                                    DeleteBlock(child.transform.GetChild(indexOf + i).gameObject, false);
+                                }
 
-                            indexOf = stringToCompare.IndexOf(whatToDelete[0], indexOf + 1);
+                                indexOf = stringToCompare.IndexOf(toDelete[0], indexOf + 1);
+                            }
                         }
                     }
                 }

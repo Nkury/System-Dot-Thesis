@@ -416,18 +416,22 @@ public class EnemyTerminal : MonoBehaviour
                             }
                         }
                         break;
-                    case keyActions.DELETE:
-                        foreach (string output in outputVal)
+                    case keyActions.DELETE: 
+                        if (this.GetComponent<WordManipulator>() != null)
                         {
-                            if (output.Contains("Delete: "))
+                            List<string> listToDelete = new List<string>();
+                            foreach (string output in outputVal)
                             {
-                                if (this.GetComponent<WordManipulator>() != null)
-                                {
+                                if (output.Contains("Delete: "))
+                                {                                    
                                     string wordToDelete = output.Substring(8, output.Length - 8);
-                                    this.GetComponent<WordManipulator>().whatToDelete = wordToDelete;
+                                    listToDelete.Add(wordToDelete);
                                 }
                             }
-                        }
+                            if (listToDelete.Count != 0) {
+                                this.GetComponent<WordManipulator>().whatToDelete = listToDelete;
+                            }
+                        }           
                         break;
                     case keyActions.OUTPUT:
                         foreach (string output in outputVal)
@@ -457,8 +461,36 @@ public class EnemyTerminal : MonoBehaviour
                     }
                 }
             } else{
+            // ERROR (turn object black if error and halt all current actions)
+                ObjectError();
                 numOfSyntaxErrors++;
             }        
+    }
+
+    public void ObjectError()
+    {
+        if (this.GetComponent<HurtPlayerOnContact>())
+        {
+            this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
+        }
+        if (this.gameObject.tag == "Enemy")
+        {
+            this.GetComponent<SpriteRenderer>().sprite = blackSlime;
+        }
+        else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name != "Centipede Head")
+        {
+            this.GetComponent<SpriteRenderer>().sprite = blackBody;
+        }
+        else if (this.gameObject.tag == "Centipede Body" && this.gameObject.name == "Centipede Head")
+        {
+            this.GetComponent<SpriteRenderer>().sprite = head;
+        }
+
+        // stop rotating
+        if (this.GetComponent<Rotater>() != null)
+        {
+            this.GetComponent<Rotater>().pause = true;
+        }
     }
 
     public void ShowTerminalWindow()

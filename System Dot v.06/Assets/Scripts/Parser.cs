@@ -299,22 +299,11 @@ namespace ParserAlgo
                     {
                         int outputValLength = outputValue.Count;
 
-                        if (ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE)
+                        if (ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE || ttype == TokenTypes.ID)
                         {
                             ungetToken();
                             outputValue.Add("Body: " + ParseStringExpression());
-                        }
-                        else if (ttype == TokenTypes.ID)
-                        {
-                            variable var;
-                            if (symbolTable.TryGetValue(token, out var))
-                            {
-                                if (var.type == TokenTypes.STRING)
-                                {
-                                    outputValue.Add("Body: " + var.value);
-                                }
-                            }
-                        }
+                        }                       
 
                         ttype = getToken();
                         if (ttype == TokenTypes.RPAREN)
@@ -322,7 +311,7 @@ namespace ParserAlgo
                             ttype = getToken();
                             if (ttype == TokenTypes.SEMICOLON)
                             {
-                                if (outputValue.Count > outputValLength)
+                                if (outputValue.Count > outputValLength && !outputValue[outputValue.Count - 1].Contains("error404notfoundit'snotworkingbzzzt"))
                                 {
                                     actions.Add(keyActions.TURNLETTER);
                                     return;
@@ -908,22 +897,11 @@ namespace ParserAlgo
                 if (ttype == TokenTypes.LPAREN)
                 {
                     ttype = getToken();
-                    if (ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE)
+                    if (ttype == TokenTypes.DOUBLEQUOTE || ttype == TokenTypes.QUOTE || ttype == TokenTypes.ID)
                     {
                         ungetToken();
                         outputValue.Add("Delete: " + ParseStringExpression());
-                    }
-                    else if (ttype == TokenTypes.ID)
-                    {
-                        variable var;
-                        if (symbolTable.TryGetValue(token, out var))
-                        {
-                            if (var.type == TokenTypes.STRING)
-                            {
-                                outputValue.Add("Delete: " + var.value);
-                            }
-                        }
-                    }
+                    }                   
 
                     ttype = getToken();
                     if (ttype == TokenTypes.RPAREN)
@@ -931,7 +909,7 @@ namespace ParserAlgo
                         ttype = getToken();
                         if (ttype == TokenTypes.SEMICOLON)
                         {
-                            if (outputValue.Count > outputValLength)
+                            if (outputValue.Count > outputValLength && !outputValue[outputValue.Count - 1].Contains("error404notfoundit'snotworkingbzzzt"))
                             {
                                 actions.Add(keyActions.DELETE);
                                 return;
@@ -1423,6 +1401,7 @@ namespace ParserAlgo
                                         ttype = getToken();
                                         if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN)
                                         {
+                                            ungetToken();
                                             return valOfString.Substring(firstIndex);
                                         }
                                         else if (ttype == TokenTypes.PLUS)
@@ -1472,7 +1451,7 @@ namespace ParserAlgo
                                     if (ttype == TokenTypes.RPAREN)
                                     {
                                         ttype = getToken();
-                                        if (ttype == TokenTypes.SEMICOLON)
+                                        if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN)
                                         {
                                             ungetToken();
                                             return valOfString.Substring(firstIndex, secondIndex);
@@ -1487,8 +1466,9 @@ namespace ParserAlgo
                             else if (ttype == TokenTypes.RPAREN)
                             {
                                 ttype = getToken();
-                                if (ttype == TokenTypes.SEMICOLON)
+                                if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN)
                                 {
+                                    ungetToken();
                                     return valOfString.Substring(firstIndex);
                                 }
                                 else if (ttype == TokenTypes.PLUS)
