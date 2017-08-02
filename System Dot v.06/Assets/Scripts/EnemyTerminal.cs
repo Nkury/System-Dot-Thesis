@@ -491,6 +491,12 @@ public class EnemyTerminal : MonoBehaviour
         {
             this.GetComponent<Rotater>().pause = true;
         }
+
+        // close door
+        if (this.GetComponent<Gate>())
+        {
+            this.GetComponent<Gate>().ActivateDestination(false);
+        }
     }
 
     public void ShowTerminalWindow()
