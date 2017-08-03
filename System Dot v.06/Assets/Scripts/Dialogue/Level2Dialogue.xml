@@ -1,6 +1,11 @@
 <dialogue>
   <message id="startGame" event="promptForName">
-    <say>Oh, hi! I didn't mean to startle you. I don't recognize you. </say>
-    <say>Who do you identify as? </say>
+    <say char="IntelliSense">WHOOAAAA! What just happened?!</say>
+    <say char="Engineer">In all my days as an engineering process...</say>
+    <say char="Engineer">I've never seen the ESB malfunction like that!</say>
+    <say char="IntelliSense">Thank DOS we have an engineer with us!</say>
+    <say char="Engineer">I'm sensing a breach in the system...</say>
+    <say char="Engineer">Hold up! Who in the Turing are you?</say>
+    <say char="IntelliSense"></say>
   </message>
 </dialogue>

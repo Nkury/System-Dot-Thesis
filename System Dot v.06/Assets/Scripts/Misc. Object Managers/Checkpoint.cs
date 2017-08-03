@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,6 +39,11 @@ public class Checkpoint : MonoBehaviour {
                 Debug.Log("Time played: " + PlayerStats.totalSecondsOfPlaytime);
                 PlayerStats.checkpoint = this.gameObject.name;
                 Game.current.checkpoint = this.gameObject.name;
+                if(PlayerStats.levelName != SceneManager.GetActiveScene().name)
+                {
+                    PlayerStats.levelName = SceneManager.GetActiveScene().name;
+                }
+                Game.current.levelName = PlayerStats.levelName;
                 PlayerStats.deadObjects = PlayerStats.deadObjects.Distinct().ToList<string>();
                 Game.current.deadObjects = PlayerStats.deadObjects;
                 if(PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Substring(this.gameObject.name.Length - 1, 1)))
@@ -45,6 +51,7 @@ public class Checkpoint : MonoBehaviour {
                     PlayerStats.highestCheckpoint = Int32.Parse(this.gameObject.name.Substring(this.gameObject.name.Length - 1, 1));
                 }
                 Game.current.highestCheckpoint = PlayerStats.highestCheckpoint;
+                Game.current.levelName = SceneManager.GetActiveScene().name;
                 SaveLoad.Save();
             }
 

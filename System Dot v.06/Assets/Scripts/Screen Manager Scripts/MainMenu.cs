@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
@@ -49,7 +50,7 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.numberOfDeaths = 0;
         PlayerStats.totalSecondsOfPlaytime = 0;
 
-		Application.LoadLevel (startLevel);
+		SceneManager.LoadScene (startLevel);
 
 		PlayerPrefs.SetInt ("PlayerCurrentLives", playerLives);
 
@@ -88,17 +89,11 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.mostTimeofMouseInactivity = SaveLoad.savedGames[0].mostTimeofMouseInactivity;
         PlayerStats.numOfAPIUses = SaveLoad.savedGames[0].numOfAPIUses;
         PlayerStats.numOfF5 = SaveLoad.savedGames[0].numOfF5;
-        PlayerStats.numOfEdits = SaveLoad.savedGames[0].numOfEdits;				
-
-
-        if (PlayerStats.checkpoint == "Checkpoint6")
-        {
-            Application.LoadLevel("Level1 BOSS");
-        }
-        else
-        {
-            Application.LoadLevel(startLevel);
-        }
+        PlayerStats.numOfEdits = SaveLoad.savedGames[0].numOfEdits;
+        PlayerStats.levelName = SaveLoad.savedGames[0].levelName;
+      
+        SceneManager.LoadScene(PlayerStats.levelName);
+   
     }
 
 	public void LevelSelect()
@@ -110,7 +105,7 @@ public class MainMenu : MonoBehaviour {
 		PlayerPrefs.SetInt ("PlayerCurrentHealth", playerHealth);
 		PlayerPrefs.SetInt ("PlayerMaxHealth", playerHealth);
 
-		Application.LoadLevel (levelSelect);
+		SceneManager.LoadScene (levelSelect);
 	}
 
 	public void QuitGame()

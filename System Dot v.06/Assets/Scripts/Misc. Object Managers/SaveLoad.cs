@@ -39,8 +39,9 @@ public class Game
 
     /**** PLAYER PROGRESS *************************************************************************/
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
-    /**** TUTORIAL LEVEL *********************************/
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public List<string> deadObjects = new List<string>();
+    public string levelName;
     public bool firstCheckpoint = true;
     public string checkpoint;
     public int highestCheckpoint;

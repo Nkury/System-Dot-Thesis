@@ -19,9 +19,7 @@ public class LevelHandler : MonoBehaviour
 
     protected float gravityStore;
 
-    public HealthManager healthManager;
-
-    public static bool canPressTab = true;
+    public HealthManager healthManager;   
     
     protected bool loadedIn = false;
 

@@ -20,6 +20,8 @@ public class LevelManager : LevelHandler {
     public GameObject chestHelpButton;
     public GameObject DebugButton;
 
+    public static bool canPressTab = true;
+
     public override void LoadLevel()
     {
         // set it to false so we don't have to go through the tutorial

@@ -34,10 +34,15 @@ public class PlayerStats {
     public static string hat;
 
     /**** PLAYER PROGRESS *************************************************************************/
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
-    /**** TUTORIAL LEVEL *********************************/
-    public static List<string> deadObjects = new List<string>();
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * /
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    public static string levelName;
     public static string checkpoint = "Checkpoint1";
     public static int highestCheckpoint = 1;
+    public static List<string> deadObjects = new List<string>();
+
+    
+
+
 
 }
