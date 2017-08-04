@@ -34,7 +34,7 @@ public class IntelliSenseTest : IntelliSense {
     public GameObject directionHelpButton;
     public GameObject chestHelpButton;
 
-    private bool tutorialCheck = false;
+    private bool tutorialCheck = true;
     public static bool clickOnce = false;
 
     private float startTime = 0;
@@ -100,6 +100,10 @@ public class IntelliSenseTest : IntelliSense {
                 clickOnce = false;
                 SetDialogue("clickPlatform"); // click first platform encountered
                 mouseClickPrompt.SetActive(false);
+            } // for comment tutorial in level 1
+            else if (!clickOnce && hit && hit.collider.name.Contains("Comment"))
+            {
+                SetDialogue("discoverComments");
             }
         }
 
@@ -108,6 +112,16 @@ public class IntelliSenseTest : IntelliSense {
         if (tutorialLine.textComponent.color != Color.red)
         {
             tutorialLine.readOnly = tutorialCheck;
+        }
+
+        // for black Vbot tutorial
+        if (!tutorialCheck)
+        {
+            if (tutorialLine.textComponent.text == "System.body(Color.GREEN);")
+            {
+                tutorialCheck = true;
+                GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("codeFixed");
+            }
         }
     }  
 
@@ -149,7 +163,7 @@ public class IntelliSenseTest : IntelliSense {
                 }
                 else
                 {
-                    whatToSay[0].say = PlayerStats.playerName.ToUpper() + whatToSay[0].say;
+                    whatToSay[0].say = whatToSay[0].say.Replace("PLAYERNAME", PlayerStats.playerName.ToUpper());
                 }
                 break;
             case "unlockChest":

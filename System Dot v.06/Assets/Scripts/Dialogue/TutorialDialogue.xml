@@ -6,7 +6,7 @@
   </message>
   
   <message id="receiveName" event="moveToFirstTutorial">
-    <say char="IntelliSense"><!-- PlayerStats.playerName -->? That is an interesting variable name. </say>
+    <say char="IntelliSense">PLAYERNAME? That is an interesting variable name. </say>
     <say char="IntelliSense">I am IntelliSense or IS for short. Nice to meet you! </say>
     <say char="IntelliSense">... </say>
     <say char="IntelliSense">Are you one of those silent video game protagonists who </say>

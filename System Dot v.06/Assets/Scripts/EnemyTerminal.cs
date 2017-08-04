@@ -42,11 +42,9 @@ public class EnemyTerminal : MonoBehaviour
     public Sprite blueBody;
     public Sprite greenBody;
     public Sprite blackBody;
-    public Sprite head;
-    
+    public Sprite head;    
 
     private bool showTerminal = false;
-    private bool tutorialCheck = false;
 
     public List<keyActions> actions = new List<keyActions>();
     public List<string> outputVal = new List<string>();
@@ -149,13 +147,7 @@ public class EnemyTerminal : MonoBehaviour
 
                     showTerminal = true;
                     /* LOGGER INFORMATION */
-                    PlayerStats.numOfEdits++;
-
-                    // for comment tutorial in level 1
-                    if (this.gameObject.name.Contains("Comment"))
-                    {
-                        GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("discoverComments");
-                    }
+                    PlayerStats.numOfEdits++;                   
                 }
                 else
                 {
@@ -597,16 +589,7 @@ public class EnemyTerminal : MonoBehaviour
                     madeChanges = true;
                 }
             }
-
-            // for black Vbot tutorial
-            if(this.gameObject.name == "TutorialEnemy2" && !tutorialCheck)
-            {
-                if(terminalString[0] == "System.body(Color.GREEN);")
-                {
-                    tutorialCheck = true;
-                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("codeFixed");
-                }
-            }
+                  
         }
         else if (globalTerminalMode != 2)
         {

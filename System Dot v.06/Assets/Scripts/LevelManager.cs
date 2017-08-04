@@ -20,8 +20,6 @@ public class LevelManager : LevelHandler {
     public GameObject chestHelpButton;
     public GameObject DebugButton;
 
-    public static bool canPressTab = true;
-
     public override void LoadLevel()
     {
         // set it to false so we don't have to go through the tutorial
@@ -62,6 +60,17 @@ public class LevelManager : LevelHandler {
                 break;
             case "Checkpoint6":
                 currentCheckpoint = checkpoint6;
+                break;
+            default:
+                currentCheckpoint = checkpoint1;
+                intelliSense.SetActive(true);
+                APIButton.SetActive(false);
+                DebugButton.SetActive(false);
+                directionHelpButton.SetActive(false);
+                chestHelpButton.SetActive(false);
+                IntelliSenseTest.clickOnce = false;
+                APISystem.clicked = false;
+                canPressTab = false; // cannot press tab to switch boots to serve the tutorial
                 break;
         }
     }

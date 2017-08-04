@@ -111,7 +111,7 @@ public class Logger : MonoBehaviour {
                 numOfBackSpaces = 0;
                 numOfDeletes = 0;
                 numOfMouseClicks = 0;
-                SaveLoad.Save();
+                //SaveLoad.Save();
             }
         }
 	}

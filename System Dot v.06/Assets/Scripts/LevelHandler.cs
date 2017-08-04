@@ -23,6 +23,8 @@ public class LevelHandler : MonoBehaviour
     
     protected bool loadedIn = false;
 
+    public static bool canPressTab = true;
+
     // Use this for initialization
     public void Start()
     {

@@ -27,3 +27,5 @@ EditorBuildSettings:
     path: Assets/Levels/CPU.unity
   - enabled: 1
     path: Assets/Levels/Demo Post Screen.unity
+  - enabled: 1
+    path: Assets/Levels/Level2.unity

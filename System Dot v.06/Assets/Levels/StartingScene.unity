@@ -27964,8 +27964,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 467129606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52, y: 62.5, z: 0}
-  m_LocalScale: {x: 1, y: 50.2875, z: 1}
+  m_LocalPosition: {x: -0.52, y: 42.3, z: 0}
+  m_LocalScale: {x: 1, y: 94.917694, z: 1}
   m_Children: []
   m_Father: {fileID: 600290291}
   m_RootOrder: 0
@@ -35136,6 +35136,7 @@ Transform:
   m_LocalScale: {x: 1.0480739, y: 0.09374907, z: 1}
   m_Children:
   - {fileID: 467129607}
+  - {fileID: 1314109450}
   m_Father: {fileID: 1075718762}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58101,7 +58102,7 @@ Prefab:
     - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: thirdTutorialObjective
       value: 
-      objectReference: {fileID: 600290288}
+      objectReference: {fileID: 1314109449}
     - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: fourthTutorialObjective
       value: 
@@ -59095,6 +59096,10 @@ Prefab:
     - target: {fileID: 11453214, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: inputHack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882271178785136, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
@@ -76115,6 +76120,49 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1314109449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1314109450}
+  - component: {fileID: 1314109451}
+  m_Layer: 0
+  m_Name: IntelliSensePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1314109450
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314109449}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.42, y: 39.5, z: 0}
+  m_LocalScale: {x: 0.9999962, y: 11.864985, z: 1}
+  m_Children: []
+  m_Father: {fileID: 600290291}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1314109451
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314109449}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!1 &1314446398
 GameObject:
   m_ObjectHideFlags: 0
@@ -88143,7 +88191,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[0]
-      value: int i = 2;
+      value: System.body(Color.BLUE);
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: classHeader
@@ -88151,7 +88199,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: numOfLegacy.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11406454, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: bit
@@ -88163,19 +88211,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[1]
-      value: if(i == 2){
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: numberOfLines
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[2]
-      value: System.body(Color.BLUE); }
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[3]
-      value: else { System.body(Color.RED); }
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11419840, guid: bd105a3838d2a2d46b63ba1d9823964c, type: 2}
       propertyPath: terminalString.Array.data[4]

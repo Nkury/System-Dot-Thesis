@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour {
         if (SaveLoad.savedGames.Count != 0)
         {
             continueGame.gameObject.SetActive(true);
-            newGame.GetComponent<RectTransform>().anchoredPosition = new Vector2(3, 65);
+            newGame.gameObject.SetActive(false);
         }
         else
         {
@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour {
 
     public void ResetButton()
     {
+        newGame.gameObject.SetActive(true);
         SaveLoad.EraseAll();
     }
 
@@ -50,7 +51,7 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.numberOfDeaths = 0;
         PlayerStats.totalSecondsOfPlaytime = 0;
 
-		SceneManager.LoadScene (startLevel);
+        SceneManager.LoadScene("Level2");
 
 		PlayerPrefs.SetInt ("PlayerCurrentLives", playerLives);
 
