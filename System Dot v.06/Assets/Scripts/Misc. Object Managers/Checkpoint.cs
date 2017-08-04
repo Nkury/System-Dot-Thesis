@@ -52,6 +52,7 @@ public class Checkpoint : MonoBehaviour {
                 Game.current.deadObjects = PlayerStats.deadObjects;
                 if (PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Split('t')[1]))
                 {
+                    PlayerStats.highestCheckpoint = Int32.Parse(this.gameObject.name.Split('t')[1]);
                 }
                 Game.current.highestCheckpoint = PlayerStats.highestCheckpoint;
                 Game.current.levelName = PlayerStats.levelName;
