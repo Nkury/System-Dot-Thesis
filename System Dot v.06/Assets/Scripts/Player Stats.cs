@@ -40,9 +40,5 @@ public class PlayerStats {
     public static string checkpoint = "Checkpoint1";
     public static int highestCheckpoint = 1;
     public static List<string> deadObjects = new List<string>();
-
-    
-
-
-
+    public static Dictionary<string, List<string>> terminalStrings = new Dictionary<string, List<string>>(); 
 }

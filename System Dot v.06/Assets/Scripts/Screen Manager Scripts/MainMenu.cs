@@ -73,6 +73,7 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.playerName = SaveLoad.savedGames[0].playerName;
         PlayerStats.checkpoint = SaveLoad.savedGames[0].checkpoint;
         PlayerStats.deadObjects = SaveLoad.savedGames[0].deadObjects;
+        PlayerStats.terminalStrings = SaveLoad.savedGames[0].terminalStrings;
         PlayerStats.highestCheckpoint = SaveLoad.savedGames[0].highestCheckpoint;
         PlayerStats.numHealthPotions = SaveLoad.savedGames[0].numHealthPotions;
         PlayerStats.typingSpeed = SaveLoad.savedGames[0].typingSpeed;

@@ -7,11 +7,11 @@ using System.Linq;
 
 public class Checkpoint : MonoBehaviour {
 
-	public LevelManager levelManager;
+	public LevelHandler levelManager;
 
 	// Use this for initialization
 	void Start () {
-		levelManager = FindObjectOfType<LevelManager> ();
+		levelManager = FindObjectOfType<LevelHandler> ();
 	}
 	
 	// Update is called once per frame
@@ -33,7 +33,7 @@ public class Checkpoint : MonoBehaviour {
             
 
             // autosave feature
-            if (Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Split('t')[1])
+            if ((Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Split('t')[1]))
                 || PlayerStats.checkpoint == "Checkpoint1")
             {
                 Debug.Log("Activated Checkpoint " + transform.position);
@@ -56,6 +56,7 @@ public class Checkpoint : MonoBehaviour {
                 }
                 Game.current.highestCheckpoint = PlayerStats.highestCheckpoint;
                 Game.current.levelName = PlayerStats.levelName;
+                SaveTerminalStrings();
                 SaveLoad.Save();
             }    
 
@@ -64,4 +65,26 @@ public class Checkpoint : MonoBehaviour {
 	
 		}
 	}
+
+    public void SaveTerminalStrings()
+    {
+        EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
+        foreach (EnemyTerminal e in enemies)
+        {
+            List<string> terminalString;
+            if (PlayerStats.terminalStrings.TryGetValue(e.gameObject.name, out terminalString))
+            {
+                if (!terminalString.SequenceEqual(e.terminalString))
+                {
+                    PlayerStats.terminalStrings[e.gameObject.name] = e.terminalString.ToList();
+                }
+            }
+            else
+            {
+                PlayerStats.terminalStrings.Add(e.gameObject.name, e.terminalString.ToList());
+            }
+        }
+
+        Game.current.terminalStrings = PlayerStats.terminalStrings;
+    }
 }

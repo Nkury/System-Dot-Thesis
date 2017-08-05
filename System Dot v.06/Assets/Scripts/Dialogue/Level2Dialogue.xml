@@ -1,11 +1,63 @@
 <dialogue>
-  <message id="startGame" event="promptForName">
+  <message id="startLevel">
     <say char="IntelliSense">WHOOAAAA! What just happened?!</say>
     <say char="Engineer">In all my days as an engineering process...</say>
     <say char="Engineer">I've never seen the ESB malfunction like that!</say>
     <say char="IntelliSense">Thank DOS we have an engineer with us!</say>
     <say char="Engineer">I'm sensing a breach in the system...</say>
-    <say char="Engineer">Hold up! Who in the Turing are you?</say>
-    <say char="IntelliSense"></say>
+    <say char="Engineer">Halt! Who in the Turing machine are you?</say>
+    <say char="IntelliSense">Hold on, PLAYERNAME, I will solve this.</say>
+    <say char="IntelliSense">Salutations, Variabull Engineer!</say>
+    <say char="IntelliSense">1010100101010010010101001010101000100</say>
+    <say char="Engineer">Huh?</say>
+    <say char="IntelliSense">Shoot! That didn't work!</say>
+    <say char="Engineer">Hold on a clock cycle!</say>
+    <say char="Engineer">Did you say PLAYERNAME?!</say>
+    <say char="IntelliSense">Uh...</say>
+    <say char="Engineer">THE PLAYERNAME?!</say>
+    <say char="Engineer">Oh wow, I didn't know our ancestor was here!</say>
+    <say char="IntelliSense">Ancestor?</say>
+    <say char="Engineer">We were created by PLAYERNAME. He is our creator.</say>
+    <say char="IntelliSense">Garbage! That doesn't make sense!</say>
+    <say char="Engineer">We live in System-PLAYERNAME. Of course it's true!</say>
+    <say char="IntelliSense">Huh? Why didn't tell me you were the creator?!</say>
+    <say char="IntelliSense">Oh right, you don't speak.</say>
+    <say char="Engineer">This all makes sense now. We need to get our creator...</say>
+    <say char="Engineer">...back to the outside world so he can fix this mess!</say>
+    <say char="IntelliSense">Then how do we get out of here?</say>
+    <say char="Engineer">I'm an address table. I manage variabulls.</say>
+    <say char="Engineer">... and some of them are stuck somewhere here.</say>
+    <say char="Engineer">They hold some valuable information that we need.</say>
+    <say char="Engineer">I need to stay here and try to repair the ESB.</say>
+    <say char="Engineer">Can you two go find my FOUR variabulls?</say>
+    <say char="IntelliSense">Ugghhhh... we just got out of danger...</say>
+    <say char="IntelliSense">Let's go, PLAYERNAME!</say>
   </message>
+
+  <message id="switchDescriptionPreClick">
+    <say char="IntelliSense">Hey! What's this?</say>
+  </message>
+
+  <message id="inspectSwitch">
+    <say char="IntelliSense">Of course they're missing that! </say>
+    <say char="IntelliSense">I'll add it to the API. </say>
+  </message>
+
+  <message id="seeFlint">
+    <say char="Flint">Help! Is anyone there?! </say>
+    <say char="IntelliSense">Hey, it's a variabull! Let's help him! </say>
+  </message>
+
+  <message id="meetFlint">
+    <say char="Flint">Thank you, 2 strangers!</say>
+    <say char="Flint">You must have heard my 55 pleas for help!</say>
+    <say char="IntelliSense">Uh... no.</say>
+    <say char="IntelliSense">We need to bring you to the address table...</say>
+    <say char="IntelliSense">... so we can get out of here.</say>
+    <say char="Flint">Okay. I am holding the value of 5.</say>
+    <say char="Flint">You can use me to get out of 1, 2, 3 or more...</say>
+    <say char="Flint">...precarious situations.</say>
+    <say char="IntelliSense">Uh... okay. Whatever you say, bub. Let's go.</say>
+  </message>
+
 </dialogue>

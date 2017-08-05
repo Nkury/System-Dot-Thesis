@@ -41,6 +41,7 @@ public class Game
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
     public List<string> deadObjects = new List<string>();
+    public Dictionary<string, List<string>> terminalStrings = new Dictionary<string, List<string>>();
     public string levelName;
     public bool firstCheckpoint = true;
     public string checkpoint;

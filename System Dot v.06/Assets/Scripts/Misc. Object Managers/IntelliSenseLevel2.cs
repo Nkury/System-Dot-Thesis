@@ -13,6 +13,13 @@ public class IntelliSenseLevel2 : IntelliSense {
     [Header("In-Game Objects")]    
     public GameObject mouseClickPrompt;
 
+    [Header("Level 2 Characters")]
+    public GameObject addressTable;
+    public GameObject flint;
+    public GameObject dec;
+    public GameObject word;
+    public GameObject boole;
+
     [Header("Level 1 Objects")]
     [Tooltip("Only attach game objects if in level one")]
     public GameObject firstTutorialObjective;
@@ -45,7 +52,7 @@ public class IntelliSenseLevel2 : IntelliSense {
         if(PlayerStats.checkpoint == "Checkpoint1"){
             startDifferent = true;                 
             base.Start();
-            SetDialogue("startGame");
+            SetDialogue("startLevel");
         }
         else
         {
@@ -68,7 +75,15 @@ public class IntelliSenseLevel2 : IntelliSense {
         if (whatToSay != null && PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
         {
             transform.position = new Vector2(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time));
-        }     
+        }
+
+        if(whatToSay[dialogueIndex].who == "Engineer")
+        {
+            base.SetCharacterIcon(addressTable.GetComponent<SpriteRenderer>().sprite);
+        } else if(whatToSay[dialogueIndex].who == "IntelliSense")
+        {
+            base.SetCharacterIcon(this.GetComponent<SpriteRenderer>().sprite);
+        }
 
         // THIS SECTION CHECKS IF ENEMY HAS BEEN CLICKED FOR TUTORIAL PURPOSES
         //if (Input.GetMouseButtonDown(0))
@@ -80,8 +95,7 @@ public class IntelliSenseLevel2 : IntelliSense {
 
     // looks in dictionary and sets the dialogue to certain keyword passed in
     public override void SetDialogue(string message)
-    {
-        base.SetCharacterIcon(this.GetComponent<SpriteRenderer>().sprite);
+    {       
         base.SetDialogue(message);
     }
 
