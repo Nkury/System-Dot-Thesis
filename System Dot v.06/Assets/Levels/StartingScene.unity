@@ -3168,6 +3168,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8255974, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
   m_IsPrefabParent: 0
@@ -16598,6 +16602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16fb79771a468845b203711f66fe599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundController: {fileID: 1485852016}
 --- !u!1001 &278346371
 Prefab:
   m_ObjectHideFlags: 0
@@ -86956,6 +86961,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1485852016 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 141822, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
+  m_PrefabInternal: {fileID: 61251632}
 --- !u!1 &1490335238
 GameObject:
   m_ObjectHideFlags: 0

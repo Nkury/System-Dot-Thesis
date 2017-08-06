@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class APISystem : MonoBehaviour {
@@ -8,19 +9,43 @@ public class APISystem : MonoBehaviour {
     public GameObject clickAPI;
 
     public GameObject APImenu;
-    public GameObject SystemHelp;
+    
 
     // System code
+    [Header ("Info")]
     public GameObject colorInfo;
     public GameObject directionInfo;
     public GameObject chestInfo;
+    public GameObject smashInfo;
+    public GameObject intInfo;
+    public GameObject doubleInfo;
+    public GameObject stringInfo;
+    public GameObject booleanInfo;
     public Image arrowIndicator;
 
+    [Header("Buttons")]
+    public GameObject SystemHelp;
+    public GameObject DataTypeHelp;
+
     public static bool clicked = true;
-	// Use this for initialization
-	void Start () {
-	
-	}
+
+    private List<GameObject> listOfIcons = new List<GameObject>();
+    private List<GameObject> listOfHelps = new List<GameObject>();
+
+    // Use this for initialization
+    void Start () {
+        listOfIcons.Add(colorInfo);
+        listOfIcons.Add(directionInfo);
+        listOfIcons.Add(chestInfo);
+        listOfIcons.Add(smashInfo);
+        listOfIcons.Add(intInfo);
+        listOfIcons.Add(doubleInfo);
+        listOfIcons.Add(stringInfo);
+        listOfIcons.Add(booleanInfo);
+
+        listOfHelps.Add(SystemHelp);
+        listOfHelps.Add(DataTypeHelp);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,25 +75,73 @@ public class APISystem : MonoBehaviour {
 
     public void ColorButtonClicked()
     {
-        colorInfo.SetActive(true);
-        directionInfo.SetActive(false);
-        chestInfo.SetActive(false);
+        ActivateAPIButton(colorInfo);
         arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 514.7f);
     }
 
     public void DirectionButtonClicked()
     {
-        colorInfo.SetActive(false);
-        directionInfo.SetActive(true);
-        chestInfo.SetActive(false);
+        ActivateAPIButton(directionInfo);
         arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 463.67f);
     }
 
     public void ChestButtonClicked()
     {
-        colorInfo.SetActive(false);
-        directionInfo.SetActive(false);
-        chestInfo.SetActive(true);
+        ActivateAPIButton(chestInfo);
         arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
+    }
+
+    public void SmashButtonClicked()
+    {
+        ActivateAPIButton(smashInfo);
+        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 354.39f);
+    }   
+
+    public void IntButtonClicked()
+    {
+        ActivateAPIButton(intInfo);
+        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 514.7f);
+    }
+
+    public void DoubleButtonClicked()
+    {
+        ActivateAPIButton(doubleInfo);
+        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 463.67f);
+    }
+
+    public void StringButtonClicked()
+    {
+        ActivateAPIButton(stringInfo);
+        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
+    }
+
+    public void BooleanClicked()
+    {
+        ActivateAPIButton(booleanInfo);
+        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 354.39f);
+    }
+
+    public void ActivateAPIButton(GameObject iconClicked)
+    {
+        iconClicked.SetActive(true);
+        foreach(GameObject icon in listOfIcons)
+        {
+            if(icon != iconClicked)
+            {
+                icon.SetActive(false);
+            }
+        }
+    }
+
+    public void ActivateHelpButton(GameObject helpClicked)
+    {
+        helpClicked.SetActive(true);
+        foreach(GameObject icon in listOfHelps)
+        {
+            if(helpClicked != icon)
+            {
+                icon.SetActive(false);
+            }
+        }
     }
 }

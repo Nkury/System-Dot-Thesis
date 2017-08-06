@@ -60,4 +60,7 @@
     <say char="IntelliSense">Uh... okay. Whatever you say, bub. Let's go.</say>
   </message>
 
+  <message id="cannotAccess">
+    <say char="IntelliSense">I don't think we can access this area yet. Let's come back later.</say>
+  </message>
 </dialogue>

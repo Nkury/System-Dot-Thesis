@@ -121,7 +121,7 @@ public class WordManipulator : MonoBehaviour {
                     int i = 0;       
                     foreach (Transform secondChild in child.transform)
                     {
-                        if(i == activatedIndex && secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text != "")
+                        if(i == activatedIndex && secondChild.transform.FindChild("Letter").GetComponent<TextMesh>().text != "" && secondChild.GetComponent<Renderer>().enabled)
                         {
                             secondChild.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                         }

@@ -51,7 +51,7 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.numberOfDeaths = 0;
         PlayerStats.totalSecondsOfPlaytime = 0;
 
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene(startLevel);
 
 		PlayerPrefs.SetInt ("PlayerCurrentLives", playerLives);
 

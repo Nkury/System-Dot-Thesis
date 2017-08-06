@@ -111,12 +111,12 @@ public class Activator : MonoBehaviour {
     {
         if (other.gameObject.tag == "ActivationZone")
         {
-            activate = false;
-            connectedTo.GetComponent<Activation>().deactivate();
-            for (int i = pellets.Length - 1; i >= 0; i--)
+            activate = false;            
+            for (int i = other.gameObject.GetComponent<ActivationZone>().pellets.Length - 1; i >= 0; i--)
             {
-                pellets[i].GetComponent<SpriteRenderer>().color = Color.magenta;
+                other.gameObject.GetComponent<ActivationZone>().pellets[i].GetComponent<SpriteRenderer>().color = Color.magenta;
             }
+            connectedTo.GetComponent<Activation>().deactivate();
         }
     }
 

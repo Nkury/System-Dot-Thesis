@@ -43,7 +43,7 @@ public class IntelliSenseLevel2 : IntelliSense {
 
     private bool tutorialCheck = false;
     public static bool clickOnce = false;
-
+    private GameObject terminalWindow;
     private float startTime = 0;
 
     // Use this for initialization
@@ -60,7 +60,14 @@ public class IntelliSenseLevel2 : IntelliSense {
             base.Start();
         }
 
-       
+        Transform[] trs = GameObject.Find("Main HUD").GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in trs)
+        {
+            if (t.name == "Terminal Window")
+            {
+                terminalWindow = t.gameObject;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -77,20 +84,40 @@ public class IntelliSenseLevel2 : IntelliSense {
             transform.position = new Vector2(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time));
         }
 
-        if(whatToSay[dialogueIndex].who == "Engineer")
+        if (talking)
         {
-            base.SetCharacterIcon(addressTable.GetComponent<SpriteRenderer>().sprite);
-        } else if(whatToSay[dialogueIndex].who == "IntelliSense")
-        {
-            base.SetCharacterIcon(this.GetComponent<SpriteRenderer>().sprite);
+            if (whatToSay[dialogueIndex].who == "Engineer")
+            {
+                base.SetCharacterIcon(addressTable.GetComponent<SpriteRenderer>().sprite);
+            }
+            else if (whatToSay[dialogueIndex].who == "IntelliSense")
+            {
+                base.SetCharacterIcon(this.GetComponent<SpriteRenderer>().sprite);
+            }
         }
 
         // THIS SECTION CHECKS IF ENEMY HAS BEEN CLICKED FOR TUTORIAL PURPOSES
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+            string variabullText = "";
+
+            // check if a variabull is with us
+            if (terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf)
+            {
+                variabullText = terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text;
+            }
+
+            if (hit 
+               && ((hit.collider.name == "Double Entrance" && variabullText != "int flint = 5;")
+               || (hit.collider.name == "String Entrance" && variabullText != "double dec = .25;")
+               || (hit.collider.name == "Boolean Entrance" && variabullText != "string word = \"sentence\";"))
+               && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
+            {
+                SetDialogue("cannotAccess"); // clicked any object to access another section without variableS               
+            }
+        }
     }  
 
     // looks in dictionary and sets the dialogue to certain keyword passed in
