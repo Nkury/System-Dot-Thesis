@@ -6,6 +6,7 @@ public class Kernel : MonoBehaviour {
     public AudioSource beep;
 
     public GameObject player;
+    public GameObject intelliSense;
 
     public static string kernelNameCurrentlyIn;
 
@@ -13,10 +14,7 @@ public class Kernel : MonoBehaviour {
     private bool canPressE = false;
     private bool inDebugMode = false;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -28,11 +26,7 @@ public class Kernel : MonoBehaviour {
                 kernelNameCurrentlyIn = this.gameObject.name;
                 player.SetActive(false);
                 Camera.main.orthographicSize = zoomOutSize;
-                if(PlayerStats.highestCheckpoint == 3 && this.gameObject.name == "TutorialKernel")
-                {
-                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("startMovingPlatform");
-                    this.gameObject.name = "TutorialKernel1";
-                }
+                intelliSense.GetComponent<Dialogue>().initialEvent(this.gameObject.name);           
             }
             else if (Input.GetKeyDown(KeyCode.E) && inDebugMode)
             {

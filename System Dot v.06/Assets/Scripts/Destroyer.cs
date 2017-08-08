@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Destroyer : MonoBehaviour {
 
@@ -17,7 +18,12 @@ public class Destroyer : MonoBehaviour {
             List<string> terminalString = new List<string>();
             if(PlayerStats.terminalStrings.TryGetValue(e.gameObject.name, out terminalString))
             {
-                e.terminalString = terminalString.ToArray();
+                if (!terminalString.SequenceEqual(e.terminalString))
+                {
+                    e.terminalString = terminalString.ToArray();
+                    e.checkTerminalString();
+                    StartCoroutine(e.evaluateActions());
+                }               
             }
         }
 

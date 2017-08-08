@@ -35,6 +35,8 @@ public class IntelliSenseTest : IntelliSense {
     public GameObject chestHelpButton;
 
     private bool tutorialCheck = true;
+    private bool noMoreReadOnly = true;
+    private bool kernelCheck = false;
     public static bool clickOnce = false;
 
     private float startTime = 0;
@@ -51,9 +53,7 @@ public class IntelliSenseTest : IntelliSense {
         {
             startDifferent = false;
             base.Start();
-        }
-
-       
+        }       
     }
 
     // Update is called once per frame
@@ -109,7 +109,7 @@ public class IntelliSenseTest : IntelliSense {
 
         // FOR BLACK VBOT TUTORIAL
         // CHECKS TO MAKE SURE CODE IS NOT LEGACY BEFORE DOING THIS CHECK
-        if (tutorialLine.textComponent.color != Color.red)
+        if (tutorialLine.textComponent.color != Color.red && noMoreReadOnly)
         {
             tutorialLine.readOnly = tutorialCheck;
         }
@@ -120,6 +120,7 @@ public class IntelliSenseTest : IntelliSense {
             if (tutorialLine.textComponent.text == "System.body(Color.GREEN);")
             {
                 tutorialCheck = true;
+                noMoreReadOnly = false;
                 GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("codeFixed");
             }
         }
@@ -161,10 +162,7 @@ public class IntelliSenseTest : IntelliSense {
                     PlayerStats.playerName = "Bob";
                     whatToSay[0].say = "Nothing? Will \"BOB\" suffice then" + whatToSay[0].say;
                 }
-                else
-                {
-                    whatToSay[0].say = whatToSay[0].say.Replace("PLAYERNAME", PlayerStats.playerName.ToUpper());
-                }
+    
                 break;
             case "unlockChest":
                 initialEvent("APIClicked"); // call the event system
@@ -207,6 +205,13 @@ public class IntelliSenseTest : IntelliSense {
                 Destroy(seventhTutorialBarrier.gameObject);
                 directionHelpButton.SetActive(true);
                 break;
+            case "TutorialKernel":
+                if (!kernelCheck)
+                {
+                    kernelCheck = true;
+                    SetDialogue("startMovingPlatform");
+                }
+               break;
             case "movePlatform": // OR
             case "codeFixed": // OR 
             case "APIClicked":

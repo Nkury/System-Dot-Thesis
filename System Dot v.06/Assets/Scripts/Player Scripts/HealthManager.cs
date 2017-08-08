@@ -8,9 +8,9 @@ public class HealthManager : MonoBehaviour {
 	
 	Text text;
 
-	private LevelManager levelManager;
+	private LevelHandler levelManager;
 
-	public bool isDead;
+	public static bool isDead;
 
    private LifeManager lifeSystem;
 
@@ -26,7 +26,7 @@ public class HealthManager : MonoBehaviour {
         {
             this.GetComponent<Slider>().maxValue = PlayerStats.armorHealth;
         }
-        levelManager = FindObjectOfType<LevelManager> ();
+        levelManager = FindObjectOfType<LevelHandler> ();
         timeManager = FindObjectOfType<TimeManager>();
 		lifeSystem = FindObjectOfType<LifeManager> ();
 		isDead = false;
@@ -34,26 +34,28 @@ public class HealthManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if(PlayerStats.currentHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "StartingScene")
+        if(PlayerStats.currentHealth <= 0 && !isDead)
         {
             GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
+            PlayerStats.numberOfDeaths++;
             PlayerStats.currentHealth = 0;
-            levelManager.RespawnPlayer();
-            PlayerStats.numberOfDeaths++;
-            isDead = true;
-            EnemyTerminal.globalTerminalMode = 0;
-            //timeManager.resetTime();
-        } else if(PlayerStats.currentHealth <= 0 && !isDead && SceneManager.GetActiveScene().name == "Level1 BOSS")
-        {
-            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
-            FullHealth();
-            BossIntellisense.startBoss = false;
-            PlayerStats.numberOfDeaths++;
-            CentipedeHead.lives = 18;
-            CentipedeHead.life = 1;
-            EnemyTerminal.globalTerminalMode = 0;
-            Application.LoadLevel(Application.loadedLevel);
-        }
+
+            if (SceneManager.GetActiveScene().name == "Level1 BOSS")
+            {
+                FullHealth();
+                BossIntellisense.startBoss = false;
+                CentipedeHead.lives = 18;
+                CentipedeHead.life = 1;
+                SceneManager.LoadScene(PlayerStats.levelName);
+            }
+            else
+            {
+                levelManager.RespawnPlayer();
+                isDead = true;
+            }
+
+            EnemyTerminal.globalTerminalMode = 0;            
+        }	   
 
         if (this.gameObject.name == "Health Bar")
         {

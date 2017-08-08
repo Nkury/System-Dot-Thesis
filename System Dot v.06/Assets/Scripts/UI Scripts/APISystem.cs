@@ -21,7 +21,7 @@ public class APISystem : MonoBehaviour {
     public GameObject doubleInfo;
     public GameObject stringInfo;
     public GameObject booleanInfo;
-    public Image arrowIndicator;
+    public Image[] arrowIndicator;
 
     [Header("Buttons")]
     public GameObject SystemHelp;
@@ -76,49 +76,73 @@ public class APISystem : MonoBehaviour {
     public void ColorButtonClicked()
     {
         ActivateAPIButton(colorInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 514.7f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(28, 48.37012f);
+        }
     }
 
     public void DirectionButtonClicked()
     {
         ActivateAPIButton(directionInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 463.67f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(28, 463.67f);
+        }
     }
 
     public void ChestButtonClicked()
     {
         ActivateAPIButton(chestInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
+        }
     }
 
     public void SmashButtonClicked()
     {
         ActivateAPIButton(smashInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 354.39f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 354.39f);
+        }
     }   
 
     public void IntButtonClicked()
     {
         ActivateAPIButton(intInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 514.7f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 48.37012f);
+        }
     }
 
     public void DoubleButtonClicked()
     {
         ActivateAPIButton(doubleInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 463.67f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 463.67f);
+        }
     }
 
     public void StringButtonClicked()
     {
         ActivateAPIButton(stringInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 414.4f);
+        }
     }
 
     public void BooleanClicked()
     {
         ActivateAPIButton(booleanInfo);
-        arrowIndicator.rectTransform.localPosition = new Vector2(11.81049f, 354.39f);
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 354.39f);
+        }
     }
 
     public void ActivateAPIButton(GameObject iconClicked)
@@ -142,6 +166,10 @@ public class APISystem : MonoBehaviour {
             {
                 icon.SetActive(false);
             }
+        }
+        foreach (Image img in arrowIndicator)
+        {
+            img.rectTransform.localPosition = new Vector2(11.81049f, 514.7f);
         }
     }
 }

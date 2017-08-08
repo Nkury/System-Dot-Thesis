@@ -15,10 +15,10 @@ public class IntelliSenseLevel2 : IntelliSense {
 
     [Header("Level 2 Characters")]
     public GameObject addressTable;
-    public GameObject flint;
-    public GameObject dec;
-    public GameObject word;
-    public GameObject boole;
+    public Sprite flint;
+    public Sprite dec;
+    public Sprite word;
+    public Sprite boole;
 
     [Header("Level 1 Objects")]
     [Tooltip("Only attach game objects if in level one")]
@@ -33,32 +33,28 @@ public class IntelliSenseLevel2 : IntelliSense {
     public GameObject levelTitle;
 
     [Header("UI Components")]
-    public GameObject apiButton;
-    public GameObject UIClickPrompt;
-    public GameObject debugButton;
-    public InputField tutorialLine;
-    public GameObject APIInfo;
-    public GameObject directionHelpButton;
-    public GameObject chestHelpButton;
+    public GameObject smashAPI;
+    public GameObject intAPI;
+    public GameObject doubleAPI;
+    public GameObject stringAPI;
+    public GameObject boolAPI;
 
     private bool tutorialCheck = false;
+    private bool kernelCheck = false;
     public static bool clickOnce = false;
+
     private GameObject terminalWindow;
     private float startTime = 0;
+    private int numClicks = 0;
 
     // Use this for initialization
     public void Start () {
-        
-        if(PlayerStats.checkpoint == "Checkpoint1"){
-            startDifferent = true;                 
-            base.Start();
+
+        base.Start();
+
+        if (PlayerStats.checkpoint == "Checkpoint1"){     
             SetDialogue("startLevel");
-        }
-        else
-        {
-            startDifferent = false;
-            base.Start();
-        }
+        }     
 
         Transform[] trs = GameObject.Find("Main HUD").GetComponentsInChildren<Transform>(true);
         foreach (Transform t in trs)
@@ -68,16 +64,15 @@ public class IntelliSenseLevel2 : IntelliSense {
                 terminalWindow = t.gameObject;
             }
         }
+
+        this.gameObject.transform.parent = null;
     }
 
     // Update is called once per frame
     public void Update()
     {
         base.Update();
-
-        // THIS SECTION IS TO HAVE INTELLISENSE ZOOM OUT WHEN STARTING LEVEL 1
-        allowZooming = PlayerStats.checkpoint != "Checkpoint1";
-   
+  
         // THIS SECTION IS TO MAKE INTELLISENSE MOVE UP AND DOWN PERIODICALLY
         if (whatToSay != null && PlayerStats.checkpoint == "Checkpoint1" && talking && (dialogueIndex < whatToSay.Count || !eventName.Contains("moveTo")))
         {
@@ -93,6 +88,18 @@ public class IntelliSenseLevel2 : IntelliSense {
             else if (whatToSay[dialogueIndex].who == "IntelliSense")
             {
                 base.SetCharacterIcon(this.GetComponent<SpriteRenderer>().sprite);
+            } else if(whatToSay[dialogueIndex].who == "Flint")
+            {
+                base.SetCharacterIcon(flint);
+            } else if(whatToSay[dialogueIndex].who == "Dec")
+            {
+                base.SetCharacterIcon(dec);
+            } else if(whatToSay[dialogueIndex].who == "Word")
+            {
+                base.SetCharacterIcon(word);
+            } else if(whatToSay[dialogueIndex].who == "Bool")
+            {
+                base.SetCharacterIcon(boole);
             }
         }
 
@@ -110,12 +117,72 @@ public class IntelliSenseLevel2 : IntelliSense {
             }
 
             if (hit 
-               && ((hit.collider.name == "Double Entrance" && variabullText != "int flint = 5;")
-               || (hit.collider.name == "String Entrance" && variabullText != "double dec = .25;")
-               || (hit.collider.name == "Boolean Entrance" && variabullText != "string word = \"sentence\";"))
+               && ((hit.collider.name == "Double Entrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("int flint = 5;") && variabullText != "int flint = 5;")
+               || (hit.collider.name == "String Entrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("double dec = 0.25;") && variabullText != "double dec = 0.25;")
+               || (hit.collider.name == "Boolean Entrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("string word = \"sentence\";") && variabullText != "string word = \"sentence\";"))
                && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
             {
                 SetDialogue("cannotAccess"); // clicked any object to access another section without variableS               
+            } else if(hit && hit.collider.name == "FlintActivator" && variabullText != "int flint = 5;"
+                && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
+            {
+                SetDialogue("seeFlint");
+            } else if(hit && hit.collider.name == "FlintActivator" && variabullText == "int flint = 5;"
+                && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking && !clickOnce)
+            {
+                clickOnce = true;
+                SetDialogue("useFlint");
+            } else if (hit && hit.collider.name == "DecRotator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
+                && variabullText != "double dec = 0.25;")
+            {
+                SetDialogue("seeDec");
+            }
+            else if(hit && hit.collider.name == "DoubleNotEqualBlocks")
+            {
+                numClicks++;
+                if(numClicks == 3)
+                {
+                    SetDialogue("DoubleNotEqualInt");
+                }
+            } else if(hit && hit.collider.name == "FirstLetterActivator" && !talking && clickOnce)
+            {
+                clickOnce = false;
+                SetDialogue("SystemDelete");
+            }
+            else if (hit && hit.collider.name == "WordActivator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
+              && variabullText != "word word = \"sentence\";")
+            {
+                SetDialogue("seeWord");
+            } else if (hit && hit.collider.name == "WordActivator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
+          && variabullText == "word word = \"sentence\";" && clickOnce)
+            {
+                if (clickOnce)
+                {
+                    clickOnce = false;
+                    SetDialogue("fillInWord");
+                }
+            } else if (hit && hit.collider.name == "SubstringActivator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
+         && variabullText == "word word = \"sentence\";" && clickOnce)
+            {
+                if (!clickOnce)
+                {
+                    clickOnce = true;
+                    SetDialogue("Substring");
+                }
+            } else if(hit && hit.collider.name == "VCrush" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2)
+            {
+                if (clickOnce)
+                {
+                    clickOnce = false;
+                    smashAPI.SetActive(true);
+                }
+            } else if(hit && hit.collider.name == "Transistor 1" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
+            {
+                SetDialogue("GateTutorial");
+            }
+            else if (hit && hit.collider.name == "Transistor 9" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
+            {
+                SetDialogue("GateTutorial2");
             }
         }
     }  
@@ -125,6 +192,7 @@ public class IntelliSenseLevel2 : IntelliSense {
     {       
         base.SetDialogue(message);
     }
+   
 
     #region EventSystem
     /// <summary>
@@ -134,68 +202,56 @@ public class IntelliSenseLevel2 : IntelliSense {
     {
         switch (eName)
         {
-            case "receiveName":
-                PlayerStats.playerName = namePrompt.transform.Find("name").GetComponent<Text>().text;
-                namePrompt.SetActive(false);
+            case "MovingPlatformKernel":
+                if (!kernelCheck)
+                {
+                    kernelCheck = true;
+                    this.transform.parent = null;
+                    SetDialogue("seeMovingActivator");
+                }
+                break;
+            case "IntAPI":
+                intAPI.SetActive(true);
+                break;
+            case "DoubleAPI":
+                doubleAPI.SetActive(true);
+                break;
+            case "StringAPI":
+                stringAPI.SetActive(true);
+                break;
+            case "BooleanAPI":
+                boolAPI.SetActive(true);
+                break;
+            case "SmashAPI":
+                smashAPI.SetActive(true);
+                break;
+            case "FlintLeaves":
+                if (terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf)
+                {
+                    terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text = "";
+                }
+                break;
+            case "DecLeaves":
+                if (terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf)
+                {
+                    terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text = "";
+                }
+                break;
+            case "WordLeaves":
+                if (terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf)
+                {
+                    terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text = "";
+                }
+                break;
+            case "BigPuzzleKernel":
+                if (kernelCheck)
+                {
+                    kernelCheck = false;
+                    SetDialogue("BigPuzzle");
+                }
+                break;
+                   
 
-                // if nothing is entered by the player, then give the player the default name "BOB"
-                if (PlayerStats.playerName == "")
-                {
-                    PlayerStats.playerName = "Bob";
-                    whatToSay[0].say = "Nothing? Will \"BOB\" suffice then" + whatToSay[0].say;
-                }
-                else
-                {
-                    whatToSay[0].say = PlayerStats.playerName.ToUpper() + whatToSay[0].say;
-                }
-                break;
-            case "unlockChest":
-                initialEvent("APIClicked"); // call the event system
-                if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective"))
-                {
-                    PlayerStats.deadObjects.Add("SixthTutorialObjective");
-                    Destroy(GameObject.Find("SixthTutorialObjective"));
-                }
-                chestHelpButton.SetActive(true);
-                startTime = 0;
-                break;
-            case "colorChanged":
-                if (GameObject.Find("FifthTutorialObjective"))
-                {
-                    GameObject destroy = GameObject.Find("FifthTutorialObjective");
-                    Destroy(destroy);
-                    PlayerStats.deadObjects.Add(destroy.name);
-                }
-                break;
-            case "killedTutorialEnemy":
-                PlayerStats.deadObjects.Add(fourthObjectiveBarrier.name);
-                Destroy(fourthObjectiveBarrier);
-                break;
-            case "inputHack":
-                string inputtedCode = hackPrompt.transform.Find("code").GetComponent<Text>().text;
-                if (inputtedCode == "System.body(Color.BLUE);")
-                {
-                    SetDialogue("correctHack");
-                    hackPrompt.SetActive(false);
-                }
-                else
-                {
-                    SetDialogue("wrongHack");
-                    hackPrompt.transform.Find("code").GetComponent<Text>().text = "";
-                }
-                break;
-            case "movePlatform2":
-                initialEvent("APIClicked");
-                PlayerStats.deadObjects.Add(seventhTutorialBarrier.name);
-                Destroy(seventhTutorialBarrier.gameObject);
-                directionHelpButton.SetActive(true);
-                break;
-            case "movePlatform": // OR
-            case "codeFixed": // OR 
-            case "APIClicked":
-                GameObject myEventSystem = GameObject.Find("EventSystem");
-                myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-                break;
         }     
     }
 
@@ -207,92 +263,6 @@ public class IntelliSenseLevel2 : IntelliSense {
     {
         switch (eventName)
         {
-            case "promptForName":
-                if (namePrompt)
-                {
-                    namePrompt.SetActive(true);
-                    namePrompt.GetComponent<InputField>().Select();
-                }
-                break;
-            case "moveToFirstTutorial":
-                if (firstTutorialObjective != null)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, firstTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
-                    if (transform.position.x >= firstTutorialObjective.transform.position.x)
-                        y0 = firstTutorialObjective.transform.position.y;
-                }
-                talking = false;
-                break;
-            case "moveToSecondTutorial":
-                if (secondTutorialObjective != null)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, secondTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
-                    if (transform.position.x >= secondTutorialObjective.transform.position.x)
-                        y0 = secondTutorialObjective.transform.position.y;
-                }
-                talking = false;
-                break;
-            case "moveToThirdTutorial":
-                if (thirdTutorialObjective != null)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, thirdTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
-                    if (transform.position.x >= thirdTutorialObjective.transform.position.x)
-                        y0 = thirdTutorialObjective.transform.position.y;
-                }
-                talking = false;
-                break;
-            case "moveToFourthTutorial":
-                LevelManager.canPressTab = true;
-                if (fourthTutorialObjective != null)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, fourthTutorialObjective.transform.position, moveSpeed * Time.deltaTime);
-                    if (transform.position.x >= fourthTutorialObjective.transform.position.x)
-                        y0 = fourthTutorialObjective.transform.position.y;
-                }
-                talking = false;
-                break;
-            case "promptClick":
-                mouseClickPrompt.SetActive(true);
-                break;
-            case "clickAPI":
-                UIClickPrompt.SetActive(true);
-                apiButton.SetActive(true);
-                break;
-            case "promptCode":
-                mouseClickPrompt.SetActive(false);
-                hackPrompt.SetActive(true);
-                hackPrompt.GetComponent<InputField>().Select();
-                break;
-            case "stopTalking":
-                EnemyTerminal.globalTerminalMode = 0;
-                talking = false;
-                this.transform.parent = null;
-                break;
-            case "titleSequence":
-                if (levelTitle != null)
-                    levelTitle.SetActive(true);
-                talking = false;
-                ZoomIntoPlayer();
-                break;
-            case "editCode":
-                tutorialCheck = false;
-                break;
-            case "clickDebug":
-                UIClickPrompt.SetActive(true);
-                mouseClickPrompt.SetActive(false);
-                debugButton.SetActive(true);
-                UIClickPrompt.GetComponent<RectTransform>().anchoredPosition = new Vector2(710, -30);
-                break;
-            case "startTimer":
-                startTime += Time.deltaTime;
-                if (startTime > 30)
-                    SetDialogue("helpWithChest");
-                break;
-            case "finishDialogue":
-                APIInfo.SetActive(false);
-                eventName = "";
-                dialogueIndex++;
-                break;
         }
     }
     #endregion

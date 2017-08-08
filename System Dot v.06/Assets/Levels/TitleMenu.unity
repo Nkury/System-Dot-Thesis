@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cc3635c75831444babd96428508db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLevel: StartingScene
+  startLevel: Level2
   levelSelect: Minigame Select
   playerLives: 999999999
   playerHealth: 4
@@ -1069,9 +1069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b319e974b271234b828099d9291b8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
-  startup_noise: {fileID: 0}
-  battle_music: {fileID: 2084301044}
   music: {fileID: 0}
   chestOpen: {fileID: 0}
   death: {fileID: 0}
@@ -1083,8 +1080,6 @@ MonoBehaviour:
   rightSound: {fileID: 0}
   wrongSound: {fileID: 0}
   cowboyHat: {fileID: 0}
-  noise_delay: 0
-  battleMusicDelay: 0
 --- !u!1 &1534364124
 GameObject:
   m_ObjectHideFlags: 0

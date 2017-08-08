@@ -4,9 +4,9 @@ using System.Collections;
 
 public class IntelliSense : Dialogue {
 
-    protected float y0;
-    protected float amplitude = .2f;
-    protected float speed = 1.5f;
+    public float y0;
+    public float amplitude = .2f;
+    public float speed = 1.5f;
 
     protected bool allowZooming = true; // in cases where zooming is not allowed
     protected bool startDifferent;

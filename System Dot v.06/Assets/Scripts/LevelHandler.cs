@@ -53,6 +53,7 @@ public class LevelHandler : MonoBehaviour
         Instantiate(deathParticle, player.transform.position, player.transform.rotation);
         player.enabled = false;
         player.GetComponent<Renderer>().enabled = false;
+        player.gameObject.GetComponent<CircleCollider2D>().enabled = false;
         camera.isFollowing = false;
         //gravityStore = player.GetComponent<Rigidbody2D> ().gravityScale;
         //player.GetComponent<Rigidbody2D> ().gravityScale = 0f;
@@ -72,8 +73,9 @@ public class LevelHandler : MonoBehaviour
         player.knockbackCount = 0;
         player.enabled = true;
         player.GetComponent<Renderer>().enabled = true;
+        player.gameObject.GetComponent<CircleCollider2D>().enabled = true;
         HealthManager.FullHealth();
-        healthManager.isDead = false;
+        HealthManager.isDead = false;
         camera.isFollowing = true;
         Instantiate(respawnParticle, currentCheckpoint.transform.position, currentCheckpoint.transform.rotation);
     }

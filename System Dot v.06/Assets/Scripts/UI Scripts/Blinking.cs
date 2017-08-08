@@ -15,14 +15,15 @@ public class Blinking : MonoBehaviour {
         interval++;
         if (interval % 20 == 0)
         {
-            if (!this.name.Contains("mouse_pointer"))
+            if (this.GetComponent<Image>())
                 this.GetComponent<Image>().enabled = !this.GetComponent<Image>().enabled;
-            else
+            else if(this.GetComponent<SpriteRenderer>())
             {
                 this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled;
+            } else if (this.GetComponent<MeshRenderer>())
+            {
+                this.GetComponent<MeshRenderer>().enabled = !this.GetComponent<MeshRenderer>().enabled;
             }
-
-
         }
     }
 }

@@ -20,7 +20,7 @@ public class EnemyTerminal : MonoBehaviour
     public string[] terminalString = new string[5];
     public string[] originalString = new string[5];
     public string classHeader;
-    public string parameters;
+    public string parameters = "";
 
     public GUIStyle terminalStyle;
     public GameObject terminalPointerDestination;
@@ -61,16 +61,16 @@ public class EnemyTerminal : MonoBehaviour
     void Start()
     {
         Transform[] trs = GameObject.Find("Main HUD").GetComponentsInChildren<Transform>(true);
-        foreach(Transform t in trs)
+        foreach (Transform t in trs)
         {
-            if(t.name == "Terminal Window")
+            if (t.name == "Terminal Window")
             {
                 terminalWindow = t.gameObject;
             }
-        } 
+        }
 
         checkTerminalString();
-        StartCoroutine(evaluateActions());
+        StartCoroutine(evaluateActions());       
     }
 
     // Update is called once per frame

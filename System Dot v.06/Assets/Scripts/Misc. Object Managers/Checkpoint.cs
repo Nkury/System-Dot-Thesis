@@ -29,6 +29,7 @@ public class Checkpoint : MonoBehaviour {
                 PlayerStats.levelName = SceneManager.GetActiveScene().name;
                 PlayerStats.highestCheckpoint = 1;            
                 PlayerStats.deadObjects.Clear();
+                PlayerStats.terminalStrings.Clear();
             }
             
 

@@ -88,6 +88,19 @@ public class Dialogue : MonoBehaviour {
         else {
             if (whatToSay != null)
             {
+                // REPLACE PLAYERNAME WITH PLAYERSTATS.PLAYERNAME
+                if (dialogueIndex < whatToSay.Count && whatToSay[dialogueIndex].say.Contains("PLAYERNAME"))
+                {
+                    if (PlayerStats.playerName == null || PlayerStats.playerName == string.Empty)
+                    {
+                        whatToSay[dialogueIndex].say = whatToSay[dialogueIndex].say.Replace("PLAYERNAME", "BOB");
+                    }
+                    else
+                    {
+                        whatToSay[dialogueIndex].say = whatToSay[dialogueIndex].say.Replace("PLAYERNAME", PlayerStats.playerName.ToUpper());
+                    }
+                }
+
                 // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
                 if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
                 {

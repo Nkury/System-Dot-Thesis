@@ -2532,6 +2532,7 @@ namespace ParserAlgo
             syntaxMessage = ""; // clear syntax message
 
             errorCount = 0; // reset error count
+            activeToken = 0; // reset active token
             
             outputValue = new List<string>(); // resets output values
             waitTimes = new List<float>(); // reset wait times

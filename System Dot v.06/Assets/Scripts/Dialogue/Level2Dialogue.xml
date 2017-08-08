@@ -1,8 +1,7 @@
 <dialogue>
   <message id="startLevel">
     <say char="IntelliSense">WHOOAAAA! What just happened?!</say>
-    <say char="Engineer">In all my days as an engineering process...</say>
-    <say char="Engineer">I've never seen the ESB malfunction like that!</say>
+    <say char="Engineer">In all my days as an engineering process, I've never seen something like that!</say>
     <say char="IntelliSense">Thank DOS we have an engineer with us!</say>
     <say char="Engineer">I'm sensing a breach in the system...</say>
     <say char="Engineer">Halt! Who in the Turing machine are you?</say>
@@ -11,55 +10,199 @@
     <say char="IntelliSense">1010100101010010010101001010101000100</say>
     <say char="Engineer">Huh?</say>
     <say char="IntelliSense">Shoot! That didn't work!</say>
-    <say char="Engineer">Hold on a clock cycle!</say>
-    <say char="Engineer">Did you say PLAYERNAME?!</say>
+    <say char="Engineer">Hold on a clock cycle! Did you say PLAYERNAME?!</say>
     <say char="IntelliSense">Uh...</say>
-    <say char="Engineer">THE PLAYERNAME?!</say>
-    <say char="Engineer">Oh wow, I didn't know our ancestor was here!</say>
+    <say char="Engineer">THE PLAYERNAME?! Oh wow, I didn't know our ancestor was here!</say>
     <say char="IntelliSense">Ancestor?</say>
     <say char="Engineer">We were created by PLAYERNAME. He is our creator.</say>
     <say char="IntelliSense">Garbage! That doesn't make sense!</say>
     <say char="Engineer">We live in System-PLAYERNAME. Of course it's true!</say>
-    <say char="IntelliSense">Huh? Why didn't tell me you were the creator?!</say>
+    <say char="IntelliSense">Huh? Why didn't you tell me you were the creator?!</say>
     <say char="IntelliSense">Oh right, you don't speak.</say>
     <say char="Engineer">This all makes sense now. We need to get our creator...</say>
     <say char="Engineer">...back to the outside world so he can fix this mess!</say>
     <say char="IntelliSense">Then how do we get out of here?</say>
-    <say char="Engineer">I'm an address table. I manage variabulls.</say>
-    <say char="Engineer">... and some of them are stuck somewhere here.</say>
-    <say char="Engineer">They hold some valuable information that we need.</say>
-    <say char="Engineer">I need to stay here and try to repair the ESB.</say>
+    <say char="Engineer">I'm an address table. I manage variabulls and some of them are stuck here.</say>
+    <say char="Engineer">They hold information we need. I should stay here and try to repair the ESB.</say>
     <say char="Engineer">Can you two go find my FOUR variabulls?</say>
     <say char="IntelliSense">Ugghhhh... we just got out of danger...</say>
     <say char="IntelliSense">Let's go, PLAYERNAME!</say>
   </message>
 
-  <message id="switchDescriptionPreClick">
-    <say char="IntelliSense">Hey! What's this?</say>
-  </message>
-
-  <message id="inspectSwitch">
-    <say char="IntelliSense">Of course they're missing that! </say>
-    <say char="IntelliSense">I'll add it to the API. </say>
-  </message>
-
   <message id="seeFlint">
+    <say char="IntelliSense">Flint? What does that mean in the code?</say>
     <say char="Flint">Help! Is anyone there?! </say>
     <say char="IntelliSense">Hey, it's a variabull! Let's help him! </say>
   </message>
 
   <message id="meetFlint">
-    <say char="Flint">Thank you, 2 strangers!</say>
+    <say char="Flint">Thank you, 2 strangers! My name is Flint.</say>
     <say char="Flint">You must have heard my 55 pleas for help!</say>
     <say char="IntelliSense">Uh... no.</say>
-    <say char="IntelliSense">We need to bring you to the address table...</say>
-    <say char="IntelliSense">... so we can get out of here.</say>
+    <say char="IntelliSense">We need to bring you to the address table so we can get out of here.</say>
     <say char="Flint">Okay. I am holding the value of 5.</say>
-    <say char="Flint">You can use me to get out of 1, 2, 3 or more...</say>
-    <say char="Flint">...precarious situations.</say>
+    <say char="Flint">You can use me to get out of 1, 2, 3 or more precarious situations.</say>
     <say char="IntelliSense">Uh... okay. Whatever you say, bub. Let's go.</say>
   </message>
 
+  <message id="useFlint">
+    <say char="Flint">Hey, there's my name! I will fill in my value, 5, when you press PLAY.</say>
+    <say char="IntelliSense">That is both disgusting and very helpful. Thanks!</say>
+  </message>
+
+  <message id="seeMovingActivator">
+    <say char="IntelliSense">It looks like this moving platform holds a charge.</say>
+    <say char="Flint">You can use me to activate that power line to the door.</say>
+    <say char="IntelliSense">If you don't remember how to move a platform, check the API!</say>
+  </message>
+
+  <message id="ActivateFlint">
+    <say char="IntelliSense">Here you go, address table! We found Flint!</say>
+    <say char="Engineer">*Insert congratulatory statement here*</say>
+    <say char="IntelliSense">Uh... ok?</say>
+    <say char="Engineer">Use Flint to access the next zone to the right.</say>
+  </message>
+
+  <message id="FlintLeaves">
+    <say char="Flint">I hope I helped you 2 on your journey.</say>
+    <say char="Flint">I am going to retreat back to the address table. Good luck!</say>
+  </message>
+
+  <message id="newKernel">
+    <say char="IntelliSense">This kernel is connected to this rotating mechanism.</say>
+    <say char="IntelliSense">I'm going to assume we can only open that object's terminal by...</say>
+    <say char="IntelliSense">being inside that kernel. Otherwise, kaput!</say>
+  </message>
+  
+  <message id="SeeDec">
+    <say char="IntelliSense">Interesting... another name in the code. Dec must be around here.</say>
+  </message>
+
+  <message id="SeeDecInDanger">
+    <say char="Dec">Help! I'm locked behind this wall!</say>
+    <say char="IntelliSense">I wonder how we can set him free...</say>
+    <say char="Dec">That rotating platform has a charge to it. Let it touch the power line to the door!</say>
+    <say char="IntelliSense">Oh, I know! That rotating platform has a charge to it.</say>
+    <say char="IntelliSense">We can get it to touch the power line like the moving platform from before.</say>
+    <say char="Dec">...</say>
+  </message>
+
+  <message id="MeetDec">
+    <say char="Dec">Glorious! Even if your attempts are half-hearted, you show full effort.</say>
+    <say char="IntelliSense">We need to get you back to the address table, stat!</say>
+    <say char="Dec">I see what you did there.</say>
+  </message>
+
+  <message id="DoubleNotEqualInt">
+    <say char="IntelliSense">Hold on a minute... what does the API say?</say>
+    <say char="IntelliSense">A double cannot equal an integer. We should prevent that from happening.</say>
+  </message>
+
+  <message id="DeliverDec">
+    <say char="IntelliSense">Another one bites the dust!</say>
+    <say char="Engineer">Huh? Anyway, activate the next section to the top left.</say>
+  </message>
+
+  <message id="DecLeaves">
+    <say char="Dec">Before I leave, do you know what the value of PI is?</say>
+    <say char="IntelliSense">It's spelled "pie", thank you very much.</say>
+    <say char="Dec">No, PI! It's 3.14159265358979323846264338327950288419716939937510582 </say>
+    <say char="Dec">09749445923078164062862089986280348253421170679821480865132823066470 </say>
+    <say char="Dec">93844609550582231725359408128481117450284102701938521105559644622948 </say>
+    <say char="IntelliSense">...</say>
+    <say char="Dec">95493038196442881097566593344612847564823378678316527120190914564856 </say>
+    <say char="Dec">69234603486104543266482133936072602491412737245870066063155881748815 </say>
+    <say char="Dec">20920962829254091715364367892590360011330530548820466521384146951941 </say>
+    <say char="Dec">51160943305727036575959195309218611738193261179310511854807446237996 </say>
+    <say char="IntelliSense">Stop! Get the NIL outta here!</say>
+    <say char="Dec">...</say>   
+  </message>
+
+  <message id="SystemDelete">
+    <say char="IntelliSense">Cats? What do cats have to do with this?</say>
+    <say char="IntelliSense">Let's see what happens if we finish the statement with a semicolon.</say>
+  </message>
+
+  <message id="seeWord">
+    <say char="IntelliSense">We know the drill... Word? Where you at?!</say>
+    <say char="Word">I'm over here! Help me! This spinny thing is going to hurt me!</say>
+  </message>
+
+  <message id="meetWord">
+    <say char="IntelliSense">Hi, Word.</say>
+    <say char="Word">Greetings, good sir! What a splendiferous action on your part, I must say!</say>
+    <say char="Word">When the indestructible ESB collapsed, I was flabbergasted!</say>
+    <say char="Word">How could the very foundation of where we live succumb to the vices of</say>
+    <say char="Word">corruption and malice. The essence of our exisence rests solely on the</say>
+    <say char="IntelliSense">...Oh great... this guy has a gimmick too...</say>
+    <say char="Word">...precipice of our reason and logic. To threaten our only essence with the</say>
+    <say char="Word">annihilation of our tenets as minimal as our System's wellbeing and fortune</say>
+    <say char="Word">is downright indistinguishable. How barbaric this way comes and...</say>
+    <say char="IntelliSense">Silence!!! Now let's go!</say>
+  </message>
+
+  <message id="fillInWord">
+    <say char="IntelliSense">Interesting... a blank word slate. Let's press play and see what happens.</say>
+  </message>
+
+  <message id="Substring">
+    <say char="IntelliSense">Ewww, that's different.</say>
+    <say char="Word">Abhorrent is correct. What bizarre methodology!</say>
+    <say char="IntelliSense">Shhhh! Referring to my API may help. Check out all the different methods you...</say>
+    <say char="IntelliSense">... can use with strings. Looks like substring pulls out a specific part...</say>
+    <say char="IntelliSense">... of a string. It takes the starting position of the string and ends...</say>
+    <say char="IntelliSense">... at the index 1 more than the last letter of that substring.</say>
+    <say char="IntelliSense">Try it out.</say>
+  </message>
+
+  <message id="BigPuzzle">
+    <say char="IntelliSense">Oh geez, this looks like a doozy!</say>
+    <say char="Word">Yes! Quite dastardly. What a devilish predicament we are currently residing in.</say>
+    <say char="IntelliSense">Please stop. Please. For the love of all that is holy!</say>
+    <say char="IntelliSense">You'll have to put all your substring logic to the test.</say>
+    <say char="IntelliSense">Keep in mind that those middle two terminals don't need to be activated...</say>
+    <say char="IntelliSense">... by this kernel. You could alter the code mid-descent. (Hint hint)</say>
+  </message>
+
+  <message id="deliverWord">
+    <say char="IntelliSense">Word!</say>
+  </message>
+
+  <message id="WordLeaves">
+    <say char="Word">Well, what can I say...</say>
+    <say char="IntelliSense">Absolutely nothing. Good riddance!</say>
+  </message>
+  
+  <message id="seeBool">
+    <say char="Bool">I hear something... Yes or no? Is anyone up there?</say>
+    <say char="IntelliSense">Hey, it's the last variabull! We're up here!</say>
+    <say char="Bool">Is that a yes?</say>
+    <say char="IntelliSense">I forget... these guys are weird. Yes, we're up here.</say>
+  </message>
+
+  <message id="meetBool">
+    <say char="Bool">Yes yes yes! You found me!</say>
+    <say char="IntelliSense">Let's head back to the address table before you keep talking.</say>   
+  </message>
+
+  <message id="GateTutorial">
+    <say char="IntelliSense">This is a gate! My grandpappy told me all about these things.</say>
+    <say char="IntelliSense">Legends says they can only have ONE output line. So let's delete one.</say>
+    <say char="IntelliSense">We can also see letters are being fed into the object, look above.</say>
+    <say char="IntelliSense">If power is feeding into the object, then the letter will have a "true" value.</say>
+  </message>
+
+  <message id="GateTutorial2">
+    <say char="IntelliSense">Gates can only work if they take in all their inputs.</say>
+    <say char="IntelliSense">For instance, since "x" and "q" are being fed into this gate...</say>
+    <say char="IntelliSense">... we need to use them in the code or else it won't work.</say>   
+  </message>
+
+  <message id="deliverBool">
+    <say char="Bool">I is therefore I am.</say>
+    <say char="Engineer">Good to see you as always, Bool. Okay, the final piece is complete.</say>
+  </message>
+  
   <message id="cannotAccess">
     <say char="IntelliSense">I don't think we can access this area yet. Let's come back later.</say>
   </message>
