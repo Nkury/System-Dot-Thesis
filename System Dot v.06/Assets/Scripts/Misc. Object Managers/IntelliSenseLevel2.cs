@@ -120,6 +120,7 @@ public class IntelliSenseLevel2 : IntelliSense {
                && ((hit.collider.name == "Double Entrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("int flint = 5;") && variabullText != "int flint = 5;")
                || (hit.collider.name == "String Entrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("double dec = 0.25;") && variabullText != "double dec = 0.25;")
                || (hit.collider.name == "Boolean Entrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("string word = \"sentence\";") && variabullText != "string word = \"sentence\";"))
+               || (hit.collider.name == "ExitEntrance" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().parameters.Contains("boolean bool = true;") && variabullText != "boolean bool = true;")
                && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
             {
                 SetDialogue("cannotAccess"); // clicked any object to access another section without variableS               
