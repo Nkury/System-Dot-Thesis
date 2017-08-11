@@ -48345,6 +48345,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5085578, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
   m_IsPrefabParent: 0
