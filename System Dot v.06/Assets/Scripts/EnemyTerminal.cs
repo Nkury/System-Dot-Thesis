@@ -176,9 +176,50 @@ public class EnemyTerminal : MonoBehaviour
             passedInString += " \n" + s;
         }
 
+        passedInString = ReplaceSystemDistance(passedInString);
+
         actions = parse.Parse(passedInString);
         outputVal = parse.outputValue;
     }
+
+    #region System.Distance() Functions
+    // finds instances of System.distance(ID) and replaces them with the float number of that actual distance 
+    // we do this in enemy terminal because Parser does not contain Unity functions
+    public string ReplaceSystemDistance(string passedInString)
+    {
+       
+                if (this.transform.childCount >= 1 && this.transform.FindChild("DistanceChild"))
+                {
+                    DistanceLine distanceChild = this.transform.FindChild("DistanceChild").gameObject.GetComponent<DistanceLine>();
+                    for (int i = 0; i < terminalString.Count(); i++)
+                    {
+                        if (terminalString[i].Contains("System.distance("))
+                        {
+                            for (int j = 0; j < distanceChild.parameterNames.Count; j++)
+                            {
+                                string replaceString = terminalString[i].Replace(distanceChild.parameterNames[j], "\"" + distanceChild.target[j].name + "\"");
+                                passedInString = passedInString.Replace(terminalString[i], replaceString);
+                            }
+                        }
+                    }
+
+                    List<KeyValuePair<string, string>> replaceValues = parse.FindDistances(passedInString);
+                    foreach (KeyValuePair<string, string> pair in replaceValues)
+                    {
+                        passedInString = passedInString.Replace(pair.Key, FindDistanceToObject(pair.Value));
+                    }
+                }
+           
+
+        return passedInString;
+    }
+
+    private string FindDistanceToObject(string objectName)
+    {
+        GameObject target = GameObject.Find(objectName);
+        return Vector2.Distance(this.gameObject.transform.position, target.transform.position).ToString();
+    }
+    #endregion  
 
     public IEnumerator evaluateActions()
     {

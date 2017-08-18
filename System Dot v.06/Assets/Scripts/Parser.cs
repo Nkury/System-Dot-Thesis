@@ -54,16 +54,20 @@
  *   [32]    gravity_stmt       ->        GRAVITY LPAREN (TRUE | FALSE | ID) RPAREN 
  *   [33]    activate_stmt      ->        ACTIVATE LPAREN (NUM | REALNUM | ID) RPAREN       
  *   [34]    rotate_stmt        ->        ROTATE LPAREN ( NUM | REALNUM | ID) RPAREN
- *   [35]    delete_stmt        ->        DELETE LPAREN ( ID | strExpr) RPAREN               
+ *   [35]    delete_stmt        ->        DELETE LPAREN ( ID | strExpr) RPAREN 
+ *   [36]    sys_distance_stmt  ->        SYSTEM DOT DISTANCE LPAREN ID RPAREN (SEMICOLON)* 
+ *               Unlike other functions, System.Distance() will be evaluated on the EnemyTerminal side.
+ *               The parser will return a list of strings of the complete System.distance command for replacement
+ *                  with the actual number.             
  *   (-=-=-=-=-=-=- The following grammar are for methods and can be substituted into the above grammar
  *                  based on their return type -=-=-=-=-=-)
- *   [35]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
+ *   [37]    substr_method      ->        ID  DOT  SUBSTRING  LPAREN  (NUM  |  NUM  COMMA  NUM  )  RPAREN  SEMICOLON
  *             <STRING>               <first ID needs to be an existing string variable>
  *                                    <NUMs needs to be in range of the string>
  *                                    <for NUM comma NUM, the first NUM < second NUM>
- *   [36]    indexOf_method     ->        ID  DOT  INDEXOF  LPAREN  ID  RPAREN  SEMICOLON
+ *   [38]    indexOf_method     ->        ID  DOT  INDEXOF  LPAREN  ID  RPAREN  SEMICOLON
  *             <NUM>                  <first ID needs to be an existing string variable>
- *   [37]    length_method      ->        ID  DOT  LENGTH  LPAREN  RPAREN  SEMICOLON                                                    
+ *   [39]    length_method      ->        ID  DOT  LENGTH  LPAREN  RPAREN  SEMICOLON                                                    
  *             <NUM>                  <first ID needs to be an existing string variable>
  *             
  *             Whenever the code does not conform to the above grammar, an ERROR action will be returned.
@@ -77,10 +81,6 @@
  *              - short-hand incrementation/decrementation (++/--)
  *                     
 *************************************************************************************************/
-
-
-
-
 
 using System;
 using System.Collections;
@@ -132,6 +132,10 @@ namespace ParserAlgo
         // delete certain strings from a word
         DELETE,
 
+        // System.distance(id)
+        // calculate distance of object
+        DISTANCE,
+
         // if there is an infinite loop or syntax error with message
         INFINITELOOP, ERRORMSG, ERROR
 
@@ -144,7 +148,7 @@ namespace ParserAlgo
                             "int", "double", "string", "boolean", "true", "false",
                             "substring", "length", "indexOf",
                             "System", "output", "check", "move", "body", "jump", "open", "close", "wait",
-                            "smash", "gravity", "activate", "rotate", "delete",
+                            "smash", "gravity", "activate", "rotate", "delete", "distance",
                             "Direction", "LEFT", "RIGHT", "Color", "BLACK", "RED", "BLUE", "GREEN",
                             "+", "-", "/", "//", "*","%", "=",
                             ":", ",", ";",
@@ -175,7 +179,7 @@ namespace ParserAlgo
             INT, REAL, STRING, BOOLEAN, TRUE, FALSE,
             SUBSTRING, LENGTH, INDEXOF,
             SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
-            SMASH, GRAVITY, ACTIVATE, ROTATE, DELETE,
+            SMASH, GRAVITY, ACTIVATE, ROTATE, DELETE, DISTANCE,
             DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
             COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
@@ -829,7 +833,7 @@ namespace ParserAlgo
                 ": There is an error when you try to activate an object";
             actions.Add(keyActions.ERROR);
             return;
-        }
+        } // ParseActivate()
 
         // parses for System.activate(num/realnum/id);
         private void ParseRotate()
@@ -883,7 +887,7 @@ namespace ParserAlgo
                 ": There is an error when you try to rotate an object";
             actions.Add(keyActions.ERROR);
             return;
-        }
+        } // ParseRotate()
 
         // parses for System.delete(id/strExpr);
         private void ParseDelete()
@@ -923,7 +927,9 @@ namespace ParserAlgo
                 ": There is an error when you try to delete an object";
             actions.Add(keyActions.ERROR);
             return;
-        }
+        } // ParseDelete()
+
+    
 
         // parses for System. and then evaluates which of the above System commands it should parse for
         private numberOrString ParseSystem()
@@ -991,7 +997,7 @@ namespace ParserAlgo
                     {
                         ungetToken();
                         ParseDelete();
-                    }
+                    } 
                     return default(numberOrString);
                 }
             }
@@ -1000,7 +1006,7 @@ namespace ParserAlgo
                 ": There is an error when you perform a system command";
             actions.Add(keyActions.ERROR);
             return default(numberOrString);
-        }
+        } // ParseSystem()
 
         // returns true if it is an int otherwise returns false if it is a decimal.
         private bool checkTag(numberOrString num)
@@ -1490,7 +1496,7 @@ namespace ParserAlgo
             syntaxMessage = "Error in line " + (line_no - 1) +
                 ": There is an error when trying to use substring";
             return "error404notfoundit'snotworkingbzzzt";
-        }
+        } // parseNumericExpression()
 
         private numberOrString ParseLength(string valOfString)
         {
@@ -2007,7 +2013,7 @@ namespace ParserAlgo
 
             actions.Add(keyActions.ERROR);
             return;
-        }
+        } // parseAssignment()
 
         private numberOrString ParsePrimary()
         {
@@ -2081,16 +2087,16 @@ namespace ParserAlgo
             }
 
             return default(numberOrString);
-        }
+        } // parsePrimary()
 
         private bool evaluateOperands(numberOrString left_op, numberOrString right_op, TokenTypes op)
         {
+          
             switch (op)
             {
                 case TokenTypes.GREATER:
-                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT)
-                        return Int32.Parse(left_op.value) > Int32.Parse(right_op.value);
-                    else if (left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
+                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT ||
+                        left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
                         return float.Parse(left_op.value) > float.Parse(right_op.value);                    
                     else if (left_op.tag == TokenTypes.STRING)
                         return left_op.value.CompareTo(right_op.value) > 0;
@@ -2103,9 +2109,8 @@ namespace ParserAlgo
                     }
                     break;
                 case TokenTypes.GTEQ:
-                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT)
-                        return Int32.Parse(left_op.value) >= Int32.Parse(right_op.value);
-                    else if (left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
+                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT ||
+                        left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
                         return float.Parse(left_op.value) >= float.Parse(right_op.value);
                     else if (left_op.tag == TokenTypes.STRING)
                         return left_op.value.CompareTo(right_op.value) >= 0;
@@ -2118,9 +2123,8 @@ namespace ParserAlgo
                     }
                     break;
                 case TokenTypes.LESS:
-                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT)
-                        return Int32.Parse(left_op.value) < Int32.Parse(right_op.value);
-                    else if (left_op.tag == TokenTypes.REALNUM)
+                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT ||
+                        left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
                         return float.Parse(left_op.value) < float.Parse(right_op.value);
                     else if (left_op.tag == TokenTypes.STRING)
                         return left_op.value.CompareTo(right_op.value) < 0;
@@ -2133,9 +2137,8 @@ namespace ParserAlgo
                     }
                     break;
                 case TokenTypes.LTEQ:
-                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT)
-                        return Int32.Parse(left_op.value) <= Int32.Parse(right_op.value);
-                    else if (left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
+                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT ||
+                        left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
                         return float.Parse(left_op.value) <= float.Parse(right_op.value);
                     else if (left_op.tag == TokenTypes.STRING)
                         return left_op.value.CompareTo(right_op.value) <= 0;
@@ -2148,9 +2151,8 @@ namespace ParserAlgo
                     }
                     break;
                 case TokenTypes.EQUALEQUAL:
-                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT)
-                        return Int32.Parse(left_op.value) == Int32.Parse(right_op.value);
-                    else if (left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
+                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT ||
+                        left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
                         return float.Parse(left_op.value) == float.Parse(right_op.value);
                     else if (left_op.tag == TokenTypes.STRING)
                         return left_op.value.CompareTo(right_op.value) == 0;
@@ -2160,9 +2162,8 @@ namespace ParserAlgo
                     }
                     break;
                 case TokenTypes.NOTEQUAL:
-                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT)
-                        return Int32.Parse(left_op.value) != Int32.Parse(right_op.value);
-                    else if (left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
+                    if (left_op.tag == TokenTypes.NUM || left_op.tag == TokenTypes.INT ||
+                        left_op.tag == TokenTypes.REALNUM || left_op.tag == TokenTypes.REAL)
                         return float.Parse(left_op.value) != float.Parse(right_op.value);
                     else if (left_op.tag == TokenTypes.STRING)
                         return left_op.value.CompareTo(right_op.value) != 0;
@@ -2177,7 +2178,7 @@ namespace ParserAlgo
                      ": There is an error when trying to evaluate a condition";
             actions.Add(keyActions.ERROR);
             return false;
-        }
+        } //evaluateOperands()
 
         private bool ParseCondition()
         {
@@ -2211,7 +2212,9 @@ namespace ParserAlgo
                         {
                             ungetToken();
                             right_op = ParsePrimary();
-                            if (left_op.tag == right_op.tag)
+                            if (left_op.tag == right_op.tag || 
+                                ((left_op.tag == TokenTypes.INT || left_op.tag == TokenTypes.REAL) &&
+                                right_op.tag == TokenTypes.INT || right_op.tag == TokenTypes.REAL))
                             {
                                 returnVal = evaluateOperands(left_op, right_op, op);
                                 ttype = getToken();
@@ -2250,7 +2253,7 @@ namespace ParserAlgo
                     ": There is an error with the condition. Remember to compare equivalent types and start the body with a \"{\"";
             actions.Add(keyActions.ERROR);
             return false;
-        }
+        } // ParseCondition()
 
         private void ClearBody()
         {
@@ -2283,7 +2286,7 @@ namespace ParserAlgo
                          ": There is an error when trying to read code after condition";
                 actions.Add(keyActions.ERROR);
             }
-        }
+        } // ClearBody()
 
         private void ReadBody(string concat)
         {
@@ -2356,7 +2359,7 @@ namespace ParserAlgo
                     ": There is an error when trying to read code after condition";
                 actions.Add(keyActions.ERROR);
             }
-        }
+        } //ReadBody()
 
         private void ClearCondition()
         {
@@ -2383,7 +2386,7 @@ namespace ParserAlgo
                     ": There is an error when formatting the conditional statement";
                 actions.Add(keyActions.ERROR);
             }
-        }
+        } // ClearCondition()
 
         private void ClearUntilNewLine()
         {
@@ -2443,7 +2446,7 @@ namespace ParserAlgo
                 ": There is an error when formatting the conditional statement";
                 actions.Add(keyActions.ERROR);
             }
-        }
+        } // ReadCondition()
 
         private string ReadForCondition()
         {
@@ -2522,7 +2525,7 @@ namespace ParserAlgo
                     ": There is an error in the formatting of the for-loop";
             actions.Add(keyActions.ERROR);
             return "";
-        }
+        } // ReadForCondition()
 
         public List<keyActions> Parse(string passedCode)
         {
@@ -2802,7 +2805,7 @@ namespace ParserAlgo
         private void ungetToken()
         {
             activeToken = 1;
-        }
+        } //Parse()
 
         private void skipSpace()
         {
@@ -2831,7 +2834,7 @@ namespace ParserAlgo
                 }
                 line_no += Convert.ToInt32(c == '\n');
             }
-        }
+        } // skipSpace()
 
         private TokenTypes isKeyword(string s)
         {
@@ -2839,7 +2842,7 @@ namespace ParserAlgo
                 if (reserved[i] == s)
                     return (TokenTypes)i;
             return 0;
-        }
+        } // isKeyword()
 
         private TokenTypes scan_number()
         {
@@ -2894,7 +2897,7 @@ namespace ParserAlgo
             }
             else
                 return TokenTypes.ERROR;
-        }
+        } // scan_numbers()
 
         private TokenTypes scan_id_or_keyword()
         {
@@ -2927,7 +2930,7 @@ namespace ParserAlgo
             {
                 return TokenTypes.ERROR;
             }
-        }
+        } // scan_id_or_keyword()
 
         // called if we are scanning a string literal between QUOTES
         private TokenTypes scan_characters()
@@ -2958,7 +2961,7 @@ namespace ParserAlgo
             {
                 return TokenTypes.ERROR;
             }
-        }
+        } // scan_characters()
 
         private TokenTypes getToken()
         {
@@ -3190,6 +3193,98 @@ namespace ParserAlgo
             {
                 return scan_characters();
             }
-        }
+        } //getToken()
+
+
+        #region HelperFunctions
+        public List<KeyValuePair<string, string>> FindDistances(string passedCode)
+        {
+            code = passedCode;
+            ttype = 0;  // reset token type
+            activeToken = 0; // reset active token
+            List<KeyValuePair<string, string>> returnValue = new List<KeyValuePair<string, string>>();
+            
+            ttype = getToken();
+            while(ttype != TokenTypes.EOS)
+            {
+                if (ttype == TokenTypes.SYSTEM)
+                {
+                    ungetToken();
+                    KeyValuePair<string, string> result = ParseDistance();
+                    if (!result.Equals(default(KeyValuePair<string, string>)))
+                    {
+                        returnValue.Add(result);
+                    }
+                }
+
+                ttype = getToken();
+            }
+
+            if(returnValue.Count >= 1 && !actions.Contains(keyActions.DISTANCE))
+            {
+                actions.Add(keyActions.DISTANCE);
+            }
+
+            return returnValue;
+        } // FindDistances()
+
+        // parses for System.distance(ID); or System.distance(ID)
+        private KeyValuePair<string, string> ParseDistance()
+        {
+            string buildToken = "";
+
+            ttype = getToken();
+            if (ttype == TokenTypes.SYSTEM)
+            {
+                buildToken += token;
+                ttype = getToken();
+                if (ttype == TokenTypes.DOT)
+                {
+                    buildToken += token;
+                    ttype = getToken();
+                    if (ttype == TokenTypes.DISTANCE)
+                    {
+                        buildToken += token;
+                        ttype = getToken();
+                        if (ttype == TokenTypes.LPAREN)
+                        {
+                            buildToken += token;
+                            ttype = getToken();
+                            if (ttype == TokenTypes.QUOTE)
+                            {   
+                                ungetToken();
+                                string returnString = ParseStringExpression();
+
+                                if (returnString != "error404notfoundit'snotworkingbzzzt")
+                                {
+                                    buildToken += "\"" + returnString + "\"";
+                                    ttype = getToken();
+                                    if (ttype == TokenTypes.RPAREN)
+                                    {
+                                        buildToken += token;
+                                        ttype = getToken();
+                                        if (ttype == TokenTypes.SEMICOLON)
+                                        {
+                                            buildToken += token;
+                                            return new KeyValuePair<string, string>(buildToken, returnString);
+                                        }
+                                        else
+                                        {
+                                            ungetToken();
+                                            return new KeyValuePair<string, string>(buildToken, returnString);
+                                        }
+                                    }
+                                }
+                                
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            return default(KeyValuePair<string, string>);
+        } // ParseDistance()
+        #endregion
     }
 }
