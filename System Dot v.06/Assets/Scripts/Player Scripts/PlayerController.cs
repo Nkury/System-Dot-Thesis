@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public PauseMenu pauseMenu;
 
-    private bool pauseMovement = false;
+    public bool pauseMovement = false;
 
     // Use this for initialization
     void Start()

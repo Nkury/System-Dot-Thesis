@@ -3197,20 +3197,35 @@ namespace ParserAlgo
 
 
         #region HelperFunctions
-        public List<KeyValuePair<string, string>> FindDistances(string passedCode)
+        public List<KeyValuePair<string, string>> FixConditional(string passedCode)
         {
             code = passedCode;
             ttype = 0;  // reset token type
             activeToken = 0; // reset active token
             List<KeyValuePair<string, string>> returnValue = new List<KeyValuePair<string, string>>();
-            
+            bool hasIf = false;
+
             ttype = getToken();
             while(ttype != TokenTypes.EOS)
             {
+                if (ttype == TokenTypes.IF)
+                {
+                    ttype = getToken();
+                    if (ttype == TokenTypes.LPAREN)
+                    {
+                        hasIf = true;
+                    }
+                }
+
+                if (ttype == TokenTypes.RPAREN && hasIf)
+                {
+                    hasIf = false;
+                }
+
                 if (ttype == TokenTypes.SYSTEM)
                 {
                     ungetToken();
-                    KeyValuePair<string, string> result = ParseDistance();
+                    KeyValuePair<string, string> result = ParseSystemForConditionals(hasIf);
                     if (!result.Equals(default(KeyValuePair<string, string>)))
                     {
                         returnValue.Add(result);
@@ -3229,7 +3244,7 @@ namespace ParserAlgo
         } // FindDistances()
 
         // parses for System.distance(ID); or System.distance(ID)
-        private KeyValuePair<string, string> ParseDistance()
+        private KeyValuePair<string, string> ParseSystemForConditionals(bool hasIf)
         {
             string buildToken = "";
 
@@ -3277,6 +3292,37 @@ namespace ParserAlgo
                                 }
                                 
                                 
+                            }
+                        }
+                    } else if(ttype == TokenTypes.BODY && hasIf) // check if we are looking for body and we are in if statement
+                    {
+                        buildToken += token;
+                        ttype = getToken();
+                        if(ttype == TokenTypes.LPAREN)
+                        {
+                            buildToken += token;
+                            ttype = getToken();
+                            if(ttype == TokenTypes.COLOR)
+                            {
+                                buildToken += token;
+                                ttype = getToken();
+                                if(ttype == TokenTypes.DOT)
+                                {
+                                    buildToken += token;
+                                    ttype = getToken();
+                                    if(ttype == TokenTypes.GREEN || ttype == TokenTypes.RED || 
+                                        ttype == TokenTypes.BLUE || ttype == TokenTypes.BLACK)
+                                    {
+                                        buildToken += token;
+                                        string color = token;
+                                        ttype = getToken();
+                                        if(ttype == TokenTypes.RPAREN)
+                                        {
+                                            buildToken += token;
+                                            return new KeyValuePair<string, string>(buildToken, color);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
