@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = this.transform.FindChild("Player").GetComponent<Animator>();
         pauseMenu = FindObjectOfType<PauseMenu>();
         gravityStore = GetComponent<Rigidbody2D>().gravityScale;
         simon = FindObjectOfType<SimonController>();

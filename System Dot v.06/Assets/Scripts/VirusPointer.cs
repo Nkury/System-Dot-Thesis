@@ -16,7 +16,10 @@ public class VirusPointer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        target = virusTrigger.closestVirus;
+        if (virusTrigger.closestVirus)
+        {
+            target = virusTrigger.closestVirus;
+        }
         PointAtVirus();
 	}
 

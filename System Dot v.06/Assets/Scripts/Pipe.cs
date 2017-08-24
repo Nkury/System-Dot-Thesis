@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Pipe : MonoBehaviour {
 
     public float speed;
-    public GameObject branch;
-    // position 0 = up, position 1 = left, position 2 = down, position 3 = right
-    public GameObject[] pipeExits = new GameObject[4]; 
-
+    public List<GameObject> branches;
+    public List<GameObject> pipeExits;
+    
     Vector2 dir;
     GameObject PlayerBody;
     private bool atDestination = false;
     private bool finished = false;
 
+    private GameObject atBranch; // stores game object of branch that we collide with
+    private List<GameObject> backUpBranches; // since we are removing branches, this will store them for refresh
+
     // Use this for initialization
     void Start () {
-		
+        backUpBranches = new List<GameObject>(branches);
 	}
 	
 	// Update is called once per frame
@@ -25,66 +28,104 @@ public class Pipe : MonoBehaviour {
         if (PlayerBody != null && dir != Vector2.zero && !finished)
         {
             // see which direction (x or y) player is coming from
-            if (Math.Abs(dir.x) > Math.Abs(dir.y))
+            if (AtBranch(Math.Abs(dir.x) > Math.Abs(dir.y)))
             {
-                if (dir.x >= 0 ? branch.transform.position.x > PlayerBody.transform.position.x : branch.transform.position.x < PlayerBody.transform.position.x)
+                PlayerBody.GetComponent<Transform>().position += new Vector3(dir.x * speed, dir.y * speed);           
+            } else if (!atDestination)
+            {
+                MoveToPipeExit();
+            }
+            else if (atDestination)
+            {
+                PlayerBody.GetComponent<PlayerController>().pauseMovement = false;
+                PlayerBody.GetComponent<CircleCollider2D>().enabled = true;
+                PlayerBody.GetComponent<Rigidbody2D>().isKinematic = false;
+                PlayerBody.transform.FindChild("Player").gameObject.SetActive(true);
+                atBranch = null;
+                branches = backUpBranches;
+                atDestination = false;
+                finished = true;
+            }            
+        }
+    }
+
+    public bool AtBranch(bool isX)
+    {
+        foreach(GameObject pipeExit in pipeExits)
+        {
+            if (isX) {
+                // we are at the destination if the player is past the x coordinate of the pipe exit
+                // and is within the y value range
+                atDestination = ((dir.x >= 0 ?
+                    PlayerBody.transform.position.x > pipeExit.transform.position.x :
+                    PlayerBody.transform.position.x < pipeExit.transform.position.x) &&
+                    PlayerBody.transform.position.y < pipeExit.transform.position.y + 1 &&
+                    PlayerBody.transform.position.y > pipeExit.transform.position.y - 1);
+            }
+            else
+            {
+                // we are at the destination if the player is past the y coordinate of the pipe exit
+                // and is within the x value range
+                atDestination = ((dir.y >= 0 ?
+                    PlayerBody.transform.position.y > pipeExit.transform.position.y :
+                    PlayerBody.transform.position.y < pipeExit.transform.position.y) &&
+                    PlayerBody.transform.position.x < pipeExit.transform.position.x + 1 &&
+                    PlayerBody.transform.position.x > pipeExit.transform.position.x - 1);
+            }
+        }
+
+        foreach(GameObject branch in branches)
+        {
+            if (isX) {
+                dir.y = 0;  // when moving the player through the pipe, we don't want to move in y direction
+
+                // if we are at the x value and the branch we are observing is at the same
+                // y value, then return true. This is only if we are referring to the X-direction
+                if (dir.x >= 0 ? branch.transform.position.x > PlayerBody.transform.position.x 
+                    : branch.transform.position.x < PlayerBody.transform.position.x &&
+                    PlayerBody.transform.position.y < branch.transform.position.y + 1 &&
+                    PlayerBody.transform.position.y > branch.transform.position.y - 1)
                 {
-                    PlayerBody.GetComponent<Transform>().position += new Vector3(dir.x * speed, 0);
-                }
-                else if(!atDestination)
-                {
-                    MoveToPipeExit();
-                } else if (atDestination)
-                {
-                    PlayerBody.GetComponent<PlayerController>().pauseMovement = false;
-                    PlayerBody.GetComponent<CircleCollider2D>().enabled = true;
-                    PlayerBody.GetComponent<Rigidbody2D>().isKinematic = false;
-                    PlayerBody.transform.FindChild("Player").gameObject.SetActive(true);
-                    atDestination = false;
-                    finished = true;
+                    atBranch = branch;                 
+                    return true;
                 }
             }
             else
             {
-                if (dir.y >= 0 ? branch.transform.position.y > PlayerBody.transform.position.y : branch.transform.position.y < PlayerBody.transform.position.y)
+                dir.x = 0; // when moving the player through the pipe, we don't want to move in x direction
+
+                // if we are at the y value and the branch we are observing is at the same
+                // x value, then return true. This is only if we are referring to the Y-direction
+                if (dir.y >= 0 ? branch.transform.position.y > PlayerBody.transform.position.y 
+                    : branch.transform.position.y < PlayerBody.transform.position.y &&
+                    PlayerBody.transform.position.x < branch.transform.position.x + 1 &&
+                    PlayerBody.transform.position.x > branch.transform.position.x - 1)
                 {
-                    PlayerBody.GetComponent<Transform>().position += new Vector3(0, dir.y * speed);
-                } else if (!atDestination)
-                {
-                    MoveToPipeExit();
-                }
-                else if (atDestination)
-                {
-                    PlayerBody.GetComponent<PlayerController>().pauseMovement = false;
-                    PlayerBody.GetComponent<CircleCollider2D>().enabled = true;
-                    PlayerBody.GetComponent<Rigidbody2D>().isKinematic = false;
-                    PlayerBody.transform.FindChild("Player").gameObject.SetActive(true);
-                    atDestination = false;
-                    finished = true;
+                    atBranch = branch;
+                    return true;
                 }
             }
         }
+
+        return false;
     }
 
     void MoveToPipeExit()
     {
-        switch ((int)branch.transform.rotation.z)
+        switch ((int)atBranch.transform.eulerAngles.z)
         {
             case 0: // up
-                PlayerBody.transform.position += new Vector3(0, speed);
-                atDestination = PlayerBody.transform.position.y > pipeExits[0].transform.position.y;
+                branches.Remove(atBranch);
+                dir = new Vector2(0, 1); // will cause the player to move up with AtBranch method                
                 break;
             case 90: // left
-                PlayerBody.transform.position += new Vector3(-speed, 0);
-                atDestination = PlayerBody.transform.position.x < pipeExits[1].transform.position.x;
+                dir = new Vector2(-1, 0); // will cause the player to move left with AtBranch method                
                 break;
             case 180: // down
-                PlayerBody.transform.position += new Vector3(0, speed);
-                atDestination = PlayerBody.transform.position.y < pipeExits[2].transform.position.y;
+                dir = new Vector2(0, -1); // will cause the player to move down with AtBranch method                
                 break;
-            case 270:
-                PlayerBody.transform.position += new Vector3(-speed, 0);
-                atDestination = PlayerBody.transform.position.x > pipeExits[3].transform.position.x;
+            case 270: // right
+                dir = new Vector2(1, 0); // will cause the player to move right with AtBranch method                
                 break;
         }
     }

@@ -23,7 +23,7 @@ public class HurtEnemyOnContact : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        myrigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
+        myrigidbody2D = transform.parent.parent.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
