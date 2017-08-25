@@ -53,6 +53,9 @@ public class Pipe : MonoBehaviour {
     {
         foreach(GameObject pipeExit in pipeExits)
         {
+            if (atDestination)
+                break;
+
             if (isX) {
                 // we are at the destination if the player is past the x coordinate of the pipe exit
                 // and is within the y value range
@@ -81,13 +84,13 @@ public class Pipe : MonoBehaviour {
 
                 // if we are at the x value and the branch we are observing is at the same
                 // y value, then return true. This is only if we are referring to the X-direction
-                if (dir.x >= 0 ? branch.transform.position.x > PlayerBody.transform.position.x 
-                    : branch.transform.position.x < PlayerBody.transform.position.x &&
+                if ((dir.x >= 0 ? PlayerBody.transform.position.x > branch.transform.position.x  
+                    : PlayerBody.transform.position.x < branch.transform.position.x) &&
                     PlayerBody.transform.position.y < branch.transform.position.y + 1 &&
                     PlayerBody.transform.position.y > branch.transform.position.y - 1)
                 {
                     atBranch = branch;                 
-                    return true;
+                    return false;
                 }
             }
             else
@@ -96,18 +99,18 @@ public class Pipe : MonoBehaviour {
 
                 // if we are at the y value and the branch we are observing is at the same
                 // x value, then return true. This is only if we are referring to the Y-direction
-                if (dir.y >= 0 ? branch.transform.position.y > PlayerBody.transform.position.y 
-                    : branch.transform.position.y < PlayerBody.transform.position.y &&
+                if ((dir.y >= 0 ? PlayerBody.transform.position.y > branch.transform.position.y
+                    : PlayerBody.transform.position.y < branch.transform.position.y) &&
                     PlayerBody.transform.position.x < branch.transform.position.x + 1 &&
                     PlayerBody.transform.position.x > branch.transform.position.x - 1)
                 {
                     atBranch = branch;
-                    return true;
+                    return false;
                 }
             }
         }
 
-        return false;
+        return true;
     }
 
     void MoveToPipeExit()
@@ -119,12 +122,15 @@ public class Pipe : MonoBehaviour {
                 dir = new Vector2(0, 1); // will cause the player to move up with AtBranch method                
                 break;
             case 90: // left
+                branches.Remove(atBranch);
                 dir = new Vector2(-1, 0); // will cause the player to move left with AtBranch method                
                 break;
             case 180: // down
+                branches.Remove(atBranch);
                 dir = new Vector2(0, -1); // will cause the player to move down with AtBranch method                
                 break;
             case 270: // right
+                branches.Remove(atBranch);
                 dir = new Vector2(1, 0); // will cause the player to move right with AtBranch method                
                 break;
         }
