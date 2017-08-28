@@ -1,6 +1,7 @@
-﻿/************************************************************************************************* 
+/************************************************************************************************* 
  * Programmer: Nizar Kury
  * Date:       7/14/16
+ * Updated:    8/28/17
  * Purpose:    An object that parses code and returns actions game objects can perform in System Dot.  
  *             Code has to conform to the following grammar:
  *             
@@ -20,7 +21,7 @@
  *   [12]    numTerm            ->        numFactor  (MULT  |  DIV  |  MOD)  numTerm  |  numFactor
  *   [13]    numFactor          ->        LPAREN  numExpr  RPAREN  |  NUM  |  REALNUM  |  ID
  *   [14]    strExpr            ->        (QUOTE  ID  QUOTE  |  DOUBLEQUOTE)  |  strExpr PLUS strExpr
- *   [15]    boolExpr           ->        TRUE  |  FALSE  |  LPAREN  boolExpr  RPAREN
+ *   [15]    boolExpr           ->        TRUE  |  FALSE  | primary relop primary | LPAREN  boolExpr  RPAREN
  *           boolExpr           ->        boolExpr  AND  boolExpr  |  boolExpr  OR  boolExpr
  *   [16]    condition          ->        LPAREN (ID  |  primary  relop  primary) RPAREN
  *                                           <when evaluating condition, primary has to be the same type>
@@ -1587,7 +1588,10 @@ namespace ParserAlgo
                             valueOfStr += ParseStringExpression();
                             return valueOfStr;
                         }
-                        else if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN)
+                        else if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN ||
+                            ttype == TokenTypes.GREATER || ttype == TokenTypes.GTEQ ||
+                            ttype == TokenTypes.LESS || ttype == TokenTypes.LTEQ ||
+                            ttype == TokenTypes.NOTEQUAL || ttype == TokenTypes.EQUALEQUAL)
                         {
                             ungetToken();
                             return valueOfStr;
@@ -1635,7 +1639,10 @@ namespace ParserAlgo
                                 return valueOfStr;
                             }
                         }
-                        else if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN)
+                        else if (ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN ||
+                                ttype == TokenTypes.GREATER || ttype == TokenTypes.GTEQ ||
+                                ttype == TokenTypes.LESS || ttype == TokenTypes.LTEQ ||
+                                ttype == TokenTypes.NOTEQUAL || ttype == TokenTypes.EQUALEQUAL)
                         {
                             ungetToken();
                             return valueOfStr;
@@ -1652,113 +1659,122 @@ namespace ParserAlgo
         private int ParseBooleanExpression()
         {
             int valueOfBool;
-            int left_op;
+            numberOrString left_op;
             TokenTypes op;
-            int right_op;
+            numberOrString right_op;
 
             ttype = getToken();
-            if (ttype == TokenTypes.TRUE || ttype == TokenTypes.FALSE)
+            if (ttype == TokenTypes.ID || ttype == TokenTypes.NUM ||
+                ttype == TokenTypes.REALNUM || ttype == TokenTypes.TRUE ||
+                ttype == TokenTypes.FALSE || ttype == TokenTypes.QUOTE ||
+                ttype == TokenTypes.SYSTEM)
             {
-                left_op = Convert.ToInt32(bool.Parse(token));
+                ungetToken();
+                left_op = ParsePrimary();
                 ttype = getToken();
-
-                if (ttype == TokenTypes.AND || ttype == TokenTypes.OR)
+                if (ttype == TokenTypes.GREATER || ttype == TokenTypes.GTEQ ||
+                    ttype == TokenTypes.LESS || ttype == TokenTypes.LTEQ ||
+                    ttype == TokenTypes.NOTEQUAL || ttype == TokenTypes.EQUALEQUAL ||
+                    ttype == TokenTypes.AND || ttype == TokenTypes.OR)
                 {
                     op = ttype;
-                    right_op = ParseBooleanExpression();
-
-                    if (left_op <= 1 && right_op <= 1)
+                    ttype = getToken();
+                    if (ttype == TokenTypes.ID || ttype == TokenTypes.NUM ||
+                        ttype == TokenTypes.REALNUM || ttype == TokenTypes.TRUE
+                        || ttype == TokenTypes.FALSE || ttype == TokenTypes.QUOTE)
                     {
-                        if (op == TokenTypes.AND)
-                            valueOfBool = left_op * right_op;
-                        else
-                            valueOfBool = left_op + right_op;
+                        ungetToken();
+                        right_op = ParsePrimary();
+                        if (left_op.tag == right_op.tag ||
+                            ((left_op.tag == TokenTypes.INT || left_op.tag == TokenTypes.REAL) &&
+                            right_op.tag == TokenTypes.INT || right_op.tag == TokenTypes.REAL))
+                        {
+                            valueOfBool = Convert.ToInt32(evaluateOperands(left_op, right_op, op));
+                            ttype = getToken();
+                            if (ttype == TokenTypes.RPAREN || ttype == TokenTypes.SEMICOLON)
+                            {
+                                ungetToken();
+                                return valueOfBool;
+                            } else if(ttype == TokenTypes.AND || ttype == TokenTypes.OR)
+                            {
+                                if(ttype == TokenTypes.AND)
+                                {
+                                    valueOfBool *= ParseBooleanExpression();
+                                }
+                                else
+                                {
+                                    valueOfBool += ParseBooleanExpression();
+                                }
 
-                        return valueOfBool;
+                                if(valueOfBool < 2)
+                                {
+                                    return valueOfBool;
+                                }
+                            }
+                        }
+                    }
+                    else if (ttype == TokenTypes.LPAREN)
+                    {
+                        ungetToken();
+                        right_op.tag = TokenTypes.BOOLEAN;
+                        right_op.value = bool.Parse(ParseBooleanExpression().ToString()).ToString();
+                        if (left_op.tag == right_op.tag ||
+                           ((left_op.tag == TokenTypes.INT || left_op.tag == TokenTypes.REAL) &&
+                           right_op.tag == TokenTypes.INT || right_op.tag == TokenTypes.REAL))
+                        {
+                            valueOfBool = Convert.ToInt32(evaluateOperands(left_op, right_op, op));
+                            ttype = getToken();
+                            if (ttype == TokenTypes.RPAREN || ttype == TokenTypes.SEMICOLON)
+                            {
+                                ungetToken();
+                                return valueOfBool;
+                            }
+                        }
+                    }
+                }
+                else if (ttype == TokenTypes.RPAREN)
+                {
+                    if (left_op.tag == TokenTypes.BOOLEAN)
+                    {
+                        ungetToken();   
+                        return Convert.ToInt32(bool.Parse(left_op.value));                      
                     }
                 }
                 else if (ttype == TokenTypes.SEMICOLON)
                 {
                     ungetToken();
-                    return left_op;
-                } else if (ttype == TokenTypes.RPAREN)
-                {
-                    ungetToken();
-                    return left_op;
+                    return Convert.ToInt32(bool.Parse(left_op.value));
                 }
-            } else if (ttype == TokenTypes.NOT)
+            }
+            else if (ttype == TokenTypes.LPAREN)
             {
-                return Convert.ToInt32(!Convert.ToBoolean(ParseBooleanExpression()));
-            } else if (ttype == TokenTypes.LPAREN)
-            {
-                // look for && and || after this expression and do the stuff
-                left_op = ParseBooleanExpression();
+                valueOfBool = ParseBooleanExpression();
                 ttype = getToken();
-                if (ttype == TokenTypes.RPAREN)
+                if(ttype == TokenTypes.RPAREN)
                 {
                     ttype = getToken();
-                    if (ttype == TokenTypes.AND || ttype == TokenTypes.OR)
+                    if(ttype == TokenTypes.SEMICOLON || ttype == TokenTypes.RPAREN)
                     {
-                        op = ttype;
-                        right_op = ParseBooleanExpression();
-
-                        if (left_op <= 1 && right_op <= 1)
+                        ungetToken();
+                        return valueOfBool;
+                    }
+                    else if (ttype == TokenTypes.AND || ttype == TokenTypes.OR)
+                    {
+                        if (ttype == TokenTypes.AND)
                         {
-                            if (op == TokenTypes.AND)
-                                valueOfBool = left_op * right_op;
-                            else
-                                valueOfBool = left_op + right_op;
+                            valueOfBool *= ParseBooleanExpression();
+                        }
+                        else
+                        {
+                            valueOfBool += ParseBooleanExpression();
+                        }
 
+                        if (valueOfBool < 2)
+                        {
                             return valueOfBool;
                         }
                     }
-                    else if (ttype == TokenTypes.RPAREN)
-                    {
-                        ungetToken();
-                        return left_op;
-                    }
-                    else if (ttype == TokenTypes.SEMICOLON)
-                    {
-                        ungetToken();
-                        return left_op;
-                    }
-                }
-            } else if (ttype == TokenTypes.ID)
-            {
-                variable var;
-                if (symbolTable.TryGetValue(token, out var))
-                {
-                    if (var.type == TokenTypes.BOOLEAN)
-                    {
-                        left_op = Convert.ToInt32(bool.Parse(var.value));
-                        ttype = getToken();
-                        if (ttype == TokenTypes.AND || ttype == TokenTypes.OR)
-                        {
-                            op = ttype;
-                            right_op = ParseBooleanExpression();
-
-                            if (left_op <= 1 && right_op <= 1)
-                            {
-                                if (op == TokenTypes.AND)
-                                    valueOfBool = left_op * right_op;
-                                else
-                                    valueOfBool = left_op + right_op;
-
-                                return valueOfBool;
-                            }
-                        }
-                        else if (ttype == TokenTypes.SEMICOLON)
-                        {
-                            ungetToken();
-                            return left_op;
-                        }
-                        else if (ttype == TokenTypes.RPAREN)
-                        {
-                            ungetToken();
-                            return left_op;
-                        }
-                    }
-                }
+                } 
             }
 
             return 2; //DUMMY DATA
@@ -2090,8 +2106,7 @@ namespace ParserAlgo
         } // parsePrimary()
 
         private bool evaluateOperands(numberOrString left_op, numberOrString right_op, TokenTypes op)
-        {
-          
+        {          
             switch (op)
             {
                 case TokenTypes.GREATER:
@@ -2170,6 +2185,24 @@ namespace ParserAlgo
                     else if (left_op.tag == TokenTypes.BOOLEAN)
                     {
                         return bool.Parse(left_op.value) != bool.Parse(right_op.value);
+                    }
+                    break;
+                case TokenTypes.AND:
+                    if(left_op.tag == TokenTypes.BOOLEAN && 
+                        Convert.ToInt32(bool.Parse(left_op.value)) < 2 &&
+                        Convert.ToInt32(bool.Parse(right_op.value)) < 2)
+                    {
+                        return (Convert.ToInt32(bool.Parse(left_op.value)) * 
+                            Convert.ToInt32(bool.Parse(right_op.value))) != 0;
+                    }
+                    break;
+                case TokenTypes.OR:
+                    if(left_op.tag == TokenTypes.BOOLEAN &&
+                        Convert.ToInt32(bool.Parse(left_op.value)) < 2 &&
+                        Convert.ToInt32(bool.Parse(right_op.value)) < 2)
+                    {
+                        return (Convert.ToInt32(bool.Parse(left_op.value)) + 
+                            Convert.ToInt32(bool.Parse(right_op.value))) != 0;
                     }
                     break;
             }
