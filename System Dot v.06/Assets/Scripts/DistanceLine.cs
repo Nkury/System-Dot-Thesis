@@ -9,6 +9,7 @@ public class DistanceLine : MonoBehaviour {
     public float lineWidth;
     public float triggerRadius;
     public int numberOfConnectedObjects;
+    public float maxDistance = 11; // in case the target has no collider, still make line disappear
     public GameObject distanceObject;
     public List<string> parameterNames = new List<string>();
 
@@ -75,7 +76,12 @@ public class DistanceLine : MonoBehaviour {
                 distanceBetweenObjects = Vector2.Distance(source.transform.position, target[i].transform.position);
                 distanceBetweenObjects = (float)Math.Round(distanceBetweenObjects, 2);
                 distanceObjects[i].GetComponent<TextMesh>().text = distanceBetweenObjects.ToString();
-                distanceObjects[i].transform.position = (source.transform.position + target[i].transform.position) / 2;              
+                distanceObjects[i].transform.position = (source.transform.position + target[i].transform.position) / 2;
+                if(distanceBetweenObjects > maxDistance)
+                {                   
+                    line[i].enabled = false;
+                    distanceObjects[i].GetComponent<MeshRenderer>().enabled = false;
+                }              
             }
         }
 	}
@@ -97,7 +103,9 @@ public class DistanceLine : MonoBehaviour {
             int index = target.IndexOf(other.gameObject);
             line[index].enabled = true;
             distanceObjects[index].GetComponent<MeshRenderer>().enabled = true;
-        }
+        }  
+       
+        
     }
 
     void OnTriggerExit2D(Collider2D other)

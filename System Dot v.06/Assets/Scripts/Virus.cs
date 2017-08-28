@@ -26,19 +26,19 @@ public class Virus : MonoBehaviour {
         }
     }
 
-    void OnMouseOver()
-    {
-        if (this.GetComponent<SpriteRenderer>())
-        {
-            Cursor.visible = false;
-        }
-    }
+    //void OnMouseOver()
+    //{
+    //    if (this.GetComponent<SpriteRenderer>())
+    //    {
+    //        Cursor.visible = false;
+    //    }
+    //}
 
-    void OnMouseExit()
-    {
-        if (this.GetComponent<SpriteRenderer>())
-        {
-            Cursor.visible = true;
-        }
-    }
+    //void OnMouseExit()
+    //{
+    //    if (this.GetComponent<SpriteRenderer>())
+    //    {
+    //        Cursor.visible = true;
+    //    }
+    //}
 }

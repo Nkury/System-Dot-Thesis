@@ -6,7 +6,7 @@ public class Bit : MonoBehaviour {
     public Sprite zero;
     public Sprite one;
 
-    public float speed = 30;
+    public float speed = 100;
 
 	// Use this for initialization
 	void Start () {

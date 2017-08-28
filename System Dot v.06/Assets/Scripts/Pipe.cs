@@ -16,11 +16,14 @@ public class Pipe : MonoBehaviour {
     private bool finished = false;
 
     private GameObject atBranch; // stores game object of branch that we collide with
-    private List<GameObject> backUpBranches; // since we are removing branches, this will store them for refresh
+    private List<GameObject> backUpBranches = new List<GameObject>(); // since we are removing branches, this will store them for refresh
 
     // Use this for initialization
-    void Start () {
-        backUpBranches = new List<GameObject>(branches);
+    void Awake () {
+        foreach(GameObject branch in branches)
+        {
+            backUpBranches.Add(branch);
+        }          
 	}
 	
 	// Update is called once per frame
@@ -42,7 +45,11 @@ public class Pipe : MonoBehaviour {
                 PlayerBody.GetComponent<Rigidbody2D>().isKinematic = false;
                 PlayerBody.transform.FindChild("Player").gameObject.SetActive(true);
                 atBranch = null;
-                branches = backUpBranches;
+                // to avoid adding a pointer from one list to another
+                foreach(GameObject missingBranch in backUpBranches.Except(branches).ToList())
+                {
+                    branches.Add(missingBranch);
+                }               
                 atDestination = false;
                 finished = true;
             }            
@@ -60,8 +67,8 @@ public class Pipe : MonoBehaviour {
                 // we are at the destination if the player is past the x coordinate of the pipe exit
                 // and is within the y value range
                 atDestination = ((dir.x >= 0 ?
-                    PlayerBody.transform.position.x > pipeExit.transform.position.x :
-                    PlayerBody.transform.position.x < pipeExit.transform.position.x) &&
+                    PlayerBody.transform.position.x > pipeExit.transform.position.x + .5 :
+                    PlayerBody.transform.position.x < pipeExit.transform.position.x - .5) &&
                     PlayerBody.transform.position.y < pipeExit.transform.position.y + 1 &&
                     PlayerBody.transform.position.y > pipeExit.transform.position.y - 1);
             }
@@ -70,12 +77,15 @@ public class Pipe : MonoBehaviour {
                 // we are at the destination if the player is past the y coordinate of the pipe exit
                 // and is within the x value range
                 atDestination = ((dir.y >= 0 ?
-                    PlayerBody.transform.position.y > pipeExit.transform.position.y :
-                    PlayerBody.transform.position.y < pipeExit.transform.position.y) &&
+                    PlayerBody.transform.position.y > pipeExit.transform.position.y + .5 :
+                    PlayerBody.transform.position.y < pipeExit.transform.position.y - .5) &&
                     PlayerBody.transform.position.x < pipeExit.transform.position.x + 1 &&
                     PlayerBody.transform.position.x > pipeExit.transform.position.x - 1);
             }
         }
+
+        if (atDestination)
+            return false;
 
         foreach(GameObject branch in branches)
         {
@@ -84,8 +94,7 @@ public class Pipe : MonoBehaviour {
 
                 // if we are at the x value and the branch we are observing is at the same
                 // y value, then return true. This is only if we are referring to the X-direction
-                if ((dir.x >= 0 ? PlayerBody.transform.position.x > branch.transform.position.x  
-                    : PlayerBody.transform.position.x < branch.transform.position.x) &&
+                if (Math.Abs(PlayerBody.transform.position.x - branch.transform.position.x) < .2 &&                    
                     PlayerBody.transform.position.y < branch.transform.position.y + 1 &&
                     PlayerBody.transform.position.y > branch.transform.position.y - 1)
                 {
@@ -99,8 +108,7 @@ public class Pipe : MonoBehaviour {
 
                 // if we are at the y value and the branch we are observing is at the same
                 // x value, then return true. This is only if we are referring to the Y-direction
-                if ((dir.y >= 0 ? PlayerBody.transform.position.y > branch.transform.position.y
-                    : PlayerBody.transform.position.y < branch.transform.position.y) &&
+                if (Math.Abs(PlayerBody.transform.position.y - branch.transform.position.y) < .2 &&
                     PlayerBody.transform.position.x < branch.transform.position.x + 1 &&
                     PlayerBody.transform.position.x > branch.transform.position.x - 1)
                 {
@@ -142,8 +150,32 @@ public class Pipe : MonoBehaviour {
         {
             PlayerBody = other.gameObject;
 
+            // determine direction the player initially is moving by getting direction to nearest branch
+            float maxDistance = Mathf.Infinity;
+            GameObject closestBranch = new GameObject();
+            foreach(GameObject branch in branches)
+            {
+                float distanceToBranch = Vector2.Distance(branch.transform.position, other.transform.position);
+                if (distanceToBranch < maxDistance)
+                {
+                    maxDistance = distanceToBranch;
+                    closestBranch = branch;
+                }
+            }
+
+            if (closestBranch != null)
+            {
+                dir = closestBranch.transform.position - other.transform.position;
+            }
+            else
+            {
+                // if there are no branches, then there must be just a pipe exit
+                dir = pipeExits[0].transform.position - other.transform.position;
+            }
+     
+
             // Figure out what direction player enters the pipe
-            dir = other.GetComponent<Rigidbody2D>().velocity;
+            //dir = other.GetComponent<Rigidbody2D>().velocity;
             // Normalize the vector
             dir = dir.normalized;
 
