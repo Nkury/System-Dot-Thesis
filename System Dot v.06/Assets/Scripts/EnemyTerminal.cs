@@ -364,7 +364,7 @@ public class EnemyTerminal : MonoBehaviour
                                 break;
                             }
                         }
-
+                        
                         this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
 
                         if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
