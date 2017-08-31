@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private SimonController simon;
     private ActionsPerfromedManager actionManager;
+    private Vector3 originalScale;
 
     public PauseMenu pauseMenu;
 
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        originalScale = this.transform.localScale;    
         anim = this.transform.FindChild("Player").GetComponent<Animator>();
         pauseMenu = FindObjectOfType<PauseMenu>();
         gravityStore = GetComponent<Rigidbody2D>().gravityScale;
@@ -87,10 +89,6 @@ public class PlayerController : MonoBehaviour
                 jumpSound.Stop();
                 doubleJumpSound.Play();
                 doubleJumped = true;
-                if (simon != null && simon.getTask() == SimonController.JUMP)
-                {
-                    actionManager.addAction();
-                }
             }
 
             if (Input.GetKeyDown(KeyCode.H))
@@ -130,11 +128,6 @@ public class PlayerController : MonoBehaviour
 
                 knockbackCount -= Time.deltaTime;
             }
-            
-            if (pauseMovement || EnemyTerminal.globalTerminalMode >= 2)
-            {
-                
-            }
 
             anim.SetBool("Grounded", grounded);
             anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
@@ -168,7 +161,8 @@ public class PlayerController : MonoBehaviour
         // will be attached to that platform (so we can move when it moves)
         if(coll.gameObject.tag == "movingPlatform")
         {
-            transform.root.gameObject.transform.parent = coll.transform;
+            this.transform.parent = new GameObject().transform;
+            this.transform.parent.parent = coll.transform;
         }
         // if we collide with a bit, we collect it. If it's an environment bit,
         // then we add it to the list of items that need to be destroyed when we
@@ -188,11 +182,19 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
+    //void OnCollisionStay2D(Collision2D coll)
+    //{
+    //    if(coll.gameObject.tag == "movingPlatform")
+    //    {
+    //        this.transform.localScale = originalScale / coll.transform.localScale.x;
+    //    }
+    //}
+
     void OnCollisionExit2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "movingPlatform")
         {
-            transform.parent.gameObject.transform.parent = null;
+            transform.parent = null;
         }
     }
 

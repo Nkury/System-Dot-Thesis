@@ -225,7 +225,15 @@ public class EnemyTerminal : MonoBehaviour
     private string FindDistanceToObject(string objectName)
     {
         GameObject target = GameObject.Find(objectName);
-        return Vector2.Distance(this.gameObject.transform.position, target.transform.position).ToString();
+        float distance = Vector2.Distance(this.gameObject.transform.position, target.transform.position);
+        if (distance < this.gameObject.transform.FindChild("DistanceChild").gameObject.GetComponent<DistanceLine>().maxDistance)
+        {
+            return Vector2.Distance(this.gameObject.transform.position, target.transform.position).ToString();
+        }
+        else
+        {
+            return "a";
+        }
     }
     #endregion  
 
