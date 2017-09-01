@@ -69,19 +69,23 @@ public class DistanceLine : MonoBehaviour {
         {
             for (int i = 0; i < target.Count; i++)
             {
-                line[i].SetPosition(0, source.transform.position);
-                line[i].SetPosition(1, target[i].transform.position);
+                if (line[i].enabled)
+                {
+                    line[i].SetPosition(0, source.transform.position);
+                    line[i].SetPosition(1, target[i].transform.position);
 
-                // responsible for distance being displayed on the line
-                distanceBetweenObjects = Vector2.Distance(source.transform.position, target[i].transform.position);
-                distanceBetweenObjects = (float)Math.Round(distanceBetweenObjects, 2);
-                distanceObjects[i].GetComponent<TextMesh>().text = distanceBetweenObjects.ToString();
-                distanceObjects[i].transform.position = (source.transform.position + target[i].transform.position) / 2;
-                if(distanceBetweenObjects > maxDistance)
-                {                   
-                    line[i].enabled = false;
-                    distanceObjects[i].GetComponent<MeshRenderer>().enabled = false;
-                }              
+                    // responsible for distance being displayed on the line
+                    distanceBetweenObjects = Vector2.Distance(source.transform.position, target[i].transform.position);
+                    distanceBetweenObjects = (float)Math.Round(distanceBetweenObjects, 2);
+                    distanceObjects[i].GetComponent<TextMesh>().text = distanceBetweenObjects.ToString();
+                    distanceObjects[i].transform.position = (source.transform.position + target[i].transform.position) / 2;
+
+                    if (distanceBetweenObjects > maxDistance)
+                    {
+                        line[i].enabled = false;
+                        distanceObjects[i].GetComponent<MeshRenderer>().enabled = false;
+                    }
+                }            
             }
         }
 	}
