@@ -226,14 +226,18 @@ public class EnemyTerminal : MonoBehaviour
     {
         GameObject target = GameObject.Find(objectName);
         float distance = Vector2.Distance(this.gameObject.transform.position, target.transform.position);
+        if(target == null)
+        {
+            return "0";
+        }
+
         if (distance < this.gameObject.transform.FindChild("DistanceChild").gameObject.GetComponent<DistanceLine>().maxDistance)
         {
             return Vector2.Distance(this.gameObject.transform.position, target.transform.position).ToString();
         }
-        else
-        {
-            return "a";
-        }
+        
+        return "a";
+        
     }
     #endregion  
 
