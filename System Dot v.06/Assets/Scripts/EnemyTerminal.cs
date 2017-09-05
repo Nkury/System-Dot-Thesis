@@ -205,8 +205,16 @@ public class EnemyTerminal : MonoBehaviour
                 {
                     for (int j = 0; j < distanceChild.parameterNames.Count; j++)
                     {
-                        string replaceString = terminalString[i].Replace(distanceChild.parameterNames[j], "\"" + distanceChild.target[j].name + "\"");
-                        passedInString = passedInString.Replace(terminalString[i], replaceString);
+                        if (distanceChild.target[j] == null)
+                        {
+                            string replaceString = terminalString[i].Replace("System.distance(" + distanceChild.parameterNames[j] + ")", "0");
+                            passedInString = passedInString.Replace(terminalString[i], replaceString);
+                        }
+                        else
+                        {
+                            string replaceString = terminalString[i].Replace(distanceChild.parameterNames[j], "\"" + distanceChild.target[j].name + "\"");
+                            passedInString = passedInString.Replace(terminalString[i], replaceString);
+                        }
                     }
                 }
             }
@@ -376,8 +384,8 @@ public class EnemyTerminal : MonoBehaviour
                                 break;
                             }
                         }
-                        
-                        this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
+                        this.gameObject.transform.position += Vector3.left * .025f;
+                      //  this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
 
                         if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
                         {
@@ -400,7 +408,8 @@ public class EnemyTerminal : MonoBehaviour
                                 break;
                             }
                         }
-                        this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
+                        this.gameObject.transform.position += Vector3.right * .025f;
+                       // this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
 
                         if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
                         {

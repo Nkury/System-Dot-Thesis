@@ -8,6 +8,9 @@ public class WordManipulator : MonoBehaviour {
 
     public List<string> word = new List<string>();
 
+    // for parameters taking in the word
+    public List<GameObject> connectedObjects = new List<GameObject>();
+
     // for System.delete();
     public List<string> whatToDelete = new List<string>();
 
@@ -62,6 +65,12 @@ public class WordManipulator : MonoBehaviour {
             }
 
             ConstructWord(this.GetComponent<EnemyTerminal>().actions.Contains(keyActions.TURNLETTER));
+
+            foreach (GameObject go in connectedObjects)
+            {
+                go.GetComponent<EnemyTerminal>().parameters = "string word = \"" + wordToSet + "\";";
+            }
+
             if (whatToDelete.Count != 0)
             {
                 constructWord = true;
@@ -147,7 +156,8 @@ public class WordManipulator : MonoBehaviour {
                 }
             }
             activatedIndex = -1;
-        }         
+        }       
+    
     }
 
     public void DeleteBlock(GameObject block, bool visible)
