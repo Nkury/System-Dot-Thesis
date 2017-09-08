@@ -20,7 +20,7 @@ public class IntelliSenseLevel2 : IntelliSense {
     public Sprite word;
     public Sprite boole;
 
-    [Header("Level 1 Objects")]
+    [Header("Level 2 Objects")]
     [Tooltip("Only attach game objects if in level one")]
     public GameObject firstTutorialObjective;
     public GameObject secondTutorialObjective;

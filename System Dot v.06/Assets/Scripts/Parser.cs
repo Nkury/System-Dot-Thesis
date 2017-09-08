@@ -150,7 +150,7 @@ namespace ParserAlgo
                             "substring", "length", "indexOf",
                             "System", "output", "check", "move", "body", "jump", "open", "close", "wait",
                             "smash", "gravity", "activate", "rotate", "delete", "distance",
-                            "Direction", "LEFT", "RIGHT", "Color", "BLACK", "RED", "BLUE", "GREEN",
+                            "Direction", "LEFT", "RIGHT", "UP", "DOWN", "Color", "BLACK", "RED", "BLUE", "GREEN",
                             "+", "-", "/", "//", "*","%", "=",
                             ":", ",", ";",
                             "[", "]", "(", ")", "{", "}",
@@ -181,7 +181,7 @@ namespace ParserAlgo
             SUBSTRING, LENGTH, INDEXOF,
             SYSTEM, OUTPUT, CHECK, MOVE, BODY, JUMP, OPEN, CLOSE, WAIT,
             SMASH, GRAVITY, ACTIVATE, ROTATE, DELETE, DISTANCE,
-            DIRECTION, LEFT, RIGHT, COLOR, BLACK, RED, BLUE, GREEN,
+            DIRECTION, LEFT, RIGHT, UP, DOWN, COLOR, BLACK, RED, BLUE, GREEN,
             PLUS, MINUS, DIV, DOUBLESLASH, MULT, MOD, EQUAL,
             COLON, COMMA, APOSTROPHE, QUOTE, DOUBLEQUOTE, SEMICOLON, 
             LBRAC, RBRAC, LPAREN, RPAREN, LBRACE, RBRACE,
@@ -849,11 +849,31 @@ namespace ParserAlgo
                 {
                     ttype = getToken();
                     if (ttype == TokenTypes.NUM || ttype == TokenTypes.REALNUM ||
-                         (ttype == TokenTypes.ID))
+                         (ttype == TokenTypes.ID) || ttype == TokenTypes.DIRECTION)
                     {
                         if (ttype == TokenTypes.NUM || ttype == TokenTypes.REALNUM)
                         {
                             outputValue.Add("Rotate: " + token);
+                        } else if(ttype == TokenTypes.DIRECTION)
+                        {
+                            ttype = getToken();
+                            if(ttype == TokenTypes.DOT)
+                            {
+                                ttype = getToken();
+                                if(ttype == TokenTypes.LEFT)
+                                {
+                                    outputValue.Add("Rotate: LEFT");
+                                } else if(ttype == TokenTypes.RIGHT)
+                                {
+                                    outputValue.Add("Rotate: RIGHT");
+                                } else if(ttype == TokenTypes.UP)
+                                {
+                                    outputValue.Add("Rotate: UP");
+                                } else if(ttype == TokenTypes.DOWN)
+                                {
+                                    outputValue.Add("Rotate: DOWN");
+                                }
+                            }
                         }
                         else if (ttype == TokenTypes.ID)
                         {
@@ -2752,8 +2772,8 @@ namespace ParserAlgo
                     }
                     else
                     {
-                        //if(ttype != TokenTypes.EOS)    
-                        //    ungetToken();
+                        if(ttype != TokenTypes.EOS)    
+                            ungetToken();
 
                         if (statementTag.Count > 0)
                         {

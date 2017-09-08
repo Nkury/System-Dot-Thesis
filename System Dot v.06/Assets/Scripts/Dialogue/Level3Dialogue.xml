@@ -1,0 +1,5 @@
+<dialogue>
+  <message id="startLevel">
+    <say char="NULL">WHOOAAAA! What just happened?!</say>
+  </message>
+</dialogue>

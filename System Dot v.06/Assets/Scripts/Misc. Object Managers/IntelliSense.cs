@@ -7,6 +7,8 @@ public class IntelliSense : Dialogue {
     public float y0;
     public float amplitude = .2f;
     public float speed = 1.5f;
+    public float scaleX = .25f;
+    public float scaleY = .25f;
 
     protected bool allowZooming = true; // in cases where zooming is not allowed
     protected bool startDifferent;
@@ -56,12 +58,12 @@ public class IntelliSense : Dialogue {
     public void ZoomOutPlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, intelliLocation.transform.position, 3 * Time.deltaTime);
-        if (transform.localScale.x < .25f)
+        if (transform.localScale.x < scaleX)
             transform.localScale += Vector3.one * .01f;
         else
         {
             y0 = this.transform.position.y;
-            transform.localScale = new Vector3(.25f, .25f, 1);
+            transform.localScale = new Vector3(scaleX, scaleY, 1);
         }
     }
 }

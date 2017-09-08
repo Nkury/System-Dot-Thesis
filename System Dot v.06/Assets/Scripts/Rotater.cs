@@ -45,4 +45,10 @@ public class Rotater : MonoBehaviour {
             }
         }
 	}
+
+    public void RotateToSpecificPosition(int rotation)
+    {
+        this.transform.rotation = Quaternion.Euler(0, 0, rotation);
+        pause = true;
+    }
 }

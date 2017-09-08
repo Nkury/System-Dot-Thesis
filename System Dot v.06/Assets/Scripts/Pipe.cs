@@ -17,13 +17,16 @@ public class Pipe : MonoBehaviour {
 
     private GameObject atBranch; // stores game object of branch that we collide with
     private List<GameObject> backUpBranches = new List<GameObject>(); // since we are removing branches, this will store them for refresh
+    private GameObject intelliSense;
 
     // Use this for initialization
     void Awake () {
         foreach(GameObject branch in branches)
         {
             backUpBranches.Add(branch);
-        }          
+        }
+
+        intelliSense = GameObject.Find("Intellisense");
 	}
 	
 	// Update is called once per frame
@@ -43,6 +46,7 @@ public class Pipe : MonoBehaviour {
                 PlayerBody.GetComponent<PlayerController>().pauseMovement = false;
                 PlayerBody.GetComponent<CircleCollider2D>().enabled = true;
                 PlayerBody.GetComponent<Rigidbody2D>().isKinematic = false;
+                intelliSense.SetActive(true);
                 PlayerBody.transform.FindChild("Player").gameObject.SetActive(true);
                 atBranch = null;
                 // to avoid adding a pointer from one list to another
@@ -184,6 +188,7 @@ public class Pipe : MonoBehaviour {
             PlayerBody.GetComponent<PlayerController>().pauseMovement = true;
             PlayerBody.GetComponent<CircleCollider2D>().enabled = false;
             PlayerBody.GetComponent<Rigidbody2D>().isKinematic = true;
+            intelliSense.SetActive(false);
             other.transform.FindChild("Player").gameObject.SetActive(false);
         }
     }

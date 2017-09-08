@@ -470,10 +470,40 @@ public class EnemyTerminal : MonoBehaviour
                             {
                                 if (this.GetComponent<Rotater>() != null)
                                 {
-                                    float repitition = float.Parse(output.Substring(8, output.Length - 8));
-                                    this.GetComponent<Rotater>().pause = false;
-                                    this.GetComponent<Rotater>().goLeft = repitition >= 0;
-                                    this.GetComponent<Rotater>().maxRotation += repitition * 360;
+                                    float frepitition = float.NaN;
+                                    string repetition = string.Empty;
+                                    try
+                                    {
+                                        frepitition = float.Parse(output.Substring(8, output.Length - 8));
+                                    } catch(Exception e)
+                                    {
+                                        repetition = output.Substring(8, output.Length - 8);
+                                    }
+
+                                    if (repetition == string.Empty)
+                                    {
+                                        this.GetComponent<Rotater>().pause = false;
+                                        this.GetComponent<Rotater>().goLeft = frepitition >= 0;
+                                        this.GetComponent<Rotater>().maxRotation += frepitition * 360;
+                                    }
+                                    else
+                                    {
+                                        switch (repetition)
+                                        {
+                                            case "LEFT":
+                                                this.GetComponent<Rotater>().RotateToSpecificPosition(90);
+                                                break;
+                                            case "RIGHT":
+                                                this.GetComponent<Rotater>().RotateToSpecificPosition(270);
+                                                break;
+                                            case "UP":
+                                                this.GetComponent<Rotater>().RotateToSpecificPosition(0);
+                                                break;
+                                            case "DOWN":
+                                                this.GetComponent<Rotater>().RotateToSpecificPosition(180);
+                                                break;
+                                        }
+                                    }
                                 }
                             }
                         }
