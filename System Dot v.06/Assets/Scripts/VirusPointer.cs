@@ -25,29 +25,33 @@ public class VirusPointer : MonoBehaviour {
 
     void PointAtVirus()
     {
-        Vector3 targetPosOnScreen = Camera.main.WorldToScreenPoint(target.transform.position);
+        if (target)
+        {
+            Vector3 targetPosOnScreen = Camera.main.WorldToScreenPoint(target.transform.position);
 
-        if (onScreen(targetPosOnScreen))
-        {
-            // if object is on screen, hide arrow and return
-            if (!this.GetComponent<Blinking>())
+
+            if (onScreen(targetPosOnScreen))
             {
-                this.gameObject.AddComponent<Blinking>();
-            }          
-        }
-        else
-        {
-            if (this.GetComponent<Blinking>())
-            {
-                Destroy(this.GetComponent<Blinking>());
-                this.GetComponent<Image>().enabled = true;
+                // if object is on screen, hide arrow and return
+                if (!this.GetComponent<Blinking>())
+                {
+                    this.gameObject.AddComponent<Blinking>();
+                }
             }
+            else
+            {
+                if (this.GetComponent<Blinking>())
+                {
+                    Destroy(this.GetComponent<Blinking>());
+                    this.GetComponent<Image>().enabled = true;
+                }
+            }
+
+            Vector3 center = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+            float angle = Mathf.Atan2(targetPosOnScreen.y - center.y, targetPosOnScreen.x - center.x) * Mathf.Rad2Deg;
+
+            this.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, angle);
         }
-
-        Vector3 center = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
-        float angle = Mathf.Atan2(targetPosOnScreen.y - center.y, targetPosOnScreen.x - center.x) * Mathf.Rad2Deg;
-
-        this.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, angle);
     }
 
     bool onScreen(Vector2 input)

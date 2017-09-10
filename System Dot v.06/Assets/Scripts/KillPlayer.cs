@@ -19,11 +19,11 @@ public class KillPlayer : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-        if (other.name == "Player" && this.gameObject.tag != "Falling Spike" && !HealthManager.isDead)
+        if (other.name == "PlayerBody" && this.gameObject.tag != "Falling Spike" && !HealthManager.isDead)
         {
             levelManager.RespawnPlayer();
         }
-        else if (other.name == "Player" && this.gameObject.tag == "Falling Spike" && !HealthManager.isDead)
+        else if (other.name == "PlayerBody" && this.gameObject.tag == "Falling Spike" && !HealthManager.isDead)
         {
             HealthManager.HurtPlayer(1);
             Destroy(this.gameObject);

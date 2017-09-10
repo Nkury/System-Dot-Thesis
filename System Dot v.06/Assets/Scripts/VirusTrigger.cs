@@ -52,11 +52,14 @@ public class VirusTrigger : MonoBehaviour
         foreach (GameObject virus in viruses)
         {
             // this.transform.parent = "Player"
-            float distanceToVirus = Vector2.Distance(this.transform.parent.transform.position, virus.transform.position);
-            if(distanceToVirus < closestDistance)
+            if (virus)
             {
-                closestDistance = distanceToVirus;
-                closestVirus = virus;
+                float distanceToVirus = Vector2.Distance(this.transform.parent.transform.position, virus.transform.position);
+                if (distanceToVirus < closestDistance)
+                {
+                    closestDistance = distanceToVirus;
+                    closestVirus = virus;
+                }
             }
         }
     }
