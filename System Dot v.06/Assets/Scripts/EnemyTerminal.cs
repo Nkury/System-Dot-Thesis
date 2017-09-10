@@ -21,6 +21,7 @@ public class EnemyTerminal : MonoBehaviour
     public string[] originalString = new string[5];
     public string classHeader;
     public string parameters = "";
+    public float moveSpeed = .025f; 
 
     public GUIStyle terminalStyle;
     public GameObject terminalPointerDestination;
@@ -31,7 +32,7 @@ public class EnemyTerminal : MonoBehaviour
     public Sprite chestSpriteClosed;
     public Sprite chestSpriteOpen;
 
-    [Header("VBot Sprites")]
+    [Header("Colored Sprites")]
     public Sprite redSlime;
     public Sprite blueSlime;
     public Sprite greenSlime;
@@ -384,7 +385,7 @@ public class EnemyTerminal : MonoBehaviour
                                 break;
                             }
                         }
-                        this.gameObject.transform.position += Vector3.left * .025f;
+                        this.gameObject.transform.position += Vector3.left * moveSpeed;
                       //  this.gameObject.transform.Translate(Vector3.left * Time.deltaTime * 3);
 
                         if (this.gameObject.name == "TutorialPlatform1" && PlayerStats.highestCheckpoint == 3)
@@ -408,7 +409,7 @@ public class EnemyTerminal : MonoBehaviour
                                 break;
                             }
                         }
-                        this.gameObject.transform.position += Vector3.right * .025f;
+                        this.gameObject.transform.position += Vector3.right * moveSpeed;
                        // this.gameObject.transform.Translate(Vector3.right * Time.deltaTime * 3);
 
                         if (this.gameObject.name == "TutorialPlatform" && PlayerStats.highestCheckpoint == 3)
