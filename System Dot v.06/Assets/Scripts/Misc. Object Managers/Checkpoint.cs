@@ -21,7 +21,7 @@ public class Checkpoint : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.name == "Player") 
+		if (other.name == "PlayerBody") 
 		{
             // if we enter a new level
             if (PlayerStats.levelName != SceneManager.GetActiveScene().name)

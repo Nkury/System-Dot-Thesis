@@ -29,17 +29,7 @@ public class EnemyHealthManager : MonoBehaviour {
 	void Update () {
 	    if(enemyHealth <= 0)
         {
-            if(simon != null && simon.getTask() == SimonController.KILL_ENEMY)
-            {
-                actions.addAction();
-
-                if (!(timer.isTimeOver()))
-                {
-                    spawner.spawnRandomEnemy();
-                }
-            }
-
-            if(this.gameObject.tag == "Centipede Body")
+          if(this.gameObject.tag == "Centipede Body")
             {
                 CentipedeHead.lives--;
 

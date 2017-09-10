@@ -94,7 +94,7 @@ public class DistanceLine : MonoBehaviour {
                     }
                 }         
             }
-        }
+        } 
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -126,6 +126,15 @@ public class DistanceLine : MonoBehaviour {
             int index = target.IndexOf(other.gameObject);
             line[index].enabled = false;
             distanceObjects[index].GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
+    void OnDestroy()
+    {
+        for (int i = 0; i < target.Count; i++)
+        {
+            line[i].enabled = false;
+            distanceObjects[i].SetActive(false);
         }
     }
 }

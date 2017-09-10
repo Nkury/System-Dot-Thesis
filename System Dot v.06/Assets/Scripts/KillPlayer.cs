@@ -21,7 +21,26 @@ public class KillPlayer : MonoBehaviour {
 	{
         if (other.name == "PlayerBody" && this.gameObject.tag != "Falling Spike" && !HealthManager.isDead)
         {
-            levelManager.RespawnPlayer();
+            if (damageToGive > 2)
+            {
+                levelManager.RespawnPlayer();
+            }
+            else
+            {
+                GameObject.Find("Sound Controller").GetComponent<SoundController>().play("player");
+                HealthManager.HurtPlayer(damageToGive);
+                var player = other.gameObject.GetComponent<PlayerController>();
+                player.knockbackCount = player.knockbackLength;
+
+                if (other.transform.position.x < transform.position.x)
+                {
+                    player.knockFromRight = true;
+                }
+                else
+                {
+                    player.knockFromRight = false;
+                }
+            }
         }
         else if (other.name == "PlayerBody" && this.gameObject.tag == "Falling Spike" && !HealthManager.isDead)
         {
