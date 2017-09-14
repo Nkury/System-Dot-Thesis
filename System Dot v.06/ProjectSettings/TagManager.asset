@@ -17,6 +17,8 @@ TagManager:
   - Centipede Trigger
   - LevelManager
   - ActivationZone
+  - Escort
+  - IntelliSenseCheckpoint
   layers:
   - Default
   - TransparentFX

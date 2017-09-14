@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 417702}
-  - 212: {fileID: 21216230}
-  - 114: {fileID: 11482092}
+  - component: {fileID: 417702}
+  - component: {fileID: 21216230}
+  - component: {fileID: 11482092}
   m_Layer: 0
   m_Name: Intellisense
   m_TagString: Untagged
@@ -29,6 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11482092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,14 +41,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dddc35abc4f6949a53121cb5bbcf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talking: 0
-  whatToSay: []
-  dialogueFileName: TutorialDialogue
-  player: {fileID: 0}
-  intelliLocation: {fileID: 0}
+  index: 0
+  dialogueIndex: 0
   dialogueBox: {fileID: 0}
-  namePrompt: {fileID: 0}
-  hackPrompt: {fileID: 0}
+  characterIcon: {fileID: 0}
+  player: {fileID: 0}
+  talkingSoundEffect: {fileID: 0}
+  talking: 0
+  dialogueFileName: TutorialDialogue
+  eventName: 
+  isAutoScroll: 0
+  y0: 0
+  amplitude: 0.2
+  speed: 1.5
+  scaleX: 0.25
+  scaleY: 0.25
+  intelliLocation: {fileID: 0}
   mouseClickPrompt: {fileID: 0}
   firstTutorialObjective: {fileID: 0}
   secondTutorialObjective: {fileID: 0}
@@ -55,6 +64,8 @@ MonoBehaviour:
   fourthTutorialObjective: {fileID: 0}
   fourthObjectiveBarrier: {fileID: 0}
   seventhTutorialBarrier: {fileID: 0}
+  namePrompt: {fileID: 0}
+  hackPrompt: {fileID: 0}
   levelTitle: {fileID: 0}
   apiButton: {fileID: 0}
   UIClickPrompt: {fileID: 0}
@@ -72,17 +83,22 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -90,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b84b2ca2a1469ee469cb64fa2d98443e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000

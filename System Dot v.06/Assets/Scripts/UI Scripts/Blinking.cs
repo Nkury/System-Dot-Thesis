@@ -19,7 +19,7 @@ public class Blinking : MonoBehaviour {
                 this.GetComponent<Image>().enabled = !this.GetComponent<Image>().enabled;
             else if(this.GetComponent<SpriteRenderer>())
             {
-                this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled;
+                this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled;         
             } else if (this.GetComponent<MeshRenderer>())
             {
                 this.GetComponent<MeshRenderer>().enabled = !this.GetComponent<MeshRenderer>().enabled;

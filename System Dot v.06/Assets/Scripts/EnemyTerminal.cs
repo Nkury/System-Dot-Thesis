@@ -429,12 +429,10 @@ public class EnemyTerminal : MonoBehaviour
                     case keyActions.SMASH:
                         if (this.GetComponent<Smash>() == null)
                         {
-                            this.gameObject.AddComponent<Smash>();
+                            this.gameObject.AddComponent<Smash>();                            
                         }
-                        if (this.GetComponent<Rigidbody2D>() != null)
-                        {
-                            this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        }
+
+                        this.gameObject.GetComponent<Smash>().countSmash++; 
                         numOfSyntaxErrors = 0;
                         break;
                     case keyActions.GRAVITYON:
