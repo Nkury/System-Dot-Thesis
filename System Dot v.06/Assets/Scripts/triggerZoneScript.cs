@@ -33,12 +33,6 @@ public class triggerZoneScript : MonoBehaviour {
             Destroy(other.gameObject);
             enemyCount++;
         }
-        else if(other.tag == "Escort")
-        {
-            PlayerStats.deadObjects.Add(this.gameObject.name);
-            Destroy(this.gameObject);
-            enemyCount++;
-        }
     }
 
     public bool getEnemyCount()

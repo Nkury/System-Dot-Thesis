@@ -17,17 +17,20 @@ public class EscortIntelliSense : MonoBehaviour {
     public float accelerationLimit = .03f;
     public float acceleration;
 
+    public bool isCharging = false;
+
     private GameObject currentCheckpoint;
     private bool hittingWall;
+    private Color formerColor;
 
 	// Use this for initialization
 	void Start () {
-		
+        formerColor = this.GetComponent<SpriteRenderer>().color;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (!playButton.activeSelf)
+        if (pauseButton.activeSelf)
         {
             hittingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, whatIsWall);
 
@@ -41,7 +44,16 @@ public class EscortIntelliSense : MonoBehaviour {
                 this.gameObject.transform.position += Vector3.right * acceleration;
             }
         }
-	}
+
+        if (isCharging)
+        {
+            this.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.red, Color.white, Mathf.PingPong(Time.time, 1));
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().color = formerColor;
+        }
+    }
 
     public void OnMouseDown()
     {
@@ -49,6 +61,7 @@ public class EscortIntelliSense : MonoBehaviour {
         {
             playButton.SetActive(false);
             pauseButton.SetActive(true);
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             acceleration = moveSpeed;
         }
         else
@@ -122,6 +135,5 @@ public class EscortIntelliSense : MonoBehaviour {
         this.GetComponent<SpriteRenderer>().enabled = true;
         this.GetComponent<Collider2D>().enabled = true;
         this.GetComponent<Blinking>().enabled = false;
-
     }
 }

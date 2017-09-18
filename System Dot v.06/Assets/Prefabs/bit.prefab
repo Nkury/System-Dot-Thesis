@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 458694}
-  - 58: {fileID: 5806372}
+  - component: {fileID: 458694}
+  - component: {fileID: 5806372}
   m_Layer: 16
   m_Name: bit collider
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 418300}
-  - 212: {fileID: 21212498}
-  - 50: {fileID: 5025138}
-  - 58: {fileID: 5891736}
-  - 114: {fileID: 11459010}
+  - component: {fileID: 418300}
+  - component: {fileID: 21212498}
+  - component: {fileID: 5025138}
+  - component: {fileID: 5891736}
+  - component: {fileID: 11459010}
   m_Layer: 0
   m_Name: bit
   m_TagString: bit
@@ -48,6 +48,7 @@ Transform:
   - {fileID: 458694}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &458694
 Transform:
   m_ObjectHideFlags: 1
@@ -60,19 +61,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 418300}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5025138
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123668}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_IsKinematic: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -118,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zero: {fileID: 21300000, guid: d718993aaedcc874589228a3798e9e85, type: 3}
   one: {fileID: 21300000, guid: bad415bca6d59284e9160b71be2ec91c, type: 3}
+  speed: 10
 --- !u!212 &21212498
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -127,17 +133,22 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

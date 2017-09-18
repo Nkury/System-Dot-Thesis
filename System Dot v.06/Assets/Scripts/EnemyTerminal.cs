@@ -267,7 +267,9 @@ public class EnemyTerminal : MonoBehaviour
             }
         }
 
-        if (!actions.Contains(keyActions.ERROR)) {
+        setUpActions();
+
+        if (!actions.Contains(keyActions.ERROR)) {            
             foreach (keyActions action in actions)
             {
                 switch (action)
@@ -550,13 +552,16 @@ public class EnemyTerminal : MonoBehaviour
                             }
                         }
                         break;
+                    case keyActions.INFINITELOOP:
+                        this.checkTerminalString();
+                        break;
                     }
                 }
             } else{
             // ERROR (turn object black if error and halt all current actions)
                 ObjectError();
                 numOfSyntaxErrors++;
-            }        
+            }
     }
 
     public void ObjectError()
@@ -589,6 +594,15 @@ public class EnemyTerminal : MonoBehaviour
         {
             this.GetComponent<Gate>().ActivateDestination(false);
         }
+    }
+
+    public void setUpActions()
+    {
+        if (this.GetComponent<Smash>())
+        {
+            this.gameObject.GetComponent<Smash>().countSmash = 0;
+        }
+        
     }
 
     public void ShowTerminalWindow()

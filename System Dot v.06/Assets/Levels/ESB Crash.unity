@@ -316,7 +316,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.945946
+  orthographic size: 2.896175
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1292,6 +1292,11 @@ MonoBehaviour:
   dialogueFileName: TrainDialogue
   eventName: 
   isAutoScroll: 0
+  y0: 0
+  amplitude: 0.2
+  speed: 1.5
+  scaleX: 0.25
+  scaleY: 0.25
   intelliLocation: {fileID: 1530391602}
   startAutoScrollingAtPosition: 5.5
   maxDistance: -6
@@ -1700,6 +1705,18 @@ Prefab:
     - target: {fileID: 417702, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21216230, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21216230, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21216230, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
