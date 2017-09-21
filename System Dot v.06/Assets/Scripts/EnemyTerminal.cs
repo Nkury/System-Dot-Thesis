@@ -528,6 +528,11 @@ public class EnemyTerminal : MonoBehaviour
                         }           
                         break;
                     case keyActions.OUTPUT:
+                        if (this.GetComponent<Spawner>())
+                        {
+                            this.GetComponent<Spawner>().SetNumEnemies(1);
+
+                        }
                         foreach (string output in outputVal)
                         {
                             if (output.Contains("Output: "))
@@ -548,7 +553,7 @@ public class EnemyTerminal : MonoBehaviour
                                     {
                                         actions.Add(keyActions.ERROR);
                                     }
-                                }
+                                } 
                             }
                         }
                         break;
