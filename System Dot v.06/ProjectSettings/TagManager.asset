@@ -19,6 +19,7 @@ TagManager:
   - ActivationZone
   - Escort
   - IntelliSenseCheckpoint
+  - Boss2Attack
   layers:
   - Default
   - TransparentFX

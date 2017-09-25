@@ -559,6 +559,7 @@ public class EnemyTerminal : MonoBehaviour
                         break;
                     case keyActions.INFINITELOOP:
                         this.checkTerminalString();
+                        evaluateActions();
                         break;
                     }
                 }

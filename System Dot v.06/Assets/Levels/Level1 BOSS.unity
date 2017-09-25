@@ -9292,7 +9292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cf155c0099f554aacfd1c1bec1d71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
 --- !u!114 &1521650064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10032,6 +10031,18 @@ Prefab:
       propertyPath: dialogueFileName
       value: BossDialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 21216230, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21216230, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21216230, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
@@ -10213,7 +10224,7 @@ Prefab:
     - target: {fileID: 11482972, guid: 2bad5c6250d1fd3448d78b3d474296b6, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1973912513}
+      objectReference: {fileID: 0}
     - target: {fileID: 191214, guid: 2bad5c6250d1fd3448d78b3d474296b6, type: 2}
       propertyPath: m_Name
       value: Main Camera
@@ -11853,12 +11864,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 175714, guid: d0fa0882dc00c17419614755d2d327d7, type: 2}
   m_PrefabInternal: {fileID: 1985165127}
---- !u!114 &1973912513 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11428760, guid: d0fa0882dc00c17419614755d2d327d7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1985165127}
-  m_Script: {fileID: 11500000, guid: 36083d9971a689340836e8ec01e160a3, type: 3}
 --- !u!4 &1983451319 stripped
 Transform:
   m_PrefabParentObject: {fileID: 462308, guid: 871ac9214316afe4280ed55667d469e5, type: 2}
