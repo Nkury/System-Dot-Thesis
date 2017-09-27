@@ -73,15 +73,9 @@ public class Dialogue : MonoBehaviour {
             dialogue.Add(keyName, addedDialogue);
             events.Add(keyName, eventName);
         }
-    }
-    
-    // Update is called once per frame
-    public void Update()
-    {
+    }   
 
-    }
-
-	public void FixedUpdate () {
+	public void Update () {
 
         // for autoscrolling scenarios
         if (isAutoScroll)

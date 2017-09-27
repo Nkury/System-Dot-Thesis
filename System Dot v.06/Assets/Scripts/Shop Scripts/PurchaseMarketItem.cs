@@ -4,15 +4,16 @@ using UnityEngine.UI;
 
 public class PurchaseMarketItem : MonoBehaviour {
 
-    public int healthPotionCost;
+    public GameObject shopKeeper;
+    public int healthCost;
+    public int revivePotionCost;
     public int armorCost;
     public int cowboyCost;
-    public Text txt;
 
     public SoundController sound;
 	// Use this for initialization
 	void Start () {
-        healthPotionCost = 500;
+        revivePotionCost = 500;
         armorCost = 750;
         cowboyCost = 2000;
         sound = FindObjectOfType<SoundController>();
@@ -23,23 +24,40 @@ public class PurchaseMarketItem : MonoBehaviour {
 	
 	}
 
-    public void purchaseHealthPotion()
+    public void purchaseHealth()
     {
-        resetText();
-        if ((PlayerStats.bitsCollected - healthPotionCost) < 0 )
+        if ((PlayerStats.bitsCollected - healthCost) < 0)
+        {
+            insufficientFunds();
+        } else if((PlayerStats.currentHealth >= PlayerStats.maxHealth))
+        {
+            shopKeeper.GetComponent<Shopkeeper>().SetDialogue("healthMaxed");
+        }
+        else
+        {
+            PlayerStats.bitsCollected -= healthCost;
+            PlayerStats.currentHealth += 1;
+            itemBought();
+        }
+    }
+
+
+    public void purchaseRevivePotion()
+    {
+        if ((PlayerStats.bitsCollected - revivePotionCost) < 0 )
         {
             insufficientFunds();
         }
         else
         {
-            PlayerStats.bitsCollected -= healthPotionCost;
-            PlayerStats.numHealthPotions += 1;
+            PlayerStats.bitsCollected -= revivePotionCost;
+            PlayerStats.numRevivePotions += 1;
+            itemBought();
         }
     }
 
     public void purchaseArmor()
     {
-        resetText();
         if ((PlayerStats.bitsCollected - armorCost) < 0)
         {
             insufficientFunds();
@@ -48,13 +66,12 @@ public class PurchaseMarketItem : MonoBehaviour {
         {
             PlayerStats.bitsCollected -= armorCost;
             PlayerStats.armorHealth += 5;
+            itemBought();
         }
     }
 
     public void purchaseCowboyHat()
     {
-        
-        resetText();
         if ((PlayerStats.bitsCollected - cowboyCost) < 0)
         {
             insufficientFunds();
@@ -63,6 +80,7 @@ public class PurchaseMarketItem : MonoBehaviour {
         {
             PlayerStats.bitsCollected -= cowboyCost;
             PlayerStats.hat = "cowboy";
+            itemBought();
             sound.play("cowboy");
         }
         
@@ -70,11 +88,11 @@ public class PurchaseMarketItem : MonoBehaviour {
 
     void insufficientFunds()
     {
-        txt.text = "Sorry! You don't have enough bits!";
+        shopKeeper.GetComponent<Shopkeeper>().SetDialogue("insufficientFunds");
     }
 
-    void resetText()
+    void itemBought()
     {
-        txt.text = "";
+        shopKeeper.GetComponent<Shopkeeper>().SetDialogue("itemBought");
     }
 }

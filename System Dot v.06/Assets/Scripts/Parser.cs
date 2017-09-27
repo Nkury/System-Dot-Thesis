@@ -1687,7 +1687,7 @@ namespace ParserAlgo
             if (ttype == TokenTypes.ID || ttype == TokenTypes.NUM ||
                 ttype == TokenTypes.REALNUM || ttype == TokenTypes.TRUE ||
                 ttype == TokenTypes.FALSE || ttype == TokenTypes.QUOTE ||
-                ttype == TokenTypes.SYSTEM)
+                ttype == TokenTypes.SYSTEM || ttype == TokenTypes.NOT)
             {
                 ungetToken();
                 left_op = ParsePrimary();
@@ -1701,7 +1701,7 @@ namespace ParserAlgo
                     ttype = getToken();
                     if (ttype == TokenTypes.ID || ttype == TokenTypes.NUM ||
                         ttype == TokenTypes.REALNUM || ttype == TokenTypes.TRUE
-                        || ttype == TokenTypes.FALSE || ttype == TokenTypes.QUOTE)
+                        || ttype == TokenTypes.FALSE || ttype == TokenTypes.QUOTE || ttype == TokenTypes.NOT)
                     {
                         ungetToken();
                         right_op = ParsePrimary();
@@ -1795,7 +1795,7 @@ namespace ParserAlgo
                         }
                     }
                 } 
-            }
+            } 
 
             return 2; //DUMMY DATA
         }
@@ -2068,7 +2068,8 @@ namespace ParserAlgo
                         {
                             ungetToken();
                             return ParseLength(var.value);
-                        } else if(ttype == TokenTypes.SUBSTRING)
+                        }
+                        else if (ttype == TokenTypes.SUBSTRING)
                         {
                             ungetToken();
                             returnVal.tag = TokenTypes.STRING;
@@ -2081,7 +2082,8 @@ namespace ParserAlgo
                             {
                                 return default(numberOrString);
                             }
-                        } else if(ttype == TokenTypes.INDEXOF)
+                        }
+                        else if (ttype == TokenTypes.INDEXOF)
                         {
                             ungetToken();
                             return ParseIndexOf(var.value);
@@ -2095,31 +2097,42 @@ namespace ParserAlgo
                         return returnVal;
                     }
                 }
-            } else if (ttype == TokenTypes.NUM)
+            }
+            else if (ttype == TokenTypes.NUM)
             {
                 returnVal.tag = TokenTypes.INT;
                 returnVal.value = token;
                 return returnVal;
-            } else if (ttype == TokenTypes.REALNUM)
+            }
+            else if (ttype == TokenTypes.REALNUM)
             {
                 returnVal.tag = TokenTypes.REAL;
                 returnVal.value = token;
                 return returnVal;
-            } else if (ttype == TokenTypes.QUOTE)
+            }
+            else if (ttype == TokenTypes.QUOTE)
             {
                 ungetToken();
                 returnVal.tag = TokenTypes.STRING;
                 returnVal.value = ParseStringExpression();
                 return returnVal;
-            } else if (ttype == TokenTypes.TRUE || ttype == TokenTypes.FALSE)
+            }
+            else if (ttype == TokenTypes.TRUE || ttype == TokenTypes.FALSE)
             {
                 returnVal.tag = TokenTypes.BOOLEAN;
                 returnVal.value = token;
                 return returnVal;
-            } else if(ttype == TokenTypes.SYSTEM)
+            }
+            else if (ttype == TokenTypes.NOT)
+            {
+                returnVal.tag = TokenTypes.BOOLEAN;
+                returnVal.value = (!Convert.ToBoolean(ParseBooleanExpression())).ToString();
+                return returnVal;
+            }
+            else if (ttype == TokenTypes.SYSTEM)
             {
                 ungetToken();
-                return ParseSystem();                
+                return ParseSystem();
             }
 
             return default(numberOrString);

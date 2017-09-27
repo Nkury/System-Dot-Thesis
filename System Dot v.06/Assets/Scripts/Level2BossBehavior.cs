@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level2BossBehavior : MonoBehaviour {
 
     public GameObject bossAttack;
     public GameObject topSpikes;
+    public Slider bossHealth;
 
     public float intervalToSpike;
     public float rotateSpeed;
@@ -40,8 +42,14 @@ public class Level2BossBehavior : MonoBehaviour {
                 SetUp();
                 StartCoroutine(AttackPhase(health));
             }
-        }    
-        
+        }
+
+        if (health != 3) {
+            this.GetComponent<Rotater>().maxRotation += 1000;
+            this.GetComponent<Rotater>().pause = false;
+        }
+
+        bossHealth.value = health;
     }
     
     // Update at fixed frames
@@ -71,10 +79,9 @@ public class Level2BossBehavior : MonoBehaviour {
     {
         // set the camera to zoom out
         Camera.main.GetComponent<CameraController>().enabled = false;
-        Camera.main.transform.position = new Vector3(33.82f, 10.9f, -1);
+        Camera.main.transform.position = new Vector3(33.82f, 10.9f, -2);
         Camera.main.orthographicSize = 14;
         Array.Clear(this.GetComponent<EnemyTerminal>().terminalString, 0, 5);
-        // do other misc things
     }
 
     public IEnumerator AttackPhase(int phase)
@@ -88,11 +95,14 @@ public class Level2BossBehavior : MonoBehaviour {
                 StartCoroutine(MegaAttack(1, 2, 5));        
                 yield return new WaitForSeconds(15);
                 intervalToSpike = .8f;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "boolean b;";
+                this.GetComponent<EnemyTerminal>().terminalString[1] = "boolean power = (var && !b);";
+                this.GetComponent<EnemyTerminal>().terminalString[2] = "System.output(power);";
                 break;
             case 3:
                 topSpikes.SetActive(false);
-                attackSpeed = 0.065f;
-                rotateSpeed = 3;
+                attackSpeed = 0.04f;
+                rotateSpeed = 15;
                 StartCoroutine(MegaAttack(1, 3, 5));
                 yield return new WaitForSeconds(20);
                 rotateSpeed = 2;
@@ -100,8 +110,24 @@ public class Level2BossBehavior : MonoBehaviour {
                 StartCoroutine(MegaAttack(1, .5f, 10));
                 yield return new WaitForSeconds(15);
                 intervalToSpike = .6f;
+                this.GetComponent<Rotater>().maxRotation = 0;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.rotate(Direction.DOWN);";
+                this.GetComponent<EnemyTerminal>().terminalString[1] = "";
+                this.GetComponent<EnemyTerminal>().terminalString[2] = "";
+                this.GetComponent<EnemyTerminal>().checkTerminalString();
+                this.GetComponent<EnemyTerminal>().evaluateActions();
+                this.GetComponent<EnemyTerminal>().numberOfLines = 4;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "double dec = .5;";
+                this.GetComponent<EnemyTerminal>().terminalString[1] = "double rot = var + dec;";
+                this.GetComponent<EnemyTerminal>().terminalString[2] = "System.rotate(dec);";
+                this.GetComponent<EnemyTerminal>().terminalString[3] = "System.body(Color.RED);";
                 break;
             case 2:
+                this.GetComponent<EnemyTerminal>().numberOfLines = 1;
+                this.GetComponent<EnemyTerminal>().numOfLegacy[0] = true;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.body(Color.BLACK);";
+                this.GetComponent<EnemyTerminal>().checkTerminalString();
+                this.GetComponent<EnemyTerminal>().evaluateActions();
                 attackSpeed = 0.1f;
                 rotateSpeed = 5;
                 StartCoroutine(BossSmash(5, 0, ParserAlgo.keyActions.ERROR, 4));
@@ -112,8 +138,18 @@ public class Level2BossBehavior : MonoBehaviour {
                 StartCoroutine(MegaAttack(1, .5f, 10));
                 yield return new WaitForSeconds(15);
                 intervalToSpike = .5f;
+                this.GetComponent<Rotater>().rotationSpeed = 100;
+                this.GetComponent<EnemyTerminal>().numberOfLines = 1;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.body(Color.BLUE);";
+                this.GetComponent<EnemyTerminal>().checkTerminalString();
+                this.GetComponent<EnemyTerminal>().evaluateActions();
                 break;
             case 1:
+                this.GetComponent<EnemyTerminal>().numberOfLines = 1;
+                this.GetComponent<EnemyTerminal>().numOfLegacy[0] = true;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.body(Color.BLACK);";
+                this.GetComponent<EnemyTerminal>().checkTerminalString();
+                this.GetComponent<EnemyTerminal>().evaluateActions();
                 attackSpeed = 0.08f;
                 rotateSpeed = 12;
                 this.GetComponent<Rotater>().rotationSpeed = 500;
@@ -131,6 +167,10 @@ public class Level2BossBehavior : MonoBehaviour {
                 StartCoroutine(BossSmash(1, 2, ParserAlgo.keyActions.MOVELEFT, 1));
                 yield return new WaitForSeconds(10f);
                 this.GetComponent<Rotater>().rotationSpeed = 100;
+                this.GetComponent<EnemyTerminal>().numberOfLines = 1;
+                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.body(Color.GREEN);";
+                this.GetComponent<EnemyTerminal>().checkTerminalString();
+                this.GetComponent<EnemyTerminal>().evaluateActions();
                 attackSpeed = 0.04f;
                 this.GetComponent<EnemyTerminal>().moveSpeed = .04f;
                 StartCoroutine(BossSmash(1, 2, ParserAlgo.keyActions.MOVERIGHT, 1));
@@ -189,10 +229,12 @@ public class Level2BossBehavior : MonoBehaviour {
         {
             if (other.transform.parent.parent != null)
             {
+                this.GetComponent<EnemyHealthManager>().giveDamage(1);
                 Destroy(other.transform.parent.parent.gameObject);
             }
             else
             {
+                this.GetComponent<EnemyHealthManager>().giveDamage(1);
                 Destroy(other.transform.parent.gameObject);
             }
         }

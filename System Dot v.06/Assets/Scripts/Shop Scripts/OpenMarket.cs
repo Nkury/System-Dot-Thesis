@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class OpenMarket : MonoBehaviour {
-
-
+    
     public GameObject marketCanvas;
 
     private bool openMarket;
@@ -23,11 +22,10 @@ public class OpenMarket : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
       
-        if (Input.GetKeyDown(KeyCode.M) && inMarket)
+        if (Input.GetKeyDown(KeyCode.W) && inMarket)
         {
             openShopTip.SetActive(openMarket);
-            openMarket = !openMarket;
-            
+            openMarket = !openMarket;            
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && openMarket)
@@ -51,8 +49,7 @@ public class OpenMarket : MonoBehaviour {
 	}
 
     void OnTriggerEnter2D(Collider2D other)
-    {
-       
+    {       
         if (other.tag == "Player")
         {
             inMarket = true;
@@ -61,11 +58,9 @@ public class OpenMarket : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D other)
-    {
-        
+    {        
             inMarket = false;
-            openShopTip.SetActive(false);
-        
+            openShopTip.SetActive(false);        
     }
 
 

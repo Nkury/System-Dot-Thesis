@@ -89,16 +89,7 @@ public class PlayerController : MonoBehaviour
                 jumpSound.Stop();
                 doubleJumpSound.Play();
                 doubleJumped = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                if (PlayerStats.numHealthPotions > 0)
-                {
-                    PlayerStats.numHealthPotions--;
-                    HealthManager.FullHealth();
-                }
-            }
+            }             
 
             if (Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift))
             {

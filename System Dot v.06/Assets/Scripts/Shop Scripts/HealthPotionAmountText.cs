@@ -12,6 +12,6 @@ public class HealthPotionAmountText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        txt.text = "x" + PlayerStats.numHealthPotions.ToString();
+        txt.text = "x" + PlayerStats.numRevivePotions.ToString();
 	}
 }

@@ -36,22 +36,30 @@ public class HealthManager : MonoBehaviour {
 	void Update () {
         if(PlayerStats.currentHealth <= 0 && !isDead)
         {
-            GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
-            PlayerStats.numberOfDeaths++;
-            PlayerStats.currentHealth = 0;
-
-            if (SceneManager.GetActiveScene().name == "Level1 BOSS")
+            if (PlayerStats.numRevivePotions > 0)
             {
-                FullHealth();
-                BossIntellisense.startBoss = false;
-                CentipedeHead.lives = 18;
-                CentipedeHead.life = 1;
-                SceneManager.LoadScene(PlayerStats.levelName);
+                PlayerStats.numRevivePotions--;
+                HealthManager.FullHealth();
             }
             else
             {
-                levelManager.RespawnPlayer();
-                isDead = true;
+                GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
+                PlayerStats.numberOfDeaths++;
+                PlayerStats.currentHealth = 0;
+
+                if (SceneManager.GetActiveScene().name == "Level1 BOSS")
+                {
+                    FullHealth();
+                    BossIntellisense.startBoss = false;
+                    CentipedeHead.lives = 18;
+                    CentipedeHead.life = 1;
+                    SceneManager.LoadScene(PlayerStats.levelName);
+                }
+                else
+                {
+                    levelManager.RespawnPlayer();
+                    isDead = true;
+                }
             }
 
             EnemyTerminal.globalTerminalMode = 0;            

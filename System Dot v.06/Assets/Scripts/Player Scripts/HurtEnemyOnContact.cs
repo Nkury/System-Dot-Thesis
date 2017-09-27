@@ -67,7 +67,7 @@ public class HurtEnemyOnContact : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body") && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
+        if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body" || other.tag.Contains("Boss")) && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
             GameObject.Find("Sound Controller").GetComponent<SoundController>().play("enemy");
             other.GetComponent<EnemyHealthManager>().giveDamage(damageToGive);

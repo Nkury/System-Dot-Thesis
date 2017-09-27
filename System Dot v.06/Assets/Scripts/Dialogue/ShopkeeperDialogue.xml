@@ -1,0 +1,30 @@
+<dialogue>
+  
+  <message id="health">
+    <say char="Shopkeeper">Replenishes your health by one.</say>
+  </message>
+
+  <message id="revive">
+    <say char="Shopkeeper">You will revived to full health without dying.</say>
+  </message>
+
+  <message id="armor">
+    <say char="Shopkeeper">Acts like consumable health and cannot be regained.</say>
+  </message>
+
+  <message id="hat">
+    <say char="Shopkeeper">Code without rules like the wild wild west!</say>
+  </message>
+
+  <message id="insufficientFunds">
+    <say char="Shopkeeper">Sorry, pal! You don't have enough memory for that!</say>"
+  </message>
+
+  <message id="healthMaxed">
+    <say char="Shopkeeper">I'm not letting you waste your memory. You already have full health!</say>
+  </message>
+
+  <message id="itemBought">
+    <say char="Shopkeeper">It's been a pleasure processing your memory. Please come again!</say>
+  </message>
+</dialogue>

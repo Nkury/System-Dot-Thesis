@@ -30,7 +30,7 @@ public class PlayerStats {
     public static int numberOfDeaths;
     public static float totalSecondsOfPlaytime;
 
-    public static int numHealthPotions;
+    public static int numRevivePotions;
     public static string hat;
 
     /**** PLAYER PROGRESS *************************************************************************/

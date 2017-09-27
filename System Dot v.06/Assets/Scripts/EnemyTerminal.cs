@@ -279,7 +279,7 @@ public class EnemyTerminal : MonoBehaviour
                         {
                             this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLUE;
                         }
-                        if (this.gameObject.tag == "Enemy")
+                        if (this.gameObject.tag == "Enemy" || this.gameObject.tag.Contains("Boss"))
                         {
                             this.GetComponent<SpriteRenderer>().sprite = blueSlime;
                         }
@@ -294,7 +294,7 @@ public class EnemyTerminal : MonoBehaviour
                         {
                             this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.RED;
                         }
-                        if (this.gameObject.tag == "Enemy")
+                        if (this.gameObject.tag == "Enemy"|| this.gameObject.tag.Contains("Boss"))
                         {
                             this.GetComponent<SpriteRenderer>().sprite = redSlime;
                         }
@@ -309,7 +309,7 @@ public class EnemyTerminal : MonoBehaviour
                         {
                             this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.GREEN;
                         }
-                        if (this.gameObject.tag == "Enemy")
+                        if (this.gameObject.tag == "Enemy" || this.gameObject.tag.Contains("Boss"))
                         {
                             this.GetComponent<SpriteRenderer>().sprite = greenSlime;
                         }
@@ -324,7 +324,7 @@ public class EnemyTerminal : MonoBehaviour
                         {
                             this.GetComponent<HurtPlayerOnContact>().enemyState = HurtEnemyOnContact.colorState.BLACK;
                         }
-                        if (this.gameObject.tag == "Enemy")
+                        if (this.gameObject.tag == "Enemy" || this.gameObject.tag.Contains("Boss"))
                         {
                             this.GetComponent<SpriteRenderer>().sprite = blackSlime;
                         }
@@ -486,7 +486,7 @@ public class EnemyTerminal : MonoBehaviour
                                     {
                                         this.GetComponent<Rotater>().pause = false;
                                         this.GetComponent<Rotater>().goLeft = frepitition >= 0;
-                                        this.GetComponent<Rotater>().maxRotation += frepitition * 360;
+                                        this.GetComponent<Rotater>().maxRotation = frepitition * 360;
                                     }
                                     else
                                     {

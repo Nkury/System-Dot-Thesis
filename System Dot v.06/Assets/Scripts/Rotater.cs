@@ -39,9 +39,11 @@ public class Rotater : MonoBehaviour {
             if(goLeft && maxRotated >= maxRotation)
             {
                 pause = true;
+                maxRotated = 0;
             } else if(!goLeft && maxRotated <= maxRotation)
             {
                 pause = true;
+                maxRotated = 0;
             }
         }
 	}
