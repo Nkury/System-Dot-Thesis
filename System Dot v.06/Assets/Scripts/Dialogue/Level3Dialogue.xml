@@ -1,5 +1,61 @@
 <dialogue>
   <message id="startLevel">
-    <say char="NULL">WHOOAAAA! What just happened?!</say>
+    <say char="NULL">Oh great... another one. </say>
+    <say char="NULL">Listen, I'm not going to waste your time. The system is corrupted.</say>
+    <say char="NULL">It's pretty obvious. The bus implodes and then the system crashes.</say>
+    <say char="NULL">Our creator has abandoned us and everything is falling apart.</say>
+    <say char="NULL">And look! We have viruses everywhere!</say>
+    <say char="NULL">We can't leave unless we cleanse this place.</say>
+    <say char="NULL">I guess we're trapped here forever...</say>
   </message>
+
+  <message id="stillNeedCleansing">
+    <say char="NULL">Whoa! You just destroyed that virus!</say>
+    <say char="NULL">I think there are more viruses in this area that need to be cleansed.</say>
+  </message>
+
+  <message id="successfulCleansing">
+    <say char="NULL">And I thought I was a boss! You're extraordinary!</say>
+    <say char="NULL">If you don't mind, I want to leave this place too.</say>
+    <say char="NULL">Let's go destroy those viruses!</say>
+  </message>
+
+  <message id="discoverIf">
+    <say char="NULL">Interesting... an IF statement.</say>
+    <say char="NULL">It's as if the following lines of code will not execute unless...</say>
+    <say char="NULL">...the condition is satisfied. Satisfy it!</say>
+  </message>
+
+  <message id="firstPipe">
+    <say char="NULL">Looks like the pipe corresponds to the branches of that IF statement.</say>
+    <say char="NULL">If it's green, that must mean the condition is true.</say>
+    <say char="NULL">Otherwise, it's false. Hence the ELSE statement.</say>
+  </message>
+
+  <message id="KillingViruses1">
+    <say char="NULL">Wow! You're pretty impressive at destroying viruses!</say>
+    <say char="NULL">Still got a lot to go, though.</say>
+  </message>
+
+  <message id="KillingViruses2">
+    <say char="NULL">If I were a virus, I'd be freaking out right about now.</say>
+    <say char="NULL">You are strong!</say>
+  </message>
+
+  <message id="KillingViruses3">
+    <say char="NULL">Hey, maybe if you clear enough viruses, I can get my name back.</say>
+    <say char="NULL">It'd be much better than NULL. See?</say>
+  </message>
+
+  <message id="KillingViruses4">
+    <say char="NULL">I'm gonna slap my parent class!</say>
+    <say char="NULL">We have one more virus to destroy!</say>
+  </message>
+
+  <message id="KillAllViruses">
+    <say char="NULL">Let me check if I can say my name...</say>
+    <say char="NULL">NULL! Nope, still nothing.</say>
+    <say char="NULL">Anywho, let's get outta here! The exit should be where we started.</say>
+  </message>
+
 </dialogue>

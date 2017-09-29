@@ -9,8 +9,9 @@ public class Pipe : MonoBehaviour {
     public float speed;
     public List<GameObject> branches;
     public List<GameObject> pipeExits;
-    
-    Vector2 dir;
+    public bool acceptPlayer = true;
+
+        Vector2 dir;
     GameObject TravelObject;
     private bool atDestination = false;
     private bool finished = false;
@@ -60,6 +61,22 @@ public class Pipe : MonoBehaviour {
                     TravelObject.GetComponent<SpriteRenderer>().enabled = true;
                     TravelObject.GetComponent<EscortIntelliSense>().playButton.SetActive(true);
                     TravelObject.GetComponent<EscortIntelliSense>().pauseButton.SetActive(false);
+                } else if(TravelObject.tag == "PipeObject")
+                {
+                    TravelObject.GetComponent <CircleCollider2D> ().enabled = true;
+                    TravelObject.GetComponent<Rigidbody2D>().isKinematic = false;
+                    TravelObject.GetComponent<SpriteRenderer>().enabled = true;
+                    foreach (Transform child in TravelObject.transform)
+                    {
+                        if (child.GetComponent<SpriteRenderer>())
+                        {
+                            child.GetComponent<SpriteRenderer>().enabled = true;
+                        }
+                        else if (child.GetComponent<MeshRenderer>())
+                        {
+                            child.GetComponent<MeshRenderer>().enabled = true;
+                        }
+                    }
                 }
                 atBranch = null;
                 // to avoid adding a pointer from one list to another
@@ -192,7 +209,7 @@ public class Pipe : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && acceptPlayer)
         {
             TravelObject = other.gameObject;
 
@@ -221,6 +238,28 @@ public class Pipe : MonoBehaviour {
             TravelObject.GetComponent<SpriteRenderer>().enabled = false;
             TravelObject.GetComponent<EscortIntelliSense>().playButton.SetActive(false);
             TravelObject.GetComponent<EscortIntelliSense>().pauseButton.SetActive(false);
+        } else if(other.tag == "PipeObject")
+        {
+            TravelObject = other.gameObject;
+
+            GetInitialDirection(other);
+
+            finished = false; // start the pipe journey
+
+            TravelObject.GetComponent<CircleCollider2D>().enabled = false;
+            foreach(Transform child in TravelObject.transform)
+            {
+                if (child.GetComponent<SpriteRenderer>())
+                {
+                    child.GetComponent<SpriteRenderer>().enabled = false;
+                } else if (child.GetComponent<MeshRenderer>())
+                {
+                    child.GetComponent<MeshRenderer>().enabled = false;
+                }
+            }
+            TravelObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            TravelObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            TravelObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 

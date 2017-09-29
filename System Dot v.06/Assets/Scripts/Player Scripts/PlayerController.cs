@@ -33,13 +33,12 @@ public class PlayerController : MonoBehaviour
     public float knockbackLength;
     public float knockbackCount;
     public bool knockFromRight;
+    public bool knockDown;
 
     private float gravityStore;
+    private float timeKnocked = 0;
     public AudioSource collectBit;
 
-
-    private SimonController simon;
-    private ActionsPerfromedManager actionManager;
     private Vector3 originalScale;
 
     public PauseMenu pauseMenu;
@@ -53,8 +52,6 @@ public class PlayerController : MonoBehaviour
         anim = this.transform.FindChild("Player").GetComponent<Animator>();
         pauseMenu = FindObjectOfType<PauseMenu>();
         gravityStore = GetComponent<Rigidbody2D>().gravityScale;
-        simon = FindObjectOfType<SimonController>();
-        actionManager = FindObjectOfType<ActionsPerfromedManager>();
     }
 
     void FixedUpdate()
@@ -76,11 +73,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump") && this.grounded)
             {
                 Jump();
-                jumpSound.Play();
-                if (simon != null && simon.getTask() == SimonController.JUMP)
-                {
-                    actionManager.addAction();
-                }
+                jumpSound.Play();       
             }
 
             if (Input.GetButtonDown("Jump") && !doubleJumped && !grounded)
@@ -104,19 +97,34 @@ public class PlayerController : MonoBehaviour
 
             if (knockbackCount <= 0)
             {
+                timeKnocked = 0;
                 GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, Mathf.Clamp(GetComponent<Rigidbody2D>().velocity.y, -maxVerticalVelocity, Mathf.Infinity));
             }
             else {
 
                 if (knockFromRight)
-                {
-                    GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, knockback);
+                {                    
+                    if (timeKnocked > 1)
+                    {
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, -knockback);
+                    }
+                    else {
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, knockback);
+                    }
                 }
                 else
                 {
-                    GetComponent<Rigidbody2D>().velocity = new Vector2(knockback, knockback);
+                    if (timeKnocked > 1)
+                    {
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(knockback, -knockback);
+                    }
+                    else
+                    {
+                        GetComponent<Rigidbody2D>().velocity = new Vector2(knockback, knockback);
+                    }
                 }
 
+                timeKnocked += Time.deltaTime;                
                 knockbackCount -= Time.deltaTime;
             }
 

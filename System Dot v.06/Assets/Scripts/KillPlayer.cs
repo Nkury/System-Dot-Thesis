@@ -40,6 +40,11 @@ public class KillPlayer : MonoBehaviour {
                 {
                     player.knockFromRight = false;
                 }
+
+                if(other.transform.position.y < transform.position.y)
+                {
+                    player.knockDown = true;
+                }
             }
         }
         else if (other.name == "PlayerBody" && this.gameObject.tag == "Falling Spike" && !HealthManager.isDead)

@@ -22,28 +22,31 @@ public class Gate : MonoBehaviour {
 
         for(int i = 0; i < parameterNames.Count; i++)
         {
-            if (powerSources[i].gameObject.name.Contains("PowerSource"))
+            if (powerSources.Count > 0)
             {
-                if (powerSources[i].transform.FindChild("StartSource").GetComponent<SpriteRenderer>().color == Color.yellow)
+                if (powerSources[i].gameObject.name.Contains("PowerSource"))
                 {
-                    parameters += "boolean " + parameterNames[i] + " = true; ";
+                    if (powerSources[i].transform.FindChild("StartSource").GetComponent<SpriteRenderer>().color == Color.yellow)
+                    {
+                        parameters += "boolean " + parameterNames[i] + " = true; ";
+                    }
+                    else
+                    {
+                        parameters += "boolean " + parameterNames[i] + " = false; ";
+                    }
                 }
-                else
+                else if (powerSources[i].gameObject.name.Contains("PowerDestination"))
                 {
-                    parameters += "boolean " + parameterNames[i] + " = false; ";
-                }
-            } else if (powerSources[i].gameObject.name.Contains("PowerDestination"))
-            {
-                if (powerSources[i].transform.FindChild("EndSource").GetComponent<SpriteRenderer>().color == Color.yellow)
-                { 
-                    parameters += "boolean " + parameterNames[i] + " = true; ";
-                }
-                else
-                {
-                    parameters += "boolean " + parameterNames[i] + " = false; ";
+                    if (powerSources[i].transform.FindChild("EndSource").GetComponent<SpriteRenderer>().color == Color.yellow)
+                    {
+                        parameters += "boolean " + parameterNames[i] + " = true; ";
+                    }
+                    else
+                    {
+                        parameters += "boolean " + parameterNames[i] + " = false; ";
+                    }
                 }
             }
-
         } 
 
         this.GetComponent<EnemyTerminal>().parameters = parameters;

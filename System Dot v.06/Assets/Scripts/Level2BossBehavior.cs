@@ -24,8 +24,6 @@ public class Level2BossBehavior : MonoBehaviour {
     public float zRotation = 0;
     public Vector2 locationToSpawn;
 
-    bool initiatePhase = false;
-
 	// Use this for initialization
 	void Start () {
         health = this.GetComponent<EnemyHealthManager>().enemyHealth;
@@ -81,6 +79,8 @@ public class Level2BossBehavior : MonoBehaviour {
         Camera.main.GetComponent<CameraController>().enabled = false;
         Camera.main.transform.position = new Vector3(33.82f, 10.9f, -2);
         Camera.main.orthographicSize = 14;
+        this.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        EnemyTerminal.globalTerminalMode = 0;
         Array.Clear(this.GetComponent<EnemyTerminal>().terminalString, 0, 5);
     }
 
@@ -124,14 +124,14 @@ public class Level2BossBehavior : MonoBehaviour {
                 break;
             case 2:
                 this.GetComponent<EnemyTerminal>().numberOfLines = 1;
-                this.GetComponent<EnemyTerminal>().numOfLegacy[0] = true;
-                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.body(Color.BLACK);";
-                this.GetComponent<EnemyTerminal>().checkTerminalString();
-                this.GetComponent<EnemyTerminal>().evaluateActions();
+                this.GetComponent<EnemyTerminal>().numOfLegacy[0] = true;     
                 attackSpeed = 0.1f;
                 rotateSpeed = 5;
                 StartCoroutine(BossSmash(5, 0, ParserAlgo.keyActions.ERROR, 4));
                 StartCoroutine(MegaAttack(.5f, 4, 5));
+                this.GetComponent<EnemyTerminal>().actions.Clear();
+                this.GetComponent<EnemyTerminal>().actions.Add(ParserAlgo.keyActions.TURNBLACK);
+                this.GetComponent<EnemyTerminal>().evaluateActions();
                 yield return new WaitForSeconds(22.5f);
                 rotateSpeed = 10;
                 attackSpeed = 0.035f;
@@ -147,8 +147,8 @@ public class Level2BossBehavior : MonoBehaviour {
             case 1:
                 this.GetComponent<EnemyTerminal>().numberOfLines = 1;
                 this.GetComponent<EnemyTerminal>().numOfLegacy[0] = true;
-                this.GetComponent<EnemyTerminal>().terminalString[0] = "System.body(Color.BLACK);";
-                this.GetComponent<EnemyTerminal>().checkTerminalString();
+                this.GetComponent<EnemyTerminal>().actions.Clear();
+                this.GetComponent<EnemyTerminal>().actions.Add(ParserAlgo.keyActions.TURNBLACK);
                 this.GetComponent<EnemyTerminal>().evaluateActions();
                 attackSpeed = 0.08f;
                 rotateSpeed = 12;
@@ -189,6 +189,7 @@ public class Level2BossBehavior : MonoBehaviour {
         }
 
         // reset
+        this.gameObject.layer = LayerMask.NameToLayer("Default");
         attackSpeed = 0.025f;
         rotateSpeed = 1;
         Camera.main.GetComponent<CameraController>().enabled = true;
@@ -227,12 +228,12 @@ public class Level2BossBehavior : MonoBehaviour {
     {
         if (other.GetComponent<KillPlayer>() && other.gameObject.tag != "Boss2Attack")
         {
-            if (other.transform.parent.parent != null)
+            if (other.transform.parent.parent != null && health == 4)
             {
                 this.GetComponent<EnemyHealthManager>().giveDamage(1);
                 Destroy(other.transform.parent.parent.gameObject);
             }
-            else
+            else if (health == 5)
             {
                 this.GetComponent<EnemyHealthManager>().giveDamage(1);
                 Destroy(other.transform.parent.gameObject);

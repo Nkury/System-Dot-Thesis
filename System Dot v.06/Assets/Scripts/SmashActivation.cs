@@ -17,6 +17,7 @@ public class SmashActivation : Activation {
     public override void activate()
     {
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        GameObject.FindObjectOfType<Level2BossBehavior>().SetUp();
     }
 
     public override void deactivate()

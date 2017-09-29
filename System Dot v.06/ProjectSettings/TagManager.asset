@@ -21,6 +21,7 @@ TagManager:
   - IntelliSenseCheckpoint
   - Boss2Attack
   - Boss2
+  - PipeObject
   layers:
   - Default
   - TransparentFX
