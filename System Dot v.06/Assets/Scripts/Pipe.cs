@@ -65,6 +65,8 @@ public class Pipe : MonoBehaviour {
                 {
                     TravelObject.GetComponent <CircleCollider2D> ().enabled = true;
                     TravelObject.GetComponent<Rigidbody2D>().isKinematic = false;
+                    TravelObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                    TravelObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
                     TravelObject.GetComponent<SpriteRenderer>().enabled = true;
                     foreach (Transform child in TravelObject.transform)
                     {
@@ -257,7 +259,8 @@ public class Pipe : MonoBehaviour {
                     child.GetComponent<MeshRenderer>().enabled = false;
                 }
             }
-            TravelObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            TravelObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            TravelObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
             TravelObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TravelObject.GetComponent<SpriteRenderer>().enabled = false;
         }

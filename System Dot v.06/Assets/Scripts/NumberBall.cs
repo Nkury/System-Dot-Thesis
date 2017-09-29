@@ -9,7 +9,6 @@ public class NumberBall : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        character = text.text[0];
     }
 	
 	// Update is called once per frame

@@ -21716,6 +21716,7 @@ GameObject:
   - component: {fileID: 445636645}
   - component: {fileID: 445636647}
   - component: {fileID: 445636648}
+  - component: {fileID: 445636649}
   m_Layer: 0
   m_Name: level_3_boss_v2
   m_TagString: Untagged
@@ -21803,6 +21804,7 @@ MonoBehaviour:
   - {fileID: 1161555217}
   bossAttack: {fileID: 1606683971181446, guid: c57129bea5e862e4c9d3511880547d67, type: 2}
   numberBall: {fileID: 1183584601299654, guid: 533d359fb9bbcf74288e4ec44eda3aa6, type: 2}
+  bossPlatform: {fileID: 74404726}
   spawnNumberBall: {fileID: 198371183747840332, guid: 2e1f15b168aad1b43b0187351d3b6003,
     type: 2}
   bossHealth: {fileID: 305373304}
@@ -21813,6 +21815,22 @@ MonoBehaviour:
   health: 5
   intervalToSpike: 1
   intervalToSpawn: 10
+  intervalToDropNumBall: 5
+--- !u!114 &445636649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 445636644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39bdce62ba3be44db230365f3a3c2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 5
+  deathEffect: {fileID: 160488, guid: 82d85631516b35c418bfc5d62e446b43, type: 2}
+  bit: {fileID: 123668, guid: b0446fa66e41c174ba57f48cf48b16dc, type: 2}
+  bitsOnDeath: 50
 --- !u!1001 &446203277
 Prefab:
   m_ObjectHideFlags: 0
@@ -36501,7 +36519,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2007148, guid: 2bad5c6250d1fd3448d78b3d474296b6, type: 2}
       propertyPath: orthographic size
-      value: 6.5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11482972, guid: 2bad5c6250d1fd3448d78b3d474296b6, type: 2}
       propertyPath: m_Enabled
