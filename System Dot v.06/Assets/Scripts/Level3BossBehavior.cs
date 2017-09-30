@@ -18,6 +18,7 @@ public class Level3BossBehavior : MonoBehaviour {
     public float amplitude;
     public float baseX;
     public float spawnYDown;
+    public float restingY;
 
     public int health;
 
@@ -38,6 +39,7 @@ public class Level3BossBehavior : MonoBehaviour {
     private bool isAttacking;
     private bool isSpawning;
     private bool isSpiking;
+    private bool isWaiting;
 
     // Use this for initialization
     void Start()
@@ -50,7 +52,9 @@ public class Level3BossBehavior : MonoBehaviour {
 
         if (isAttacking)
         {
-
+            transform.position = Vector2.MoveTowards(this.transform.position, 
+                new Vector2(midpoint, restingY),
+                moveSpeed * Time.time);
         }
         else if (numBall)
         {
@@ -64,6 +68,7 @@ public class Level3BossBehavior : MonoBehaviour {
         }
         else
         {
+            isWaiting = false;
             transform.position = new Vector2(baseX + amplitude * Mathf.Sin(moveSpeed * Time.time), transform.position.y);
         }
 
@@ -93,7 +98,7 @@ public class Level3BossBehavior : MonoBehaviour {
             Spike();
         }
 
-        if (!isAttacking && !isSpawning && !isSpiking)
+        if (!isAttacking && !isSpawning && !isSpiking && !isWaiting)
         {
             isSpiking = true;
             StartCoroutine(SpikePattern(health));
@@ -105,9 +110,11 @@ public class Level3BossBehavior : MonoBehaviour {
             StartCoroutine(SpawnNumberBall());
         }
 
-        if(dropTime >= intervalToDropNumBall && numBall != null)
+        if(dropTime >= intervalToDropNumBall && numBall != null && !isWaiting)
         {
             numBall.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            isWaiting = true;
+            dropTime = 0;            
         }
 
     }
@@ -233,7 +240,9 @@ public class Level3BossBehavior : MonoBehaviour {
     {
         if (other.GetComponent<KillPlayer>() && other.gameObject.tag == "PipeObject")
         {
-            this.GetComponent<EnemyHealthManager>().giveDamage(1);    
+            Destroy(other.transform.parent.gameObject);
+            this.GetComponent<EnemyHealthManager>().giveDamage(1);
+            spawnTime = 0;   
         }
     }
 

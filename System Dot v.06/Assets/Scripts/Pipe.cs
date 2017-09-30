@@ -261,6 +261,7 @@ public class Pipe : MonoBehaviour {
             }
             TravelObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             TravelObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            TravelObject.transform.rotation = new Quaternion(0, 0, 0, 0);
             TravelObject.GetComponent<Rigidbody2D>().isKinematic = true;
             TravelObject.GetComponent<SpriteRenderer>().enabled = false;
         }

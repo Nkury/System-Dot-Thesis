@@ -351,6 +351,15 @@ public class EnemyTerminal : MonoBehaviour
                                     }
                                 }
                             }
+                        } else if (this.GetComponent<TiltPlatform>())
+                        {
+                            foreach(string output in outputVal)
+                            {
+                                if(output.Contains("Body: "))
+                                {
+                                    this.GetComponent<TiltPlatform>().condition = output.Substring(6, output.Length - 6);
+                                }
+                            }
                         }
                         break;
                     case keyActions.CLOSE:

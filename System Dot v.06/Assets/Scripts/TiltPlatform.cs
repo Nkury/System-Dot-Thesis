@@ -18,7 +18,7 @@ public class TiltPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        condition = this.gameObject.transform.FindChild("condition").GetComponent<TextMesh>().text;
+        this.gameObject.transform.FindChild("condition").GetComponent<TextMesh>().text = condition;
 	}
 
     public void evaluateCondition(char value)
