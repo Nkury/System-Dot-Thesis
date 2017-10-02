@@ -133,8 +133,11 @@ public class DistanceLine : MonoBehaviour {
     {
         for (int i = 0; i < target.Count; i++)
         {
-            line[i].enabled = false;
-            distanceObjects[i].SetActive(false);
+            if (line[i])
+                line[i].enabled = false;
+            if(distanceObjects[i])
+                distanceObjects[i].SetActive(false);
+            
         }
     }
 }

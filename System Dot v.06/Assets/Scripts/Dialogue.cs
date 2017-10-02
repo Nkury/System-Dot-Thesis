@@ -135,6 +135,7 @@ public class Dialogue : MonoBehaviour {
                     }
                     // check for special events mid-dialogue
                     performEvent();
+                    eventName = ""; // to transition to talking = false;
                     // THIS SECTION IS TO SIGNAL THAT WE ARE DONE TALKING AND PLAYER IS FREE TO MOVE
                 }
                 else

@@ -13,7 +13,7 @@ public class EnemyTerminal : MonoBehaviour
     public static int globalTerminalMode = 0;
     public static bool madeChanges = false;
     public int localTerminalMode = 0;
-    public static bool active = false;
+    public bool clickOnce = false;
 
     public int numberOfLines = 1;
     public bool[] numOfLegacy = new bool[5];

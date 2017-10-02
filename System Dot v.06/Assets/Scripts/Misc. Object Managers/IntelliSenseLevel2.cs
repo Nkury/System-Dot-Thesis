@@ -129,9 +129,9 @@ public class IntelliSenseLevel2 : IntelliSense {
             {
                 SetDialogue("seeFlint");
             } else if(hit && hit.collider.name == "FlintActivator" && variabullText == "int flint = 5;"
-                && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking && !clickOnce)
+                && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                clickOnce = true;
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("useFlint");
             } else if (hit && hit.collider.name == "DecRotator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
                 && variabullText != "double dec = 0.25;")
@@ -145,9 +145,9 @@ public class IntelliSenseLevel2 : IntelliSense {
                 {
                     SetDialogue("DoubleNotEqualInt");
                 }
-            } else if(hit && hit.collider.name == "FirstLetterActivator" && !talking && clickOnce)
+            } else if(hit && hit.collider.name == "FirstLetterActivator" && !talking && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                clickOnce = false;
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("SystemDelete");
             }
             else if (hit && hit.collider.name == "WordActivator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
@@ -155,28 +155,20 @@ public class IntelliSenseLevel2 : IntelliSense {
             {
                 SetDialogue("seeWord");
             } else if (hit && hit.collider.name == "WordActivator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
-          && variabullText == "word word = \"sentence\";" && clickOnce)
+          && variabullText == "word word = \"sentence\";" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                if (clickOnce)
-                {
-                    clickOnce = false;
-                    SetDialogue("fillInWord");
-                }
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
+                SetDialogue("fillInWord");                
             } else if (hit && hit.collider.name == "SubstringActivator" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking
-         && variabullText == "word word = \"sentence\";" && clickOnce)
+         && variabullText == "word word = \"sentence\";" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                if (!clickOnce)
-                {
-                    clickOnce = true;
-                    SetDialogue("Substring");
-                }
-            } else if(hit && hit.collider.name == "VCrush" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2)
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
+                SetDialogue("Substring");                
+            } else if(hit && hit.collider.name == "VCrush" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 &&
+                !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                if (clickOnce)
-                {
-                    clickOnce = false;
-                    smashAPI.SetActive(true);
-                }
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
+                smashAPI.SetActive(true);                
             } else if(hit && hit.collider.name == "Transistor 1" && hit.collider.GetComponent<EnemyTerminal>().localTerminalMode == 2 && !talking)
             {
                 SetDialogue("GateTutorial");

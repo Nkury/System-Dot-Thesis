@@ -76,15 +76,15 @@ public class IntelliSenseTest : IntelliSense {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (!clickOnce && hit && hit.collider.name == "TutorialEnemy")
+            if (hit && hit.collider.name == "TutorialEnemy" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                clickOnce = true;
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("postHack"); // clicked the first VBot encountered
-            } else if(clickOnce && hit && hit.collider.name == "TutorialEnemy2")
+            } else if(clickOnce && hit && hit.collider.name == "TutorialEnemy2" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
-                clickOnce = false;
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("clickBlackVBot"); // clicked the first black VBot
-            } else if(!clickOnce && hit && hit.collider.name == "TutorialChest")
+            } else if(!clickOnce && hit && hit.collider.name == "TutorialChest" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 mouseClickPrompt.SetActive(false);
                 if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective"))
@@ -92,17 +92,18 @@ public class IntelliSenseTest : IntelliSense {
                     PlayerStats.deadObjects.Add("SixthTutorialObjective");
                     Destroy(GameObject.Find("SixthTutorialObjective"));
                 }
-                clickOnce = true;
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("clickChest"); // click the first chest encountered
-            } else if(clickOnce && hit && hit.collider.name == "TutorialPlatform")
+            } else if(clickOnce && hit && hit.collider.name == "TutorialPlatform" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 mouseClickPrompt.SetActive(false);
-                clickOnce = false;
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("clickPlatform"); // click first platform encountered
                 mouseClickPrompt.SetActive(false);
             } // for comment tutorial in level 1
-            else if (!clickOnce && hit && hit.collider.name.Contains("Comment"))
+            else if (!clickOnce && hit && hit.collider.name.Contains("Comment") && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
+                hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("discoverComments");
             }
         }
@@ -315,7 +316,7 @@ public class IntelliSenseTest : IntelliSense {
                 eventName = "";
                 dialogueIndex++;
                 break;
-        }
+        }        
     }
     #endregion
 }

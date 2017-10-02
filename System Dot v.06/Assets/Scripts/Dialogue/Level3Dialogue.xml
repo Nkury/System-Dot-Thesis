@@ -9,17 +9,23 @@
     <say char="NULL">I guess we're trapped here forever...</say>
   </message>
 
-  <message id="stillNeedCleansing">
-    <say char="NULL">Whoa! You just destroyed that virus!</say>
+  <message id="stillNeedCleansing" event="pushOut">
+    <say char="NULL">Whoa! You destroyed that virus!</say>
     <say char="NULL">I think there are more viruses in this area that need to be cleansed.</say>
   </message>
 
-  <message id="successfulCleansing">
+  <message id="successfulCleansing" event="proceedPastFirstZone">
     <say char="NULL">And I thought I was a boss! You're extraordinary!</say>
     <say char="NULL">If you don't mind, I want to leave this place too.</say>
     <say char="NULL">Let's go destroy those viruses!</say>
   </message>
 
+  <message id="distancePlatform">
+    <say char="NULL">Hey, this platform has a pink line coming out of it.</say>
+    <say char="NULL">Does it look familiar to you?</say>
+    <say char="NULL">Let's click the platform and see what the code says.</say>
+  </message>
+  
   <message id="discoverIf">
     <say char="NULL">Interesting... an IF statement.</say>
     <say char="NULL">It's as if the following lines of code will not execute unless...</say>

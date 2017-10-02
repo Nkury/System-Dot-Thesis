@@ -21,10 +21,11 @@ public class TiltPlatform : MonoBehaviour {
         this.gameObject.transform.FindChild("condition").GetComponent<TextMesh>().text = condition;
 	}
 
-    public void evaluateCondition(char value)
+    public void evaluateCondition(string value)
     {
+        int num;
         List<ParserAlgo.keyActions> actions;
-        if (char.IsNumber(value))
+        if (int.TryParse(value, out num))
         {
             actions = parser.Parse("if(" + value + " " + condition + ") { System.gravity(true); } else { System.gravity(false); }");
         } else
@@ -59,5 +60,10 @@ public class TiltPlatform : MonoBehaviour {
             this.transform.Rotate(new Vector3(0, 0, -this.transform.rotation.eulerAngles.z));
             isEvaluating = true;            
         }
+    }
+
+    public void ClearCondition()
+    {
+        condition = "";
     }
 }

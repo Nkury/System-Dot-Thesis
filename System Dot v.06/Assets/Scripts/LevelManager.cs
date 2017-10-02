@@ -33,26 +33,22 @@ public class LevelManager : LevelHandler {
                 DebugButton.SetActive(false);
                 directionHelpButton.SetActive(false);
                 chestHelpButton.SetActive(false);
-                IntelliSenseTest.clickOnce = false;
                 APISystem.clicked = false;
                 canPressTab = false; // cannot press tab to switch boots to serve the tutorial
                 break;
             case "Checkpoint2":
                 APIButton.SetActive(false);
                 DebugButton.SetActive(false);
-                IntelliSenseTest.clickOnce = true;
                 directionHelpButton.SetActive(false);
                 chestHelpButton.SetActive(false);
                 APISystem.clicked = false;
                 currentCheckpoint = checkpoint2;
                 break;
-            case "Checkpoint3":
-                IntelliSenseTest.clickOnce = true;
+            case "Checkpoint3":              
                 directionHelpButton.SetActive(false);
                 currentCheckpoint = checkpoint3;
                 break;
             case "Checkpoint4":
-                IntelliSenseTest.clickOnce = false;
                 currentCheckpoint = checkpoint4;
                 break;
             case "Checkpoint5":
@@ -68,7 +64,6 @@ public class LevelManager : LevelHandler {
                 DebugButton.SetActive(false);
                 directionHelpButton.SetActive(false);
                 chestHelpButton.SetActive(false);
-                IntelliSenseTest.clickOnce = false;
                 APISystem.clicked = false;
                 canPressTab = false; // cannot press tab to switch boots to serve the tutorial
                 break;
