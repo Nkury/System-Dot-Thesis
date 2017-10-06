@@ -4,7 +4,8 @@
     <say char="NULL">Listen, I'm not going to waste your time. The system is corrupted.</say>
     <say char="NULL">It's pretty obvious. The bus implodes and then the system crashes.</say>
     <say char="NULL">Our creator has abandoned us and everything is falling apart.</say>
-    <say char="NULL">And look! We have viruses everywhere!</say>
+    <say char="NULL">We're in the NULLSPHERE--the recesses of the system memory!</say>
+    <say char="NULL">And look! The system is flooded with viruses!</say>
     <say char="NULL">We can't leave unless we cleanse this place.</say>
     <say char="NULL">I guess we're trapped here forever...</say>
   </message>

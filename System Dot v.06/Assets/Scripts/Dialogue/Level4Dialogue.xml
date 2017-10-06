@@ -1,0 +1,73 @@
+<dialogue>
+  <message id="startLevel">
+    <say char="NULL">NULL!</say>
+    <say char="NULL">Nope, still nothing. We're still stuck in the NULLSPHERE.</say>
+    <say char="NULL">Let's try to get out of here.</say>
+  </message>
+
+  <message id="findIntelliSense">
+    <say char="NULL">Oh no! It's a virus! Kill it!</say>
+    <say char="IntelliSense">Bzzztt...</say>
+    <say char="NULL">Huh? </say>
+    <say char="NULL">You know this process?</say>
+    <say char="NULL">IntelliSense? Look! It's corrupt. Let's leave it here.</say>
+  </message>
+
+  <message id="killedIntelliSense" event="pointAtISPlayButton">
+    <say char="NULL">For someone you know, you don't hesitate killing them.</say>
+    <say char="NULL">I wonder why it has that green play button on its body?</say>
+  </message>
+
+  <message id="IntelliSenseMoving">
+    <say char="NULL">Hey, you made it move! Your abilities never cease to amaze me!</say>
+    <say char="NULL">We should not take it with us, though.</say>
+    <say char="NULL">Just touching the thing might corrupt us!</say>
+  </message>
+
+  <message id="IntelliSenseDeathInPit">
+    <say char="NULL">Hmm... the longer IntelliSense moves, the faster it goes.</say>
+  </message>
+
+  <message id="IntelliSenseCharging">
+    <say char="NULL">Run! It's going to explode!</say>
+    <say char="NULL">Wait... it looks like your buddy here is powering up.</say>
+    <say char="NULL">Can we ditch this guy? I don't like the sound of this...</say>
+  </message>
+
+  <message id="firstWhileLoop">
+    <say char="NULL">"while (true)". Seems like the code within the loop...</say>
+    <say char="NULL">...will never stop executing. This idiot won't stop smashing.</say>
+  </message>
+
+  <message id="firstSpawner">
+    <say char="NULL">Hey, I know this thing. It creates processes!</say>
+    <say char="NULL">Oh no! It creates VBOT processes!</say>
+    <say char="NULL">The only way we can get past it is by running the code.</say>
+    <say char="NULL">It uses a different loop as well... a FOR loop.</say>
+    <say char="NULL">7 times. Interesting.</say>
+  </message>
+
+  <message id="awakenIntelliSense">
+    <say char="IntelliSense">Rebooting in...</say>
+    <say char="IntelliSense">...3...</say>
+    <say char="NULL">Oh DOS, here we go...</say>
+    <say char="IntelliSense">...2...</say>
+    <say char="NULL">This thing better not kill us... </say>
+    <say char="IntelliSense">...1...</say>
+    <say char="NULL">I'm scared!</say>
+    <say char="IntelliSense">10010001010101010101010101010101010101001010101001</say>
+    <say char="NULL">AHHHH! It's a kill code!</say>
+    <say char="IntelliSense">................</say>
+    <say char="IntelliSense">Oh, you don't speak binary? Oops.</say>
+    <say char="NULL">?????????!</say>
+    <say char="IntelliSense">PLAYERNAME! I found you! I thought I lost you forever.</say>
+    <say char="NULL">...oh... so you two do actually know each other...</say>
+    <say char="IntelliSense">Heck yeah! We go way back! Since the beginning...</say>
+    <say char="NULL">I didn't know you two were so close. Why didn't you say so?</say>
+    <say char="IntelliSense">He doesn't speak much. I usually do all the talking.</say>
+    <say char="IntelliSense">Anyway, I found a shell link to the kernel.</say>
+    <say char="IntelliSense">We can get you root access and hopefully reverse this mess.</say>
+    <say char="NULL">Huh? Root access for what?</say>
+    <say char="IntelliSense">I don't have time to explain. Let's skedaddle!</say>
+  </message>
+</dialogue>
