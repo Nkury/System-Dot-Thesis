@@ -104,6 +104,20 @@ public class EscortIntelliSense : MonoBehaviour {
         if (other.gameObject.GetComponent<HurtPlayerOnContact>() || other.gameObject.GetComponent<KillPlayer>()) {
             StartCoroutine(KillIntelliSense());
         }
+
+        if (other.gameObject.tag == "movingPlatform")
+        {
+            this.transform.parent = new GameObject().transform;
+            this.transform.parent.parent = other.transform;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "movingPlatform")
+        {
+            transform.parent = null;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)

@@ -11,6 +11,9 @@ public class Spawner : MonoBehaviour {
     public int numOfEnemiesToSpawn = 0;
     public int numEnemiesKilled = 0;
 
+    public float minSpeed;
+    public float maxSpeed;
+
     public GameObject spawnArea;
     public GameObject enemyToSpawn;
     public GameObject enemyCount;
@@ -64,7 +67,7 @@ public class Spawner : MonoBehaviour {
         enemyToSpawn.GetComponent<EnemyTerminal>().terminalString[1] = "System.move(Direction." + 
             (spawnArea.transform.position.x < transform.position.x ? "LEFT" : "RIGHT") + ");";
 
-        enemyToSpawn.GetComponent<EnemyTerminal>().moveSpeed = Random.Range(.025f, .07f);
+        enemyToSpawn.GetComponent<EnemyTerminal>().moveSpeed = Random.Range(minSpeed, maxSpeed);
 
         enemiesSpawned.Add(Instantiate(enemyToSpawn, spawnArea.transform.position, enemyToSpawn.transform.rotation));
 
