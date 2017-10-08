@@ -57987,7 +57987,7 @@ Prefab:
     - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 781251161}
+      objectReference: {fileID: 2040744074}
     - target: {fileID: 11482092, guid: b77d484e9eda7db42a8d4e552cb6ba9e, type: 2}
       propertyPath: intelliLocation
       value: 
@@ -59058,9 +59058,42 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11401452, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: logInformation
+      value: 
+      objectReference: {fileID: 990427151}
+    - target: {fileID: 114337307555289256, guid: 705e137fcb35b16488f51a418900a12c,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.52205884
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337307555289256, guid: 705e137fcb35b16488f51a418900a12c,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.52205884
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337307555289256, guid: 705e137fcb35b16488f51a418900a12c,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.52205884
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483862215767552, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337307555289256, guid: 705e137fcb35b16488f51a418900a12c,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &990427151 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1483862215767552, guid: 705e137fcb35b16488f51a418900a12c,
+    type: 2}
+  m_PrefabInternal: {fileID: 990427150}
 --- !u!1 &992145552
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,9 +27,21 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            LogToFile.WriteToFile("CLOSE-TERMINAL-WINDOW", "TERMINAL-WINDOW");
             EnemyTerminal.globalTerminalMode--;
-            if(EnemyTerminal.globalTerminalMode <= 0)
+            if (EnemyTerminal.globalTerminalMode <= 0)
+            {
+                if (isPaused)
+                {
+                    LogToFile.WriteToFile("UNPAUSE-GAME", "GAME");
+                }
+                else
+                {
+                    LogToFile.WriteToFile("PAUSE-GAME", "GAME");
+                }
+
                 isPaused = !isPaused;
+            }
         }
     }
 

@@ -147,8 +147,10 @@ public class EnemyTerminal : MonoBehaviour
                     localTerminalMode = 2;
 
                     showTerminal = true;
+
                     /* LOGGER INFORMATION */
-                    PlayerStats.numOfEdits++;                   
+                    PlayerStats.numOfEdits++;
+                    LogToFile.WriteToFile("OPEN-TERMINAL-FOR-" + this.gameObject, "TERMINAL-WINDOW");
                 }
                 else
                 {
@@ -715,6 +717,8 @@ public class EnemyTerminal : MonoBehaviour
             {
                 if (terminalString[i] != originalString[i])
                 {
+                    LogToFile.WriteToFile("TYPING-CODE: " + originalString[i] + " --> " + terminalString[i], "CODE");
+                    originalString[i] = terminalString[i]; // may cause problems in future-- to make the conditional stop and prevent an infinite loop
                     madeChanges = true;
                 }
             }

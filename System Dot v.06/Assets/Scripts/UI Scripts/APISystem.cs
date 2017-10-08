@@ -55,8 +55,16 @@ public class APISystem : MonoBehaviour {
     public void APIButtonClicked()
     {
         /* LOGGER INFORMATION */
-        if(!APImenu.activeSelf)
+        if (APImenu.activeSelf)
+        {
+            LogToFile.WriteToFile("API-CLOSED", "HELP");
+        }
+        else
+        {
+            LogToFile.WriteToFile("API-OPEN", "HELP");
             PlayerStats.numOfAPIUses++;
+        }
+
  
         clickAPI.GetComponent<RectTransform>().anchoredPosition = new Vector2(60, -30);
         APImenu.SetActive(!APImenu.activeSelf);

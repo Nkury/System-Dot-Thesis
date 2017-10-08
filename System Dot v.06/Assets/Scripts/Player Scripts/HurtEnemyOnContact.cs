@@ -38,6 +38,7 @@ public class HurtEnemyOnContact : MonoBehaviour
             }
         }
 
+        // changes boot color sprite
         if(state == colorState.RED)
         {
             leftFoot.GetComponent<SpriteRenderer>().sprite = redBoot;
@@ -67,8 +68,10 @@ public class HurtEnemyOnContact : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // kill enemies of the same color
         if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body" || other.tag.Contains("Boss")) && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
+            
             GameObject.Find("Sound Controller").GetComponent<SoundController>().play("enemy");
             other.GetComponent<EnemyHealthManager>().giveDamage(damageToGive);
             myrigidbody2D.velocity = new Vector2(myrigidbody2D.velocity.x, bounceOnEnemy);
@@ -76,6 +79,8 @@ public class HurtEnemyOnContact : MonoBehaviour
             {
                 GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("killedTutorialEnemy");
             }
+            // commented out because it causes lag
+            // LogToFile.WriteToFile("JUMPED-ON-" + other.gameObject.name, "PLAYER");
         } else if ((other.tag == "Ground") && other.GetComponent<HurtPlayerOnContact>() != null && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
             GameObject.Find("Sound Controller").GetComponent<SoundController>().play("destroy block");

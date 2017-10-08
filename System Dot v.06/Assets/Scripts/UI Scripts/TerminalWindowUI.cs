@@ -11,7 +11,7 @@ public class TerminalWindowUI : MonoBehaviour {
     public GameObject F5Ref;
     public GameObject variabullRef;
     public GameObject variaCode;
-
+    public GameObject logInformation;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +21,7 @@ public class TerminalWindowUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         if(F5Ref.activeSelf && EnemyTerminal.globalTerminalMode < 2)
         {
             F5Ref.SetActive(false);
@@ -30,6 +31,7 @@ public class TerminalWindowUI : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.F5))
             {
+                LogToFile.WriteToFile("DEBUG-F5", "TERMINAL_WINDOW");
                 debugClicked();
             } 
 
@@ -42,11 +44,18 @@ public class TerminalWindowUI : MonoBehaviour {
                 pressArrowKeys(false);
             }            
         }
-        
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                logInformation.SetActive(!logInformation.activeSelf);
+            }
+        }        
 	}
 
     public void exitClicked()
     {
+        LogToFile.WriteToFile("CLOSE-TERMINAL-WINDOW", "TERMINAL-WINDOW");
         EnemyTerminal.globalTerminalMode--;
         if (EnemyTerminal.madeChanges)
         {
@@ -63,7 +72,9 @@ public class TerminalWindowUI : MonoBehaviour {
     }
 
     public void debugClicked()
-    {
+    {      
+        LogToFile.WriteToFile("DEBUG-CLICKED", "TERMINAL_WINDOW");        
+
         EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
         foreach (EnemyTerminal e in enemies)
         {
@@ -79,6 +90,7 @@ public class TerminalWindowUI : MonoBehaviour {
                     /* LOGGER INFORMATION */
                     e.isPerfect = false;
                     PlayerStats.mostNumberofAttempts++;
+                    LogToFile.WriteToFile("WRONG-SYNTAX", "CODE");
                 }
                 else
                 {
@@ -88,6 +100,7 @@ public class TerminalWindowUI : MonoBehaviour {
                     /* LOGGER INFORMATION */
                     if (e.isPerfect)
                     {
+                        LogToFile.WriteToFile("CORRECT-SYNTAX", "CODE");
                         PlayerStats.numberOfPerfectEdits++;
                     }
                 }
@@ -110,6 +123,7 @@ public class TerminalWindowUI : MonoBehaviour {
     // the parameter takes in the current line number
     public void pressEnter(int lineNo)
     {
+        LogToFile.WriteToFile("PRESSED-ENTER", "TERMINAL_WINDOW");
         switch (lineNo)
         {
             case 1:
@@ -152,11 +166,13 @@ public class TerminalWindowUI : MonoBehaviour {
     {
         if (isDownPressed)
         {
+            LogToFile.WriteToFile("PRESSED-DOWN-KEY", "TERMINAL_WINDOW");
             string selectedObjectName = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
             pressEnter(Int32.Parse(selectedObjectName.Substring(selectedObjectName.Length - 1, 1)));
         }
         else
         {
+            LogToFile.WriteToFile("PRESSED-UP-KEY", "TERMINAL_WINDOW");
             string selectedObjectName = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
             if (selectedObjectName != "line 1" && selectedObjectName != "line 2")
             {
@@ -179,6 +195,7 @@ public class TerminalWindowUI : MonoBehaviour {
 
     public void F5(bool appear)
     {
+        //LogToFile.WriteToFile("MOUSE-OVER-DEBUG-BUTTON", "TERMINAL_WINDOW"); not needed
         F5Ref.SetActive(appear);
     }
 

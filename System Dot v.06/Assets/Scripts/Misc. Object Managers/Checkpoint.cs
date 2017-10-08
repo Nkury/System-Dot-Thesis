@@ -37,7 +37,7 @@ public class Checkpoint : MonoBehaviour {
             if ((Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Split('t')[1]))
                 || PlayerStats.checkpoint == "Checkpoint1")
             {
-                Debug.Log("Activated Checkpoint " + transform.position);
+                LogToFile.WriteToFile("HIT-" + this.gameObject.name, "PLAYER");
                 Game.current.playerName = PlayerStats.playerName;
                 Game.current.maxHealth = PlayerStats.maxHealth;
                 Game.current.currentHealth = PlayerStats.currentHealth;

@@ -80,11 +80,11 @@ public class IntelliSenseTest : IntelliSense {
             {
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("postHack"); // clicked the first VBot encountered
-            } else if(clickOnce && hit && hit.collider.name == "TutorialEnemy2" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
+            } else if(hit && hit.collider.name == "TutorialEnemy2" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("clickBlackVBot"); // clicked the first black VBot
-            } else if(!clickOnce && hit && hit.collider.name == "TutorialChest" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
+            } else if(hit && hit.collider.name == "TutorialChest" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 mouseClickPrompt.SetActive(false);
                 if (!PlayerStats.deadObjects.Contains("SixthTutorialObjective"))
@@ -94,14 +94,14 @@ public class IntelliSenseTest : IntelliSense {
                 }
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("clickChest"); // click the first chest encountered
-            } else if(clickOnce && hit && hit.collider.name == "TutorialPlatform" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
+            } else if(hit && hit.collider.name == "TutorialPlatform" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 mouseClickPrompt.SetActive(false);
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("clickPlatform"); // click first platform encountered
                 mouseClickPrompt.SetActive(false);
             } // for comment tutorial in level 1
-            else if (!clickOnce && hit && hit.collider.name.Contains("Comment") && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
+            else if (hit && hit.collider.name.Contains("Comment") && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("discoverComments");

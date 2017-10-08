@@ -20,7 +20,6 @@ public class MainMenu : MonoBehaviour {
         // uncomment below to erase all saved files when running title screen
         // SaveLoad.EraseAll();
         SaveLoad.Load(); // load the game
-
     }
 
     public void Update()
@@ -45,6 +44,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void NewGame()
 	{
+        LogToFile.WriteToFile("\nSTARTING-NEW-GAME", "GAME\n");
         Game.current = new Game();
         PlayerStats.maxHealth = playerHealth;
         PlayerStats.currentHealth = playerHealth;
@@ -93,7 +93,9 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.numOfF5 = SaveLoad.savedGames[0].numOfF5;
         PlayerStats.numOfEdits = SaveLoad.savedGames[0].numOfEdits;
         PlayerStats.levelName = SaveLoad.savedGames[0].levelName;
-      
+
+        LogToFile.WriteToFile("\nCONTINUE-GAME-" + PlayerStats.levelName, "GAME\n");
+        LogToFile.WriteToFile("CONTINUED-GAME-" + PlayerStats.levelName, "GAME\n", PlayerStats.levelName);
         SceneManager.LoadScene(PlayerStats.levelName);
    
     }
@@ -112,6 +114,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void QuitGame()
 	{
-		Application.Quit ();
+        LogToFile.WriteToFile("\nQUIT-GAME", "GAME\n");
+        Application.Quit ();
 	}
 }

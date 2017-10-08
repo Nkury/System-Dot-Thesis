@@ -110,6 +110,7 @@ public class Dialogue : MonoBehaviour {
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
+                        LogToFile.WriteToFile("SPEED-UP-DIALOGUE", "DIALOGUE");
                         index = whatToSay[dialogueIndex].say.Length;
                     }
                 }// THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
@@ -135,11 +136,15 @@ public class Dialogue : MonoBehaviour {
                     }
                     // check for special events mid-dialogue
                     performEvent();
-                    eventName = ""; // to transition to talking = false;
+                  //  eventName = ""; // to transition to talking = false;
                     // THIS SECTION IS TO SIGNAL THAT WE ARE DONE TALKING AND PLAYER IS FREE TO MOVE
                 }
                 else
                 {
+                    if (talking)
+                    {
+                        LogToFile.WriteToFile(this.gameObject.name + "-END-DIALOGUE", "DIALOGUE");
+                    }
                     talking = false;
                 }
             }        
@@ -175,6 +180,8 @@ public class Dialogue : MonoBehaviour {
         // resets dialogue
         dialogueIndex = 0;
         index = 0;
+
+        LogToFile.WriteToFile(this.gameObject.name + "-START-DIALOGUE", "DIALOGUE");
 
         List<sayList> sayThis;
         if (dialogue.TryGetValue(keyWord, out sayThis))
