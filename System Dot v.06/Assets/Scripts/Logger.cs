@@ -52,7 +52,7 @@ public class Logger : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.F5))
             {
-                PlayerStats.numOfF5++;
+                PlayerStats.log_numOfF5++;
             }
 
         }

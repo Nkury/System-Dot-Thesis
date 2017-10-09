@@ -78,7 +78,7 @@ public class HealthManager : MonoBehaviour {
 
 	public static void HurtPlayer(int damageToGive)
 	{
-        LogToFile.WriteToFile("PLAYER-TAKES-" + damageToGive + "-DAMAGE", "PLAYER");
+        LogToFile.WriteToFile("PLAYER-TAKES-" + damageToGive + "-DAMAGE", "PLAYER-" + PlayerStats.playerName);
         if (!Invincibility.invincibility)
         {
             if (PlayerStats.armorHealth <= 0)

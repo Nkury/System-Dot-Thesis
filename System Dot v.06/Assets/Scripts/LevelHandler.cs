@@ -50,7 +50,7 @@ public class LevelHandler : MonoBehaviour
 
     public IEnumerator RespawnPlayerCo()
     {
-        LogToFile.WriteToFile("PLAYER-DIES", "PLAYER");
+        LogToFile.WriteToFile("PLAYER-DIES", "PLAYER-" + PlayerStats.playerName);
         Instantiate(deathParticle, player.transform.position, player.transform.rotation);
         player.enabled = false;
         player.GetComponent<Renderer>().enabled = false;

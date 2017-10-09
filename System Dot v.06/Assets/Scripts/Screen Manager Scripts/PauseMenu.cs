@@ -11,6 +11,12 @@ public class PauseMenu : MonoBehaviour
     public bool isPaused;
 
     public GameObject pauseMenuCanvas;
+    private TerminalWindowUI terminalWindow;
+
+    public void Start()
+    {
+        terminalWindow = GameObject.FindObjectOfType<TerminalWindowUI>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -28,7 +34,7 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             LogToFile.WriteToFile("CLOSE-TERMINAL-WINDOW", "TERMINAL-WINDOW");
-            EnemyTerminal.globalTerminalMode--;
+            terminalWindow.exitClicked();
             if (EnemyTerminal.globalTerminalMode <= 0)
             {
                 if (isPaused)

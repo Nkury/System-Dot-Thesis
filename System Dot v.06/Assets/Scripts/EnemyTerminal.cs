@@ -26,6 +26,7 @@ public class EnemyTerminal : MonoBehaviour
     public GUIStyle terminalStyle;
     public GameObject terminalPointerDestination;
     public GameObject terminalWindow;
+    private APISystem API;
     public GameObject bit;
 
     [Header("Chest Sprites")]
@@ -57,10 +58,17 @@ public class EnemyTerminal : MonoBehaviour
 
     /*LOGGER INFORMATION */
     public bool isPerfect = true;
+    public static bool APIUsed = false;
+    public static float timeBetweenCodeChangeAndDebug;
+    private bool isLegacy = false;
+    private bool legacySeen = false;
+
 
     // Use this for initialization
     void Start()
     {
+
+        API = GameObject.FindObjectOfType<APISystem>();
         Transform[] trs = GameObject.Find("Main HUD").GetComponentsInChildren<Transform>(true);
         foreach (Transform t in trs)
         {
@@ -70,10 +78,14 @@ public class EnemyTerminal : MonoBehaviour
             }
         }
 
+        if (PlayerStats.log_totalNumberOfLegacyOnly == 0)
+        {
+            CountLegacy();
+        }
         checkTerminalString();
         StartCoroutine(evaluateActions());       
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -93,7 +105,7 @@ public class EnemyTerminal : MonoBehaviour
                 this.GetComponent<LineRenderer>().SetPosition(1,
                     new Vector3(terminalPointerDestination.transform.position.x - this.transform.position.x,
                     terminalPointerDestination.transform.position.y - this.transform.position.y,
-                    10));
+                    10));            
            // openTerminal.Play();
         }
         else
@@ -103,6 +115,14 @@ public class EnemyTerminal : MonoBehaviour
 
         ShowTerminalWindow();
       
+    }
+    
+    public void FixedUpdate()
+    {
+        if (localTerminalMode == 2)
+        {
+            timeBetweenCodeChangeAndDebug += Time.deltaTime;
+        }
     }
 
     public void OnMouseOver()
@@ -150,6 +170,11 @@ public class EnemyTerminal : MonoBehaviour
 
                     /* LOGGER INFORMATION */
                     PlayerStats.numOfEdits++;
+                    if (isLegacy && !legacySeen)
+                    {
+                        legacySeen = true;
+                        PlayerStats.log_numLegacyCodeViewed++;
+                    }
                     LogToFile.WriteToFile("OPEN-TERMINAL-FOR-" + this.gameObject, "TERMINAL-WINDOW");
                 }
                 else
@@ -717,8 +742,13 @@ public class EnemyTerminal : MonoBehaviour
             {
                 if (terminalString[i] != originalString[i])
                 {
+                    if (API.APImenu.activeSelf)
+                    {
+                        APIUsed = true;
+                    }
                     LogToFile.WriteToFile("TYPING-CODE: " + originalString[i] + " --> " + terminalString[i], "CODE");
                     originalString[i] = terminalString[i]; // may cause problems in future-- to make the conditional stop and prevent an infinite loop
+                    timeBetweenCodeChangeAndDebug = 0;
                     madeChanges = true;
                 }
             }
@@ -742,5 +772,19 @@ public class EnemyTerminal : MonoBehaviour
     {
         yield return 0; // Skip the first frame in which this is called.
         lineNO.MoveTextEnd(false); // Do this during the next frame.
+    }
+
+    private void CountLegacy()
+    {
+        for(int i = 0; i < numberOfLines; i++)
+        {
+            if(numOfLegacy[i] == false)
+            {
+                return;
+            }
+        }
+
+        PlayerStats.log_totalNumberOfLegacyOnly++;
+        isLegacy = true;
     }
 }

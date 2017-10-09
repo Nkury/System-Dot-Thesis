@@ -4,45 +4,30 @@ using UnityEngine.UI;
 
 public class LogInfo : MonoBehaviour {
 
-    public Text avgEditTime;
-    public Text mostEditTime;
-    public Text avgBackspaces;
-    public Text mostBackspaces;
-    public Text avgDeletes;
-    public Text mostDeletes;
-    public Text avgClicks;
-    public Text mostClicks;
-    public Text avgInactivity;
-    public Text mostInactivity;
-    public Text numFailures;
-    public Text numPerfects;
-    public Text numAPI;
+    public Text numAPIOpen;
+    public Text numSyntaxErrors;
+    public Text numPerfectEdits;
     public Text numF5s;
-    public Text numEdits;
-    public Text typingSpeed;
+    public Text numLegacyCodeViewed;
+    public Text numQuickDebug;
+    public Text totalModifiedEdits;
+    public Text totalNumLegacy;
 
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        avgEditTime.text = PlayerStats.averageTimeOnEditing.ToString();
-        mostEditTime.text = PlayerStats.longestTimeOnEditing.ToString();
-        avgBackspaces.text = PlayerStats.averageNumberOfBackspaces.ToString();
-        mostBackspaces.text = PlayerStats.mostNumberOfBackspaces.ToString();
-        avgDeletes.text = PlayerStats.averageNumberOfDeletes.ToString();
-        mostDeletes.text = PlayerStats.mostNumberOfDeletes.ToString();
-        avgClicks.text = PlayerStats.averageNumberofMouseClicks.ToString();
-        mostClicks.text = PlayerStats.mostNumberofMouseClicks.ToString();
-        avgInactivity.text = PlayerStats.averageTimeOfMouseInactivity.ToString();
-        mostInactivity.text = PlayerStats.mostTimeofMouseInactivity.ToString();
-        numFailures.text = PlayerStats.mostNumberofAttempts.ToString();
-        numPerfects.text = PlayerStats.numberOfPerfectEdits.ToString();
-        numAPI.text = PlayerStats.numOfAPIUses.ToString();
-        numF5s.text = PlayerStats.numOfF5.ToString();
-        numEdits.text = PlayerStats.numOfEdits.ToString();
-        typingSpeed.text = PlayerStats.typingSpeed.ToString();
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        numAPIOpen.text = PlayerStats.log_numAPIOpen.ToString();
+        numSyntaxErrors.text = PlayerStats.log_numSyntaxErrors.ToString();
+        numPerfectEdits.text = PlayerStats.log_numPerfectEdits.ToString();
+        numF5s.text = PlayerStats.log_numOfF5.ToString();
+        numLegacyCodeViewed.text = PlayerStats.log_numLegacyCodeViewed.ToString();
+        numQuickDebug.text = PlayerStats.log_numQuickDebug.ToString();
+        totalModifiedEdits.text = PlayerStats.log_totalNumberOfModifiedEdits.ToString();
+        totalNumLegacy.text = PlayerStats.log_totalNumberOfLegacyOnly.ToString();
+    }
 }

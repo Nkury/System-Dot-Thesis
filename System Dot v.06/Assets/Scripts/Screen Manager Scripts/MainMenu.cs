@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 
 public class MainMenu : MonoBehaviour {
 
@@ -51,6 +51,8 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.numberOfDeaths = 0;
         PlayerStats.totalSecondsOfPlaytime = 0;
 
+        CreateNetwork();
+
         SceneManager.LoadScene(startLevel);
 
 		PlayerPrefs.SetInt ("PlayerCurrentLives", playerLives);
@@ -64,6 +66,19 @@ public class MainMenu : MonoBehaviour {
     public void ContinueGame()
     {
         Game.current = SaveLoad.savedGames[0];
+
+        // ADAPTIVE LOG SECTION
+        PlayerStats.log_numAPIOpen = SaveLoad.savedGames[0].log_numAPIOpen;
+        PlayerStats.log_numLegacyCodeViewed = SaveLoad.savedGames[0].log_numLegacyCodeViewed;
+        PlayerStats.log_numOfF5 = SaveLoad.savedGames[0].log_numOfF5;
+        PlayerStats.log_numPerfectEdits = SaveLoad.savedGames[0].log_numPerfectEdits;
+        PlayerStats.log_numSyntaxErrors = SaveLoad.savedGames[0].log_numSyntaxErrors;
+        PlayerStats.log_numQuickDebug = SaveLoad.savedGames[0].log_numQuickDebug;
+        PlayerStats.log_totalNumDebugs = SaveLoad.savedGames[0].log_totalNumDebugs;
+        PlayerStats.log_totalNumberOfLegacyOnly = SaveLoad.savedGames[0].log_totalNumberOfLegacyOnly;
+        PlayerStats.log_totalNumberOfModifiedEdits = SaveLoad.savedGames[0].log_totalNumberOfModifiedEdits;
+        
+        // GAME STATS
         PlayerStats.maxHealth = SaveLoad.savedGames[0].maxHealth;
         PlayerStats.currentHealth = SaveLoad.savedGames[0].currentHealth;
         PlayerStats.armorHealth = SaveLoad.savedGames[0].armorHealth;
@@ -76,7 +91,6 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.terminalStrings = SaveLoad.savedGames[0].terminalStrings;
         PlayerStats.highestCheckpoint = SaveLoad.savedGames[0].highestCheckpoint;
         PlayerStats.numRevivePotions = SaveLoad.savedGames[0].numRevivePotions;
-        PlayerStats.typingSpeed = SaveLoad.savedGames[0].typingSpeed;
         PlayerStats.averageTimeOnEditing = SaveLoad.savedGames[0].averageTimeOnEditing;
         PlayerStats.longestTimeOnEditing = SaveLoad.savedGames[0].longestTimeOnEditing;
         PlayerStats.averageNumberofMouseClicks = SaveLoad.savedGames[0].averageNumberofMouseClicks;
@@ -90,7 +104,6 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.averageTimeOfMouseInactivity = SaveLoad.savedGames[0].averageTimeOfMouseInactivity;
         PlayerStats.mostTimeofMouseInactivity = SaveLoad.savedGames[0].mostTimeofMouseInactivity;
         PlayerStats.numOfAPIUses = SaveLoad.savedGames[0].numOfAPIUses;
-        PlayerStats.numOfF5 = SaveLoad.savedGames[0].numOfF5;
         PlayerStats.numOfEdits = SaveLoad.savedGames[0].numOfEdits;
         PlayerStats.levelName = SaveLoad.savedGames[0].levelName;
 
@@ -98,6 +111,18 @@ public class MainMenu : MonoBehaviour {
         LogToFile.WriteToFile("CONTINUED-GAME-" + PlayerStats.levelName, "GAME\n", PlayerStats.levelName);
         SceneManager.LoadScene(PlayerStats.levelName);
    
+    }
+
+    public void CreateNetwork()
+    {
+        // Perception Network
+        BayesianNetwork.BNode TimeToClickDebugNode = new BayesianNetwork.BNode(null, "TimeToClickDebug", 0, new List<double>() { .8 });
+        BayesianNetwork.BNode ViewLegacyCodeNode = new BayesianNetwork.BNode(null, "ViewLegacyCode", 0, new List<double>() { .6 });
+        BayesianNetwork.BNode ProcessingNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { TimeToClickDebugNode, ViewLegacyCodeNode }, "Processing", 0, new List<double>() { 1, .5, .5, 0});
+        BayesianNetwork.BNetwork ProcessingNetwork = new BayesianNetwork.BNetwork("ProcessingNetwork", new List<BayesianNetwork.BNode>() { TimeToClickDebugNode, ViewLegacyCodeNode, ProcessingNode });
+
+        Debug.Log(ProcessingNode.CalculateProbability(1));
+
     }
 
 	public void LevelSelect()

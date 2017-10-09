@@ -3,8 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats {
+    /*** ADAPTIVITY STATISTICS *********************************************************************/
+    public static int timeToDebugThreshhold = 5;
+    public static int log_numAPIOpen;
+    public static int log_numSyntaxErrors;
+    public static int log_numPerfectEdits;
+    public static int log_numOfF5;
+    public static int log_numLegacyCodeViewed;
+    public static int log_numQuickDebug;
+    public static int log_totalNumDebugs;
+    public static int log_totalNumberOfModifiedEdits;
+    public static int log_totalNumberOfLegacyOnly;
+
     /**** USER PROFILE APTITUDE STATS **************************************************************/
-    public static float typingSpeed;
     public static float averageTimeOnEditing;
     public static float longestTimeOnEditing;
     public static float averageNumberofMouseClicks;
@@ -18,7 +29,6 @@ public class PlayerStats {
     public static float averageTimeOfMouseInactivity;
     public static float mostTimeofMouseInactivity;
     public static int numOfAPIUses;
-    public static int numOfF5;
     public static int numOfEdits;
 
     /**** PLAYER ATTRIBUTES ************************************************************************/

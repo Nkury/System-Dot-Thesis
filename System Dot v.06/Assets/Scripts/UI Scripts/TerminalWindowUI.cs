@@ -11,7 +11,9 @@ public class TerminalWindowUI : MonoBehaviour {
     public GameObject F5Ref;
     public GameObject variabullRef;
     public GameObject variaCode;
+
     public GameObject logInformation;
+    public APISystem API;
 
     // Use this for initialization
     void Start () {
@@ -32,6 +34,7 @@ public class TerminalWindowUI : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.F5))
             {
                 LogToFile.WriteToFile("DEBUG-F5", "TERMINAL_WINDOW");
+                PlayerStats.log_numOfF5++;
                 debugClicked();
             } 
 
@@ -55,10 +58,21 @@ public class TerminalWindowUI : MonoBehaviour {
 
     public void exitClicked()
     {
+        if (API.APImenu.activeSelf)
+        {
+            API.APIButtonClicked();
+        }
         LogToFile.WriteToFile("CLOSE-TERMINAL-WINDOW", "TERMINAL-WINDOW");
         EnemyTerminal.globalTerminalMode--;
         if (EnemyTerminal.madeChanges)
         {
+            // LOGGER INFO
+            PlayerStats.log_totalNumberOfModifiedEdits++;
+            if (EnemyTerminal.APIUsed)
+            {
+                PlayerStats.log_numAPIOpen++;
+                EnemyTerminal.APIUsed = false;
+            }
             EnemyTerminal.madeChanges = false;
             noChanges.SetActive(true);
             StartCoroutine(setToFalse());
@@ -73,7 +87,28 @@ public class TerminalWindowUI : MonoBehaviour {
 
     public void debugClicked()
     {      
-        LogToFile.WriteToFile("DEBUG-CLICKED", "TERMINAL_WINDOW");        
+        LogToFile.WriteToFile("DEBUG-CLICKED", "TERMINAL_WINDOW");
+        PlayerStats.log_totalNumDebugs++;
+        // LOGGER INFO
+        if (EnemyTerminal.madeChanges)
+        {
+            if(EnemyTerminal.timeBetweenCodeChangeAndDebug < PlayerStats.timeToDebugThreshhold)
+            {
+                PlayerStats.log_numQuickDebug++;
+            }
+
+            if (EnemyTerminal.APIUsed) {
+                PlayerStats.log_numAPIOpen++;
+                EnemyTerminal.APIUsed = false;
+            }
+          
+            PlayerStats.log_totalNumberOfModifiedEdits++;
+        }
+
+        if (API.APImenu.activeSelf)
+        {
+            API.APIButtonClicked();
+        }
 
         EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
         foreach (EnemyTerminal e in enemies)
@@ -90,6 +125,11 @@ public class TerminalWindowUI : MonoBehaviour {
                     /* LOGGER INFORMATION */
                     e.isPerfect = false;
                     PlayerStats.mostNumberofAttempts++;
+                    if (EnemyTerminal.madeChanges)
+                    {
+                        PlayerStats.log_numSyntaxErrors++;
+                        EnemyTerminal.madeChanges = false;
+                    }
                     LogToFile.WriteToFile("WRONG-SYNTAX", "CODE");
                 }
                 else
@@ -98,10 +138,14 @@ public class TerminalWindowUI : MonoBehaviour {
                     pe = Instantiate(rightParticleSystem, e.gameObject.transform.position, e.gameObject.transform.rotation);
 
                     /* LOGGER INFORMATION */
-                    if (e.isPerfect)
-                    {
-                        LogToFile.WriteToFile("CORRECT-SYNTAX", "CODE");
-                        PlayerStats.numberOfPerfectEdits++;
+                    if (EnemyTerminal.madeChanges)
+                    {                        
+                        if (e.isPerfect)
+                        {
+                            LogToFile.WriteToFile("CORRECT-SYNTAX", "CODE");
+                            PlayerStats.numberOfPerfectEdits++;
+                            PlayerStats.log_numPerfectEdits++;
+                        }
                     }
                 }
 
@@ -117,6 +161,8 @@ public class TerminalWindowUI : MonoBehaviour {
                 }
             }
         }
+        
+        EnemyTerminal.madeChanges = false;
     }
 
     // when the player presses on an input field, it will go to the next one below it
