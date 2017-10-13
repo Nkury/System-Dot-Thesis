@@ -28,6 +28,7 @@ namespace BayesianNetwork
 
         // evidence = 
         // 0 for false; 1 for true
+        // P(a, b) = P(a | b) * P(b)
         public double CalculateProbability(int evidence)
         {
             double sum = 0.0;
@@ -45,8 +46,7 @@ namespace BayesianNetwork
                 }
                 sum += product;
             }
-
-            // because the values taken from the table are reversed
+            
             return sum;
         }        
     }

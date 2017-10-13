@@ -13,7 +13,7 @@
     <say char="NULL">IntelliSense? Look! It's corrupt. Let's leave it here.</say>
   </message>
 
-  <message id="killedIntelliSense" event="pointAtISPlayButton">
+  <message id="killedIntelliSense">
     <say char="NULL">For someone you know, you don't hesitate killing them.</say>
     <say char="NULL">I wonder why it has that green play button on its body?</say>
   </message>

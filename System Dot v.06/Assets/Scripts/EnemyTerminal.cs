@@ -746,7 +746,7 @@ public class EnemyTerminal : MonoBehaviour
                     {
                         APIUsed = true;
                     }
-                    LogToFile.WriteToFile("TYPING-CODE: " + originalString[i] + " --> " + terminalString[i], "CODE");
+                    //LogToFile.WriteToFile("TYPING-CODE: " + originalString[i] + " --> " + terminalString[i], "CODE");
                     originalString[i] = terminalString[i]; // may cause problems in future-- to make the conditional stop and prevent an infinite loop
                     timeBetweenCodeChangeAndDebug = 0;
                     madeChanges = true;

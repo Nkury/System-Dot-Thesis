@@ -1801,6 +1801,8 @@ MonoBehaviour:
   F5Ref: {fileID: 170132}
   variabullRef: {fileID: 1882271178785136}
   variaCode: {fileID: 1802875061197230}
+  logInformation: {fileID: 1483862215767552}
+  API: {fileID: 11423746}
 --- !u!114 &11402076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1868,14 +1870,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: nameEntered
-        m_Mode: 1
+        m_MethodName: SetDialogue
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: receiveName
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2892,11 +2894,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickAPI: {fileID: 183834}
   APImenu: {fileID: 189146}
-  SystemHelp: {fileID: 142762}
   colorInfo: {fileID: 139790}
   directionInfo: {fileID: 151328}
   chestInfo: {fileID: 124278}
-  arrowIndicator: {fileID: 11444590}
+  smashInfo: {fileID: 0}
+  intInfo: {fileID: 0}
+  doubleInfo: {fileID: 0}
+  stringInfo: {fileID: 0}
+  booleanInfo: {fileID: 0}
+  arrowIndicator:
+  - {fileID: 0}
+  SystemHelp: {fileID: 142762}
+  DataTypeHelp: {fileID: 0}
 --- !u!114 &11423876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3783,14 +3792,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: InputtedCode
-        m_Mode: 1
+        m_MethodName: initialEvent
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: inputHack
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -4126,7 +4135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cf155c0099f554aacfd1c1bec1d71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
 --- !u!114 &11466104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5505,7 +5513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cf155c0099f554aacfd1c1bec1d71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDead: 0
 --- !u!114 &11492890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5664,14 +5671,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: nameEntered
-        m_Mode: 1
+        m_MethodName: SetDialogue
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: receiveName
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -8175,7 +8182,7 @@ GameObject:
   - component: {fileID: 222383248080492270}
   - component: {fileID: 114553082151934786}
   m_Layer: 5
-  m_Name: MostNumClicks
+  m_Name: TotalLegacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8209,7 +8216,7 @@ GameObject:
   - component: {fileID: 222014376119789318}
   - component: {fileID: 114073573583533190}
   m_Layer: 5
-  m_Name: ActualAvgClicks
+  m_Name: ActualTotalEdits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8243,7 +8250,7 @@ GameObject:
   - component: {fileID: 222397797016824334}
   - component: {fileID: 114133531031807656}
   m_Layer: 5
-  m_Name: ActualAvgBackspaces
+  m_Name: ActualPerfectEdits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8260,7 +8267,7 @@ GameObject:
   - component: {fileID: 222397885658277458}
   - component: {fileID: 114558683569125416}
   m_Layer: 5
-  m_Name: MostNumBackspaces
+  m_Name: NumF5s
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8294,7 +8301,7 @@ GameObject:
   - component: {fileID: 222264033290800358}
   - component: {fileID: 114540214874541230}
   m_Layer: 5
-  m_Name: AvgNumDeletes
+  m_Name: NumLegacyCodeViewed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8362,7 +8369,7 @@ GameObject:
   - component: {fileID: 222293410640018976}
   - component: {fileID: 114114440153909120}
   m_Layer: 5
-  m_Name: MostTimeEdit
+  m_Name: NumSyntaxErrors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8413,7 +8420,7 @@ GameObject:
   - component: {fileID: 222987419769171494}
   - component: {fileID: 114119706946033374}
   m_Layer: 5
-  m_Name: ActualMostTimeEdit
+  m_Name: ActualSyntaxErrors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8448,7 +8455,7 @@ GameObject:
   - component: {fileID: 222697551315108214}
   - component: {fileID: 114506584508383062}
   m_Layer: 5
-  m_Name: ActualMostClicks
+  m_Name: ActualTotalLegacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8482,7 +8489,7 @@ GameObject:
   - component: {fileID: 222301440949098054}
   - component: {fileID: 114440314902185618}
   m_Layer: 5
-  m_Name: MostNumDeletes
+  m_Name: NumQuickDebug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8499,7 +8506,7 @@ GameObject:
   - component: {fileID: 222079438500324114}
   - component: {fileID: 114700741980881672}
   m_Layer: 5
-  m_Name: AvgNumBackspaces
+  m_Name: NumPerfectEdits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8533,7 +8540,7 @@ GameObject:
   - component: {fileID: 222865788643377146}
   - component: {fileID: 114759665530033294}
   m_Layer: 5
-  m_Name: TypingSpeed
+  m_Name: NumLegacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8567,7 +8574,7 @@ GameObject:
   - component: {fileID: 222140701390276836}
   - component: {fileID: 114461141528477986}
   m_Layer: 5
-  m_Name: ActualMostDeletes
+  m_Name: ActualQuickDebug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8584,7 +8591,7 @@ GameObject:
   - component: {fileID: 222546434894297826}
   - component: {fileID: 114806088012622206}
   m_Layer: 5
-  m_Name: ActualMostBackspaces
+  m_Name: ActualF5s
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8601,7 +8608,7 @@ GameObject:
   - component: {fileID: 222020825526955466}
   - component: {fileID: 114659329504379014}
   m_Layer: 5
-  m_Name: AvgTimeEdit
+  m_Name: NumAPIOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8635,7 +8642,7 @@ GameObject:
   - component: {fileID: 222469828546739568}
   - component: {fileID: 114572664474581742}
   m_Layer: 5
-  m_Name: ActualAvgTimeEdit
+  m_Name: ActualAPIOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8686,7 +8693,7 @@ GameObject:
   - component: {fileID: 222480136994254076}
   - component: {fileID: 114178301061758628}
   m_Layer: 5
-  m_Name: AvgNumClicks
+  m_Name: TotalModifiedEdits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8706,7 +8713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1886564544152234
 GameObject:
   m_ObjectHideFlags: 1
@@ -8769,7 +8776,7 @@ GameObject:
   - component: {fileID: 222455264379023914}
   - component: {fileID: 114444123107886140}
   m_Layer: 5
-  m_Name: ActualAvgDeletes
+  m_Name: ActualLegacyViewed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9016,7 +9023,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Most time editing:'
+  m_Text: '# syntax errors:'
 --- !u!114 &114119706946033374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9102,7 +9109,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b84b2ca2a1469ee469cb64fa2d98443e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9142,7 +9149,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Average clicks:'
+  m_Text: 'Total Edits:'
 --- !u!114 &114308690159310654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9188,7 +9195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4852941, g: 0.47815743, b: 0.47815743, a: 0.392}
+  m_Color: {r: 0.52205884, g: 0.52205884, b: 0.52205884, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9268,7 +9275,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Most deletes:'
+  m_Text: '# Quick Debug:'
 --- !u!114 &114444123107886140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9433,7 +9440,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Average deletes:'
+  m_Text: '# legacy viewed :'
 --- !u!114 &114553082151934786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9466,7 +9473,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Most clicks:'
+  m_Text: 'Total Legacy:'
 --- !u!114 &114555729495617390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9532,7 +9539,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Most backspaces:'
+  m_Text: '# F5s :'
 --- !u!114 &114572664474581742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9631,7 +9638,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Average time editing:'
+  m_Text: '# API Open:'
 --- !u!114 &114659385399455910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9691,7 +9698,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Average backspaces:'
+  m_Text: '# perfect edits:'
 --- !u!114 &114759665530033294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9724,7 +9731,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '# of F5s'
+  m_Text: '# legacy:'
 --- !u!114 &114763452180846322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9769,22 +9776,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c5212313d84244ea18246292b7dc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avgEditTime: {fileID: 114572664474581742}
-  mostEditTime: {fileID: 114119706946033374}
-  avgBackspaces: {fileID: 114133531031807656}
-  mostBackspaces: {fileID: 114806088012622206}
-  avgDeletes: {fileID: 114444123107886140}
-  mostDeletes: {fileID: 114461141528477986}
-  avgClicks: {fileID: 114073573583533190}
-  mostClicks: {fileID: 114506584508383062}
-  avgInactivity: {fileID: 114008555694045902}
-  mostInactivity: {fileID: 114763452180846322}
-  numFailures: {fileID: 114846827679537660}
-  numPerfects: {fileID: 114881581723382878}
-  numAPI: {fileID: 114489851158503722}
-  numF5s: {fileID: 114555729495617390}
-  numEdits: {fileID: 114940233669408734}
-  typingSpeed: {fileID: 114308690159310654}
+  numAPIOpen: {fileID: 114572664474581742}
+  numSyntaxErrors: {fileID: 114119706946033374}
+  numPerfectEdits: {fileID: 114133531031807656}
+  numF5s: {fileID: 114806088012622206}
+  numLegacyCodeViewed: {fileID: 114444123107886140}
+  numQuickDebug: {fileID: 114461141528477986}
+  totalModifiedEdits: {fileID: 114073573583533190}
+  totalNumLegacy: {fileID: 114506584508383062}
 --- !u!114 &114798770211362982
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,11 +21,12 @@ public class TutorialZonesLevel4 : MonoBehaviour
         {
             if (this.gameObject.name == "FirstTutorialObjective")
             {              
-                intelliSense.GetComponent<IntelliSenseLevel4>().SetDialogue("findIntelliSense");  
+                intelliSense.GetComponent<IntelliSenseLevel4>().SetDialogue("findIntelliSense");
+                PlayerStats.deadObjects.Add(this.gameObject.name);
+                Destroy(this.gameObject);
             }            
 
-            PlayerStats.deadObjects.Add(this.gameObject.name);
-            Destroy(this.gameObject);
+        
         } else if(other.tag == "Escort")
         {
             if(this.gameObject.name == "SecondTutorialObjective")

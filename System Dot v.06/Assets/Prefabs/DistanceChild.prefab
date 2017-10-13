@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4763275015842972}
   - component: {fileID: 114040105894866494}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DistanceChild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,6 +54,9 @@ MonoBehaviour:
   lineWidth: 0.05
   triggerRadius: 20
   numberOfConnectedObjects: 2
+  maxDistance: 11
   distanceObject: {fileID: 1308654925450736, guid: fe34f8afb498ca34aaf7822c96187327,
     type: 2}
-  target: {fileID: 0}
+  parameterNames: []
+  target:
+  - {fileID: 0}

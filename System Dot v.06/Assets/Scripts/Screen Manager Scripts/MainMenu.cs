@@ -115,13 +115,30 @@ public class MainMenu : MonoBehaviour {
 
     public void CreateNetwork()
     {
-        // Perception Network
-        BayesianNetwork.BNode TimeToClickDebugNode = new BayesianNetwork.BNode(null, "TimeToClickDebug", 0, new List<double>() { .8 });
-        BayesianNetwork.BNode ViewLegacyCodeNode = new BayesianNetwork.BNode(null, "ViewLegacyCode", 0, new List<double>() { .6 });
-        BayesianNetwork.BNode ProcessingNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { TimeToClickDebugNode, ViewLegacyCodeNode }, "Processing", 0, new List<double>() { 1, .5, .5, 0});
+        // Processing Network
+        BayesianNetwork.BNode TimeToClickDebugNode = new BayesianNetwork.BNode(null, "TimeToClickDebug", 0, new List<double>() { .5 });
+        BayesianNetwork.BNode ViewLegacyCodeNode = new BayesianNetwork.BNode(null, "ViewLegacyCode", 1, new List<double>() { .5 });
+        BayesianNetwork.BNode ProcessingNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { TimeToClickDebugNode, ViewLegacyCodeNode }, "Processing", 2, new List<double>() { 0, .5, .5, 1});
         BayesianNetwork.BNetwork ProcessingNetwork = new BayesianNetwork.BNetwork("ProcessingNetwork", new List<BayesianNetwork.BNode>() { TimeToClickDebugNode, ViewLegacyCodeNode, ProcessingNode });
 
-        Debug.Log(ProcessingNode.CalculateProbability(1));
+        // Perception Network
+        BayesianNetwork.BNode UseAPINode = new BayesianNetwork.BNode(null, "UseAPI", 1, new List<double>() { .333 });
+        BayesianNetwork.BNode NumberOfSyntaxErrors = new BayesianNetwork.BNode(null, "NumberOfSyntaxErrors", 2, new List<double>() { .333 });
+        BayesianNetwork.BNode NumberTimesF5KeyHit = new BayesianNetwork.BNode(null, "NumberOfF5KeyPressed", 3, new List<double>() { .333 });
+        BayesianNetwork.BNode PerceptionNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { UseAPINode, NumberOfSyntaxErrors, NumberTimesF5KeyHit},
+            "Perception", 4, new List<double>() { .25, 0, .33, .17, .75, .67, 1, .83 });
+        BayesianNetwork.BNetwork PerceptionNetwork = new BayesianNetwork.BNetwork("PerceptionNetwork",
+            new List<BayesianNetwork.BNode>() { UseAPINode, NumberOfSyntaxErrors, NumberTimesF5KeyHit, PerceptionNode});
+
+        // Understanding Network
+        BayesianNetwork.BNode NumberOfPerfectEdits = new BayesianNetwork.BNode(null, "NumberOfPerfectEdits", 0, new List<double>() { .5 });
+        BayesianNetwork.BNode UnderstandingNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { NumberOfPerfectEdits, NumberOfSyntaxErrors}, "Understanding", 1,
+            new List<double>() { .5, 1, 0, .5 });
+        BayesianNetwork.BNetwork UnderstandingNetwork = new BayesianNetwork.BNetwork("UnderstandingNetwork", new List<BayesianNetwork.BNode>() { NumberOfPerfectEdits, NumberOfSyntaxErrors, UnderstandingNode});
+
+        Debug.Log("Processing: " + ProcessingNode.CalculateProbability(1));
+        Debug.Log("Perception: " + PerceptionNode.CalculateProbability(1));
+        Debug.Log("Understanding: " + UnderstandingNode.CalculateProbability(1));
 
     }
 

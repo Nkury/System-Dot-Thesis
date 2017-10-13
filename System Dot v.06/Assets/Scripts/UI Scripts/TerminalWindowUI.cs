@@ -91,8 +91,8 @@ public class TerminalWindowUI : MonoBehaviour {
         PlayerStats.log_totalNumDebugs++;
         // LOGGER INFO
         if (EnemyTerminal.madeChanges)
-        {
-            if(EnemyTerminal.timeBetweenCodeChangeAndDebug < PlayerStats.timeToDebugThreshhold)
+        {          
+            if (EnemyTerminal.timeBetweenCodeChangeAndDebug < PlayerStats.timeToDebugThreshhold)
             {
                 PlayerStats.log_numQuickDebug++;
             }
