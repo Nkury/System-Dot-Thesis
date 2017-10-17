@@ -64,7 +64,7 @@ public class BossIntellisense : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
         // THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
         if (dialogueIndex < whatToSay.Count && index >= whatToSay[dialogueIndex].Length && nextDialogue)
@@ -95,7 +95,7 @@ public class BossIntellisense : MonoBehaviour {
 
 
         // THIS SECTION IS TO MEDIATE THE TIME THE TEXT APPEARS ON SCREEN
-        if (interval % 3 == 0)
+        if (interval % 2 == 0)
             index++;
 
         interval++;
@@ -114,6 +114,12 @@ public class BossIntellisense : MonoBehaviour {
     {
         zoomOut = true;
         SetDialogue("startBoss");
+    }
+
+    public void invGauntlet()
+    {
+        zoomOut = true;
+        SetDialogue("invincibilityGauntlet");
     }
 
     public IEnumerator NextDialogue()

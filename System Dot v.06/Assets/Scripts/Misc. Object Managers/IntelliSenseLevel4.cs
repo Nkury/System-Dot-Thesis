@@ -74,7 +74,7 @@ public class IntelliSenseLevel4 : IntelliSense
             {
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("firstWhileLoop");
-            } else if(hit && hit.collider.name == "whileTutorial" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
+            } else if(hit && hit.collider.name == "TutorialSpawner" && !hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce)
             {
                 hit.collider.gameObject.GetComponent<EnemyTerminal>().clickOnce = true;
                 SetDialogue("firstSpawner");

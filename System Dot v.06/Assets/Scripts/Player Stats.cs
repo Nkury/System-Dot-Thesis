@@ -5,15 +5,17 @@ using UnityEngine;
 public class PlayerStats {
     /*** ADAPTIVITY STATISTICS *********************************************************************/
     public static int timeToDebugThreshhold = 5;
-    public static int log_numAPIOpen;
-    public static int log_numSyntaxErrors;
-    public static int log_numPerfectEdits;
-    public static int log_numOfF5;
-    public static int log_numLegacyCodeViewed;
-    public static int log_numQuickDebug;
-    public static int log_totalNumDebugs;
-    public static int log_totalNumberOfModifiedEdits;
-    public static int log_totalNumberOfLegacyOnly;
+    public static Dictionary<string, int> log_numAPIOpen = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_numSyntaxErrors = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_numPerfectEdits = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_numOfF5 = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_numLegacyCodeViewed = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_codeSeen = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_numQuickDebug = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_totalNumDebugs = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_totalNumberOfModifiedEdits = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_totalNumberOfLegacyOnly = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_totalNumberOfObjects = new Dictionary<string, int>();
 
     /**** USER PROFILE APTITUDE STATS **************************************************************/
     public static float averageTimeOnEditing;
@@ -50,5 +52,6 @@ public class PlayerStats {
     public static string checkpoint = "Checkpoint1";
     public static int highestCheckpoint = 1;
     public static List<string> deadObjects = new List<string>();
-    public static Dictionary<string, List<string>> terminalStrings = new Dictionary<string, List<string>>(); 
+    public static Dictionary<string, List<string>> terminalStrings = new Dictionary<string, List<string>>();
+    public static Dictionary<string, bool> enemySeen = new Dictionary<string, bool>();
 }

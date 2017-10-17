@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelHandler : MonoBehaviour
 {
@@ -33,6 +34,13 @@ public class LevelHandler : MonoBehaviour
         camera = FindObjectOfType<CameraController>();
 
         healthManager = FindObjectOfType<HealthManager>();
+
+        int numObj;
+        if (!PlayerStats.log_totalNumberOfObjects.TryGetValue(SceneManager.GetActiveScene().name, out numObj))
+        {
+            PlayerStats.log_totalNumberOfObjects[SceneManager.GetActiveScene().name] = GameObject.FindObjectsOfType<EnemyTerminal>().Length;
+        }
+
         LoadLevel();
         player.transform.position = currentCheckpoint.transform.position;
     }

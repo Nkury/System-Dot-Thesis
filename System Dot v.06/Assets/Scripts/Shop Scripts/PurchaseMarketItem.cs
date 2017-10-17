@@ -5,24 +5,54 @@ using UnityEngine.UI;
 public class PurchaseMarketItem : MonoBehaviour {
 
     public GameObject shopKeeper;
+
+    public Text maxHealthText;
+    public Text healthCostText;
+    public Text reviveCostText;
+    public Text armorCostText;
+    public Text maxHealthCostText;
+    public Text hatCostText;
+
     public int healthCost;
     public int revivePotionCost;
     public int armorCost;
+    private int maxHealthCost;
     public int cowboyCost;
+    public int versionNumber;
 
     public SoundController sound;
 	// Use this for initialization
-	void Start () {
-        revivePotionCost = 500;
-        armorCost = 750;
-        cowboyCost = 2000;
+	void Start () {       
         sound = FindObjectOfType<SoundController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+        versionNumber = PlayerStats.maxHealth - 2;
+
+        if (maxHealthText)
+        {
+            maxHealthText.text = "v" + versionNumber + " Upgrade";
+        }
+
+        maxHealthCost = (PlayerStats.maxHealth) * 125; // if maxHealth = 4, then cost of upgrading is 500
+
+        if(healthCostText)
+            healthCostText.text  = healthCost.ToString();
+
+        if(reviveCostText)
+            reviveCostText.text  = revivePotionCost.ToString();
+
+        if(armorCostText)
+            armorCostText.text = armorCost.ToString();
+
+        if(maxHealthCostText)
+            maxHealthCostText.text = maxHealthCost.ToString();
+
+        if(hatCostText)
+            hatCostText.text = cowboyCost.ToString();  
+    }
 
     public void purchaseHealth()
     {
@@ -61,11 +91,25 @@ public class PurchaseMarketItem : MonoBehaviour {
         if ((PlayerStats.bitsCollected - armorCost) < 0)
         {
             insufficientFunds();
-        }
+        } 
         else
         {
             PlayerStats.bitsCollected -= armorCost;
-            PlayerStats.armorHealth += 5;
+            PlayerStats.armorHealth += 1;
+            itemBought();
+        }
+    }
+
+    public void purchaseUpgrade()
+    {
+        if ((PlayerStats.bitsCollected - maxHealthCost) < 0)
+        {
+            insufficientFunds();
+        }
+        else
+        {
+            PlayerStats.bitsCollected -= maxHealthCost;
+            PlayerStats.maxHealth += 1;
             itemBought();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LevelLoader : MonoBehaviour {
@@ -17,7 +18,13 @@ public class LevelLoader : MonoBehaviour {
 	void Update () {
 		if (Input.GetAxisRaw ("Vertical") > 0 && playerInZone) 
 		{
+            if(!SceneManager.GetActiveScene().name.Contains("BOSS") || SceneManager.GetActiveScene().name != "CPU")
+            {
+                StatsLog.WriteToFile();
+            }
+
 			Application.LoadLevel(levelToLoad);
+
 		}
 	}
 

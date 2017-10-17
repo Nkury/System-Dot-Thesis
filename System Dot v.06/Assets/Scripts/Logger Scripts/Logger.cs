@@ -50,10 +50,6 @@ public class Logger : MonoBehaviour {
                 numOfMouseClicks++;
             }
 
-            if (Input.GetKeyDown(KeyCode.F5))
-            {
-                PlayerStats.log_numOfF5++;
-            }
 
         }
         else if(!closed)

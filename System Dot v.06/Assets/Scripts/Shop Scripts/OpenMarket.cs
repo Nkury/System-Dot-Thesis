@@ -14,7 +14,6 @@ public class OpenMarket : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        PlayerStats.bitsCollected = 2000;
         openMarket = false;
         inMarket = false;
 	}
@@ -60,7 +59,9 @@ public class OpenMarket : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other)
     {        
             inMarket = false;
-            openShopTip.SetActive(false);        
+            openMarket = false;
+            openShopTip.SetActive(false);
+            marketCanvas.SetActive(false);
     }
 
 

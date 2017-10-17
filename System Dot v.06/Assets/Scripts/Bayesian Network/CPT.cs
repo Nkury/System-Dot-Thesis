@@ -19,19 +19,19 @@ namespace BayesianNetwork
         }
 
         // EXAMPLE: where p1 = first parent, p2 = second parent
-        //   p1  p2     T    F  
+        //   p1  p2     F    T  
         // -------------------
-        //   T , T | [ .6 , .4 ]
-        //   T , F | [ .2 , .8 ]
-        //   F , T | [ .3 , .7 ]
-        //   F , F | [ .1 , .9 ]
+        //   F , F | [ .6 , .4 ]
+        //   F , T | [ .2 , .8 ]
+        //   T , F | [ .3 , .7 ]
+        //   T , T | [ .1 , .9 ]
         public void SetTable(List<double> probabilities)
         {
             int i = 0;
             foreach(double prob in probabilities)
             {
-                table[i, cols - 2] = prob;
-                table[i, cols - 1] = 1 - prob;
+                table[i, cols - 1] = prob;
+                table[i, cols - 2] = 1 - prob;
                 i++;
             }
         }

@@ -1,0 +1,54 @@
+
+
+-----------> StartingScene <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 31 / 32 = 0.96875%
+Number of Code Viewed: 16 / 51 = 0.3137255%
+Active: 0.80499387254902% | Reflexive: 0.19500612745098%
+
+
+PERCEPTION:
+Use API to Code: 1 / 31 = 0.03225806%
+F5 Key Hit: 17 / 32 = 0.53125%
+Sensing: 0.867943548387097% | Intuitive: 0.132056451612903%
+
+
+INPUT:
+Use API to Code: 1 / 31 = 0.03225806%
+Number of Code Viewed: 16 / 51 = 0.3137255%
+Sensing: 0.102624920936116% | Intuitive: 0.897375079063884%
+
+
+MISC:
+Syntax Errors: 1 / 31 = 0.03225806%
+Perfect Edits: 28 / 31 = 0.9032258%
+
+
+-----------> Level1 BOSS <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 35 / 37 = 94.59%
+Number of Code Viewed: 20 / 60 = 33.33%
+Active: 79.28% | Reflexive: 20.72%
+
+
+PERCEPTION:
+Use API to Code: 1 / 36 = 2.78%
+F5 Key Hit: 19 / 37 = 51.35%
+Sensing: 87.51% | Intuitive: 12.49%
+
+
+INPUT:
+Use API to Code: 1 / 36 = 2.78%
+Number of Code Viewed: 20 / 60 = 33.33%
+Visual: 10.42% | Verbal: 89.58%
+
+
+MISC:
+Syntax Errors: 1 / 36 = 2.78%
+Perfect Edits: 33 / 36 = 91.67%

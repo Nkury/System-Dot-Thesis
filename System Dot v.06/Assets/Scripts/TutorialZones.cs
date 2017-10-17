@@ -69,6 +69,17 @@ public class TutorialZones : MonoBehaviour
                 aSources[0].Play();                          
 
                 Destroy(this.gameObject);
+            } else if(this.gameObject.name == "gauntlet")
+            {
+                Destroy(this.gameObject);
+            } else if(this.gameObject.name == "GauntletTrigger")
+            {
+                intelliSense.SetActive(true);
+
+                // set up boss dialogue
+                intelliSense.SendMessage("invGlove");
+
+                Destroy(this.gameObject);
             }
         }
     }

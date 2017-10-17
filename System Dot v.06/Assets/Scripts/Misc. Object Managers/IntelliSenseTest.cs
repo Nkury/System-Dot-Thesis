@@ -108,21 +108,24 @@ public class IntelliSenseTest : IntelliSense {
             }
         }
 
-        // FOR BLACK VBOT TUTORIAL
-        // CHECKS TO MAKE SURE CODE IS NOT LEGACY BEFORE DOING THIS CHECK
-        if (tutorialLine.textComponent.color != Color.red && noMoreReadOnly)
+        if (PlayerStats.highestCheckpoint < 3)
         {
-            tutorialLine.readOnly = tutorialCheck;
-        }
-
-        // for black Vbot tutorial
-        if (!tutorialCheck)
-        {
-            if (tutorialLine.textComponent.text == "System.body(Color.GREEN);")
+            // FOR BLACK VBOT TUTORIAL
+            // CHECKS TO MAKE SURE CODE IS NOT LEGACY BEFORE DOING THIS CHECK
+            if (tutorialLine.textComponent.color != Color.red && noMoreReadOnly)
             {
-                tutorialCheck = true;
-                noMoreReadOnly = false;
-                GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("codeFixed");
+                tutorialLine.readOnly = tutorialCheck;
+            }
+
+            // for black Vbot tutorial
+            if (!tutorialCheck)
+            {
+                if (tutorialLine.textComponent.text == "System.body(Color.GREEN);")
+                {
+                    tutorialCheck = true;
+                    noMoreReadOnly = false;
+                    GameObject.Find("Intellisense").GetComponent<IntelliSenseTest>().SetDialogue("codeFixed");
+                }
             }
         }
     }  
@@ -316,7 +319,8 @@ public class IntelliSenseTest : IntelliSense {
                 eventName = "";
                 dialogueIndex++;
                 break;
-        }        
+        }
+        
     }
     #endregion
 }

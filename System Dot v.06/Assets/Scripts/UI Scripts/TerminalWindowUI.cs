@@ -18,7 +18,7 @@ public class TerminalWindowUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Slider healthBar = transform.Find("Player Info Panel/Health Bar").GetComponent<Slider>();
-        
+        API = GameObject.FindObjectOfType<APISystem>();
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,7 @@ public class TerminalWindowUI : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.F5))
             {
                 LogToFile.WriteToFile("DEBUG-F5", "TERMINAL_WINDOW");
-                PlayerStats.log_numOfF5++;
+                LogHelper.SetDictionaryValue(PlayerStats.log_numOfF5, LogHelper.GetDictionaryValue(PlayerStats.log_numOfF5) + 1);   
                 debugClicked();
             } 
 
@@ -67,10 +67,11 @@ public class TerminalWindowUI : MonoBehaviour {
         if (EnemyTerminal.madeChanges)
         {
             // LOGGER INFO
-            PlayerStats.log_totalNumberOfModifiedEdits++;
+            LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits) + 1);
+
             if (EnemyTerminal.APIUsed)
             {
-                PlayerStats.log_numAPIOpen++;
+                LogHelper.SetDictionaryValue(PlayerStats.log_numAPIOpen, LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen) + 1);
                 EnemyTerminal.APIUsed = false;
             }
             EnemyTerminal.madeChanges = false;
@@ -88,21 +89,23 @@ public class TerminalWindowUI : MonoBehaviour {
     public void debugClicked()
     {      
         LogToFile.WriteToFile("DEBUG-CLICKED", "TERMINAL_WINDOW");
-        PlayerStats.log_totalNumDebugs++;
+
+        LogHelper.SetDictionaryValue(PlayerStats.log_totalNumDebugs, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumDebugs) + 1);
+       
         // LOGGER INFO
         if (EnemyTerminal.madeChanges)
         {          
             if (EnemyTerminal.timeBetweenCodeChangeAndDebug < PlayerStats.timeToDebugThreshhold)
             {
-                PlayerStats.log_numQuickDebug++;
+                LogHelper.SetDictionaryValue(PlayerStats.log_numQuickDebug, LogHelper.GetDictionaryValue(PlayerStats.log_numQuickDebug) + 1);       
             }
 
             if (EnemyTerminal.APIUsed) {
-                PlayerStats.log_numAPIOpen++;
+                LogHelper.SetDictionaryValue(PlayerStats.log_numAPIOpen, LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen) + 1);
                 EnemyTerminal.APIUsed = false;
             }
-          
-            PlayerStats.log_totalNumberOfModifiedEdits++;
+
+            LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits) + 1);
         }
 
         if (API.APImenu.activeSelf)
@@ -127,7 +130,7 @@ public class TerminalWindowUI : MonoBehaviour {
                     PlayerStats.mostNumberofAttempts++;
                     if (EnemyTerminal.madeChanges)
                     {
-                        PlayerStats.log_numSyntaxErrors++;
+                        LogHelper.SetDictionaryValue(PlayerStats.log_numSyntaxErrors, LogHelper.GetDictionaryValue(PlayerStats.log_numSyntaxErrors) + 1);                   
                         EnemyTerminal.madeChanges = false;
                     }
                     LogToFile.WriteToFile("WRONG-SYNTAX", "CODE");
@@ -144,7 +147,7 @@ public class TerminalWindowUI : MonoBehaviour {
                         {
                             LogToFile.WriteToFile("CORRECT-SYNTAX", "CODE");
                             PlayerStats.numberOfPerfectEdits++;
-                            PlayerStats.log_numPerfectEdits++;
+                            LogHelper.SetDictionaryValue(PlayerStats.log_numPerfectEdits, LogHelper.GetDictionaryValue(PlayerStats.log_numPerfectEdits) + 1);                        
                         }
                     }
                 }

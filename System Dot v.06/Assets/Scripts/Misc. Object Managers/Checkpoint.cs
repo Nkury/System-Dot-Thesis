@@ -67,6 +67,7 @@ public class Checkpoint : MonoBehaviour {
 		}
 	}
 
+    // saves terminal strings and whether the enemy has been seen
     public void SaveTerminalStrings()
     {
         EnemyTerminal[] enemies = FindObjectsOfType<EnemyTerminal>();
@@ -84,8 +85,22 @@ public class Checkpoint : MonoBehaviour {
             {
                 PlayerStats.terminalStrings.Add(e.gameObject.name, e.terminalString.ToList());
             }
+
+            bool seen;
+            if (PlayerStats.enemySeen.TryGetValue(e.gameObject.name, out seen))
+            {
+                if (seen != e.seen)
+                {
+                    PlayerStats.enemySeen[e.gameObject.name] = e.seen;
+                }
+            }
+            else
+            {
+                PlayerStats.enemySeen.Add(e.gameObject.name, e.seen);
+            }
         }
 
         Game.current.terminalStrings = PlayerStats.terminalStrings;
+        Game.current.enemySeen = PlayerStats.enemySeen;
     }
 }

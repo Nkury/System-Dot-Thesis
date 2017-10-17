@@ -21,13 +21,13 @@ public class LogInfo : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        numAPIOpen.text = PlayerStats.log_numAPIOpen.ToString();
-        numSyntaxErrors.text = PlayerStats.log_numSyntaxErrors.ToString();
-        numPerfectEdits.text = PlayerStats.log_numPerfectEdits.ToString();
-        numF5s.text = PlayerStats.log_numOfF5.ToString();
-        numLegacyCodeViewed.text = PlayerStats.log_numLegacyCodeViewed.ToString();
-        numQuickDebug.text = PlayerStats.log_numQuickDebug.ToString();
-        totalModifiedEdits.text = PlayerStats.log_totalNumberOfModifiedEdits.ToString();
-        totalNumLegacy.text = PlayerStats.log_totalNumberOfLegacyOnly.ToString();
+        numAPIOpen.text = LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen).ToString();                                                      
+        numSyntaxErrors.text = LogHelper.GetDictionaryValue(PlayerStats.log_numSyntaxErrors).ToString();  
+        numPerfectEdits.text = LogHelper.GetDictionaryValue(PlayerStats.log_numPerfectEdits).ToString();  
+        numF5s.text = LogHelper.GetDictionaryValue(PlayerStats.log_numOfF5).ToString();               
+        numLegacyCodeViewed.text = LogHelper.GetDictionaryValue(PlayerStats.log_numLegacyCodeViewed).ToString();  
+        numQuickDebug.text = LogHelper.GetDictionaryValue( PlayerStats.log_numQuickDebug).ToString();    
+        totalModifiedEdits.text = LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits).ToString();
+        totalNumLegacy.text = LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfLegacyOnly).ToString();  
     }
 }

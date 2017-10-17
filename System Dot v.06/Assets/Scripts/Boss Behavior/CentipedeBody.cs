@@ -47,7 +47,7 @@ public class CentipedeBody : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
         if (BossIntellisense.startBoss)
         {
@@ -55,11 +55,11 @@ public class CentipedeBody : MonoBehaviour {
 
             if (CentipedeHead.lives < 9)
             {
-                speed = 8;
+                speed = 10;
             }
             if (CentipedeHead.lives < 15)
             {
-                speed = 5;
+                speed = 6;
             }
         }
     }

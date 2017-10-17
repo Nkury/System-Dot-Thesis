@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -61,13 +62,12 @@ public class EnemyTerminal : MonoBehaviour
     public static bool APIUsed = false;
     public static float timeBetweenCodeChangeAndDebug;
     private bool isLegacy = false;
-    private bool legacySeen = false;
+    public bool seen = false;
 
 
     // Use this for initialization
     void Start()
     {
-
         API = GameObject.FindObjectOfType<APISystem>();
         Transform[] trs = GameObject.Find("Main HUD").GetComponentsInChildren<Transform>(true);
         foreach (Transform t in trs)
@@ -78,10 +78,20 @@ public class EnemyTerminal : MonoBehaviour
             }
         }
 
-        if (PlayerStats.log_totalNumberOfLegacyOnly == 0)
+        int legacySeen;
+        if (PlayerStats.log_totalNumberOfLegacyOnly.TryGetValue(SceneManager.GetActiveScene().name, out legacySeen))
         {
+            if (legacySeen == 0)
+            {
+                CountLegacy();
+            }
+        }
+        else
+        {
+            PlayerStats.log_totalNumberOfLegacyOnly.Add(SceneManager.GetActiveScene().name, 0);
             CountLegacy();
         }
+
         checkTerminalString();
         StartCoroutine(evaluateActions());       
     }
@@ -170,11 +180,18 @@ public class EnemyTerminal : MonoBehaviour
 
                     /* LOGGER INFORMATION */
                     PlayerStats.numOfEdits++;
-                    if (isLegacy && !legacySeen)
+                    if (!seen)
                     {
-                        legacySeen = true;
-                        PlayerStats.log_numLegacyCodeViewed++;
+                        seen = true;
+
+                        if (isLegacy)
+                        {
+                            LogHelper.SetDictionaryValue(PlayerStats.log_numLegacyCodeViewed, LogHelper.GetDictionaryValue(PlayerStats.log_numLegacyCodeViewed) + 1);     
+                        }
+
+                        LogHelper.SetDictionaryValue(PlayerStats.log_codeSeen, LogHelper.GetDictionaryValue(PlayerStats.log_codeSeen) + 1);                    
                     }
+                
                     LogToFile.WriteToFile("OPEN-TERMINAL-FOR-" + this.gameObject, "TERMINAL-WINDOW");
                 }
                 else
@@ -195,7 +212,7 @@ public class EnemyTerminal : MonoBehaviour
         passedInString += parameters;
 
         // check if a variabull is with us
-        if (terminalWindow && 
+        if (terminalWindow && terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef &&
             terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variabullRef.activeSelf) {
             passedInString += terminalWindow.transform.parent.GetComponent<TerminalWindowUI>().variaCode.GetComponent<Text>().text;
         }
@@ -783,8 +800,9 @@ public class EnemyTerminal : MonoBehaviour
                 return;
             }
         }
-
-        PlayerStats.log_totalNumberOfLegacyOnly++;
+        
+        LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfLegacyOnly, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfLegacyOnly) + 1);
+        
         isLegacy = true;
     }
 }

@@ -1,15 +1,19 @@
 <dialogue>
   
   <message id="health">
-    <say char="Shopkeeper">Replenishes your health by one.</say>
+    <say char="Shopkeeper">A chance to repair any damages by one.</say>
   </message>
 
   <message id="revive">
-    <say char="Shopkeeper">You will revived to full health without dying.</say>
+    <say char="Shopkeeper">Reboots your software to full health upon failure automatically.</say>
   </message>
 
   <message id="armor">
-    <say char="Shopkeeper">Acts like consumable health and cannot be regained.</say>
+    <say char="Shopkeeper">Acts like a consumable repair and cannot be regained.</say>
+  </message>
+
+  <message id="maxHealth">
+    <say char="Shopkeeper">An upgrade to your health capacity by one!</say>
   </message>
 
   <message id="hat">
@@ -22,6 +26,10 @@
 
   <message id="healthMaxed">
     <say char="Shopkeeper">I'm not letting you waste your memory. You already have full health!</say>
+  </message>
+
+  <message id="armorMaxed">
+    <say char="Shopkeeper">I'm not letting you waste your memory. You already have full armor!</say>
   </message>
 
   <message id="itemBought">

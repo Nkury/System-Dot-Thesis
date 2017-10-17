@@ -23,7 +23,7 @@ namespace BayesianNetwork
             nodeName = name;
             node_id = id;
 
-            table = new CPT(parent == null ? 2 : (int)Mathf.Pow(2, parents.Count), 2, probs);
+            table = new CPT(parent == null ? 1 : (int)Mathf.Pow(2, parents.Count), 2, probs);
         }
 
         // evidence = 
@@ -39,9 +39,11 @@ namespace BayesianNetwork
                 product = 1; // reset product
                 product *= table.GetValue(i, evidence);
                 if (parents != null) {
-                    for (int j = parents.Count - 1; j >= 0; j--)
+                    int k = 0;
+                    for (int j = parents.Count-1; j >= 0; j--)
                     {
-                        product *= parents[j].CalculateProbability((i / (int)Mathf.Pow(2, j)) % 2);
+                        product *= parents[k].CalculateProbability((i / (int)Mathf.Pow(2, j)) % 2);
+                        k++;
                     }
                 }
                 sum += product;

@@ -55,7 +55,7 @@ public class HealthManager : MonoBehaviour {
                     CentipedeHead.life = 1;
                     SceneManager.LoadScene(PlayerStats.levelName);
                 }
-                else
+                else if(levelManager)
                 {
                     levelManager.RespawnPlayer();
                     isDead = true;
@@ -67,6 +67,7 @@ public class HealthManager : MonoBehaviour {
 
         if (this.gameObject.name == "Health Bar")
         {
+            this.GetComponent<Slider>().maxValue = PlayerStats.maxHealth;
             this.GetComponent<Slider>().value = PlayerStats.currentHealth;
         } else if(this.gameObject.name == "Armor Bar")
         {
@@ -108,7 +109,7 @@ public class HealthManager : MonoBehaviour {
 
 	public static void FullHealth()
 	{
-        GameObject.Find("Sound Controller").GetComponent<SoundController>().play("health");
+        //GameObject.Find("Sound Controller").GetComponent<SoundController>().play("health");
         PlayerStats.currentHealth = PlayerStats.maxHealth;
 	}
 

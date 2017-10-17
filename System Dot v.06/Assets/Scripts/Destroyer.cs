@@ -25,6 +25,15 @@ public class Destroyer : MonoBehaviour {
                     StartCoroutine(e.evaluateActions());
                 }               
             }
+
+            bool seen;
+            if (PlayerStats.enemySeen.TryGetValue(e.gameObject.name, out seen))
+            {
+                if (seen != e.seen)
+                {
+                    e.seen = seen;
+                }
+            }
         }
 
     }

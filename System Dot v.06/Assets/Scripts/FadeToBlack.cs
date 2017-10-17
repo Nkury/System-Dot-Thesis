@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FadeToBlack : MonoBehaviour {
 
@@ -30,7 +31,11 @@ public class FadeToBlack : MonoBehaviour {
 
             if (num >= (startFade + (1 / speed)))
             {
-                Debug.Log("Load level");
+                // load the level
+                if (SceneManager.GetActiveScene().name == "ESB Crash")
+                {
+                    SceneManager.LoadScene("Level2");
+                }
             }
         }
 	}
