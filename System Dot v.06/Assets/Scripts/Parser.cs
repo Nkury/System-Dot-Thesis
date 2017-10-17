@@ -1040,90 +1040,118 @@ namespace ParserAlgo
         private numberOrString numMath(numberOrString left_op, numberOrString right_op, TokenTypes op)
         {
             numberOrString num = default(numberOrString);
+
             switch (op)
             {
                 case TokenTypes.PLUS:
-                    if (checkTag(left_op))
+                    try
                     {
-                        if (checkTag(right_op))
+                        if (checkTag(left_op))
                         {
-                            num.value = (Int32.Parse(left_op.value) + Int32.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.INT;
+                            if (checkTag(right_op))
+                            {
+                                num.value = (Int32.Parse(left_op.value) + Int32.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.INT;
+                            }
+                            else
+                            {
+                                num.value = (Int32.Parse(left_op.value) + float.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
                         }
                         else
                         {
-                            num.value = (Int32.Parse(left_op.value) + float.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
+                            if (checkTag(right_op))
+                            {
+                                num.value = (float.Parse(left_op.value) + Int32.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
+                            else
+                            {
+                                num.value = (float.Parse(left_op.value) + float.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
                         }
                     }
-                    else
+                    catch
                     {
-                        if (checkTag(right_op))
-                        {
-                            num.value = (float.Parse(left_op.value) + Int32.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
-                        }
-                        else
-                        {
-                            num.value = (float.Parse(left_op.value) + float.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
-                        }
+                        syntaxMessage = "Error in line " + line_no +
+                        ": One of the values is not numeric.";
+                        return default(numberOrString);
                     }
                     break;
                 case TokenTypes.MINUS:
-                    if (checkTag(left_op))
+                    try
                     {
-                        if (checkTag(right_op))
+                        if (checkTag(left_op))
                         {
-                            num.value = (Int32.Parse(left_op.value) - Int32.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.INT;
+                            if (checkTag(right_op))
+                            {
+                                num.value = (Int32.Parse(left_op.value) - Int32.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.INT;
+                            }
+                            else
+                            {
+                                num.value = (Int32.Parse(left_op.value) - float.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
                         }
                         else
                         {
-                            num.value = (Int32.Parse(left_op.value) - float.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
+                            if (checkTag(right_op))
+                            {
+                                num.value = (float.Parse(left_op.value) - Int32.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
+                            else
+                            {
+                                num.value = (float.Parse(left_op.value) - float.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
                         }
                     }
-                    else
+                    catch
                     {
-                        if (checkTag(right_op))
-                        {
-                            num.value = (float.Parse(left_op.value) - Int32.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
-                        }
-                        else
-                        {
-                            num.value = (float.Parse(left_op.value) - float.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
-                        }
+                        syntaxMessage = "Error in line " + line_no +
+                        ": One of the values is not numeric.";
+                        return default(numberOrString);
                     }
                     break;
                 case TokenTypes.MULT:
-                    if (checkTag(left_op))
+                    try
                     {
-                        if (checkTag(right_op))
+                        if (checkTag(left_op))
                         {
-                            num.value = (Int32.Parse(left_op.value) * Int32.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.INT;
+                            if (checkTag(right_op))
+                            {
+                                num.value = (Int32.Parse(left_op.value) * Int32.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.INT;
+                            }
+                            else
+                            {
+                                num.value = (Int32.Parse(left_op.value) * float.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
                         }
                         else
                         {
-                            num.value = (Int32.Parse(left_op.value) * float.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
+                            if (checkTag(right_op))
+                            {
+                                num.value = (float.Parse(left_op.value) * Int32.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
+                            else
+                            {
+                                num.value = (float.Parse(left_op.value) * float.Parse(right_op.value)).ToString();
+                                num.tag = TokenTypes.REAL;
+                            }
                         }
                     }
-                    else
+                    catch
                     {
-                        if (checkTag(right_op))
-                        {
-                            num.value = (float.Parse(left_op.value) * Int32.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
-                        }
-                        else
-                        {
-                            num.value = (float.Parse(left_op.value) * float.Parse(right_op.value)).ToString();
-                            num.tag = TokenTypes.REAL;
-                        }
+                        syntaxMessage = "Error in line " + line_no +
+                        ": One of the values is not numeric.";
+                        return default(numberOrString);
                     }
                     break;
                 case TokenTypes.DIV:
@@ -2598,6 +2626,7 @@ namespace ParserAlgo
 
             loopCode.Clear(); // clear the loop code stack
             newAssignments.Clear(); // clear the scope stack
+            symbolTable.Clear(); // clear the symbol table
             syntaxMessage = ""; // clear syntax message
 
             errorCount = 0; // reset error count

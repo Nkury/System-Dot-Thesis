@@ -232,6 +232,7 @@ public class IntelliSenseLevel3 : IntelliSense
                 break;
 
         }
+        eventName = "";
     }
     #endregion
 }

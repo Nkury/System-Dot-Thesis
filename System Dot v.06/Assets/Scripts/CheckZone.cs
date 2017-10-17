@@ -54,7 +54,7 @@ public class CheckZone : MonoBehaviour
                 {
                     numRescued--;
                     listOfVariabulls.Add("double dec = 0.25; ");                   
-                    intelliSense.GetComponent<IntelliSenseLevel2>().SetDialogue("DeliveDec");
+                    intelliSense.GetComponent<IntelliSenseLevel2>().SetDialogue("DeliverDec");
                 }
                 break;
             case "string word = \"sentence\";":

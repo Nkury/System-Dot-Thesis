@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64cc3635c75831444babd96428508db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLevel: LVL2
+  startLevel: Level2 BOSS
   levelSelect: Minigame Select
   playerLives: 999999999
   playerHealth: 4
