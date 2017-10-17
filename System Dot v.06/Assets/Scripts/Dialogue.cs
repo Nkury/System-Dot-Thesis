@@ -45,6 +45,8 @@ public class Dialogue : MonoBehaviour {
     public bool isAutoScroll = false;
     protected bool nextDialogue;
 
+    private GameObject currentSpeaker;
+
     // Use this for initialization
     public void Start () {
         XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/" + dialogueFileName + ".xml");
@@ -76,103 +78,108 @@ public class Dialogue : MonoBehaviour {
     }   
 
 	public void Update () {
-
-        // for autoscrolling scenarios
-        if (isAutoScroll)
+        if (currentSpeaker == this.gameObject)
         {
-            if (dialogueIndex < whatToSay.Count && index >= whatToSay[dialogueIndex].say.Length && nextDialogue){
-                AutoScroll();
-            }
-        }
-        else {
-            if (whatToSay != null)
+            // for autoscrolling scenarios
+            if (isAutoScroll)
             {
-                // REPLACE PLAYERNAME WITH PLAYERSTATS.PLAYERNAME
-                if (dialogueIndex < whatToSay.Count && whatToSay[dialogueIndex].say.Contains("PLAYERNAME"))
+                if (dialogueIndex < whatToSay.Count && index >= whatToSay[dialogueIndex].say.Length && nextDialogue)
                 {
-                    if (PlayerStats.playerName == null || PlayerStats.playerName == string.Empty)
+                    AutoScroll();
+                }
+            }
+            else
+            {
+                if (whatToSay != null)
+                {
+                    // REPLACE PLAYERNAME WITH PLAYERSTATS.PLAYERNAME
+                    if (dialogueIndex < whatToSay.Count && whatToSay[dialogueIndex].say.Contains("PLAYERNAME"))
                     {
-                        whatToSay[dialogueIndex].say = whatToSay[dialogueIndex].say.Replace("PLAYERNAME", "BOB");
+                        if (PlayerStats.playerName == null || PlayerStats.playerName == string.Empty)
+                        {
+                            whatToSay[dialogueIndex].say = whatToSay[dialogueIndex].say.Replace("PLAYERNAME", "BOB");
+                        }
+                        else
+                        {
+                            whatToSay[dialogueIndex].say = whatToSay[dialogueIndex].say.Replace("PLAYERNAME", PlayerStats.playerName.ToUpper());
+                        }
+                    }
+
+                    // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
+                    if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
+                    {
+                        if (dialogueBox.transform.Find("spacebar image"))
+                        {
+                            dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            LogToFile.WriteToFile("SPEED-UP-DIALOGUE", "DIALOGUE");
+                            index = whatToSay[dialogueIndex].say.Length;
+                        }
+                    }// THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
+                    else if (dialogueIndex < whatToSay.Count)
+                    {
+                        // go to the next string
+                        if (dialogueBox.transform.Find("spacebar image"))
+                        {
+                            dialogueBox.transform.Find("spacebar image").gameObject.SetActive(true);
+                        }
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            dialogueIndex++;
+                            index = 0;
+                        }
+                        // THIS SECTION IS TO KEEP THE TEXT PRESENT WHILE ASSESSING AN EVENT
+                    }
+                    else if (eventName != "")
+                    {
+                        if (dialogueBox.transform.Find("spacebar image"))
+                        {
+                            dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
+                        }
+                        // check for special events mid-dialogue
+                        performEvent();
+                        //  eventName = ""; // to transition to talking = false;
+                        // THIS SECTION IS TO SIGNAL THAT WE ARE DONE TALKING AND PLAYER IS FREE TO MOVE
                     }
                     else
                     {
-                        whatToSay[dialogueIndex].say = whatToSay[dialogueIndex].say.Replace("PLAYERNAME", PlayerStats.playerName.ToUpper());
+                        if (talking)
+                        {
+                            LogToFile.WriteToFile(this.gameObject.name + "-END-DIALOGUE", "DIALOGUE");
+                        }
+                        talking = false;
+                        currentSpeaker = null;
                     }
                 }
-
-                // THIS SECTION IS TO SKIP AND DISPLAY ALL THE TEXT AT ONCE
-                if (dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
-                {
-                    if (dialogueBox.transform.Find("spacebar image"))
-                    {
-                        dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
-                    }
-
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        LogToFile.WriteToFile("SPEED-UP-DIALOGUE", "DIALOGUE");
-                        index = whatToSay[dialogueIndex].say.Length;
-                    }
-                }// THIS SECTION IS RESPONSIBLE FOR PRINTING OUT TEXT LIKE A VIDEO GAME
-                else if (dialogueIndex < whatToSay.Count)
-                {
-                    // go to the next string
-                    if (dialogueBox.transform.Find("spacebar image"))
-                    {
-                        dialogueBox.transform.Find("spacebar image").gameObject.SetActive(true);
-                    }
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        dialogueIndex++;
-                        index = 0;
-                    }
-                    // THIS SECTION IS TO KEEP THE TEXT PRESENT WHILE ASSESSING AN EVENT
-                }
-                else if (eventName != "")
-                {
-                    if (dialogueBox.transform.Find("spacebar image"))
-                    {
-                        dialogueBox.transform.Find("spacebar image").gameObject.SetActive(false);
-                    }
-                    // check for special events mid-dialogue
-                    performEvent();
-                  //  eventName = ""; // to transition to talking = false;
-                    // THIS SECTION IS TO SIGNAL THAT WE ARE DONE TALKING AND PLAYER IS FREE TO MOVE
-                }
-                else
-                {
-                    if (talking)
-                    {
-                        LogToFile.WriteToFile(this.gameObject.name + "-END-DIALOGUE", "DIALOGUE");
-                    }
-                    talking = false;
-                }
-            }        
-        }
-
-        if (whatToSay != null)
-        {
-            // THIS SECTION IS TO PRINT OUT WHAT THE CHARACTER SAYS ON THE SCREEN
-            if (dialogueIndex < whatToSay.Count && index <= whatToSay[dialogueIndex].say.Length)
-            {
-                dialogueBox.GetComponentInChildren<Text>().text = whatToSay[dialogueIndex].say.Substring(0, index);
             }
-        }
 
-        // THIS SECTION IS TO DISPLAY THE DIALOGUE BOX IF THE PLAYER IS TALKING  
-        dialogueBox.SetActive(talking);
-
-        // THIS SECTION IS TO MEDIATE THE TIME THE TEXT APPEARS ON SCREEN
-        if (interval % 3 == 0)
-        {
-            index++;
-            if (whatToSay != null && talking && dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
+            if (whatToSay != null)
             {
-                talkingSoundEffect.Play();
+                // THIS SECTION IS TO PRINT OUT WHAT THE CHARACTER SAYS ON THE SCREEN
+                if (dialogueIndex < whatToSay.Count && index <= whatToSay[dialogueIndex].say.Length)
+                {
+                    dialogueBox.GetComponentInChildren<Text>().text = whatToSay[dialogueIndex].say.Substring(0, index);
+                }
             }
-        }
 
-        interval++;
+            // THIS SECTION IS TO DISPLAY THE DIALOGUE BOX IF THE PLAYER IS TALKING  
+            dialogueBox.SetActive(talking);
+
+            // THIS SECTION IS TO MEDIATE THE TIME THE TEXT APPEARS ON SCREEN
+            if (interval % 3 == 0)
+            {
+                index++;
+                if (whatToSay != null && talking && dialogueIndex < whatToSay.Count && index < whatToSay[dialogueIndex].say.Length)
+                {
+                    talkingSoundEffect.Play();
+                }
+            }
+
+            interval++;
+        }
     }
 
     public virtual void SetDialogue(string keyWord)
@@ -197,6 +204,7 @@ public class Dialogue : MonoBehaviour {
 
         initialEvent(keyWord);
 
+        currentSpeaker = this.gameObject;
         talking = true;
     }
 

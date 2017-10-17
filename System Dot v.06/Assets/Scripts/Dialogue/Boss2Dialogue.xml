@@ -2,7 +2,7 @@
   
   <message id="startBoss">
     <say char="IntelliSense">Oh, come on! We just saved the variabulls!</say>
-    <say char="IntelliSense">Let's take advantage of these variabulls and...</say>
-    <say char="IntelliSense">... put a stop to this virus once and for all!</say>
+    <say char="IntelliSense">Let's take advantage of these variabulls, hack this virus,</say>
+    <say char="IntelliSense">...and finish this once and for all!</say>
   </message>
 </dialogue>

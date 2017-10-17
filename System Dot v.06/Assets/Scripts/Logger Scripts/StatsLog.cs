@@ -39,7 +39,7 @@ public class StatsLog {
         BayesianNetwork.BNode TimeToClickDebugNode = new BayesianNetwork.BNode(null, "TimeToClickDebug", 0, new List<double>() { (float)numQuickDebug / totalNumDebugs });
         BayesianNetwork.BNode ViewCodeNode = new BayesianNetwork.BNode(null, "ViewCode", 1, new List<double>() { (float)codeSeen / totalCodeObjects });
         BayesianNetwork.BNode ProcessingNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { TimeToClickDebugNode, ViewCodeNode }, "Processing", 2, new List<double>() { 0, .25, .75, 1.00 });
-        writer.WriteLine("Active: " + LogHelper.RoundStat(ProcessingNode.CalculateProbability(1)) + "% | Reflexive: " + LogHelper.RoundStat(ProcessingNode.CalculateProbability(0)) + "%");
+        writer.WriteLine("--PROCESSING STAT-> Active: " + LogHelper.RoundStat(ProcessingNode.CalculateProbability(1)) + "% | Reflexive: " + LogHelper.RoundStat(ProcessingNode.CalculateProbability(0)) + "%");
 
         writer.WriteLine("\n");
         writer.WriteLine("PERCEPTION:");
@@ -50,7 +50,7 @@ public class StatsLog {
         BayesianNetwork.BNode UseAPINode = new BayesianNetwork.BNode(null, "UseAPI", 0, new List<double>() { (float)numAPIOpen / totalNumberOfModifiedEdits });
         BayesianNetwork.BNode UseF5 = new BayesianNetwork.BNode(null, "UseF5", 1, new List<double>() { (float)numOfF5 / totalNumDebugs });
         BayesianNetwork.BNode PerceptionNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { UseAPINode, UseF5}, "Perception", 2, new List<double>() { 1, .8, .2, 0 });
-        writer.WriteLine("Sensing: " + LogHelper.RoundStat(PerceptionNode.CalculateProbability(1)) + "% | Intuitive: " + LogHelper.RoundStat(PerceptionNode.CalculateProbability(0)) + "%");
+        writer.WriteLine("--PERCEPTION STAT-> Sensing: " + LogHelper.RoundStat(PerceptionNode.CalculateProbability(1)) + "% | Intuitive: " + LogHelper.RoundStat(PerceptionNode.CalculateProbability(0)) + "%");
 
         writer.WriteLine("\n");
         writer.WriteLine("INPUT:");
@@ -59,7 +59,7 @@ public class StatsLog {
         writer.WriteLine("Number of Code Viewed: " + codeSeen + " / " + totalCodeObjects
              + " = " + LogHelper.RoundStat((float)codeSeen / totalCodeObjects) + "%");
         BayesianNetwork.BNode InputNode = new BayesianNetwork.BNode(new List<BayesianNetwork.BNode>() { UseAPINode, ViewCodeNode }, "Perception", 2, new List<double>() { 0, .25, .75, 1 });
-        writer.WriteLine("Visual: " + LogHelper.RoundStat(InputNode.CalculateProbability(1)) + "% | Verbal: " + LogHelper.RoundStat(InputNode.CalculateProbability(0)) + "%");
+        writer.WriteLine("--INPUT STAT-> Visual: " + LogHelper.RoundStat(InputNode.CalculateProbability(1)) + "% | Verbal: " + LogHelper.RoundStat(InputNode.CalculateProbability(0)) + "%");
 
 
         writer.WriteLine("\n");

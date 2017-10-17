@@ -18,7 +18,7 @@ public class LevelLoader : MonoBehaviour {
 	void Update () {
 		if (Input.GetAxisRaw ("Vertical") > 0 && playerInZone) 
 		{
-            if(!SceneManager.GetActiveScene().name.Contains("BOSS") || SceneManager.GetActiveScene().name != "CPU")
+            if(SceneManager.GetActiveScene().name.Contains("LVL"))
             {
                 StatsLog.WriteToFile();
             }

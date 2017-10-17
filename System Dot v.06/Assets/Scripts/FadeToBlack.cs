@@ -34,7 +34,7 @@ public class FadeToBlack : MonoBehaviour {
                 // load the level
                 if (SceneManager.GetActiveScene().name == "ESB Crash")
                 {
-                    SceneManager.LoadScene("Level2");
+                    SceneManager.LoadScene("LVL2");
                 }
             }
         }

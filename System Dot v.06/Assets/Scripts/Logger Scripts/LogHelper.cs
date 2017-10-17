@@ -38,7 +38,10 @@ public class LogHelper {
 
         foreach (KeyValuePair<string, int> entry in dict)
         {
-            total += entry.Value;    
+            if (entry.Key.Contains("LVL"))
+            {
+                total += entry.Value;
+            }
         }
 
         return total;

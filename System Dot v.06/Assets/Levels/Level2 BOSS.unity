@@ -4049,6 +4049,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -6268,6 +6272,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -7075,7 +7083,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 425890, guid: c97ae9bf6e0e7ce44983198fbde00ad8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 33.56
+      value: 33.53
       objectReference: {fileID: 0}
     - target: {fileID: 425890, guid: c97ae9bf6e0e7ce44983198fbde00ad8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10977,6 +10985,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -13663,6 +13675,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -16421,6 +16437,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -17040,6 +17060,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -17812,6 +17836,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -19790,6 +19818,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -20059,6 +20091,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -27709,7 +27745,7 @@ RectTransform:
   m_Children:
   - {fileID: 305373303}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -32307,7 +32343,7 @@ Transform:
   - {fileID: 1503581812}
   - {fileID: 1781880033}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &635953656
 Prefab:
@@ -33822,6 +33858,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -34791,6 +34831,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -35859,7 +35903,7 @@ Transform:
   - {fileID: 445057312}
   - {fileID: 783922689}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715131370
 GameObject:
@@ -36038,6 +36082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restrictor: {fileID: 0}
   localTerminalMode: 0
+  clickOnce: 0
   numberOfLines: 4
   numOfLegacy: 0000010100
   terminalString:
@@ -36140,6 +36185,7 @@ MonoBehaviour:
   outputVal: []
   openTerminal: {fileID: 0}
   isPerfect: 1
+  seen: 0
 --- !u!212 &715131375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36190,7 +36236,7 @@ Transform:
   - {fileID: 1655908641}
   - {fileID: 773254732}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &715828318
 Prefab:
@@ -39546,11 +39592,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.59
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.46354926
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 114326070657293006, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
         type: 2}
@@ -39584,6 +39630,12 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212738536765283464, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bee3b116cb82c1744be6be28b2436c7e,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114541288366706108, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
@@ -40134,7 +40186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.04
+      value: -0.761
       objectReference: {fileID: 0}
     - target: {fileID: 1980628092786832, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_Name
@@ -40143,7 +40195,7 @@ Prefab:
     - target: {fileID: 102731308633055836, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
         type: 2}
       propertyPath: m_Color.rgba
-      value: 4292685064
+      value: 4278762973
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalRotation.z
@@ -40155,7 +40207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.902
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -40171,6 +40223,12 @@ Prefab:
       propertyPath: statement
       value: bool var = true;
       objectReference: {fileID: 0}
+    - target: {fileID: 212738536765283464, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 490d525e792cab741b4d43468649b3a9,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114541288366706108, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
@@ -46854,7 +46912,7 @@ Prefab:
     - target: {fileID: 114503375373749878, guid: 545452bde90cece488cd74def16fc214,
         type: 2}
       propertyPath: damageToGive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114172827869298364, guid: 545452bde90cece488cd74def16fc214, type: 2}
@@ -47909,6 +47967,31 @@ Prefab:
     - target: {fileID: 114378267252230884, guid: d3bd2ffb776abc34aba085a733ff5a61,
         type: 2}
       propertyPath: enemyHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023994136132064, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000305435031648, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046213865263370, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899334124625812, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630019376560052, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -50408,6 +50491,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -51545,7 +51632,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1980628092786832, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_Name
@@ -51566,7 +51653,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.98262596
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -51576,7 +51663,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fb1b4bf5312e0664fb68ef6e0e50ba61,
+      objectReference: {fileID: 21300000, guid: 09fbbe55bd566294db5116af27f3fc8d,
         type: 3}
     - target: {fileID: 114326070657293006, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
         type: 2}
@@ -52847,6 +52934,31 @@ Prefab:
     - target: {fileID: 114378267252230884, guid: d3bd2ffb776abc34aba085a733ff5a61,
         type: 2}
       propertyPath: enemyHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899334124625812, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000305435031648, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630019376560052, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023994136132064, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046213865263370, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -59165,6 +59277,18 @@ Prefab:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1494821325891556, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 185282, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 189146, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 705e137fcb35b16488f51a418900a12c, type: 2}
   m_IsPrefabParent: 0
@@ -59909,7 +60033,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1247114951
 Prefab:
@@ -61870,6 +61994,60 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 462308, guid: 871ac9214316afe4280ed55667d469e5, type: 2}
   m_PrefabInternal: {fileID: 1299376492}
+--- !u!1001 &1300619605
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 36.211678
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.294589
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 451464, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481096, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: levelToLoad
+      value: LVL3
+      objectReference: {fileID: 0}
+    - target: {fileID: 170024, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1300619606 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 170024, guid: 0354558dd781f1441950677c05cdb5a0, type: 2}
+  m_PrefabInternal: {fileID: 1300619605}
 --- !u!4 &1303298322 stripped
 Transform:
   m_PrefabParentObject: {fileID: 462308, guid: 871ac9214316afe4280ed55667d469e5, type: 2}
@@ -62990,6 +63168,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -65026,7 +65208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1364347926
 Prefab:
@@ -65537,6 +65719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restrictor: {fileID: 0}
   localTerminalMode: 0
+  clickOnce: 0
   numberOfLines: 1
   numOfLegacy: 0100000000
   terminalString:
@@ -65639,6 +65822,7 @@ MonoBehaviour:
   outputVal: []
   openTerminal: {fileID: 0}
   isPerfect: 1
+  seen: 0
 --- !u!114 &1370237036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66998,6 +67182,31 @@ Prefab:
     - target: {fileID: 114378267252230884, guid: d3bd2ffb776abc34aba085a733ff5a61,
         type: 2}
       propertyPath: enemyHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630019376560052, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899334124625812, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023994136132064, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046213865263370, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000305435031648, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -68766,7 +68975,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1980628092786832, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_Name
@@ -68774,7 +68983,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511541448265396, guid: 6a8a31a4356e9d543bcb5e5582e399e0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.84
+      value: 1.16
       objectReference: {fileID: 0}
     - target: {fileID: 114326070657293006, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
         type: 2}
@@ -68785,7 +68994,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2322d414a3c617d40883cc93888212b9,
+      objectReference: {fileID: 21300000, guid: 5ac0ab6be1b52fc41a0faa3cb71fd8c9,
         type: 3}
     - target: {fileID: 114541288366706108, guid: 6a8a31a4356e9d543bcb5e5582e399e0,
         type: 2}
@@ -68962,6 +69171,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -71749,6 +71962,31 @@ Prefab:
       propertyPath: enemyHealth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000305435031648, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046213865263370, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899334124625812, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630019376560052, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023994136132064, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3bd2ffb776abc34aba085a733ff5a61, type: 2}
   m_IsPrefabParent: 0
@@ -71844,6 +72082,31 @@ Prefab:
     - target: {fileID: 114378267252230884, guid: d3bd2ffb776abc34aba085a733ff5a61,
         type: 2}
       propertyPath: enemyHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114899334124625812, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046213865263370, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000305435031648, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023994136132064, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630019376560052, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -73865,6 +74128,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -78699,6 +78966,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -79368,6 +79639,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -82126,6 +82401,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -84775,7 +85054,7 @@ Transform:
   m_Children:
   - {fileID: 1013143113}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1793035892
 Prefab:
@@ -85793,6 +86072,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -89045,6 +89328,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -90483,6 +90770,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -91766,7 +92057,7 @@ Transform:
   - {fileID: 1263840705}
   - {fileID: 1105157276}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1930730971
 MonoBehaviour:
@@ -91781,6 +92072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restrictor: {fileID: 0}
   localTerminalMode: 0
+  clickOnce: 0
   numberOfLines: 3
   numOfLegacy: 0001010000
   terminalString:
@@ -91883,6 +92175,7 @@ MonoBehaviour:
   outputVal: []
   openTerminal: {fileID: 0}
   isPerfect: 1
+  seen: 0
 --- !u!58 &1930730972
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -92042,6 +92335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27fbf8bd0ad74e43acdbb526a29915c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelExit: {fileID: 1300619606}
   bossAttack: {fileID: 1606683971181446, guid: 728d11471b7d9c141b200c0dd150ee9f, type: 2}
   topSpikes: {fileID: 1740056471}
   bossHealth: {fileID: 305373304}
@@ -92138,7 +92432,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2e98ad66e8173f548b313c38c471b17c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c94d3d9f1f0e81b48a7f1ad3b066e30f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -92146,7 +92440,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 129
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -92813,11 +93107,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 8255974, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255974, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Loop
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255974, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: m_Enabled
@@ -92825,49 +93119,53 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 8255974, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8294414, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8205112, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8252864, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8256438, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248574, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8255402, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8258594, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8220880, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8236506, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82108952361799192, guid: bf5d7ca4efef7fc419f93bf94535e3a0,
         type: 2}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8255974, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6903ce9e92b23844fba9c2ff2e1a54a3, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf5d7ca4efef7fc419f93bf94535e3a0, type: 2}
   m_IsPrefabParent: 0
@@ -94930,6 +95228,10 @@ Prefab:
       propertyPath: m_TagString
       value: Boss2Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
   m_IsPrefabParent: 0
@@ -95703,6 +96005,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
@@ -96831,6 +97137,31 @@ Prefab:
       propertyPath: enemyHealth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114899334124625812, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114630019376560052, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023994136132064, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000305435031648, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046213865263370, guid: d3bd2ffb776abc34aba085a733ff5a61,
+        type: 2}
+      propertyPath: damageToGive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3bd2ffb776abc34aba085a733ff5a61, type: 2}
   m_IsPrefabParent: 0
@@ -97696,6 +98027,10 @@ Prefab:
     - target: {fileID: 104704, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
       propertyPath: m_TagString
       value: Boss2Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11474952, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}
+      propertyPath: damageToGive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb6e4b12059d77b478af3c1b12dfe28c, type: 2}

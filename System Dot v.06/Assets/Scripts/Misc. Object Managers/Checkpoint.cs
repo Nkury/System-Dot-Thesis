@@ -34,7 +34,7 @@ public class Checkpoint : MonoBehaviour {
             
 
             // autosave feature
-            if ((Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Split('t')[1]))
+            if ((Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint <= Int32.Parse(this.gameObject.name.Split('t')[1]))
                 || PlayerStats.checkpoint == "Checkpoint1")
             {
                 LogToFile.WriteToFile("HIT-" + this.gameObject.name, "PLAYER-" + PlayerStats.playerName);

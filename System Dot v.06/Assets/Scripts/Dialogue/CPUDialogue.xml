@@ -1,0 +1,17 @@
+<dialogue>
+  <message id="startCPU" event="LevelTitle">
+    <say char="IntelliSense">Wow! We finally made it!</say>
+    <say char="IntelliSense">I owe you one for hacking through that Binapede.</say>
+    <say char="IntelliSense">Where are you from? Where's your source allocator?</say>
+    <say char="Shopkeeper">Hey, Mars here. Did you just say "hack"?</say>
+    <say char="Shopkeeper">Makes sense. I can tell by its human body.</say>
+    <say char="IntelliSense">You're a human, PLAYERNAME?</say>
+    <say char="IntelliSense">That means you're from the outside world.</say>
+    <say char="Shopkeeper">Hey, come exchange some memory at the RAM first!</say>
+    <say char="Shopkeeper">You must have some top high-end memory.</say>
+    <say char="IntelliSense">Shhh... here's a map. We're in the system layer.</say>
+    <say char="IntelliSense">We got to get you to the hardware layer through the kernel. </say>
+    <say char="IntelliSense">The bus over there can take you to the kernel.</say>
+    <say char="Shopkeeper">Wait! Use your memory here before you go! Please!</say>
+  </message>
+</dialogue>

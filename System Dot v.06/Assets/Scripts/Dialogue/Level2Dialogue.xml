@@ -1,5 +1,5 @@
 <dialogue>
-  <message id="startLevel">
+  <message id="startLevel" event="LevelTitle">
     <say char="IntelliSense">WHOOAAAA! What just happened?!</say>
     <say char="Engineer">In all my days as an engineering process, I've never seen something like that!</say>
     <say char="IntelliSense">Thank DOS we have an engineer with us!</say>
@@ -81,7 +81,7 @@
   <message id="SeeDecInDanger">
     <say char="Dec">Help! I'm locked behind this wall!</say>
     <say char="IntelliSense">I wonder how we can set him free...</say>
-    <say char="Dec">That rotating platform has a charge to it. Let it touch the power line to the door!</say>
+    <say char="Dec">That rotating platform has a charge. Let it touch the power line to the door!</say>
     <say char="IntelliSense">Oh, I know! That rotating platform has a charge to it.</say>
     <say char="IntelliSense">We can get it to touch the power line like the moving platform from before.</say>
     <say char="Dec">...</say>

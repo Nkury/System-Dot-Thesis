@@ -69,7 +69,8 @@ public class HurtEnemyOnContact : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // kill enemies of the same color
-        if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body" || other.tag.Contains("Boss")) && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
+        if ((other.tag == "Enemy" || other.tag == "Enemy1" || other.tag == "Centipede Body" || other.tag.Contains("Boss"))
+            && other.GetComponent<HurtPlayerOnContact>() && other.GetComponent<HurtPlayerOnContact>().enemyState == state)
         {
             
             GameObject.Find("Sound Controller").GetComponent<SoundController>().play("enemy");

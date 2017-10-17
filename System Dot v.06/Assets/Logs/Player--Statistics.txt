@@ -1,0 +1,594 @@
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> CPU <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 0 = NaN%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 66 / 111 = 59.46%
+Number of Code Viewed: 69 / 173 = 39.88%
+--PROCESSING STAT-> Active: 54.57% | Reflexive: 45.43%
+
+
+PERCEPTION:
+Use API to Code: 0 / 69 = 0%
+F5 Key Hit: 2 / 111 = 1.8%
+--PERCEPTION STAT-> Sensing: 99.64% | Intuitive: 0.36%
+
+
+INPUT:
+Use API to Code: 0 / 69 = 0%
+Number of Code Viewed: 69 / 173 = 39.88%
+--INPUT STAT-> Visual: 9.97% | Verbal: 90.03%
+
+
+MISC:
+Syntax Errors: 4 / 69 = 5.8%
+Perfect Edits: 53 / 69 = 76.81%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 66 / 111 = 59.46%
+Number of Code Viewed: 69 / 173 = 39.88%
+--PROCESSING STAT-> Active: 54.57% | Reflexive: 45.43%
+
+
+PERCEPTION:
+Use API to Code: 0 / 69 = 0%
+F5 Key Hit: 2 / 111 = 1.8%
+--PERCEPTION STAT-> Sensing: 99.64% | Intuitive: 0.36%
+
+
+INPUT:
+Use API to Code: 0 / 69 = 0%
+Number of Code Viewed: 69 / 173 = 39.88%
+--INPUT STAT-> Visual: 9.97% | Verbal: 90.03%
+
+
+MISC:
+Syntax Errors: 4 / 69 = 5.8%
+Perfect Edits: 53 / 69 = 76.81%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 63 / 104 = 60.58%
+Number of Code Viewed: 65 / 173 = 37.57%
+--PROCESSING STAT-> Active: 54.83% | Reflexive: 45.17%
+
+
+PERCEPTION:
+Use API to Code: 0 / 66 = 0%
+F5 Key Hit: 1 / 104 = 0.96%
+--PERCEPTION STAT-> Sensing: 99.81% | Intuitive: 0.19%
+
+
+INPUT:
+Use API to Code: 0 / 66 = 0%
+Number of Code Viewed: 65 / 173 = 37.57%
+--INPUT STAT-> Visual: 9.39% | Verbal: 90.61%
+
+
+MISC:
+Syntax Errors: 4 / 66 = 6.06%
+Perfect Edits: 49 / 66 = 74.24%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL2 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 61 / 101 = 60.4%
+Number of Code Viewed: 62 / 173 = 35.84%
+--PROCESSING STAT-> Active: 54.26% | Reflexive: 45.74%
+
+
+PERCEPTION:
+Use API to Code: 0 / 64 = 0%
+F5 Key Hit: 1 / 101 = 0.99%
+--PERCEPTION STAT-> Sensing: 99.8% | Intuitive: 0.2%
+
+
+INPUT:
+Use API to Code: 0 / 64 = 0%
+Number of Code Viewed: 62 / 173 = 35.84%
+--INPUT STAT-> Visual: 8.96% | Verbal: 91.04%
+
+
+MISC:
+Syntax Errors: 3 / 64 = 4.69%
+Perfect Edits: 49 / 64 = 76.56%

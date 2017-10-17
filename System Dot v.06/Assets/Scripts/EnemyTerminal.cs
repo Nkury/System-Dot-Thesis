@@ -137,14 +137,14 @@ public class EnemyTerminal : MonoBehaviour
 
     public void OnMouseOver()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().material.color.r, gameObject.GetComponent<SpriteRenderer>().material.color.g,
-                                                                    gameObject.GetComponent<SpriteRenderer>().material.color.b, .5f);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r, gameObject.GetComponent<SpriteRenderer>().color.g,
+                                                                    gameObject.GetComponent<SpriteRenderer>().color.b, .5f);
     }
 
     public void OnMouseExit()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().material.color.r, gameObject.GetComponent<SpriteRenderer>().material.color.g,
-                                                                    gameObject.GetComponent<SpriteRenderer>().material.color.b, 1);      
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r, gameObject.GetComponent<SpriteRenderer>().color.g,
+                                                                    gameObject.GetComponent<SpriteRenderer>().color.b, 1);      
     }
 
     public void OnMouseDown()

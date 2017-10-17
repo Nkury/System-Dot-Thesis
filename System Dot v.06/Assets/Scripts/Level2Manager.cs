@@ -18,6 +18,7 @@ public class Level2Manager : LevelHandler {
             case "Checkpoint6":
                 GameObject.Find("Main HUD").GetComponent<TerminalWindowUI>().setVariabullCode("int flint = 5;");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
                 break;
             case "Checkpoint7":
                 checkZone.GetComponent<CheckZone>().numRescued = 3;
@@ -25,6 +26,7 @@ public class Level2Manager : LevelHandler {
                 checkZone.GetComponent<CheckZone>().AddParameters();
                 IntelliSenseLevel2.clickOnce = true;
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
                 break;
             case "Checkpoint8":
                 checkZone.GetComponent<CheckZone>().numRescued = 3;
@@ -32,6 +34,7 @@ public class Level2Manager : LevelHandler {
                 checkZone.GetComponent<CheckZone>().AddParameters();
                 IntelliSenseLevel2.clickOnce = true;
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
                 break;
             case "Checkpoint9":
                 checkZone.GetComponent<CheckZone>().numRescued = 3;
@@ -39,6 +42,7 @@ public class Level2Manager : LevelHandler {
                 checkZone.GetComponent<CheckZone>().AddParameters();
                 IntelliSenseLevel2.clickOnce = true;
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
                 break;
             case "Checkpoint10":
                 checkZone.GetComponent<CheckZone>().numRescued = 2;
@@ -47,6 +51,8 @@ public class Level2Manager : LevelHandler {
                 IntelliSenseLevel2.clickOnce = true;
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
                 break;
             case "Checkpoint11":
                 checkZone.GetComponent<CheckZone>().numRescued = 2;
@@ -56,6 +62,8 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
                 break;
             case "Checkpoint12":
                 checkZone.GetComponent<CheckZone>().numRescued = 2;
@@ -65,6 +73,8 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
                 break;
             case "Checkpoint13":
                 checkZone.GetComponent<CheckZone>().numRescued = 2;
@@ -74,6 +84,8 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
                 break;
             case "Checkpoint14":
                 GameObject.Find("Main HUD").GetComponent<TerminalWindowUI>().setVariabullCode("string word = \"sentence\";");
@@ -84,6 +96,9 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("IntAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_word.SetActive(true);
                 break;
             case "Checkpoint15":
                 checkZone.GetComponent<CheckZone>().numRescued = 1;
@@ -93,6 +108,9 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("StringAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_word.SetActive(true);
                 break;
             case "Checkpoint16":
                 checkZone.GetComponent<CheckZone>().numRescued = 1;
@@ -102,6 +120,9 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("DoubleAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("StringAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_word.SetActive(true);
                 break;
             case "Checkpoint17":  
                 GameObject.Find("Main HUD").GetComponent<TerminalWindowUI>().setVariabullCode("boolean bool = true;");
@@ -113,6 +134,9 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("StringAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("BooleanAPI");
                 intelliSense.GetComponent<IntelliSenseLevel2>().initialEvent("SmashAPI");
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_flint.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
+                intelliSense.GetComponent<IntelliSenseLevel2>().pen_word.SetActive(true);
                 break;
         }
 
