@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -29,9 +30,9 @@ public class Level3Manager : LevelHandler
         base.loadedIn = true;
         intelliSense.SetActive(true);
 
-        switch (PlayerStats.checkpoint)
+        if (Int32.Parse(PlayerStats.checkpoint.Split('t')[1]) >= 4)
         {
-           
+            intelliSense.GetComponent<IntelliSenseLevel3>().APIDecisionButton.SetActive(true);
         }
 
         currentCheckpoint = GameObject.Find(PlayerStats.checkpoint);

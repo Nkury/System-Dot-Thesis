@@ -592,3 +592,39 @@ Number of Code Viewed: 62 / 173 = 35.84%
 MISC:
 Syntax Errors: 3 / 64 = 4.69%
 Perfect Edits: 49 / 64 = 76.56%
+
+
+-----------> LVL1 BOSS <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 9 = 0%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 9 = 0%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+--------------------PLAYER STATISTICS--------------------
+Total Time Played In Level: 00:02
+Total Deaths in Level: 0
+Bits at the end of level: 0
+Health: 4 / 4
+Armor: 0
+Revive Potions: 0

@@ -14,7 +14,7 @@ public class PlayerStats {
     public static Dictionary<string, int> log_numQuickDebug = new Dictionary<string, int>();
     public static Dictionary<string, int> log_totalNumDebugs = new Dictionary<string, int>();
     public static Dictionary<string, int> log_totalNumberOfModifiedEdits = new Dictionary<string, int>();
-    public static Dictionary<string, int> log_totalNumberOfLegacyOnly = new Dictionary<string, int>();
+    public static Dictionary<string, int> log_totalNumberOfEdits = new Dictionary<string, int>();
     public static Dictionary<string, int> log_totalNumberOfObjects = new Dictionary<string, int>();
 
     /**** USER PROFILE APTITUDE STATS **************************************************************/
@@ -39,8 +39,8 @@ public class PlayerStats {
     public static int armorHealth;
     public static string playerName;
     public static int bitsCollected;
-    public static int numberOfDeaths;
-    public static float totalSecondsOfPlaytime;
+    public static Dictionary<string, int> numberOfDeaths = new Dictionary<string, int>();
+    public static Dictionary<string, float> totalSecondsOfPlaytime = new Dictionary<string, float>();
 
     public static int numRevivePotions;
     public static string hat;

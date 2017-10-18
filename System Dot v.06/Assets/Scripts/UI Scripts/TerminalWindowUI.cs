@@ -64,16 +64,19 @@ public class TerminalWindowUI : MonoBehaviour {
         }
         LogToFile.WriteToFile("CLOSE-TERMINAL-WINDOW", "TERMINAL-WINDOW");
         EnemyTerminal.globalTerminalMode--;
+
+
+        if (EnemyTerminal.APIUsed)
+        {
+            LogHelper.SetDictionaryValue(PlayerStats.log_numAPIOpen, LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen) + 1);
+            EnemyTerminal.APIUsed = false;
+        }
+
         if (EnemyTerminal.madeChanges)
         {
             // LOGGER INFO
             LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits) + 1);
 
-            if (EnemyTerminal.APIUsed)
-            {
-                LogHelper.SetDictionaryValue(PlayerStats.log_numAPIOpen, LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen) + 1);
-                EnemyTerminal.APIUsed = false;
-            }
             EnemyTerminal.madeChanges = false;
             noChanges.SetActive(true);
             StartCoroutine(setToFalse());
@@ -91,19 +94,20 @@ public class TerminalWindowUI : MonoBehaviour {
         LogToFile.WriteToFile("DEBUG-CLICKED", "TERMINAL_WINDOW");
 
         LogHelper.SetDictionaryValue(PlayerStats.log_totalNumDebugs, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumDebugs) + 1);
-       
+
+        if (EnemyTerminal.APIUsed)
+        {
+            LogHelper.SetDictionaryValue(PlayerStats.log_numAPIOpen, LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen) + 1);
+            EnemyTerminal.APIUsed = false;
+        }
+
         // LOGGER INFO
         if (EnemyTerminal.madeChanges)
         {          
             if (EnemyTerminal.timeBetweenCodeChangeAndDebug < PlayerStats.timeToDebugThreshhold)
             {
                 LogHelper.SetDictionaryValue(PlayerStats.log_numQuickDebug, LogHelper.GetDictionaryValue(PlayerStats.log_numQuickDebug) + 1);       
-            }
-
-            if (EnemyTerminal.APIUsed) {
-                LogHelper.SetDictionaryValue(PlayerStats.log_numAPIOpen, LogHelper.GetDictionaryValue(PlayerStats.log_numAPIOpen) + 1);
-                EnemyTerminal.APIUsed = false;
-            }
+            }        
 
             LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits) + 1);
         }

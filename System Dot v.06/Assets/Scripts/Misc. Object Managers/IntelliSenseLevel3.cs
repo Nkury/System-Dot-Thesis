@@ -19,19 +19,15 @@ public class IntelliSenseLevel3 : IntelliSense
     [Header("Level 3 Objects")]
     [Tooltip("Only attach game objects if in level one")]
     public GameObject firstZoneBarrier;
-    public GameObject firstTutorialObjective;
-    public GameObject secondTutorialObjective;
+    public GameObject levelTitle;
+    public GameObject APIDecisionButton;
 
     public static int virusCount1 = 13;
     public static int virusCount2 = 9;
     public static int virusCount3 = 5;
     public static int virusCount4 = 1;
 
-    public GameObject thirdTutorialObjective;
-    public GameObject fourthTutorialObjective;
-    public GameObject fourthObjectiveBarrier;
-    public GameObject seventhTutorialBarrier;
-    public GameObject levelTitle;
+
 
 
     private bool tutorialCheck = false;
@@ -222,6 +218,18 @@ public class IntelliSenseLevel3 : IntelliSense
     {
         switch (eventName)
         {
+            case "LevelTitle":
+                if (levelTitle)
+                {
+                    levelTitle.SetActive(true);
+                }
+                break;
+            case "ActivateDecisionAPI":
+                if (APIDecisionButton)
+                {
+                    APIDecisionButton.SetActive(true);
+                }
+                break;
             case "proceedPastFirstZone":
                 PlayerStats.deadObjects.Add(firstZoneBarrier.name);
                 Destroy(firstZoneBarrier);

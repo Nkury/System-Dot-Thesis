@@ -8,12 +8,12 @@ public class DemoStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        int seconds = (int)PlayerStats.totalSecondsOfPlaytime % 60;
-        int minutes = (int)PlayerStats.totalSecondsOfPlaytime / 60;
+     //   int seconds = (int)PlayerStats.totalSecondsOfPlaytime % 60;
+      //  int minutes = (int)PlayerStats.totalSecondsOfPlaytime / 60;
 
-        uiText[0].text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //uiText[0].text = string.Format("{0:00}:{1:00}", minutes, seconds);
         uiText[1].text = PlayerStats.bitsCollected.ToString();
-        uiText[2].text = PlayerStats.numberOfDeaths.ToString();
+       // uiText[2].text = PlayerStats.numberOfDeaths.ToString();
 	}
 	
 	// Update is called once per frame

@@ -21,11 +21,14 @@ public class APISystem : MonoBehaviour {
     public GameObject doubleInfo;
     public GameObject stringInfo;
     public GameObject booleanInfo;
+    public GameObject distanceInfo;
+    public GameObject pipeInfo;
     public Image[] arrowIndicator;
 
     [Header("Buttons")]
     public GameObject SystemHelp;
     public GameObject DataTypeHelp;
+    public GameObject ConditionalHelp;
 
     public static bool clicked = true;
 
@@ -42,9 +45,12 @@ public class APISystem : MonoBehaviour {
         listOfIcons.Add(doubleInfo);
         listOfIcons.Add(stringInfo);
         listOfIcons.Add(booleanInfo);
+        listOfIcons.Add(distanceInfo);
+        listOfIcons.Add(pipeInfo);
 
         listOfHelps.Add(SystemHelp);
         listOfHelps.Add(DataTypeHelp);
+        listOfHelps.Add(ConditionalHelp);
     }
 	
 	// Update is called once per frame
@@ -153,6 +159,11 @@ public class APISystem : MonoBehaviour {
         }
     }
 
+    public void DistanceClicked()
+    {
+        ActivateAPIButton(distanceInfo);
+    }
+
     public void ActivateAPIButton(GameObject iconClicked)
     {
         iconClicked.SetActive(true);
@@ -160,7 +171,10 @@ public class APISystem : MonoBehaviour {
         {
             if(icon != iconClicked)
             {
-                icon.SetActive(false);
+                if (icon)
+                {
+                    icon.SetActive(false);
+                }
             }
         }
     }
@@ -172,7 +186,10 @@ public class APISystem : MonoBehaviour {
         {
             if(helpClicked != icon)
             {
-                icon.SetActive(false);
+                if (icon)
+                {
+                    icon.SetActive(false);
+                }
             }
         }
         foreach (Image img in arrowIndicator)

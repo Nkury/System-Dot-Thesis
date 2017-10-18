@@ -28,6 +28,6 @@ public class LogInfo : MonoBehaviour {
         numLegacyCodeViewed.text = LogHelper.GetDictionaryValue(PlayerStats.log_numLegacyCodeViewed).ToString();  
         numQuickDebug.text = LogHelper.GetDictionaryValue( PlayerStats.log_numQuickDebug).ToString();    
         totalModifiedEdits.text = LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfModifiedEdits).ToString();
-        totalNumLegacy.text = LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfLegacyOnly).ToString();  
+        totalNumLegacy.text = LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfEdits).ToString();  
     }
 }

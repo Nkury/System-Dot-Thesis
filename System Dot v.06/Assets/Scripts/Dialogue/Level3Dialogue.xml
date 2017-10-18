@@ -1,5 +1,5 @@
 <dialogue>
-  <message id="startLevel">
+  <message id="startLevel" event="LevelTitle">
     <say char="NULL">Oh great... another one. </say>
     <say char="NULL">Listen, I'm not going to waste your time. The system is corrupted.</say>
     <say char="NULL">It's pretty obvious. The bus implodes and then the system crashes.</say>

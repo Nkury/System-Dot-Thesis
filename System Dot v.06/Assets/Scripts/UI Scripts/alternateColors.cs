@@ -26,7 +26,13 @@ public class alternateColors : MonoBehaviour {
 
                 if (inc <= 2)
                 {
-                    this.gameObject.GetComponent<Image>().sprite = bootColors[inc];
+                    if (this.gameObject.GetComponent<Image>())
+                    {
+                        this.gameObject.GetComponent<Image>().sprite = bootColors[inc];
+                    } else if (this.gameObject.GetComponent<SpriteRenderer>())
+                    {
+                        this.gameObject.GetComponent<SpriteRenderer>().sprite = bootColors[inc];
+                    }
                     inc++;
                 }
                 else
@@ -35,7 +41,14 @@ public class alternateColors : MonoBehaviour {
             {
                 if (inc <= 1)
                 {
-                    this.gameObject.GetComponent<Image>().sprite = bitColors[inc];
+                    if (this.gameObject.GetComponent<Image>())
+                    {
+                        this.gameObject.GetComponent<Image>().sprite = bitColors[inc];
+                    }
+                    else if (this.gameObject.GetComponent<SpriteRenderer>())
+                    {
+                        this.gameObject.GetComponent<SpriteRenderer>().sprite = bootColors[inc];
+                    }
                     inc++;
                 }
                 else

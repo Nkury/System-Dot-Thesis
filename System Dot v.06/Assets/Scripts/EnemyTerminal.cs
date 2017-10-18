@@ -79,18 +79,18 @@ public class EnemyTerminal : MonoBehaviour
         }
 
         int legacySeen;
-        if (PlayerStats.log_totalNumberOfLegacyOnly.TryGetValue(SceneManager.GetActiveScene().name, out legacySeen))
-        {
-            if (legacySeen == 0)
-            {
-                CountLegacy();
-            }
-        }
-        else
-        {
-            PlayerStats.log_totalNumberOfLegacyOnly.Add(SceneManager.GetActiveScene().name, 0);
-            CountLegacy();
-        }
+        //if (PlayerStats.log_totalNumberOfEdits.TryGetValue(SceneManager.GetActiveScene().name, out legacySeen))
+        //{
+        //    if (legacySeen == 0)
+        //    {
+        //        CountLegacy();
+        //    }
+        //}
+        //else
+        //{
+        //    PlayerStats.log_totalNumberOfEdits.Add(SceneManager.GetActiveScene().name, 0);
+        //    CountLegacy();
+        //}
 
         checkTerminalString();
         StartCoroutine(evaluateActions());       
@@ -109,6 +109,10 @@ public class EnemyTerminal : MonoBehaviour
 
         if (localTerminalMode == 2)
         {
+            if (API.APImenu.activeSelf)
+            {
+                APIUsed = true;
+            }
             this.GetComponent<LineRenderer>().enabled = true;
             this.GetComponent<LineRenderer>().SetPosition(0, new Vector3(0, 0.4f, 10));
             if(terminalPointerDestination != null)
@@ -180,6 +184,7 @@ public class EnemyTerminal : MonoBehaviour
 
                     /* LOGGER INFORMATION */
                     PlayerStats.numOfEdits++;
+                    LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfEdits, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfEdits) + 1);
                     if (!seen)
                     {
                         seen = true;
@@ -758,11 +763,7 @@ public class EnemyTerminal : MonoBehaviour
             for (int i = 0; i < terminalString.Length; i++)
             {
                 if (terminalString[i] != originalString[i])
-                {
-                    if (API.APImenu.activeSelf)
-                    {
-                        APIUsed = true;
-                    }
+                {             
                     //LogToFile.WriteToFile("TYPING-CODE: " + originalString[i] + " --> " + terminalString[i], "CODE");
                     originalString[i] = terminalString[i]; // may cause problems in future-- to make the conditional stop and prevent an infinite loop
                     timeBetweenCodeChangeAndDebug = 0;
@@ -791,18 +792,18 @@ public class EnemyTerminal : MonoBehaviour
         lineNO.MoveTextEnd(false); // Do this during the next frame.
     }
 
-    private void CountLegacy()
-    {
-        for(int i = 0; i < numberOfLines; i++)
-        {
-            if(numOfLegacy[i] == false)
-            {
-                return;
-            }
-        }
+    //private void CountLegacy()
+    //{
+    //    for(int i = 0; i < numberOfLines; i++)
+    //    {
+    //        if(numOfLegacy[i] == false)
+    //        {
+    //            return;
+    //        }
+    //    }
         
-        LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfLegacyOnly, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfLegacyOnly) + 1);
+    //    LogHelper.SetDictionaryValue(PlayerStats.log_totalNumberOfEdits, LogHelper.GetDictionaryValue(PlayerStats.log_totalNumberOfEdits) + 1);
         
-        isLegacy = true;
-    }
+    //    isLegacy = true;
+    //}
 }

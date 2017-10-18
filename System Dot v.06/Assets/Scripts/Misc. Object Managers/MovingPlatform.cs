@@ -41,11 +41,11 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            this.GetComponent<EnemyTerminal>().actions.Clear();
-        }
-    }
+    //public void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.gameObject.tag == "Ground")
+    //    {
+    //        this.GetComponent<EnemyTerminal>().actions.Clear();
+    //    }
+    //}
 }

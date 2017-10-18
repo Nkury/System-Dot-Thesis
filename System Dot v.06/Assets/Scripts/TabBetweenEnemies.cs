@@ -21,9 +21,10 @@ public class TabBetweenEnemies : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             objectCount = 0;
-
-            while (!inCameraView(onScreenObjects[index].gameObject) && objectCount < onScreenObjects.Count)
+            onScreenObjects.RemoveAll(item => item == null);
+            while (onScreenObjects[index] != null && !inCameraView(onScreenObjects[index].gameObject) && objectCount < onScreenObjects.Count)
             {
+                onScreenObjects.RemoveAll(item => item == null);
                 index = (index + 1) % onScreenObjects.Count;
                 objectCount++;
             }      

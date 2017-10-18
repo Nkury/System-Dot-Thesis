@@ -21,7 +21,7 @@ public class StatsLog {
 
     public static void WriteToFile()
     {
-        string path = "Assets/Logs/Player-" + PlayerStats.playerName + "-Statistics.txt";
+        string path = "Logs/Player-" + PlayerStats.playerName + "-Statistics.txt";
         GetValues(); // set the variables to accumulated values
 
         // Write text to file
@@ -68,8 +68,19 @@ public class StatsLog {
             + " = " + LogHelper.RoundStat((float)numSyntaxErrors /totalNumberOfModifiedEdits) + "%");
         writer.WriteLine("Perfect Edits: " + numPerfectEdits+ " / " + totalNumberOfModifiedEdits
             + " = " + LogHelper.RoundStat((float)numPerfectEdits / totalNumberOfModifiedEdits) + "%");
+
+        writer.WriteLine("\n");
+        writer.WriteLine("--------------------PLAYER STATISTICS--------------------");
+        int seconds = (int)LogHelper.GetDictionaryValue(PlayerStats.totalSecondsOfPlaytime) % 60;
+        int minutes = (int)LogHelper.GetDictionaryValue(PlayerStats.totalSecondsOfPlaytime) / 60;
+
+        writer.WriteLine("Total Time Played In Level: " + string.Format("{0:00}:{1:00}", minutes, seconds));
+        writer.WriteLine("Total Deaths in Level: " + LogHelper.GetDictionaryValue(PlayerStats.numberOfDeaths));
+        writer.WriteLine("Bits at the end of level: " + PlayerStats.bitsCollected);
+        writer.WriteLine("Health: " + PlayerStats.currentHealth + " / " + PlayerStats.maxHealth);
+        writer.WriteLine("Armor: " + PlayerStats.armorHealth);
+        writer.WriteLine("Revive Potions: " + PlayerStats.numRevivePotions);
         
-                
         writer.Close();
 
         // Re-import file to update editor's copy
@@ -127,7 +138,7 @@ public class StatsLog {
         numQuickDebug                  = LogHelper.AccumulateDataFromAllLevels(PlayerStats.log_numQuickDebug                );
         totalNumDebugs                 = LogHelper.AccumulateDataFromAllLevels(PlayerStats.log_totalNumDebugs               );
         totalNumberOfModifiedEdits     = LogHelper.AccumulateDataFromAllLevels(PlayerStats.log_totalNumberOfModifiedEdits   );
-        totalNumberOfLegacyOnly        = LogHelper.AccumulateDataFromAllLevels(PlayerStats.log_totalNumberOfLegacyOnly      );
+        totalNumberOfLegacyOnly        = LogHelper.AccumulateDataFromAllLevels(PlayerStats.log_totalNumberOfEdits      );
         totalCodeObjects               = LogHelper.AccumulateDataFromAllLevels(PlayerStats.log_totalNumberOfObjects         );
     }
 

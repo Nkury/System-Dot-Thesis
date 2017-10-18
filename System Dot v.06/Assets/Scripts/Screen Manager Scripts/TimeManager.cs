@@ -26,7 +26,8 @@ public class TimeManager : MonoBehaviour {
             return;
         }
 
-        PlayerStats.totalSecondsOfPlaytime += Time.deltaTime;
+        LogHelper.SetDictionaryValue(PlayerStats.totalSecondsOfPlaytime, LogHelper.GetDictionaryValue(PlayerStats.totalSecondsOfPlaytime) + Time.deltaTime);
+       
         //text.text = "" + Mathf.Round(countingTime);
 
         //if (countingTime <= .5)

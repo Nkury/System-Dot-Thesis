@@ -1,0 +1,144 @@
+
+
+-----------> LVL1 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 31 / 31 = 100%
+Number of Code Viewed: 16 / 51 = 31.37%
+--PROCESSING STAT-> Active: 82.84% | Reflexive: 17.16%
+
+
+PERCEPTION:
+Use API to Code: 1 / 31 = 3.23%
+F5 Key Hit: 12 / 31 = 38.71%
+--PERCEPTION STAT-> Sensing: 89.68% | Intuitive: 10.32%
+
+
+INPUT:
+Use API to Code: 1 / 31 = 3.23%
+Number of Code Viewed: 16 / 51 = 31.37%
+--INPUT STAT-> Visual: 10.26% | Verbal: 89.74%
+
+
+MISC:
+Syntax Errors: 0 / 31 = 0%
+Perfect Edits: 31 / 31 = 100%
+
+
+--------------------PLAYER STATISTICS--------------------
+Total Time Played In Level: 07:43
+Total Deaths in Level: 0
+Bits at the end of level: 182
+Health: 4 / 4
+Armor: 0
+Revive Potions: 0
+
+
+-----------> LVL1 BOSS <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 32 / 32 = 100%
+Number of Code Viewed: 18 / 60 = 30%
+--PROCESSING STAT-> Active: 82.5% | Reflexive: 17.5%
+
+
+PERCEPTION:
+Use API to Code: 1 / 32 = 3.12%
+F5 Key Hit: 13 / 32 = 40.62%
+--PERCEPTION STAT-> Sensing: 89.38% | Intuitive: 10.62%
+
+
+INPUT:
+Use API to Code: 1 / 32 = 3.12%
+Number of Code Viewed: 18 / 60 = 30%
+--INPUT STAT-> Visual: 9.84% | Verbal: 90.16%
+
+
+MISC:
+Syntax Errors: 0 / 32 = 0%
+Perfect Edits: 32 / 32 = 100%
+
+
+--------------------PLAYER STATISTICS--------------------
+Total Time Played In Level: 02:13
+Total Deaths in Level: 0
+Bits at the end of level: 282
+Health: 4 / 4
+Armor: 0
+Revive Potions: 0
+
+
+-----------> LVL1 <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 51 = 0%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 51 = 0%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+--------------------PLAYER STATISTICS--------------------
+Total Time Played In Level: 00:10
+Total Deaths in Level: 0
+Bits at the end of level: 0
+Health: 4 / 4
+Armor: 0
+Revive Potions: 0
+
+
+-----------> LVL1 BOSS <-----------
+--------------------ADAPTIVE STATISTICS--------------------
+
+
+PROCESSING:
+Quick Debugging: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 58 = 0%
+--PROCESSING STAT-> Active: NaN% | Reflexive: NaN%
+
+
+PERCEPTION:
+Use API to Code: 0 / 0 = NaN%
+F5 Key Hit: 0 / 0 = NaN%
+--PERCEPTION STAT-> Sensing: NaN% | Intuitive: NaN%
+
+
+INPUT:
+Use API to Code: 0 / 0 = NaN%
+Number of Code Viewed: 0 / 58 = 0%
+--INPUT STAT-> Visual: NaN% | Verbal: NaN%
+
+
+MISC:
+Syntax Errors: 0 / 0 = NaN%
+Perfect Edits: 0 / 0 = NaN%
+
+
+--------------------PLAYER STATISTICS--------------------
+Total Time Played In Level: 00:58
+Total Deaths in Level: 0
+Bits at the end of level: 0
+Health: 4 / 4
+Armor: 1
+Revive Potions: 0

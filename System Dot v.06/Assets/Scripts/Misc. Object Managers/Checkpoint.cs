@@ -22,19 +22,10 @@ public class Checkpoint : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.name == "PlayerBody") 
-		{
-            // if we enter a new level
-            if (PlayerStats.levelName != SceneManager.GetActiveScene().name)
-            {
-                PlayerStats.levelName = SceneManager.GetActiveScene().name;
-                PlayerStats.highestCheckpoint = 1;            
-                PlayerStats.deadObjects.Clear();
-                PlayerStats.terminalStrings.Clear();
-            }
-            
+		{           
 
             // autosave feature
-            if ((Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint <= Int32.Parse(this.gameObject.name.Split('t')[1]))
+            if ((Game.current != null && PlayerStats.checkpoint != this.gameObject.name && PlayerStats.highestCheckpoint < Int32.Parse(this.gameObject.name.Split('t')[1]))
                 || PlayerStats.checkpoint == "Checkpoint1")
             {
                 LogToFile.WriteToFile("HIT-" + this.gameObject.name, "PLAYER-" + PlayerStats.playerName);
@@ -44,9 +35,9 @@ public class Checkpoint : MonoBehaviour {
                 Game.current.armorHealth = PlayerStats.armorHealth;
                 Game.current.bitsCollected = PlayerStats.bitsCollected;
                 Game.current.numberOfDeaths = PlayerStats.numberOfDeaths;
-                Debug.Log("Deaths: " + PlayerStats.numberOfDeaths);
+                Debug.Log("Deaths: " + LogHelper.GetDictionaryValue(PlayerStats.numberOfDeaths));
                 Game.current.totalSecondsOfPlaytime = PlayerStats.totalSecondsOfPlaytime;
-                Debug.Log("Time played: " + PlayerStats.totalSecondsOfPlaytime);
+                Debug.Log("Time played: " + LogHelper.GetDictionaryValue(PlayerStats.totalSecondsOfPlaytime));
                 PlayerStats.checkpoint = this.gameObject.name;
                 Game.current.checkpoint = this.gameObject.name;                
                 PlayerStats.deadObjects = PlayerStats.deadObjects.Distinct().ToList<string>();

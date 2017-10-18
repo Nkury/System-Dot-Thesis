@@ -18,7 +18,7 @@ public class Game
     public Dictionary<string,int> log_numQuickDebug = new Dictionary<string, int>();
     public Dictionary<string,int> log_totalNumDebugs = new Dictionary<string, int>();
     public Dictionary<string,int> log_totalNumberOfModifiedEdits = new Dictionary<string, int>();
-    public Dictionary<string,int> log_totalNumberOfLegacyOnly = new Dictionary<string, int>();
+    public Dictionary<string,int> log_totalNumberOfEdits = new Dictionary<string, int>();
     public Dictionary<string, int> log_totalNumberOfObjects = new Dictionary<string, int>();
 
     /**** USER PROFILE APTITUDE STATS **************************************************************/
@@ -44,8 +44,8 @@ public class Game
     public int armorHealth;
     public string playerName;
     public int bitsCollected;
-    public int numberOfDeaths;
-    public float totalSecondsOfPlaytime;
+    public Dictionary<string, int> numberOfDeaths = new Dictionary<string, int>();
+    public Dictionary<string, float> totalSecondsOfPlaytime = new Dictionary<string, float>();
     public int numRevivePotions;
 
     /**** PLAYER PROGRESS *************************************************************************/
@@ -114,7 +114,7 @@ public static class SaveLoad
         Game.current.log_numQuickDebug = PlayerStats.log_numQuickDebug;
         Game.current.log_totalNumDebugs = PlayerStats.log_totalNumDebugs;
         Game.current.log_numSyntaxErrors = PlayerStats.log_numSyntaxErrors;
-        Game.current.log_totalNumberOfLegacyOnly = PlayerStats.log_totalNumberOfLegacyOnly;
+        Game.current.log_totalNumberOfEdits = PlayerStats.log_totalNumberOfEdits;
         Game.current.log_totalNumberOfModifiedEdits = PlayerStats.log_totalNumberOfModifiedEdits;
         Game.current.log_totalNumberOfObjects = PlayerStats.log_totalNumberOfObjects;        
 

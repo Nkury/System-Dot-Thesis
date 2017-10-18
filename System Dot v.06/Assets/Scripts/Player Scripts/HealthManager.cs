@@ -44,7 +44,7 @@ public class HealthManager : MonoBehaviour {
             else
             {
                 GameObject.Find("Sound Controller").GetComponent<SoundController>().play("death");
-                PlayerStats.numberOfDeaths++;
+                LogHelper.SetDictionaryValue(PlayerStats.numberOfDeaths, LogHelper.GetDictionaryValue(PlayerStats.numberOfDeaths) + 1);
                 PlayerStats.currentHealth = 0;
 
                 if (SceneManager.GetActiveScene().name == "Level1 BOSS")
@@ -72,6 +72,7 @@ public class HealthManager : MonoBehaviour {
         } else if(this.gameObject.name == "Armor Bar")
         {
             this.GetComponent<Slider>().value = PlayerStats.armorHealth;
+            SetMaxArmor();
         }
 
         

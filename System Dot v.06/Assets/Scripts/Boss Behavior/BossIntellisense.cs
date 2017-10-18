@@ -151,7 +151,7 @@ public class BossIntellisense : MonoBehaviour {
             bossHealth.GetComponentInChildren<Slider>().enabled = false;
 
             // give player armor
-            PlayerStats.armorHealth = 10;
+            PlayerStats.armorHealth = 1;
             GameObject armorBar = GameObject.Find("Armor Bar");
             armorBar.GetComponent<HealthManager>().SetMaxArmor();
             zoomOut = false;

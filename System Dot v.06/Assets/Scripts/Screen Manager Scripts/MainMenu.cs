@@ -48,8 +48,8 @@ public class MainMenu : MonoBehaviour {
         Game.current = new Game();
         PlayerStats.maxHealth = playerHealth;
         PlayerStats.currentHealth = playerHealth;
-        PlayerStats.numberOfDeaths = 0;
-        PlayerStats.totalSecondsOfPlaytime = 0;
+        //PlayerStats.numberOfDeaths = 0;
+        //PlayerStats.totalSecondsOfPlaytime = 0;
 
         SceneManager.LoadScene(startLevel);
 
@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviour {
         PlayerStats.log_numSyntaxErrors = SaveLoad.savedGames[0].log_numSyntaxErrors;
         PlayerStats.log_numQuickDebug = SaveLoad.savedGames[0].log_numQuickDebug;
         PlayerStats.log_totalNumDebugs = SaveLoad.savedGames[0].log_totalNumDebugs;
-        PlayerStats.log_totalNumberOfLegacyOnly = SaveLoad.savedGames[0].log_totalNumberOfLegacyOnly;
+        PlayerStats.log_totalNumberOfEdits = SaveLoad.savedGames[0].log_totalNumberOfEdits;
         PlayerStats.log_totalNumberOfModifiedEdits = SaveLoad.savedGames[0].log_totalNumberOfModifiedEdits;
         PlayerStats.log_totalNumberOfObjects = SaveLoad.savedGames[0].log_totalNumberOfObjects;
 

@@ -41,6 +41,19 @@ public class LevelHandler : MonoBehaviour
             PlayerStats.log_totalNumberOfObjects[SceneManager.GetActiveScene().name] = GameObject.FindObjectsOfType<EnemyTerminal>().Length;
         }
 
+        // if we enter a new level
+        if (PlayerStats.levelName != SceneManager.GetActiveScene().name)
+        {
+            PlayerStats.levelName = SceneManager.GetActiveScene().name;
+            PlayerStats.highestCheckpoint = 1;
+            if (PlayerStats.levelName != "LVL1 BOSS")
+            {
+                PlayerStats.checkpoint = "Checkpoint1";
+            }
+            PlayerStats.deadObjects.Clear();
+            PlayerStats.terminalStrings.Clear();
+        }
+
         LoadLevel();
         player.transform.position = currentCheckpoint.transform.position;
     }

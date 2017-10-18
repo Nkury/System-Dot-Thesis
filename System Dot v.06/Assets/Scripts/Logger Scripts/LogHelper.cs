@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class LogHelper {
 
-    public static void SetDictionaryValue(Dictionary<string, int> dict, int val)
+    public static void SetDictionaryValue<T>(Dictionary<string, T> dict, T val)
     {
-        int value;
+        T value;
         if (dict.TryGetValue(SceneManager.GetActiveScene().name, out value))
         {
             dict[SceneManager.GetActiveScene().name] = val;
@@ -21,14 +21,14 @@ public class LogHelper {
         }
     }
 
-    public static int GetDictionaryValue(Dictionary<string, int> dict) {
-        int val;
+    public static T GetDictionaryValue<T>(Dictionary<string, T> dict) {
+        T val;
         if(dict.TryGetValue(SceneManager.GetActiveScene().name, out val)){
             return val;
         }
         else
         {
-            return 0;
+            return default(T);
         }
     }
 
