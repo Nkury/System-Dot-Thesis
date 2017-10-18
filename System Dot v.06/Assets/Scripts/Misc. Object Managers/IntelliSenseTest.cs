@@ -120,7 +120,7 @@ public class IntelliSenseTest : IntelliSense {
             // for black Vbot tutorial
             if (!tutorialCheck)
             {
-                if (tutorialLine.textComponent.text == "System.body(Color.GREEN);")
+                if (tutorialLine.textComponent.text.Contains("System.body(Color.GREEN);"))
                 {
                     tutorialCheck = true;
                     noMoreReadOnly = false;
