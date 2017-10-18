@@ -40,7 +40,7 @@ public class BossIntellisense : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/BossDialogue.xml");
+        XDocument loadedData = XDocument.Load("Dialogue/BossDialogue.xml");
         List<string> addedDialogue = new List<string>();
         string keyName;
 

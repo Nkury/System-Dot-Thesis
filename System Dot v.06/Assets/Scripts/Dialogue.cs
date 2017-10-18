@@ -49,7 +49,7 @@ public class Dialogue : MonoBehaviour {
 
     // Use this for initialization
     public void Start () {
-        XDocument loadedData = XDocument.Load("../System Dot v.06/Assets/Scripts/Dialogue/" + dialogueFileName + ".xml");
+        XDocument loadedData = XDocument.Load("Dialogue/" + dialogueFileName + ".xml");
         List<sayList> addedDialogue;
         string keyName;
 

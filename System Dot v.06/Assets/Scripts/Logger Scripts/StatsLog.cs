@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -84,7 +83,7 @@ public class StatsLog {
         writer.Close();
 
         // Re-import file to update editor's copy
-        AssetDatabase.ImportAsset(path);
+       // AssetDatabase.ImportAsset(path);
 
     }
 
