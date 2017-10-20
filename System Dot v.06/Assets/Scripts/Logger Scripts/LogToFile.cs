@@ -9,7 +9,7 @@ public class LogToFile {
 
     public static void WriteToFile(string action, string type, string levelName = "")
     {
-        string path = "Assets/Logs/" + (levelName == "" ? SceneManager.GetActiveScene().name : levelName) + "_log.txt";
+        string path = "Logs/" + (levelName == "" ? SceneManager.GetActiveScene().name : levelName) + "_log.txt";
 
         // Write text to file
         StreamWriter writer = new StreamWriter(path, true);
