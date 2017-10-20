@@ -21,7 +21,7 @@ public class StatsLog {
 
     public static void WriteToFile()
     {
-        string path = "/Assets/Logs/Player-" + PlayerStats.playerName + "-Statistics.txt";
+        string path = "Assets/Logs/Player-" + PlayerStats.playerName + "-Statistics.txt";
         GetValues(); // set the variables to accumulated values
 
         // Write text to file

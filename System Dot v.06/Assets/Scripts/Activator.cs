@@ -34,13 +34,28 @@ public class Activator : MonoBehaviour {
                 StartCoroutine(colorPellets(incVal));
             }
         }
-	}
+        else
+        {       
+            // in case the power changes while we are still updating
+            foreach (GameObject pellet in pellets)
+            {
+                pellet.GetComponent<SpriteRenderer>().color = Color.magenta;
+            }
+        }
+
+
+    }
 
     public IEnumerator colorPellets(bool increasePower)
     {
         if (power > powerNeeded)
         {
-            for(int i = 0; i < pellets.Length; i++)
+            foreach(GameObject pellet in pellets)
+            {
+                pellet.GetComponent<SpriteRenderer>().color = Color.magenta;    
+            }
+
+            for (int i = 0; i < pellets.Length; i++)
             {
                 pellets[i].GetComponent<SpriteRenderer>().color = Color.gray;
                 yield return new WaitForSeconds(.5f);
@@ -81,6 +96,8 @@ public class Activator : MonoBehaviour {
                 connectedTo.GetComponent<Activation>().activate();
             }
         }
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -103,7 +120,7 @@ public class Activator : MonoBehaviour {
             powerNeeded = other.gameObject.GetComponent<ActivationZone>().powerNeeded;
             connectedTo = other.gameObject.GetComponent<ActivationZone>().connectedTo;
             pellets = other.gameObject.GetComponent<ActivationZone>().pellets;
-            standardPower = -1;
+        //    standardPower = -1;
         }
     }
 
@@ -111,10 +128,10 @@ public class Activator : MonoBehaviour {
     {
         if (other.gameObject.tag == "ActivationZone")
         {
-            activate = false;            
-            for (int i = other.gameObject.GetComponent<ActivationZone>().pellets.Length - 1; i >= 0; i--)
+            activate = false;
+            foreach (GameObject pellet in pellets)
             {
-                other.gameObject.GetComponent<ActivationZone>().pellets[i].GetComponent<SpriteRenderer>().color = Color.magenta;
+                pellet.GetComponent<SpriteRenderer>().color = Color.magenta;
             }
             connectedTo.GetComponent<Activation>().deactivate();
         }

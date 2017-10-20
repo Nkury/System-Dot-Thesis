@@ -65,6 +65,6 @@ public class PauseMenu : MonoBehaviour
     public void Quit()
     {
         isPaused = false;
-        Application.LoadLevel(mainMenu);
+        Application.LoadLevel("TitleMenu");
     }
 }
