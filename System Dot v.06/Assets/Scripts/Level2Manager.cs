@@ -77,6 +77,7 @@ public class Level2Manager : LevelHandler {
                 intelliSense.GetComponent<IntelliSenseLevel2>().pen_dec.SetActive(true);
                 break;
             case "Checkpoint13":
+                GameObject.Find("Main HUD").GetComponent<TerminalWindowUI>().setVariabullCode("string word = \"sentence\";");
                 checkZone.GetComponent<CheckZone>().numRescued = 2;
                 checkZone.GetComponent<CheckZone>().listOfVariabulls.Add("int flint = 5; double dec = 0.25; ");
                 checkZone.GetComponent<CheckZone>().AddParameters();
