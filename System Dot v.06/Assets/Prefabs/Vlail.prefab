@@ -160,7 +160,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!58 &58665885361483036
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -255,7 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7cc68fba15ba44c8a0424b7511fa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restrictor: {fileID: 0}
   localTerminalMode: 0
+  clickOnce: 0
   numberOfLines: 1
   numOfLegacy: 0100000000
   terminalString:
@@ -271,6 +273,8 @@ MonoBehaviour:
   - 
   - 
   classHeader: public class Vlail {
+  parameters: 
+  moveSpeed: 0.025
   terminalStyle:
     m_Name: 
     m_Normal:
@@ -356,6 +360,7 @@ MonoBehaviour:
   outputVal: []
   openTerminal: {fileID: 0}
   isPerfect: 1
+  seen: 0
 --- !u!114 &114381858121998548
 MonoBehaviour:
   m_ObjectHideFlags: 1

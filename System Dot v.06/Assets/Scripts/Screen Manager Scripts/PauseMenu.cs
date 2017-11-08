@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
 
     public string mainMenu;
 
-    public string levelSelect;
-
     public bool isPaused;
 
     public GameObject pauseMenuCanvas;
+    public Dropdown levelSelect;
     private TerminalWindowUI terminalWindow;
 
     public void Start()
@@ -59,7 +59,14 @@ public class PauseMenu : MonoBehaviour
     public void LevelSelect()
     {
         isPaused = false;
-        Application.LoadLevel(levelSelect);
+        if (levelSelect.value != 4)
+        {
+            Application.LoadLevel("LVL" + (levelSelect.value + 1));
+        }
+        else
+        {
+            Application.LoadLevel("CPU");
+        }
     }
 
     public void Quit()
